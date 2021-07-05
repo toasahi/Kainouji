@@ -15,6 +15,11 @@ const dbSetting: Setting = {
   database: Setting.MYSQL_HOST_DATABASE,
 };
 
+/**
+ * 土壌の水分量を取得
+ * @async
+ * @returns rows
+ */
 export const getMoisture = async () => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = 'select * from soil_moistures';
