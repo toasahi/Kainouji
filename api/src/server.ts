@@ -1,8 +1,13 @@
 import express from 'express';
 import mysql from 'mysql2/promise';
+import logger from 'morgan';
+
 import { Setting } from './setting';
 
 const app: express.Express = express();
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 type Setting = {
   host: string;
@@ -25,13 +30,23 @@ async function getData() {
   return rows;
 }
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+async function getMoisture() {
+  const conn = await mysql.createConnection(dbSetting);
+  const sql = 'select * from soil_moistures';
+  const [rows, fields] = await conn.query(sql);
+  return rows;
+}
 
 app.listen(4000, () => console.log('Express Server Now Running On localhost:4000'));
 
 app.get('/', (req: express.Request, res: express.Response) => {
   getData().then((result) => {
+    res.json(result);
+  });
+});
+
+app.get('/moisture', (req: express.Request, res: express.Response) => {
+  getMoisture().then((result) => {
     res.json(result);
   });
 });
