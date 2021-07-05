@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
     "prettier": "prettier --write \"**/*.{js,ts,ts}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,16 +13,22 @@
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.12",
+    "@types/morgan": "^1.9.2",
     "@types/node": "^16.0.0",
     "@typescript-eslint/eslint-plugin": "^4.28.1",
     "@typescript-eslint/parser": "^4.28.1",
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
     "prettier": "^2.3.2",
+    "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "webpack": "^5.42.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
     "express": "^4.17.1"
