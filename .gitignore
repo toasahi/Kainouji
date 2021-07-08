@@ -3,3 +3,4 @@
 /api/package-lock.json
 /api/src/setting.ts
 /api/webpack.config.js
+/api/dist
