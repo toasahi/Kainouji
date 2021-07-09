@@ -96,5 +96,20 @@ class Data extends Database
         return $result;
     }
 
+
+    /**
+     * データの閾値を取得する
+     * @return array $result
+     */
+    public function selectThresholdData($input_parameters = NULL){
+        $sql = "SELECT moisture,temperature_high,temperature_low,air_pressure FROM configs";
+        $stmt = $this->pdo->prepare($sql);
+        $flag = $stmt->execute($input_parameters);
+        if(!$flag){
+            return false;
+        }
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
     
 }
