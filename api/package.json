@@ -7,7 +7,7 @@
     "build": "webpack --mode=production",
     "prettier": "prettier --write \"**/*.{js,ts,ts}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint-fix": "eslint --ext ts, --ext js './src/' && prettier --write './src/**/*.{js,ts}'"
+    "lint-fix": "prettier --write './src/**/*.{js,ts}' && eslint --ext ts, --ext js './src/'"
   },
   "keywords": [],
   "author": "",
