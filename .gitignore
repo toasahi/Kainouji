@@ -4,3 +4,9 @@
 /api/src/setting.ts
 /api/webpack.config.js
 /api/dist
+/web/node_modules
+/web/package-lock.json
+/web/webpack.config.js
+/web/index.html
+/web/index.js
+/web/dist/  

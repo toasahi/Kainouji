@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "types":["node"],
+    "lib": [
+      "es2019",
+      "dom"
+    ],
+    "allowJs": true, // jsコンパイル用
+    "checkJs": true,  // js簡易型チェック
+    "sourceMap": true,
+    "inlineSources": true,
+    "strict": true,
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "jsx":"react-jsx",
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution" : "Node"
+  }
+}
