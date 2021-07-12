@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
-import { useMoistureData } from './hooks/useMoistureData';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Router } from './router/Router';
 import { Moisture } from './types/api/moisture';
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
   return (
     <div className="App">
       <h1>こんにちは</h1>
+      {/* <BrowserRouter>
+        <Router />
+      </BrowserRouter> */}
     </div>
   );
 }
