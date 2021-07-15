@@ -1,17 +1,24 @@
-import { Moisture } from '../components/pages/Moisture';
 import { Page404 } from '../components/pages/Page404';
 import { Weather } from '../components/pages/Weather';
+import { LookField } from '../components/pages/LookField';
+import { RegisterField } from '../components/pages/RegisterField';
+import { Home } from '../components/pages/Home';
 
 export const homeRoutes = [
   {
     path: '/',
     exact: true,
-    children: <Moisture />,
+    children: <Home />,
   },
   {
-    path: '/moisture',
+    path: '/lookfield',
+    exact: true,
+    children: <LookField />,
+  },
+  {
+    path: '/registerfield',
     exact: false,
-    children: <Moisture />,
+    children: <RegisterField />,
   },
   {
     path: '/weather',

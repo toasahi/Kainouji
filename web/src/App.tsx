@@ -18,10 +18,9 @@ function App() {
   console.log(moisture);
   return (
     <div className="App">
-      <h1>こんにちは</h1>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Router />
-      </BrowserRouter> */}
+      </BrowserRouter>
     </div>
   );
 }
