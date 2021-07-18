@@ -3,6 +3,7 @@ import { Weather } from '../components/pages/Weather';
 import { LookField } from '../components/pages/LookField';
 import { RegisterField } from '../components/pages/RegisterField';
 import { Home } from '../components/pages/Home';
+import { Login } from '../components/pages/Login';
 
 export const homeRoutes = [
   {
@@ -24,6 +25,11 @@ export const homeRoutes = [
     path: '/weather',
     exact: false,
     children: <Weather />,
+  },
+  {
+    path: '/login',
+    exact: false,
+    children: <Login />,
   },
   {
     path: '/*',

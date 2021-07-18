@@ -35,7 +35,7 @@ ${reset}
 
 html,body{
   font-family: 'Noto Sans SC',"Yu Gothic Medium", "游ゴシック Medium", 'ヒラギノ角ゴ Pro W3', sans-serif;
-  font-weight: 100%;
+  font-weight: 999px;
   margin:0;
   color: #141517;
   background-color:#F9F9F9;

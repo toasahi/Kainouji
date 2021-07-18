@@ -1,18 +1,36 @@
 import { memo, VFC } from 'react';
 import styled from 'styled-components';
+import { Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 
 export const Home: VFC = memo(() => {
   return (
     <SHome>
       <Header />
-      <h1>ホームページです</h1>
+      <main>ホームページです</main>
     </SHome>
   );
 });
 
-
 const SHome = styled.div`
-  width:80%;
-  display:flex;
-`
+  display: flex;
+  flex-direction: column-reverse;
+  align-content: space-between;
+  justify-content: space-between;
+  min-height: 95vh;
+
+  main {
+    width: 100%;
+    height: 80%;
+  }
+
+  @media (min-width: ${Responsive.md}px) {
+    flex-direction: row;
+    justify-content: start;
+    align-content: center;
+
+    main {
+      width: 80%;
+    }
+  }
+`;

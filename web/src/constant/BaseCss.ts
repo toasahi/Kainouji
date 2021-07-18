@@ -1,13 +1,13 @@
 const Font = {
-  textSm: 16,
-  textBase: 16,
-  textLg: 18,
-  textXl: 20,
-  text2xl: 26,
-  text3xl: 30,
-  text4xl: 36,
-  text5xl: 48,
-  text6xl: 60,
+  textSm: '12px',
+  textBase: '16px',
+  textLg: '18px',
+  textXl: '20px',
+  text2xl: '26px',
+  text3xl: '30px',
+  text4xl: '36px',
+  text5xl: '48px',
+  text6xl: '60px',
 } as const;
 
 const Color = {
@@ -22,4 +22,14 @@ const Responsive = {
   xxl: 1399.98,
 } as const;
 
-export { Font, Responsive };
+const FontWeight = {
+  fontThin: 100,
+  fontExtralLight: 200,
+  fontLight: 300,
+  fontNormal: 400,
+  fontMedium: 500,
+  fontSemiBold: 600,
+  fontBold: 700,
+};
+
+export { Font, Responsive, Color, FontWeight };
