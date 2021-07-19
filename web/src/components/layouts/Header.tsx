@@ -93,7 +93,7 @@ const SHeader = styled.header`
 
     a {
       font-size: ${Font.textXl};
-      height:30px;
+      height: 30px;
     }
 
     ul {
@@ -110,22 +110,22 @@ const SHeader = styled.header`
 
     svg {
       display: inline;
-      width:20px;
-      height:20px;
-      margin-right:25px;
+      width: 20px;
+      height: 20px;
+      margin-right: 25px;
     }
   }
 
   @media (min-width: ${Responsive.lg}px) {
-    width : 20%;
+    width: 20%;
     a {
       font-size: ${Font.text2xl};
     }
 
     svg {
-      width:26px;
-      height:26px;
-      margin-right:25px;
+      width: 26px;
+      height: 26px;
+      margin-right: 25px;
     }
   }
 `;
