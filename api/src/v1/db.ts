@@ -31,8 +31,10 @@ const dbSetting: Setting = {
  */
 export const getMoisture = async () => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = 'select * from soil_moistures';
+  const sql = 'select * from soil_moistures where moisture > 100';
   const [rows, fields] = await conn.query(sql);
+  // console.log(rows == [] ? "1" : "2");
+  // console.log(rows);
   return rows;
 };
 
@@ -57,9 +59,41 @@ export const editThreshold = async (threshold: Threshold) => {
   return rows;
 };
 
+/**
+ * 閾値の取得
+ * @async
+ * @returns rows
+ */
+
 export const getThreshold = async () => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = 'select * from configs';
+  const [rows, fields] = await conn.query(sql);
+  return rows;
+};
+
+/**
+ * 登録されている野菜取得
+ * @async
+ * @returns rows
+ */
+
+export const getVegetables = async () => {
+  const conn = await mysql.createConnection(dbSetting);
+  const sql = 'select id,vegetable from vegetables';
+  const [rows, fields] = await conn.query(sql);
+  return rows;
+};
+
+/**
+ * 野菜の追加処理
+ * @async
+ * @returns rows
+ */
+
+export const InsertVegetables = async () => {
+  const conn = await mysql.createConnection(dbSetting);
+  const sql = `select vegetable from vegetables Where`;
   const [rows, fields] = await conn.query(sql);
   return rows;
 };
