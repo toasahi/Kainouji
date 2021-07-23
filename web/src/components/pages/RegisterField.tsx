@@ -1,6 +1,9 @@
-import { ChangeEvent, memo, useState, VFC } from 'react';
+import axios from 'axios';
+import { ChangeEvent, memo, useCallback, useEffect, useState, VFC } from 'react';
 import styled from 'styled-components';
 import { Responsive } from '../../constant/BaseCss';
+import { useGetVegitables } from '../../hooks/useGetVegitables';
+import { Vegetable } from '../../types/api/vegetable';
 import { Header } from '../layouts/Header';
 // import Image from '../../images/default.jpeg';
 
@@ -10,6 +13,7 @@ export const RegisterField: VFC = memo(() => {
   const [waterTiming, setWaterTiming] = useState('');
   const [settingDay, setSettingDay] = useState('');
   const [imageUrl, setImageUrl] = useState('../../images/defaultImage.jpeg');
+  const { getVegetables, loading, vegetableLists } = useGetVegitables();
   const onChangeFieldName = (event: ChangeEvent<HTMLInputElement>) => setFieldName(event.target.value);
   const onChangeVegetable = (event: ChangeEvent<HTMLSelectElement>) => setVegetable(event.target.value);
   const onChangeWaterTiming = (event: ChangeEvent<HTMLSelectElement>) => setWaterTiming(event.target.value);
@@ -18,6 +22,10 @@ export const RegisterField: VFC = memo(() => {
     event.currentTarget.files !== null
       ? setImageUrl(URL.createObjectURL(event.currentTarget.files[0]))
       : setImageUrl('');
+
+  useEffect(() => getVegetables(), []);
+  
+  console.log(vegetableLists,);
 
   return (
     <SRegisterField>
@@ -32,9 +40,11 @@ export const RegisterField: VFC = memo(() => {
           <label htmlFor="vegetable">育てる野菜</label>
           <select id="vegetable" value={vegetable} onChange={onChangeVegetable}>
             <option value="">選択してください</option>
-            <option value="1">きゅうり</option>
-            <option value="2">トマト</option>
-            <option value="3">ナス</option>
+            {vegetableLists.map((vegetableList) => (
+              <option key={vegetableList.id} value={vegetableList.id}>
+                {vegetableList.vegetable}
+              </option>
+            ))}
           </select>
         </div>
         <div>

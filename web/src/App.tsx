@@ -19,7 +19,6 @@ function App() {
       .catch(() => setLoading(false))
       .finally(() => setLoading(false));
   }, []);
-  console.log(moisture);
   return (
     <div className="App">
       <GlobalStyle />
