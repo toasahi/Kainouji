@@ -2,7 +2,7 @@ import { memo, VFC } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Font, FontWeight, Responsive } from '../../constant/BaseCss';
+import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 
 export const Header: VFC = memo(() => {
   const headerLinks = [

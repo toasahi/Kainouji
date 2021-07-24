@@ -24,8 +24,8 @@ export const RegisterField: VFC = memo(() => {
       : setImageUrl('');
 
   useEffect(() => getVegetables(), []);
-  
-  console.log(vegetableLists,);
+
+  console.log(vegetableLists);
 
   return (
     <SRegisterField>

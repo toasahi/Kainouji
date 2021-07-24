@@ -12,6 +12,7 @@ const Font = {
 
 const Color = {
   primary: '#141517',
+  secondary : '#9FC730'
 };
 
 const Responsive = {
