@@ -81,6 +81,11 @@ const SHeader = styled.header`
   a {
     font-size: ${Font.textBase};
     font-weight: ${FontWeight.fontExtralLight};
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+      color: ${Color.secondary};
+    }
   }
 
   @media (min-width: ${Responsive.md}px) {

@@ -3,7 +3,7 @@ const Font = {
   textBase: '16px',
   textLg: '18px',
   textXl: '20px',
-  text2xl: '26px',
+  text2xl: '25px',
   text3xl: '30px',
   text4xl: '36px',
   text5xl: '48px',
@@ -12,7 +12,8 @@ const Font = {
 
 const Color = {
   primary: '#141517',
-  secondary : '#9FC730'
+  secondary: '#9FC730',
+  tertiary: '#e',
 };
 
 const Responsive = {

@@ -1,5 +1,5 @@
 export type Moisture = {
-  id: Number;
-  moisture: Number;
+  id: number;
+  moisture: number;
   added_date: Date;
 };
