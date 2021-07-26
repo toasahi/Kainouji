@@ -1,9 +1,79 @@
 import { memo, VFC } from 'react';
+import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import styled from 'styled-components';
+import { Responsive } from '../../constant/BaseCss';
+
+import { Header } from '../layouts/Header';
 
 export const Moisture: VFC = memo(() => {
+  const data = [
+    {
+      name: '2010年',
+      水分量: 4000,
+    },
+    {
+      name: '2011年',
+      水分量: 3000,
+    },
+    {
+      name: '2012年',
+      水分量: 2000,
+    },
+    {
+      name: '2013年',
+      水分量: 2780,
+    },
+    {
+      name: '2014年',
+      水分量: 1890,
+    },
+    {
+      name: '2015年',
+      水分量: 2390,
+    },
+    {
+      name: '2016年',
+      水分量: 3490,
+    },
+    {
+      name: '2017年',
+      水分量: 5700,
+    },
+    {
+      name: '2018年',
+      水分量: 5490,
+    },
+  ];
   return (
-    <>
-      <h1>土壌ページです</h1>
-    </>
+    <SMoisture>
+      <Header />
+      <main>
+        <LineChart width={700} height={500} data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" interval="preserveStartEnd" />
+          <YAxis interval="preserveStartEnd" />
+          <Legend />
+          <Line type="monotone" dataKey="水分量" stroke="#8884d8" activeDot={{ r: 8 }} />
+        </LineChart>
+      </main>
+    </SMoisture>
   );
 });
+
+const SMoisture = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+  align-content: space-between;
+  justify-content: space-between;
+  min-height: 95vh;
+
+  main {
+    width: 100%;
+  }
+
+  @media (min-width: ${Responsive.md}px) {
+    flex-direction: row;
+    justify-content: start;
+    align-content: center;
+  }
+`;

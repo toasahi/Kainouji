@@ -65,13 +65,17 @@ const SHeader = styled.header`
   background-color: #fefefe;
   border-top: solid 2px #e8e6e6;
   width: 100%;
-  height: 20%;
+  height: 80px;
   position: sticky;
+  bottom:0;
+  position: -webkit-sticky;
+  /* position: fixed; */
   z-index: 999;
 
   ul {
     display: flex;
     justify-content: space-around;
+    margin-top: 10px;
   }
 
   svg {
@@ -90,6 +94,7 @@ const SHeader = styled.header`
 
   @media (min-width: ${Responsive.md}px) {
     width: 25%;
+    top: 0;
     border-top: none;
     border-right: solid 2px #e8e6e6;
     display: block;

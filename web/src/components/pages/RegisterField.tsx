@@ -83,7 +83,7 @@ const SRegisterField = styled.div`
   min-height: 95vh;
 
   main {
-    width: 100%;
+    width: 80%;  
   }
 
   @media (min-width: ${Responsive.md}px) {
@@ -94,10 +94,12 @@ const SRegisterField = styled.div`
 `;
 
 const SCard = styled.section`
-  @media (min-width: ${Responsive.lg}px) {
+  @media(min-width: ${Responsive.md}px){
+    width: 650px;
+  }
 
-    width: 750px;
-    max-width:750px;
+  @media (min-width: ${Responsive.lg}px) {
+    width: 700px;
     height: 680px;
     background-color: #fefefe;
     margin: 0 auto;
@@ -106,29 +108,29 @@ const SCard = styled.section`
     padding: 25px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
-    h1{
+    h1 {
       font-size: ${Font.text5xl};
-      text-align:center;
-      padding:5px;
-      margin:30px 0;
-      position:relative;
+      text-align: center;
+      padding: 5px;
+      margin: 30px 0;
+      position: relative;
 
-      ::after{
+      ::after {
         background-color: ${Color.secondary}; /* 線色 */
         border-radius: 5px; /* 線幅の半分 */
-        content: "";
-        position:absolute;
-        bottom:0;
-        left:33.5%;
-        width:250px;
-        opacity:25%;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 33.5%;
+        width: 250px;
+        opacity: 25%;
         height: 15px; /* 線幅 */
       }
     }
 
-    .item{
-      max-width:700px;
-      width:100%;
+    .item {
+      max-width: 700px;
+      width: 100%;
     }
   }
 `;

@@ -18,7 +18,7 @@ const SInput = styled.input`
   border-radius: 10px;
   padding: 10px;
   transition: all 0.25s ease 0s;
-  width:100%;
+  width: 100%;
 
   ::placeholder {
     color: ${Color.primary};
