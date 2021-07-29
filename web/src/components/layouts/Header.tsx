@@ -67,7 +67,7 @@ const SHeader = styled.header`
   width: 100%;
   height: 80px;
   position: sticky;
-  bottom:0;
+  bottom: 0;
   position: -webkit-sticky;
   /* position: fixed; */
   z-index: 999;

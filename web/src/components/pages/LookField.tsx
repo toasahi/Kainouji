@@ -12,12 +12,12 @@ export const LookField: VFC = memo(() => {
         <h1>畑を見る</h1>
         <section>
           <SContainer>
-            <div className="grid-item">1</div>
-            <div className="grid-item">2</div>
-            <div className="grid-item">3</div>
-            <div className="grid-item">4</div>
-            <div className="grid-item">5</div>
-            <div className="grid-item">6</div>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
           </SContainer>
         </section>
       </main>
@@ -35,7 +35,6 @@ const SLookField = styled.div`
   main {
     width: 80%;
     height: 80%;
-    margin-bottom: 20%;
     /* max-width:950px; */
 
     h1 {
@@ -67,15 +66,21 @@ const SLookField = styled.div`
 `;
 
 const SContainer = styled.div`
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 100px 100px;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  @media (min-width: ${Responsive.md}px) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
 
-  .grid-item {
-    background-color: aqua;
-    text-align: center;
+    div {
+      background-color: #fefefe;
+      margin-bottom: 30px;
+      height: 225px;
+      width: 300px;
+      border-radius: 12px;
+      --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    }
   }
 `;

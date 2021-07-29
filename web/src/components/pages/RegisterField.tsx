@@ -83,7 +83,7 @@ const SRegisterField = styled.div`
   min-height: 95vh;
 
   main {
-    width: 80%;  
+    width: 80%;
   }
 
   @media (min-width: ${Responsive.md}px) {
@@ -94,7 +94,7 @@ const SRegisterField = styled.div`
 `;
 
 const SCard = styled.section`
-  @media(min-width: ${Responsive.md}px){
+  @media (min-width: ${Responsive.md}px) {
     width: 650px;
   }
 
@@ -106,7 +106,8 @@ const SCard = styled.section`
     margin-top: 25px;
     border-radius: 30px;
     padding: 25px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 
     h1 {
       font-size: ${Font.text5xl};

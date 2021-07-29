@@ -1,11 +1,18 @@
-import { memo, VFC } from 'react';
+import { memo, useEffect, VFC } from 'react';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import styled from 'styled-components';
 import { Responsive } from '../../constant/BaseCss';
+import { useMoistureData } from '../../hooks/useMoistureData';
 
 import { Header } from '../layouts/Header';
 
 export const Moisture: VFC = memo(() => {
+  const { loading, moisture, getMoistures } = useMoistureData();
+
+  useEffect(() => getMoistures(), []);
+
+  console.log(moisture);
+
   const data = [
     {
       name: '2010年',
@@ -45,18 +52,24 @@ export const Moisture: VFC = memo(() => {
     },
   ];
   return (
-    <SMoisture>
-      <Header />
-      <main>
-        <LineChart width={700} height={500} data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" interval="preserveStartEnd" />
-          <YAxis interval="preserveStartEnd" />
-          <Legend />
-          <Line type="monotone" dataKey="水分量" stroke="#8884d8" activeDot={{ r: 8 }} />
-        </LineChart>
-      </main>
-    </SMoisture>
+    <>
+      {loading ? (
+        ''
+      ) : (
+        <SMoisture>
+          <Header />
+          <main>
+            <LineChart width={700} height={500} data={moisture}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="created_at" interval="preserveStartEnd" />
+              <YAxis interval="preserveStartEnd" />
+              <Legend />
+              <Line type="monotone" dataKey="moisture" stroke="#8884d8" activeDot={{ r: 8 }} />
+            </LineChart>
+          </main>
+        </SMoisture>
+      )}
+    </>
   );
 });
 

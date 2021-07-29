@@ -4,6 +4,7 @@ import { LookField } from '../components/pages/LookField';
 import { RegisterField } from '../components/pages/RegisterField';
 import { Home } from '../components/pages/Home';
 import { Login } from '../components/pages/Login';
+import { Moisture } from '../components/pages/Moisture';
 
 export const homeRoutes = [
   {
@@ -14,7 +15,12 @@ export const homeRoutes = [
   {
     path: '/lookfield',
     exact: true,
-    children: <LookField />,
+    children: <Moisture />,
+  },
+  {
+    path: '/moisture',
+    exact: false,
+    children: <Moisture />,
   },
   {
     path: '/registerfield',
