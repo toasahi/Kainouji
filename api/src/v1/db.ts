@@ -6,6 +6,7 @@ type Setting = {
   user: string;
   password: string;
   database: string;
+  dateStrings: boolean;
 };
 
 export type Threshold = {
@@ -22,6 +23,7 @@ const dbSetting: Setting = {
   user: Setting.MYSQL_USER,
   password: Setting.MYSQL_PASSWORD,
   database: Setting.MYSQL_HOST_DATABASE,
+  dateStrings: true,
 };
 
 /**
@@ -31,10 +33,10 @@ const dbSetting: Setting = {
  */
 export const getMoisture = async () => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = 'select * from soil_moistures where moisture > 100';
+  const sql = 'select * from soil_moistures';
   const [rows, fields] = await conn.query(sql);
   // console.log(rows == [] ? "1" : "2");
-  // console.log(rows);
+  console.log(rows);
   return rows;
 };
 
@@ -46,7 +48,7 @@ export const getMoisture = async () => {
 
 export const editThreshold = async (threshold: Threshold) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = `UPDATE configs SET 
+  const sql = `UPDATE thresholds SET 
                 moisture = ${threshold.moisture},
                 temperature_high = ${threshold.temperature_high},
                 temperature_low = ${threshold.temperature_low},
@@ -67,7 +69,7 @@ export const editThreshold = async (threshold: Threshold) => {
 
 export const getThreshold = async () => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = 'select * from configs';
+  const sql = 'select * from thresholds';
   const [rows, fields] = await conn.query(sql);
   return rows;
 };
