@@ -18,7 +18,7 @@ export const homeRoutes = [
     children: <Moisture />,
   },
   {
-    path: '/moisture',
+    path: '/lookfield/moisture',
     exact: false,
     children: <Moisture />,
   },

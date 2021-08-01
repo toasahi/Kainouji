@@ -9,7 +9,6 @@ export const Router: VFC = memo(() => {
       <Switch>
         {homeRoutes.map((route) => (
           <Route key={route.path} exact={route.exact} path={`${route.path}`}>
-            {console.log(`${route.path}`)}
             {route.children}
           </Route>
         ))}

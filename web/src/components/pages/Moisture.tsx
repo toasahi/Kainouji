@@ -54,7 +54,7 @@ export const Moisture: VFC = memo(() => {
   return (
     <>
       {loading ? (
-        ''
+        <h1>水分量のページです</h1>
       ) : (
         <SMoisture>
           <Header />
