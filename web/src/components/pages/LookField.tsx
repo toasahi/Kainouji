@@ -12,7 +12,11 @@ export const LookField: VFC = memo(() => {
         <h1>畑を見る</h1>
         <section>
           <SContainer>
-            <div>1</div>
+            <div>
+              <img src="" />
+              <h2>越智自動車前畑</h2>
+              <p>設置日 : 2021/09/02</p>
+            </div>
             <div>2</div>
             <div>3</div>
             <div>4</div>
@@ -63,10 +67,17 @@ const SLookField = styled.div`
     justify-content: start;
     align-content: center;
   }
+
+  main {
+    padding: 20px 40px;
+  }
 `;
 
 const SContainer = styled.div`
-  @media (min-width: ${Responsive.md}px) {
+  @media (min-width: ${Responsive.md}) {
+  }
+
+  @media (min-width: ${Responsive.xl}px) {
     display: flex;
     flex-wrap: wrap;
     align-items: center;

@@ -5,7 +5,9 @@ import { Color, Font, Responsive } from '../../constant/BaseCss';
 import { useGetVegitables } from '../../hooks/useGetVegitables';
 import { Header } from '../layouts/Header';
 import { PrimaryInput } from '../Inputs/PrimaryInput';
-// import Image from '../../images/default.jpeg';
+import { PrimaryButton } from '../buttons/PrimaryButton';
+import { useHistory } from 'react-router-dom';
+import Images from 'images/defaultImage.jpeg';
 
 export const RegisterField: VFC = memo(() => {
   const [fieldName, setFieldName] = useState('');
@@ -14,6 +16,8 @@ export const RegisterField: VFC = memo(() => {
   const [settingDay, setSettingDay] = useState('');
   const [imageUrl, setImageUrl] = useState('../../images/defaultImage.jpeg');
   const { getVegetables, loading, vegetableLists } = useGetVegitables();
+  const history = useHistory();
+  const onClickConfirm = () => history.push('/registerfield/confirm');
   const onChangeFieldName = (event: ChangeEvent<HTMLInputElement>) => setFieldName(event.target.value);
   const onChangeVegetable = (event: ChangeEvent<HTMLSelectElement>) => setVegetable(event.target.value);
   const onChangeWaterTiming = (event: ChangeEvent<HTMLSelectElement>) => setWaterTiming(event.target.value);
@@ -66,9 +70,10 @@ export const RegisterField: VFC = memo(() => {
             <label htmlFor="fieldImage">畑の画像</label>
             <input id="fieldImage" type="file" accept="image/*" onChange={onChangeProcessImage} hidden />
             <label htmlFor="fieldImage">
-              <img src={imageUrl} />
+              <img src=""/>
             </label>
           </div>
+          <PrimaryButton children="確認画面へ進む" position="after" onClick={onClickConfirm} />
         </SCard>
       </main>
     </SRegisterField>

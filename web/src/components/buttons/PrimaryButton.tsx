@@ -3,19 +3,28 @@ import styled from 'styled-components';
 
 type Props = {
   children: string;
-  onclick: () => void;
+  onClick: () => void;
+  position: 'before' | 'after';
 };
 
-export const PrimaryButton: VFC = memo(() => {
-  return <SButton>畑を登録する</SButton>;
+export const PrimaryButton: VFC<Props> = memo((props) => {
+  const { children, onClick, position } = props;
+  return (
+    <>
+      {position === 'after' ? (
+        <SButtonAfter onClick={onClick}>{children}</SButtonAfter>
+      ) : (
+        <SButtonBefore onClick={onClick}>{children}</SButtonBefore>
+      )}
+    </>
+  );
 });
 
 const SButton = styled.button`
   background-color: #fefefe;
   text-align: left;
-  width: 200px;
+  width: 180px;
   padding: 10px;
-  padding-left: 25px;
   opacity: 90%;
   color: #491818;
   border: solid 1px #491818;
@@ -23,6 +32,16 @@ const SButton = styled.button`
   outline: none;
   cursor: pointer;
   position: relative;
+
+  &:hover {
+    background-color: #491818;
+    color: #fefefe;
+    opacity: 100%;
+  }
+`;
+
+const SButtonAfter = styled(SButton)`
+  padding-left: 25px;
 
   &:after {
     content: '';
@@ -36,14 +55,30 @@ const SButton = styled.button`
     transform: rotate(45deg);
   }
 
-  &:hover {
-    background-color: #491818;
-    color: #fefefe;
-    opacity: 100%;
-  }
-
   &:hover::after {
     border-top: solid 1px #fefefe;
     border-right: solid 1px #fefefe;
+  }
+`;
+
+const SButtonBefore = styled(SButton)`
+  text-align: right;
+  padding-right: 25px;
+
+  &:before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-bottom: solid 1px #491818;
+    border-left: solid 1px #491818;
+    position: absolute;
+    left: 20px;
+    top: 40%;
+    transform: rotate(45deg);
+  }
+
+  &:hover::before {
+    border-bottom: solid 1px #fefefe;
+    border-left: solid 1px #fefefe;
   }
 `;

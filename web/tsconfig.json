@@ -12,6 +12,7 @@
     "sourceMap": true,
     "inlineSources": true,
     "strict": true,
+    "baseUrl": "src",
     "outDir": "./dist/",
     "noImplicitAny": true,
     "esModuleInterop": true,

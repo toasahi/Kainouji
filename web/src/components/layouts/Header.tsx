@@ -8,7 +8,7 @@ export const Header: VFC = memo(() => {
   const headerLinks = [
     {
       path: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABY0lEQVRIie2UPVLCQBTHfwqDlTZ6AiN3iBFOYqEXQaw01o4eQPwqdLhDzkHHgKnsRKUAi32ZZNZNdgmgTf4zb5L9eL9/kveyUKnSP6kBXAFjYASEMld2n7NCYK5FuMQ+Z40NwLcl9hVqD+gBsQGWxLsWefti4A7YtZluAFEBqGxEws7V6RpMkzjJM91GdeS6jGNgx2Rs6sxVx6Vuug98/YHxN9DMGvdl4QPoAB7qAPCAM2CyANzG6CemfibB/10BAA4dzV0ZPsC9DDo5CYm6DsaujB7AQAaeJelAMwmAljbnyhhA2lS2Q31LM2kBbW3OlfEJ6b9re9om9k/tyhhuoo4zgGNLUrL+AlzIA4/k/nVBRgRpnSaozjMpIO3IwLC+CGOWZdxkEruoJmjI9RxVkzlwXfA2t2UY9Yy5KWaSUCswrlkYiWndlHwEPAJDYIqq4ZPMu6oNPEvuVFgPmEtUqdLq9QOway3c5rDJIAAAAABJRU5ErkJggg==',
-      to: 'lookfield/moisture',
+      to: 'lookfield',
       children: '畑を見る',
     },
     {
