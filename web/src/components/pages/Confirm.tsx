@@ -12,7 +12,9 @@ import { useHistory } from 'react-router-dom';
 export const Confirm: VFC = memo(() => {
   const history = useHistory();
   const onClickBack = () => history.push('/registerfield');
-  const onClickRegister = () => history.push('/registerfield/confirm');
+  const onClickRegister = () => history.push('/login');
+
+  // console.log(this.props.location.state.stateTest);
 
   return (
     <SConfirm>
