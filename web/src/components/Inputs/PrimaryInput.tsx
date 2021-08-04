@@ -1,14 +1,19 @@
-import { memo, VFC } from 'react';
+import { ChangeEvent, memo, VFC } from 'react';
 import styled from 'styled-components';
 import { Color } from '../../constant/BaseCss';
 
 type Props = {
   placeHolder?: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  inputType: 'text' | 'email' | 'date' | 'file';
+  inputId?: string;
+  hidden ?: boolean;
 };
 
 export const PrimaryInput: VFC<Props> = memo((props) => {
-  const { placeHolder = '' } = props;
-  return <SInput type="text" placeholder={placeHolder} />;
+  const { placeHolder = '', onChange, value='', inputType='text', inputId='',hidden=false } = props;
+  return <SInput type={inputType} id={inputId} placeholder={placeHolder} onChange={onChange} value={value} hidden={hidden} />;
 });
 
 const SInput = styled.input`
