@@ -35,8 +35,6 @@ export const getMoisture = async () => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = 'select * from soil_moistures';
   const [rows, fields] = await conn.query(sql);
-  // console.log(rows == [] ? "1" : "2");
-  console.log(rows);
   return rows;
 };
 

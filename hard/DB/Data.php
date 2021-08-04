@@ -102,7 +102,7 @@ class Data extends Database
      * @return array $result
      */
     public function selectThresholdData($input_parameters = NULL){
-        $sql = "SELECT moisture,temperature_high,temperature_low,air_pressure FROM configs";
+        $sql = "SELECT moisture,temperature_high,temperature_low,air_pressure FROM thresholds";
         $stmt = $this->pdo->prepare($sql);
         $flag = $stmt->execute($input_parameters);
         if(!$flag){

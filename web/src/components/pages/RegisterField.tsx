@@ -14,7 +14,7 @@ export const RegisterField: VFC = memo(() => {
   const [vegetable, setVegetable] = useState('');
   const [waterTiming, setWaterTiming] = useState('');
   const [settingDay, setSettingDay] = useState('');
-  const [imageUrl, setImageUrl] = useState('../../images/defaultImage.jpeg');
+  const [imageUrl, setImageUrl] = useState('');
   const { getVegetables, loading, vegetableLists } = useGetVegitables();
   const history = useHistory();
   const onClickConfirm = () => history.push('/registerfield/confirm');
@@ -68,7 +68,7 @@ export const RegisterField: VFC = memo(() => {
             <label htmlFor="fieldImage">畑の画像</label>
             <input id="fieldImage" type="file" accept="image/*" onChange={onChangeProcessImage} hidden />
             <label htmlFor="fieldImage">
-              <img src="" />
+              <img src='' />
             </label>
           </div>
           <PrimaryButton children="確認画面へ進む" position="after" onClick={onClickConfirm} />
