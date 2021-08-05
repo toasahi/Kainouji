@@ -39,6 +39,19 @@ export const getMoisture = async () => {
 };
 
 /**
+ * 土壌の水分量を取得
+ * @async
+ * @returns rows
+ */
+ export const getFieldMoisture = async (id?:string) => {
+  console.log(id);
+  const conn = await mysql.createConnection(dbSetting);
+  const sql = `select * from soil_moistures where field_id = ${id}`;
+  const [rows, fields] = await conn.query(sql);
+  return rows;
+};
+
+/**
  * 閾値の更新
  * @async
  * @returns rows
