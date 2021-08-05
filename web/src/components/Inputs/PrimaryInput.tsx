@@ -8,12 +8,14 @@ type Props = {
   value?: string;
   inputType: 'text' | 'email' | 'date' | 'file';
   inputId?: string;
-  hidden ?: boolean;
+  hidden?: boolean;
 };
 
 export const PrimaryInput: VFC<Props> = memo((props) => {
-  const { placeHolder = '', onChange, value='', inputType='text', inputId='',hidden=false } = props;
-  return <SInput type={inputType} id={inputId} placeholder={placeHolder} onChange={onChange} value={value} hidden={hidden} />;
+  const { placeHolder = '', onChange, value = '', inputType = 'text', inputId = '', hidden = false } = props;
+  return (
+    <SInput type={inputType} id={inputId} placeholder={placeHolder} onChange={onChange} value={value} hidden={hidden} />
+  );
 });
 
 const SInput = styled.input`

@@ -117,7 +117,7 @@ const SHeader = styled.header`
       display: block;
       padding: 15px;
       text-align: center;
-      margin: auto 0;
+      margin-top:130px;
     }
 
     li {

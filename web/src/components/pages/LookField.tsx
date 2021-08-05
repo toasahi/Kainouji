@@ -1,6 +1,6 @@
 import { memo, VFC } from 'react';
 import styled from 'styled-components';
-import { Color, Font, Responsive } from '../../constant/BaseCss';
+import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 
 import { Header } from '../layouts/Header';
 
@@ -9,8 +9,8 @@ export const LookField: VFC = memo(() => {
     <SLookField>
       <Header />
       <main>
-        <h1>畑を見る</h1>
         <section>
+          <h1>畑を見る</h1>
           <SContainer>
             <div>
               <img src="" />
@@ -38,15 +38,18 @@ const SLookField = styled.div`
 
   main {
     width: 80%;
-    height: 80%;
-    /* max-width:950px; */
+
+    section {
+      text-align: center;
+    }
 
     h1 {
       font-size: ${Font.text5xl};
-      text-align: center;
       padding: 5px;
-      margin: 30px 0;
+      margin-top: 75px;
+      margin-bottom:30px;
       position: relative;
+      font-weight: ${FontWeight.fontSemiBold};
 
       ::after {
         background-color: ${Color.secondary}; /* 線色 */
@@ -54,10 +57,10 @@ const SLookField = styled.div`
         content: '';
         position: absolute;
         bottom: 0;
-        left: 40%;
-        width: 250px;
+        left: 38%;
+        width: 25%;
         opacity: 25%;
-        height: 15px; /* 線幅 */
+        height: 10px; /* 線幅 */
       }
     }
   }
@@ -66,10 +69,6 @@ const SLookField = styled.div`
     flex-direction: row;
     justify-content: start;
     align-content: center;
-  }
-
-  main {
-    padding: 20px 40px;
   }
 `;
 
@@ -82,7 +81,7 @@ const SContainer = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 30px;
 
     div {
       background-color: #fefefe;
@@ -92,6 +91,10 @@ const SContainer = styled.div`
       border-radius: 12px;
       --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.01);
+      }
     }
   }
 `;

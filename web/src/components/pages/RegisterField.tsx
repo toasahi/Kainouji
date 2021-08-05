@@ -1,7 +1,7 @@
 import { ChangeEvent, memo, useEffect, useState, VFC } from 'react';
 import styled from 'styled-components';
 
-import { Color, Font, Responsive } from '../../constant/BaseCss';
+import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 import { useGetVegitables } from '../../hooks/useGetVegitables';
 import { Header } from '../layouts/Header';
 import { PrimaryInput } from '../Inputs/PrimaryInput';
@@ -74,21 +74,16 @@ export const RegisterField: VFC = memo(() => {
             </section>
             <div className="item">
               <label htmlFor="fieldImage">畑の画像</label>
-              {/* {imageUrl === '' ? (
-                <PrimaryInput inputType="file" inputId="filedImage" onChange={onChangeProcessImage} />
+              {imageUrl === '' ? (
+                <PrimaryInput inputType="file" inputId="fieldImage" onChange={onChangeProcessImage} />
               ) : (
                 <>
-                <label htmlFor="fieldImage">
-                  <img src={imageUrl} style={{ width: '50%', height: '150px' }} />
-                </label>
-                <PrimaryInput inputType="file" inputId="filedImage" onChange={onChangeProcessImage} hidden={true}/>
+                  <label htmlFor="fieldImage">
+                    <img src={imageUrl} style={{ width: '50%', height: '150px' }} />
+                  </label>
+                  <PrimaryInput inputType="file" inputId="fieldImage" onChange={onChangeProcessImage} hidden={true} />
                 </>
-              )} */}
-              <label htmlFor="fieldImage">
-                  <img src={imageUrl} style={{ width: '50%', height: '150px' }} />
-              </label>
-                {/* <PrimaryInput inputId="filedImage" inputType="file" onChange={onChangeProcessImage} hidden={true} /> */}
-              <input id="fieldImage" type="file" accept="image/*" onChange={onChangeProcessImage} hidden />
+              )}
             </div>
             <div style={{ textAlign: 'center', marginTop: '30px' }}>
               <PrimaryButton children="確認画面へ進む" position="after" onClick={onClickConfirm} />
@@ -136,6 +131,7 @@ const SCard = styled.section`
       padding: 5px;
       margin: 30px 0;
       position: relative;
+      font-weight: ${FontWeight.fontSemiBold};
 
       ::after {
         background-color: ${Color.secondary}; /* 線色 */
@@ -143,10 +139,10 @@ const SCard = styled.section`
         content: '';
         position: absolute;
         bottom: 0;
-        left: 35%;
-        width: 30%;
+        left: 30%;
+        width: 40%;
         opacity: 25%;
-        height: 10px; /* 線幅 */
+        height: 15px; /* 線幅 */
       }
     }
 

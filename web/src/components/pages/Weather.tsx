@@ -31,49 +31,14 @@ export const Weather: VFC = memo(() => {
     <>
       <SContainer>
         <Header />
-        <main style={{ width: '100%' }}>
+        <main style={{ width: '80%' }}>
           <h1>天気のページです</h1>
-          <div className="" style={{ width: '100%', height: 2000, backgroundColor: 'red' }}></div>
+          <div className="" style={{ width: '100%', height: 2000 }}></div>
         </main>
       </SContainer>
     </>
   );
 });
-
-const SHeader = styled.header`
-  background-color: #fefefe;
-  border-top: solid 2px #e8e6e6;
-  width: 20%;
-  height: 150px;
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-  min-height: 100vh;
-
-  a {
-    font-size: ${Font.text2xl};
-  }
-
-  ul {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    display: block;
-    margin: auto 0;
-  }
-
-  li {
-    margin-top: 2rem;
-    padding-right: 15px;
-  }
-
-  svg {
-    display: inline;
-    width: 26px;
-    height: 26px;
-    margin-right: 25px;
-  }
-`;
 
 const SContainer = styled.div`
   display: flex;
