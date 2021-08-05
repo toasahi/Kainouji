@@ -1,6 +1,6 @@
 import { ChangeEvent, memo, VFC } from 'react';
 import styled from 'styled-components';
-import { Color } from '../../constant/BaseCss';
+import { Color, Responsive } from '../../constant/BaseCss';
 
 type Props = {
   placeHolder?: string;
@@ -22,8 +22,8 @@ const SInput = styled.input`
   background-color: #fefefe;
   border: solid 1px rgba(232, 230, 230, 0.95);
   outline: none;
-  border-radius: 10px;
   padding: 10px;
+  border-radius: 10px;
   transition: all 0.25s ease 0s;
   width: 100%;
 
@@ -33,6 +33,10 @@ const SInput = styled.input`
   }
 
   &:focus {
-    border: solid 1px #491818;
+    border: solid 1px ${Color.tertiary};
+  }
+
+  @media (min-width: ${Responsive.sm}) {
+    padding: 10px;
   }
 `;

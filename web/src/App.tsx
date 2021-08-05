@@ -5,6 +5,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 import { PrimaryButton } from './components/buttons/PrimaryButton';
+import { Color } from './constant/BaseCss';
 import { Router } from './router/Router';
 import { Moisture } from './types/api/moisture';
 
@@ -35,12 +36,12 @@ ${reset}
 html,body{
   font-weight: 999;
   margin:0;
-  color: #141517;
+  color: ${Color.primary};
   background-color:#F9F9F9;
 }
 
 a{
-  color: #141517;
+  color: ${Color.primary};
   text-decoration:none;
 }
 

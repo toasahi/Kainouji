@@ -2,12 +2,16 @@ import { memo, useEffect, VFC } from 'react';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import styled from 'styled-components';
 import { Responsive } from '../../constant/BaseCss';
+import { useGetQuery } from '../../hooks/useGetQuery';
 import { useMoistureData } from '../../hooks/useMoistureData';
 
 import { Header } from '../layouts/Header';
 
 export const Moisture: VFC = memo(() => {
   const { loading, moisture, getMoistures } = useMoistureData();
+  const query = useGetQuery();
+
+  console.log(query.get('name'));
 
   useEffect(() => getMoistures(), []);
 
@@ -59,13 +63,13 @@ export const Moisture: VFC = memo(() => {
           <main>
             <h1>越智自動車前畑</h1>
             <section className="moisture-graph">
-            <LineChart width={700} height={500} data={moisture}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="created_at" interval="preserveStartEnd" />
-              <YAxis interval="preserveStartEnd" />
-              <Legend />
-              <Line type="monotone" dataKey="moisture" stroke="#8884d8" activeDot={{ r: 8 }} />
-            </LineChart>
+              <LineChart width={700} height={500} data={moisture}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="created_at" interval="preserveStartEnd" />
+                <YAxis interval="preserveStartEnd" />
+                <Legend />
+                <Line type="monotone" dataKey="moisture" stroke="#8884d8" activeDot={{ r: 8 }} />
+              </LineChart>
             </section>
           </main>
         </SMoisture>

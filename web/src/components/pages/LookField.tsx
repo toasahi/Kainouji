@@ -13,54 +13,54 @@ export const LookField: VFC = memo(() => {
         <section>
           <h1>畑を見る</h1>
           <SContainer>
-            <Link to="lookfield/moisture">
-            <div>
-              <img src="" />
-              <h2>越智自動車前畑</h2>
-              <p>設置日 : 2021/09/02</p>
-            </div>
+            <Link to="lookfield/moisture?name=1">
+              <div>
+                <img src="" />
+                <h2>越智自動車前畑</h2>
+                <p>設置日 : 2021/09/02</p>
+              </div>
+            </Link>
+            <Link to="lookfield/moisture?name=2">
+              <div>
+                <img src="" />
+                <h2>越智自動車前畑</h2>
+                <p>設置日 : 2021/09/02</p>
+              </div>
             </Link>
             <Link to="lookfield/moisture">
-            <div>
-              <img src="" />
-              <h2>越智自動車前畑</h2>
-              <p>設置日 : 2021/09/02</p>
-            </div>
+              <div>
+                <img src="" />
+                <h2>越智自動車前畑</h2>
+                <p>設置日 : 2021/09/02</p>
+              </div>
             </Link>
             <Link to="lookfield/moisture">
-            <div>
-              <img src="" />
-              <h2>越智自動車前畑</h2>
-              <p>設置日 : 2021/09/02</p>
-            </div>
+              <div>
+                <img src="" />
+                <h2>越智自動車前畑</h2>
+                <p>設置日 : 2021/09/02</p>
+              </div>
             </Link>
             <Link to="lookfield/moisture">
-            <div>
-              <img src="" />
-              <h2>越智自動車前畑</h2>
-              <p>設置日 : 2021/09/02</p>
-            </div>
+              <div>
+                <img src="" />
+                <h2>越智自動車前畑</h2>
+                <p>設置日 : 2021/09/02</p>
+              </div>
             </Link>
             <Link to="lookfield/moisture">
-            <div>
-              <img src="" />
-              <h2>越智自動車前畑</h2>
-              <p>設置日 : 2021/09/02</p>
-            </div>
+              <div>
+                <img src="" />
+                <h2>越智自動車前畑</h2>
+                <p>設置日 : 2021/09/02</p>
+              </div>
             </Link>
             <Link to="lookfield/moisture">
-            <div>
-              <img src="" />
-              <h2>越智自動車前畑</h2>
-              <p>設置日 : 2021/09/02</p>
-            </div>
-            </Link>
-            <Link to="lookfield/moisture">
-            <div>
-              <img src="" />
-              <h2>越智自動車前畑</h2>
-              <p>設置日 : 2021/09/02</p>
-            </div>
+              <div>
+                <img src="" />
+                <h2>越智自動車前畑</h2>
+                <p>設置日 : 2021/09/02</p>
+              </div>
             </Link>
           </SContainer>
         </section>
@@ -110,37 +110,36 @@ const SLookField = styled.div`
     justify-content: start;
     align-content: center;
 
-    main{
+    main {
       width: 80%;
 
       h1 {
-      font-size: ${Font.text5xl};
-      padding: 5px;
-      margin-top: 75px;
-      margin-bottom: 30px;
+        font-size: ${Font.text5xl};
+        padding: 5px;
+        margin-top: 75px;
+        margin-bottom: 30px;
 
-      ::after {
-        left: 38%;
-        width: 25%;
-        opacity: 25%;
-        height: 10px; /* 線幅 */
+        ::after {
+          left: 38%;
+          width: 25%;
+          opacity: 25%;
+          height: 10px; /* 線幅 */
+        }
       }
-    }
     }
   }
 `;
 
 const SContainer = styled.div`
-
-@media (min-width: ${Responsive.md}) {
+  @media (min-width: ${Responsive.md}) {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding:25px;
+    padding: 25px;
 
-    a{
-      width:30%;
+    a {
+      width: 30%;
     }
 
     div {
@@ -156,8 +155,7 @@ const SContainer = styled.div`
         background-color: rgba(0, 0, 0, 0.01);
       }
     }
-
-}
+  }
 
   @media (min-width: ${Responsive.xl}) {
     padding: 30px;

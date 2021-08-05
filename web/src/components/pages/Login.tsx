@@ -4,7 +4,7 @@ import { Header } from '../layouts/Header';
 export const Login: VFC = memo(() => {
   return (
     <>
-      <Header/>
+      <Header />
       <h1>ログインページです</h1>
     </>
   );

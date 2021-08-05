@@ -1,5 +1,6 @@
 import { memo, VFC } from 'react';
 import styled from 'styled-components';
+import { Color } from '../../constant/BaseCss';
 
 type Props = {
   children: string;
@@ -26,15 +27,15 @@ const SButton = styled.button`
   width: 180px;
   padding: 10px;
   opacity: 90%;
-  color: #491818;
-  border: solid 1px #491818;
+  color: ${Color.tertiary};
+  border: solid 1px ${Color.tertiary};
   border-radius: 40px;
   outline: none;
   cursor: pointer;
   position: relative;
 
   &:hover {
-    background-color: #491818;
+    background-color: ${Color.tertiary};
     color: #fefefe;
     opacity: 100%;
   }
@@ -47,8 +48,8 @@ const SButtonAfter = styled(SButton)`
     content: '';
     width: 7px;
     height: 7px;
-    border-top: solid 1px #491818;
-    border-right: solid 1px #491818;
+    border-top: solid 1px ${Color.tertiary};
+    border-right: solid 1px ${Color.tertiary};
     position: absolute;
     right: 20px;
     top: 40%;
@@ -69,8 +70,8 @@ const SButtonBefore = styled(SButton)`
     content: '';
     width: 7px;
     height: 7px;
-    border-bottom: solid 1px #491818;
-    border-left: solid 1px #491818;
+    border-bottom: solid 1px ${Color.tertiary};
+    border-left: solid 1px ${Color.tertiary};
     position: absolute;
     left: 20px;
     top: 40%;

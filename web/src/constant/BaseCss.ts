@@ -13,15 +13,15 @@ const Font = {
 const Color = {
   primary: '#141517',
   secondary: '#9FC730',
-  tertiary: '#e',
+  tertiary: '#491818',
 };
 
 const Responsive = {
-  sm: 575.98,
-  md: 767.98,
-  lg: 991.98,
-  xl: 1199.98,
-  xxl: 1399.98,
+  sm: '575.98px',
+  md: '767.98px',
+  lg: '991.98px',
+  xl: '1199.98px',
+  xxl: '1399.98px',
 } as const;
 
 const FontWeight = {
