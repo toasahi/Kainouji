@@ -40,7 +40,7 @@ const SConfirm = styled.div`
     width: 80%;
   }
 
-  @media (min-width: ${Responsive.md}px) {
+  @media (min-width: ${Responsive.md}) {
     flex-direction: row;
     justify-content: start;
     align-content: center;
@@ -48,11 +48,11 @@ const SConfirm = styled.div`
 `;
 
 const SCard = styled.section`
-  @media (min-width: ${Responsive.md}px) {
+  @media (min-width: ${Responsive.md}) {
     width: 650px;
   }
 
-  @media (min-width: ${Responsive.lg}px) {
+  @media (min-width: ${Responsive.lg}) {
     width: 700px;
     height: 680px;
     background-color: #fefefe;

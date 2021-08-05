@@ -99,7 +99,7 @@ const SHeader = styled.header`
     }
   }
 
-  @media (min-width: ${Responsive.md}px) {
+  @media (min-width: ${Responsive.md}) {
     width: 25%;
     top: 0;
     border-top: none;
@@ -117,7 +117,7 @@ const SHeader = styled.header`
       display: block;
       padding: 15px;
       text-align: center;
-      margin-top:130px;
+      margin-top: 130px;
     }
 
     li {
@@ -133,7 +133,7 @@ const SHeader = styled.header`
     }
   }
 
-  @media (min-width: ${Responsive.lg}px) {
+  @media (min-width: ${Responsive.lg}) {
     width: 20%;
     a {
       font-size: ${Font.text2xl};

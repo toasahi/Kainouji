@@ -8,6 +8,7 @@ import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
 import Images from 'images/defaultImage.jpeg';
+import { PrimarySelect } from '../selects/PrimarySelect';
 
 export const RegisterField: VFC = memo(() => {
   const history = useHistory();
@@ -29,6 +30,8 @@ export const RegisterField: VFC = memo(() => {
 
   useEffect(() => getVegetables(), []);
 
+  console.log(vegetableLists);
+
   return (
     <SRegisterField>
       <Header />
@@ -42,7 +45,7 @@ export const RegisterField: VFC = memo(() => {
             </div>
             <section>
               <div className="item">
-                <label htmlFor="vegetable">育てる野菜</label>
+                {/* <label htmlFor="vegetable">育てる野菜</label>
                 <select id="vegetable" value={vegetable} onChange={onChangeVegetable}>
                   <option value="">選択してください</option>
                   {vegetableLists.map((vegetableList) => (
@@ -50,16 +53,11 @@ export const RegisterField: VFC = memo(() => {
                       {vegetableList.vegetable}
                     </option>
                   ))}
-                </select>
+                </select> */}
+                <PrimarySelect selectId="vegetableKind" labelText="育てる野菜" />
               </div>
               <div className="item">
-                <label htmlFor="waterTiming">水をやるタイミング</label>
-                <select id="waterTiming" value={waterTiming} onChange={onChangeWaterTiming}>
-                  <option value="">選択してください</option>
-                  <option value="10">10%</option>
-                  <option value="20">20%</option>
-                  <option value="30">30%</option>
-                </select>
+                <PrimarySelect selectId="waterTiming" labelText="水をやるタイミング" />
               </div>
             </section>
             <section>
@@ -79,13 +77,13 @@ export const RegisterField: VFC = memo(() => {
               ) : (
                 <>
                   <label htmlFor="fieldImage">
-                    <img src={imageUrl} style={{ width: '50%', height: '150px' }} />
+                    <img src={imageUrl} style={{ width: '100%', height: '100px' }} />
                   </label>
                   <PrimaryInput inputType="file" inputId="fieldImage" onChange={onChangeProcessImage} hidden={true} />
                 </>
               )}
             </div>
-            <div style={{ textAlign: 'center', marginTop: '30px' }}>
+            <div style={{ textAlign: 'center', marginTop: '25px' }}>
               <PrimaryButton children="確認画面へ進む" position="after" onClick={onClickConfirm} />
             </div>
           </div>
@@ -106,7 +104,7 @@ const SRegisterField = styled.div`
     width: 80%;
   }
 
-  @media (min-width: ${Responsive.md}px) {
+  @media (min-width: ${Responsive.md}) {
     flex-direction: row;
     justify-content: start;
     align-content: center;
@@ -114,7 +112,7 @@ const SRegisterField = styled.div`
 `;
 
 const SCard = styled.section`
-  @media (min-width: ${Responsive.md}px) {
+  @media (min-width: ${Responsive.md}) {
     width: 85%;
     height: 680px;
     padding: 15px;
@@ -129,7 +127,7 @@ const SCard = styled.section`
       font-size: ${Font.text3xl};
       text-align: center;
       padding: 5px;
-      margin: 30px 0;
+      margin: 20px 0;
       position: relative;
       font-weight: ${FontWeight.fontSemiBold};
 
@@ -169,7 +167,7 @@ const SCard = styled.section`
     }
   }
 
-  @media (min-width: ${Responsive.lg}px) {
+  @media (min-width: ${Responsive.lg}) {
     width: 700px;
     height: 680px;
     margin-top: 25px;

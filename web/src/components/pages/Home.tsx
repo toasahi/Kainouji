@@ -24,7 +24,7 @@ const SHome = styled.div`
     height: 80%;
   }
 
-  @media (min-width: ${Responsive.md}px) {
+  @media (min-width: ${Responsive.md}) {
     flex-direction: row;
     justify-content: start;
     align-content: center;

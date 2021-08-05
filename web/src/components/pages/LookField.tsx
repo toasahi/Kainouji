@@ -1,4 +1,5 @@
 import { memo, VFC } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 
@@ -12,16 +13,55 @@ export const LookField: VFC = memo(() => {
         <section>
           <h1>畑を見る</h1>
           <SContainer>
+            <Link to="lookfield/moisture">
             <div>
               <img src="" />
               <h2>越智自動車前畑</h2>
               <p>設置日 : 2021/09/02</p>
             </div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
+            </Link>
+            <Link to="lookfield/moisture">
+            <div>
+              <img src="" />
+              <h2>越智自動車前畑</h2>
+              <p>設置日 : 2021/09/02</p>
+            </div>
+            </Link>
+            <Link to="lookfield/moisture">
+            <div>
+              <img src="" />
+              <h2>越智自動車前畑</h2>
+              <p>設置日 : 2021/09/02</p>
+            </div>
+            </Link>
+            <Link to="lookfield/moisture">
+            <div>
+              <img src="" />
+              <h2>越智自動車前畑</h2>
+              <p>設置日 : 2021/09/02</p>
+            </div>
+            </Link>
+            <Link to="lookfield/moisture">
+            <div>
+              <img src="" />
+              <h2>越智自動車前畑</h2>
+              <p>設置日 : 2021/09/02</p>
+            </div>
+            </Link>
+            <Link to="lookfield/moisture">
+            <div>
+              <img src="" />
+              <h2>越智自動車前畑</h2>
+              <p>設置日 : 2021/09/02</p>
+            </div>
+            </Link>
+            <Link to="lookfield/moisture">
+            <div>
+              <img src="" />
+              <h2>越智自動車前畑</h2>
+              <p>設置日 : 2021/09/02</p>
+            </div>
+            </Link>
           </SContainer>
         </section>
       </main>
@@ -37,17 +77,17 @@ const SLookField = styled.div`
   min-height: 95vh;
 
   main {
-    width: 80%;
+    width: 100%;
 
     section {
       text-align: center;
     }
 
     h1 {
-      font-size: ${Font.text5xl};
+      font-size: ${Font.text3xl};
       padding: 5px;
       margin-top: 75px;
-      margin-bottom:30px;
+      margin-bottom: 30px;
       position: relative;
       font-weight: ${FontWeight.fontSemiBold};
 
@@ -57,37 +97,57 @@ const SLookField = styled.div`
         content: '';
         position: absolute;
         bottom: 0;
-        left: 38%;
-        width: 25%;
+        left: 30%;
+        width: 40%;
         opacity: 25%;
         height: 10px; /* 線幅 */
       }
     }
   }
 
-  @media (min-width: ${Responsive.md}px) {
+  @media (min-width: ${Responsive.md}) {
     flex-direction: row;
     justify-content: start;
     align-content: center;
+
+    main{
+      width: 80%;
+
+      h1 {
+      font-size: ${Font.text5xl};
+      padding: 5px;
+      margin-top: 75px;
+      margin-bottom: 30px;
+
+      ::after {
+        left: 38%;
+        width: 25%;
+        opacity: 25%;
+        height: 10px; /* 線幅 */
+      }
+    }
+    }
   }
 `;
 
 const SContainer = styled.div`
-  @media (min-width: ${Responsive.md}) {
-  }
 
-  @media (min-width: ${Responsive.xl}px) {
+@media (min-width: ${Responsive.md}) {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 30px;
+    padding:25px;
+
+    a{
+      width:30%;
+    }
 
     div {
       background-color: #fefefe;
       margin-bottom: 30px;
       height: 225px;
-      width: 300px;
+      width: 100%;
       border-radius: 12px;
       --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -95,6 +155,15 @@ const SContainer = styled.div`
       &:hover {
         background-color: rgba(0, 0, 0, 0.01);
       }
+    }
+
+}
+
+  @media (min-width: ${Responsive.xl}) {
+    padding: 30px;
+
+    div {
+      width: 300px;
     }
   }
 `;

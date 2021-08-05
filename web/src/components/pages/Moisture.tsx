@@ -11,8 +11,6 @@ export const Moisture: VFC = memo(() => {
 
   useEffect(() => getMoistures(), []);
 
-  console.log(moisture);
-
   const data = [
     {
       name: '2010年',
@@ -59,6 +57,8 @@ export const Moisture: VFC = memo(() => {
         <SMoisture>
           <Header />
           <main>
+            <h1>越智自動車前畑</h1>
+            <section className="moisture-graph">
             <LineChart width={700} height={500} data={moisture}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="created_at" interval="preserveStartEnd" />
@@ -66,6 +66,7 @@ export const Moisture: VFC = memo(() => {
               <Legend />
               <Line type="monotone" dataKey="moisture" stroke="#8884d8" activeDot={{ r: 8 }} />
             </LineChart>
+            </section>
           </main>
         </SMoisture>
       )}
@@ -81,10 +82,10 @@ const SMoisture = styled.div`
   min-height: 95vh;
 
   main {
-    width: 100%;
+    width: 80%;
   }
 
-  @media (min-width: ${Responsive.md}px) {
+  @media (min-width: ${Responsive.md}) {
     flex-direction: row;
     justify-content: start;
     align-content: center;
