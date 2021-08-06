@@ -2,25 +2,32 @@ import { ChangeEvent, memo, useEffect, useState, VFC } from 'react';
 import styled from 'styled-components';
 
 import { Color, Font, Responsive } from '../../constant/BaseCss';
-import { useGetVegitables } from '../../hooks/useGetVegitables';
 import { Header } from '../layouts/Header';
-import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
-// import Image from '../../images/default.jpeg';
+
+type State = {
+  fieldName: string;
+  vegetable: string;
+  waterTiming: string;
+  imageUrl: string;
+};
 
 export const Confirm: VFC = memo(() => {
-  const history = useHistory();
+  const history = useHistory<State>();
   const onClickBack = () => history.push('/registerfield');
   const onClickRegister = () => history.push('/login');
 
-  // console.log(this.props.location.state.stateTest);
+  const state = history.location.state;
+
+  console.log(state.fieldName);
 
   return (
     <SConfirm>
       <Header />
       <main>
         <SCard>
+          <img src={state.imageUrl} style={{ width: '100px', height: '200px' }} />
           <PrimaryButton children="前に戻る" position="before" onClick={onClickBack} />
           <PrimaryButton children="登録する" position="after" onClick={onClickRegister} />
         </SCard>

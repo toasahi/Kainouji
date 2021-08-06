@@ -12,7 +12,11 @@ import { PrimarySelect } from '../selects/PrimarySelect';
 
 export const RegisterField: VFC = memo(() => {
   const history = useHistory();
-  const onClickConfirm = () => history.push('/registerfield/confirm');
+  const onClickConfirm = () =>
+    history.push({
+      pathname: '/registerfield/confirm',
+      state: { fieldName: fieldName, vegetable: vegetable, waterTiming: waterTiming, imageUrl: imageUrl },
+    });
   const [fieldName, setFieldName] = useState('');
   const [vegetable, setVegetable] = useState('');
   const [waterTiming, setWaterTiming] = useState('');
@@ -63,7 +67,7 @@ export const RegisterField: VFC = memo(() => {
                 {/* <PrimarySelect selectId="vegetableKind" labelText="育てる野菜" lists={vegetableLists}/> */}
               </div>
               <div className="item">
-              <label htmlFor="waterTiming">水をやるタイミング</label>
+                <label htmlFor="waterTiming">水をやるタイミング</label>
                 <select id="waterTiming" value={vegetable} onChange={onChangeVegetable}>
                   <option value="">選択してください</option>
                   <option value="10%">10%</option>
@@ -96,7 +100,7 @@ export const RegisterField: VFC = memo(() => {
                 </>
               )}
             </div>
-            <div style={{ textAlign: 'center', marginTop: '25px' }}>
+            <div className="buttonContainer">
               <PrimaryButton children="確認画面へ進む" position="after" onClick={onClickConfirm} />
             </div>
           </div>
@@ -121,7 +125,7 @@ const SRegisterField = styled.div`
       outline: none;
       border-radius: 10px;
       border: solid 1px rgba(232, 230, 230, 0.95);
-      padding: 10px;
+      padding: 13px;
       transition: all 0.25s ease 0s;
       width: 100%;
 
@@ -186,7 +190,7 @@ const SCard = styled.section`
     }
 
     .item {
-      margin-top: 25px;
+      margin-top: 20px;
 
       label {
         line-height: 3;
@@ -216,6 +220,11 @@ const SCard = styled.section`
 
     .item {
       width: 100%;
+    }
+
+    .buttonContainer {
+      text-align: center;
+      margin-top: 15px;
     }
   }
 `;

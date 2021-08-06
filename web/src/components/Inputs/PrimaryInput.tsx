@@ -34,6 +34,7 @@ const SInput = styled.input`
   border-radius: 10px;
   transition: all 0.25s ease 0s;
   width: 100%;
+  box-sizing: border-box;
 
   ::placeholder {
     color: ${Color.primary};
@@ -45,6 +46,6 @@ const SInput = styled.input`
   }
 
   @media (min-width: ${Responsive.sm}) {
-    padding: 10px;
+    padding: 15px;
   }
 `;
