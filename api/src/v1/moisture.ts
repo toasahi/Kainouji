@@ -14,11 +14,10 @@ moistureRouter.get('/', (req: express.Request, res: express.Response) => {
   }
 });
 
-moistureRouter.get('/', (req: express.Request, res: express.Response) => {
+moistureRouter.get('/:id', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
-  console.log(req.query.id);
   try {
-    getFieldMoisture().then((result) => {
+    getFieldMoisture(req.params.id).then((result) => {
       res.status(200).json(result);
     });
   } catch (error) {
