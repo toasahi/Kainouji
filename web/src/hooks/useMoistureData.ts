@@ -7,10 +7,10 @@ export const useMoistureData = () => {
   const [loading, setLoading] = useState(false);
   const [moisture, setMoisture] = useState<Array<Moisture>>([]);
 
-  const getMoistures = useCallback(() => {
+  const getMoistures = useCallback((id: string) => {
     setLoading(true);
     axios
-      .get<Array<Moisture>>('http://localhost:4000/v1/moisture')
+      .get<Array<Moisture>>(`http://localhost:4000/v1/moisture/${id}`)
       .then((res) => setMoisture(res.data))
       .catch(() => setLoading(false))
       .finally(() => setLoading(false));

@@ -41,11 +41,17 @@ export const RegisterField: VFC = memo(() => {
             <h1>畑を登録</h1>
             <div className="item">
               <label htmlFor="fieldName">名前</label>
-              <PrimaryInput inputType="text" onChange={onChangeFieldName} value={fieldName} placeHolder="畑の名前" />
+              <PrimaryInput
+                inputType="text"
+                inputId="fieldName"
+                onChange={onChangeFieldName}
+                value={fieldName}
+                placeHolder="畑の名前"
+              />
             </div>
             <section>
               <div className="item">
-                {/* <label htmlFor="vegetable">育てる野菜</label>
+                <label htmlFor="vegetable">育てる野菜</label>
                 <select id="vegetable" value={vegetable} onChange={onChangeVegetable}>
                   <option value="">選択してください</option>
                   {vegetableLists.map((vegetableList) => (
@@ -53,11 +59,18 @@ export const RegisterField: VFC = memo(() => {
                       {vegetableList.vegetable}
                     </option>
                   ))}
-                </select> */}
-                <PrimarySelect selectId="vegetableKind" labelText="育てる野菜" />
+                </select>
+                {/* <PrimarySelect selectId="vegetableKind" labelText="育てる野菜" lists={vegetableLists}/> */}
               </div>
               <div className="item">
-                <PrimarySelect selectId="waterTiming" labelText="水をやるタイミング" />
+              <label htmlFor="waterTiming">水をやるタイミング</label>
+                <select id="waterTiming" value={vegetable} onChange={onChangeVegetable}>
+                  <option value="">選択してください</option>
+                  <option value="10%">10%</option>
+                  <option value="20%">20%</option>
+                  <option value="30%">30%</option>
+                </select>
+                {/* <PrimarySelect selectId="waterTiming" labelText="水をやるタイミング" /> */}
               </div>
             </section>
             <section>
@@ -102,6 +115,20 @@ const SRegisterField = styled.div`
 
   main {
     width: 80%;
+
+    select {
+      color: ${Color.primary};
+      outline: none;
+      border-radius: 10px;
+      border: solid 1px rgba(232, 230, 230, 0.95);
+      padding: 10px;
+      transition: all 0.25s ease 0s;
+      width: 100%;
+
+      &:focus {
+        border: solid 1px #491818;
+      }
+    }
   }
 
   @media (min-width: ${Responsive.md}) {

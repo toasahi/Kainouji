@@ -1,18 +1,11 @@
 import { Color } from '../../constant/BaseCss';
 import { memo, VFC } from 'react';
 import styled from 'styled-components';
-// import { Vegetable } from '../../types/api/vegetable';
+import { Vegetable } from '../../types/api/vegetable';
 
-// type WaterTiming = {
-//   water: number;
-//   title: string;
-//   onChangeWaterTiming: () => void;
-// };
-
-// type VegetableName = {
+// type list = {
 //   id: number;
-//   title: string;
-//   onChangeVegetable: () => void;
+//   child: string;
 // };
 
 // type Props = {
@@ -22,18 +15,22 @@ import styled from 'styled-components';
 type Props = {
   selectId: string;
   labelText: string;
+  onChange?: () => void;
+  lists?: Array<Vegetable>;
 };
 
 export const PrimarySelect: VFC<Props> = memo((props) => {
-  const { selectId, labelText } = props;
+  const { selectId, labelText, lists = [] } = props;
   return (
     <>
-      <label htmlFor={selectId}>{labelText}</label>
+      <SLavel htmlFor={selectId}>{labelText}</SLavel>
       <SSelect id={selectId}>
         <option value="">選択してください</option>
-        <option value="10">10%</option>
-        <option value="20">20%</option>
-        <option value="30">30%</option>
+        {lists.map((list) => (
+          <option key={list.id} value={list.id}>
+            {list.vegetable}
+          </option>
+        ))}
       </SSelect>
     </>
   );

@@ -13,14 +13,14 @@ export const LookField: VFC = memo(() => {
         <section>
           <h1>畑を見る</h1>
           <SContainer>
-            <Link to="lookfield/moisture?name=1">
+            <Link to="lookfield/moisture/1">
               <div>
                 <img src="" />
                 <h2>越智自動車前畑</h2>
                 <p>設置日 : 2021/09/02</p>
               </div>
             </Link>
-            <Link to="lookfield/moisture?name=2">
+            <Link to="lookfield/moisture/2">
               <div>
                 <img src="" />
                 <h2>越智自動車前畑</h2>

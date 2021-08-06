@@ -1,19 +1,19 @@
 import { memo, useEffect, VFC } from 'react';
+import { useParams } from 'react-router-dom';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import styled from 'styled-components';
 import { Responsive } from '../../constant/BaseCss';
-import { useGetQuery } from '../../hooks/useGetQuery';
 import { useMoistureData } from '../../hooks/useMoistureData';
 
 import { Header } from '../layouts/Header';
 
 export const Moisture: VFC = memo(() => {
   const { loading, moisture, getMoistures } = useMoistureData();
-  const query = useGetQuery();
+  const param = useParams<{ id: string }>();
 
-  console.log(query.get('name'));
+  console.log(moisture);
 
-  useEffect(() => getMoistures(), []);
+  useEffect(() => getMoistures(param.id), []);
 
   const data = [
     {

@@ -14,7 +14,15 @@ type Props = {
 export const PrimaryInput: VFC<Props> = memo((props) => {
   const { placeHolder = '', onChange, value = '', inputType = 'text', inputId = '', hidden = false } = props;
   return (
-    <SInput type={inputType} id={inputId} placeholder={placeHolder} onChange={onChange} value={value} hidden={hidden} />
+    <SInput
+      type={inputType}
+      accept="image/jpeg,image/png"
+      id={inputId}
+      placeholder={placeHolder}
+      onChange={onChange}
+      value={value}
+      hidden={hidden}
+    />
   );
 });
 
