@@ -15,7 +15,13 @@ export const RegisterField: VFC = memo(() => {
   const onClickConfirm = () =>
     history.push({
       pathname: '/registerfield/confirm',
-      state: { fieldName: fieldName, vegetable: vegetable, waterTiming: waterTiming, imageUrl: imageUrl },
+      state: {
+        fieldName: fieldName,
+        vegetable: vegetable,
+        waterTiming: waterTiming,
+        settingDay: settingDay,
+        imageUrl: imageUrl,
+      },
     });
   const [fieldName, setFieldName] = useState('');
   const [vegetable, setVegetable] = useState('');
@@ -68,7 +74,7 @@ export const RegisterField: VFC = memo(() => {
               </div>
               <div className="item">
                 <label htmlFor="waterTiming">水をやるタイミング</label>
-                <select id="waterTiming" value={vegetable} onChange={onChangeVegetable}>
+                <select id="waterTiming" value={waterTiming} onChange={onChangeWaterTiming}>
                   <option value="">選択してください</option>
                   <option value="10%">10%</option>
                   <option value="20%">20%</option>
@@ -196,6 +202,11 @@ const SCard = styled.section`
         line-height: 3;
       }
     }
+
+    .buttonContainer {
+      text-align: center;
+      margin-top: 20px;
+    }
   }
 
   @media (min-width: ${Responsive.lg}) {
@@ -222,9 +233,5 @@ const SCard = styled.section`
       width: 100%;
     }
 
-    .buttonContainer {
-      text-align: center;
-      margin-top: 15px;
-    }
   }
 `;

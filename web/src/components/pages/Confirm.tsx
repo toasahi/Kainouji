@@ -5,18 +5,21 @@ import { Color, Font, Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
+import { useRegisterField } from '../../hooks/useRegisterField';
 
 type State = {
   fieldName: string;
   vegetable: string;
   waterTiming: string;
+  settingDay: string;
   imageUrl: string;
 };
 
 export const Confirm: VFC = memo(() => {
   const history = useHistory<State>();
   const onClickBack = () => history.push('/registerfield');
-  const onClickRegister = () => history.push('/login');
+  const onClickRegister = () => registerField(state);
+  const { registerField, loading, success } = useRegisterField();
 
   const state = history.location.state;
 
@@ -27,7 +30,6 @@ export const Confirm: VFC = memo(() => {
       <Header />
       <main>
         <SCard>
-          <img src={state.imageUrl} style={{ width: '100px', height: '200px' }} />
           <PrimaryButton children="前に戻る" position="before" onClick={onClickBack} />
           <PrimaryButton children="登録する" position="after" onClick={onClickRegister} />
         </SCard>
