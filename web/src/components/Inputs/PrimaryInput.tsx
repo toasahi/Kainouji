@@ -9,10 +9,19 @@ type Props = {
   inputType: 'text' | 'email' | 'date' | 'file';
   inputId?: string;
   hidden?: boolean;
+  readonly?: boolean;
 };
 
 export const PrimaryInput: VFC<Props> = memo((props) => {
-  const { placeHolder = '', onChange, value = '', inputType = 'text', inputId = '', hidden = false } = props;
+  const {
+    placeHolder = '',
+    onChange,
+    value = '',
+    inputType = 'text',
+    inputId = '',
+    hidden = false,
+    readonly = false,
+  } = props;
   return (
     <SInput
       type={inputType}
@@ -22,6 +31,7 @@ export const PrimaryInput: VFC<Props> = memo((props) => {
       onChange={onChange}
       value={value}
       hidden={hidden}
+      readOnly={readonly}
     />
   );
 });

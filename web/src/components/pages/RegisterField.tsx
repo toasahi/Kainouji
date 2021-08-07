@@ -28,13 +28,15 @@ export const RegisterField: VFC = memo(() => {
   const [vegetable, setVegetable] = useState('');
   const [waterTiming, setWaterTiming] = useState('');
   const [settingDay, setSettingDay] = useState('');
+  const [settingPlace, setSettingPlace] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const { getVegetables, loading, vegetableLists } = useGetVegitables();
-  const { getThreshold,thresholds} = useGetThreshold();
+  const { getThreshold, thresholds } = useGetThreshold();
   const onChangeFieldName = (event: ChangeEvent<HTMLInputElement>) => setFieldName(event.target.value);
   const onChangeVegetable = (event: ChangeEvent<HTMLSelectElement>) => setVegetable(event.target.value);
   const onChangeWaterTiming = (event: ChangeEvent<HTMLSelectElement>) => setWaterTiming(event.target.value);
   const onChangeSettingDay = (event: ChangeEvent<HTMLInputElement>) => setSettingDay(event.target.value);
+  const onChangeSettingPlace = (event: ChangeEvent<HTMLInputElement>) => setSettingPlace(event.target.value);
   const onChangeProcessImage = (event: ChangeEvent<HTMLInputElement>) =>
     event.currentTarget.files !== null
       ? setImageUrl(URL.createObjectURL(event.currentTarget.files[0]))
@@ -74,7 +76,7 @@ export const RegisterField: VFC = memo(() => {
                 </select>
                 {/* <PrimarySelect selectId="vegetableKind" labelText="育てる野菜" lists={vegetableLists}/> */}
               </div>
-              <div className="item">
+              {/* <div className="item">
                 <label htmlFor="waterTiming">水をやるタイミング</label>
                 <select id="waterTiming" value={waterTiming} onChange={onChangeWaterTiming}>
                   <option value="">選択してください</option>
@@ -82,27 +84,34 @@ export const RegisterField: VFC = memo(() => {
                   <option value="20%">20%</option>
                   <option value="30%">30%</option>
                 </select>
-                {/* <PrimarySelect selectId="waterTiming" labelText="水をやるタイミング" /> */}
-              </div>
-            </section>
-            <section>
-              <div className="item">
-                <label htmlFor="settingDay">設置日</label>
-                <PrimaryInput inputType="date" inputId="settingDay" onChange={onChangeSettingDay} value={settingDay} />
-              </div>
+              </div> */}
               <div className="item">
                 <label htmlFor="settingDay">設置日</label>
                 <PrimaryInput inputType="date" inputId="settingDay" onChange={onChangeSettingDay} value={settingDay} />
               </div>
             </section>
+            {/* <section>
+            <div className="item">
+                <label htmlFor="settingPlace">設置場所</label>
+                <PrimaryInput inputType="text" inputId="settingPlace" onChange={onChangeSettingPlace} value={settingPlace} />
+              </div>
+              <div className="item">
+                <label htmlFor="settingDay">設置日</label>
+                <PrimaryInput inputType="date" inputId="settingDay" onChange={onChangeSettingDay} value={settingDay} />
+              </div>
+            </section> */}
             <div className="item">
               <label htmlFor="fieldImage">畑の画像</label>
               {imageUrl === '' ? (
-                <PrimaryInput inputType="file" inputId="fieldImage" onChange={onChangeProcessImage} />
+                <>
+                  <div style={{ height: '198px' }}>
+                    <PrimaryInput inputType="file" inputId="fieldImage" onChange={onChangeProcessImage} />
+                  </div>
+                </>
               ) : (
                 <>
                   <label htmlFor="fieldImage">
-                    <img src={imageUrl} style={{ width: '100%', height: '100px' }} />
+                    <img src={imageUrl} style={{ width: '100%', height: '180px' }} />
                   </label>
                   <PrimaryInput inputType="file" inputId="fieldImage" onChange={onChangeProcessImage} hidden={true} />
                 </>
@@ -207,7 +216,7 @@ const SCard = styled.section`
 
     .buttonContainer {
       text-align: center;
-      margin-top: 20px;
+      margin-top: 25px;
     }
   }
 

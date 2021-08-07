@@ -6,12 +6,14 @@ import { Header } from '../layouts/Header';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
 import { useRegisterField } from '../../hooks/useRegisterField';
+import { PrimaryInput } from '../Inputs/PrimaryInput';
 
 type State = {
   fieldName: string;
   vegetable: string;
   waterTiming: string;
   settingDay: string;
+  settingPlace: string;
   imageUrl: string;
 };
 
@@ -21,6 +23,7 @@ export const Confirm: VFC = memo(() => {
   const onClickRegister = () => registerField(state);
   const { registerField, loading, success } = useRegisterField();
 
+  const onChangeTest = () => console.log(1);
   const state = history.location.state;
 
   console.log(state.fieldName);
@@ -30,8 +33,45 @@ export const Confirm: VFC = memo(() => {
       <Header />
       <main>
         <SCard>
-          <PrimaryButton children="前に戻る" position="before" onClick={onClickBack} />
-          <PrimaryButton children="登録する" position="after" onClick={onClickRegister} />
+          <div className="container">
+            <h1>確認画面</h1>
+            <div className="item">
+              <label htmlFor="fieldName">名前</label>
+              <PrimaryInput
+                inputType="text"
+                inputId="fieldName"
+                onChange={onChangeTest}
+                value={state.fieldName}
+                readonly={true}
+              />
+            </div>
+            <section>
+              <div className="item">
+                <label htmlFor="vegetable">育てる野菜</label>
+                <PrimaryInput
+                  inputType="text"
+                  inputId="vegetable"
+                  onChange={onChangeTest}
+                  value={state.vegetable}
+                  readonly={true}
+                />
+              </div>
+              <div className="item">
+                <label htmlFor="settingDay">設置日</label>
+                <PrimaryInput
+                  inputType="date"
+                  inputId="settingDay"
+                  onChange={onChangeTest}
+                  value={state.settingDay}
+                  readonly={true}
+                />
+              </div>
+            </section>
+            <section style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <PrimaryButton children="前に戻る" position="before" onClick={onClickBack} />
+              <PrimaryButton children="登録する" position="after" onClick={onClickRegister} />
+            </section>
+          </div>
         </SCard>
       </main>
     </SConfirm>
@@ -59,6 +99,20 @@ const SConfirm = styled.div`
 const SCard = styled.section`
   @media (min-width: ${Responsive.md}) {
     width: 650px;
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+
+      section {
+        display: flex;
+        justify-content: space-between;
+
+        .item {
+          width: 45%;
+        }
+      }
+    }
   }
 
   @media (min-width: ${Responsive.lg}) {

@@ -15,5 +15,5 @@ export const useGetThreshold = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  return { loading, getThreshold,thresholds };
+  return { loading, getThreshold, thresholds };
 };
