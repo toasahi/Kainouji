@@ -100,7 +100,7 @@ const SLookField = styled.div`
         left: 30%;
         width: 40%;
         opacity: 25%;
-        height: 10px; /* 線幅 */
+        height: 15px; /* 線幅 */
       }
     }
   }

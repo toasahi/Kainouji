@@ -9,6 +9,7 @@ import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
 import Images from 'images/defaultImage.jpeg';
 import { PrimarySelect } from '../selects/PrimarySelect';
+import { useGetThreshold } from '../../hooks/useGetThreshold';
 
 export const RegisterField: VFC = memo(() => {
   const history = useHistory();
@@ -29,6 +30,7 @@ export const RegisterField: VFC = memo(() => {
   const [settingDay, setSettingDay] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const { getVegetables, loading, vegetableLists } = useGetVegitables();
+  const { getThreshold,thresholds} = useGetThreshold();
   const onChangeFieldName = (event: ChangeEvent<HTMLInputElement>) => setFieldName(event.target.value);
   const onChangeVegetable = (event: ChangeEvent<HTMLSelectElement>) => setVegetable(event.target.value);
   const onChangeWaterTiming = (event: ChangeEvent<HTMLSelectElement>) => setWaterTiming(event.target.value);
@@ -232,6 +234,5 @@ const SCard = styled.section`
     .item {
       width: 100%;
     }
-
   }
 `;
