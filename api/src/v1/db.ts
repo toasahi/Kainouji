@@ -18,6 +18,13 @@ export type Threshold = {
   air_pressure: number;
 };
 
+export type Field = {
+  field_name: string;
+  vegetable_id: string;
+  setting_date: string;
+  image_path?: string;
+};
+
 const dbSetting: Setting = {
   host: Setting.MYSQL_HOST,
   user: Setting.MYSQL_USER,
@@ -33,7 +40,7 @@ const dbSetting: Setting = {
  */
 export const getMoisture = async () => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = 'select * from soil_moistures';
+  const sql = 'SELECT * From soil_moistures';
   const [rows, fields] = await conn.query(sql);
   return rows;
 };
@@ -43,10 +50,10 @@ export const getMoisture = async () => {
  * @async
  * @returns rows
  */
- export const getFieldMoisture = async (id?:string) => {
+export const getFieldMoisture = async (id?: string) => {
   console.log(id);
   const conn = await mysql.createConnection(dbSetting);
-  const sql = `select * from soil_moistures where field_id = ${id}`;
+  const sql = `SELECT * From soil_moistures where field_id = ${id}`;
   const [rows, fields] = await conn.query(sql);
   return rows;
 };
@@ -80,7 +87,7 @@ export const editThreshold = async (threshold: Threshold) => {
 
 export const getThreshold = async () => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = 'select * from thresholds';
+  const sql = 'SELECT * From thresholds';
   const [rows, fields] = await conn.query(sql);
   return rows;
 };
@@ -93,7 +100,7 @@ export const getThreshold = async () => {
 
 export const getVegetables = async () => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = 'select id,vegetable from vegetables';
+  const sql = 'SELECT id,vegetable From vegetables';
   const [rows, fields] = await conn.query(sql);
   return rows;
 };
@@ -106,7 +113,29 @@ export const getVegetables = async () => {
 
 export const InsertVegetables = async () => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = `select vegetable from vegetables Where`;
+  const sql = `SELECT vegetable From vegetables Where`;
+  const [rows, fields] = await conn.query(sql);
+  return rows;
+};
+
+/**
+ * 畑の追加処理
+ * @async
+ * @returns rows
+ */
+
+export const InsertField = async (data: Field) => {
+  const conn = await mysql.createConnection(dbSetting);
+  const sql = `INSERT INTO fields(field_name,vegetable_id,setting_date,image_path) value(${data.field_name},${
+    data.vegetable_id
+  },${data.setting_date},${(data.image_path = '')})`;
+  const [rows, fields] = await conn.query(sql);
+  return rows;
+};
+
+export const getField = async () => {
+  const conn = await mysql.createConnection(dbSetting);
+  const sql = 'SELECT * From fields';
   const [rows, fields] = await conn.query(sql);
   return rows;
 };

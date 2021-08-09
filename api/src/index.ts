@@ -4,7 +4,7 @@ import { router } from './v1/index';
 
 const app: express.Express = express();
 app.use(logger('dev'));
-//配信側のjsonオブジェクトの受信設定
+//配信側のjsonオブジェクトの受信設定(bodyParse)
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));

@@ -1,4 +1,5 @@
 import express from 'express';
+import { filedRouter } from './field';
 import { moistureRouter } from './moisture';
 import { thresholdRouter } from './threshold';
 import { vegetableRouter } from './vegetable';
@@ -9,5 +10,6 @@ const router = express.Router();
 router.use('/moisture', moistureRouter);
 router.use('/threshold', thresholdRouter);
 router.use('/vegetable', vegetableRouter);
+router.use('/field', filedRouter);
 
 export { router };
