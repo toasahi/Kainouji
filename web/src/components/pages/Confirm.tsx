@@ -11,9 +11,8 @@ import { PrimaryInput } from '../Inputs/PrimaryInput';
 type State = {
   fieldName: string;
   vegetable: string;
-  waterTiming: string;
   settingDay: string;
-  settingPlace: string;
+  settingPlace?: string;
   imageUrl: string;
 };
 

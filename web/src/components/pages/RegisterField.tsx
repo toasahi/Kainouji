@@ -19,7 +19,6 @@ export const RegisterField: VFC = memo(() => {
       state: {
         fieldName: fieldName,
         vegetable: vegetable,
-        waterTiming: waterTiming,
         settingDay: settingDay,
         imageUrl: imageUrl,
       },
