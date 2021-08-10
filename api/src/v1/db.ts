@@ -126,11 +126,11 @@ export const InsertVegetables = async () => {
 
 export const InsertField = async (data: Field) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = `INSERT INTO fields(field_name,vegetable_id,setting_date,image_path) value(${data.field_name},${
+  const sql = `INSERT INTO fields(field_name,vegetable_id,setting_date,image_path) value('${data.field_name}','${
     data.vegetable_id
-  },${data.setting_date},${(data.image_path = '')})`;
+  }','${data.setting_date}','${data.image_path || ''}')`;
   const [rows, fields] = await conn.query(sql);
-  return rows;
+  return sql;
 };
 
 export const getField = async () => {

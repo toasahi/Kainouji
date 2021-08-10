@@ -1,5 +1,5 @@
 import express from 'express';
-import { InsertField, Field,getField } from './db';
+import { InsertField, Field, getField } from './db';
 
 const filedRouter = express.Router();
 
@@ -26,6 +26,5 @@ filedRouter.get('/', (req: express.Request, res: express.Response) => {
     res.status(400).json({ message: error.message });
   }
 });
-
 
 export { filedRouter };
