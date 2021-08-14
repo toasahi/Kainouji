@@ -1,9 +1,10 @@
 import { memo, VFC } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 
+import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
+import defaultImage from '../../images/defaultImage.jpeg';
 
 export const LookField: VFC = memo(() => {
   return (
@@ -14,49 +15,54 @@ export const LookField: VFC = memo(() => {
           <h1>畑を見る</h1>
           <SContainer>
             <Link to="lookfield/moisture/1">
-              <div>
-                <img src="" />
+              <div className="filedContent">
+                <img src={defaultImage} alt="畑の画像" />
                 <h2>越智自動車前畑</h2>
                 <p>設置日 : 2021/09/02</p>
               </div>
             </Link>
             <Link to="lookfield/moisture/2">
-              <div>
-                <img src="" />
+              <div className="filedContent">
+                <img src={defaultImage} alt="畑の画像" />
+
+                <h2>越智自動車前畑</h2>
+                <p>設置日 : 2021/09/02</p>
+              </div>
+            </Link>
+            <Link to="lookfield/moisture/3">
+              <div className="filedContent">
+                <img src={defaultImage} alt="畑の画像" />
+
                 <h2>越智自動車前畑</h2>
                 <p>設置日 : 2021/09/02</p>
               </div>
             </Link>
             <Link to="lookfield/moisture">
-              <div>
-                <img src="" />
+              <div className="filedContent">
+                <img src={defaultImage} alt="畑の画像" />
+
                 <h2>越智自動車前畑</h2>
                 <p>設置日 : 2021/09/02</p>
               </div>
             </Link>
             <Link to="lookfield/moisture">
-              <div>
-                <img src="" />
+              <div className="filedContent">
+                <img src={defaultImage} alt="畑の画像" />
+
                 <h2>越智自動車前畑</h2>
                 <p>設置日 : 2021/09/02</p>
               </div>
             </Link>
             <Link to="lookfield/moisture">
-              <div>
-                <img src="" />
+              <div className="filedContent">
+                <img src={defaultImage} alt="畑の画像" />
+
                 <h2>越智自動車前畑</h2>
                 <p>設置日 : 2021/09/02</p>
               </div>
             </Link>
             <Link to="lookfield/moisture">
-              <div>
-                <img src="" />
-                <h2>越智自動車前畑</h2>
-                <p>設置日 : 2021/09/02</p>
-              </div>
-            </Link>
-            <Link to="lookfield/moisture">
-              <div>
+              <div className="filedContent">
                 <img src="" />
                 <h2>越智自動車前畑</h2>
                 <p>設置日 : 2021/09/02</p>
@@ -74,7 +80,7 @@ const SLookField = styled.div`
   flex-direction: column-reverse;
   align-content: space-between;
   justify-content: space-between;
-  min-height: 95vh;
+  min-height: 100vh;
 
   main {
     width: 100%;
@@ -121,9 +127,9 @@ const SLookField = styled.div`
 
         ::after {
           left: 38%;
-          width: 25%;
+          width: 24%;
           opacity: 25%;
-          height: 10px; /* 線幅 */
+          height: 15px; /* 線幅 */
         }
       }
     }
@@ -131,21 +137,28 @@ const SLookField = styled.div`
 `;
 
 const SContainer = styled.div`
+  .filedContent {
+    display: flex;
+
+    img {
+      width: 100%;
+      height: 90px;
+    }
+  }
+
   @media (min-width: ${Responsive.md}) {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding: 25px;
+    margin-left: 10px;
 
-    a {
-      width: 30%;
-    }
-
-    div {
+    .filedContent {
+      display: block;
       background-color: #fefefe;
       margin-bottom: 30px;
-      height: 225px;
+      height: 250px;
       width: 100%;
       border-radius: 12px;
       --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -154,13 +167,22 @@ const SContainer = styled.div`
       &:hover {
         background-color: rgba(0, 0, 0, 0.01);
       }
+
+      img {
+        border-radius: 12px 12px 0 0;
+        height: 160px;
+      }
+    }
+
+    a {
+      width: 30%;
     }
   }
 
   @media (min-width: ${Responsive.xl}) {
     padding: 30px;
 
-    div {
+    .filedContent {
       width: 300px;
     }
   }

@@ -105,7 +105,7 @@ export const Moisture: VFC = memo(() => {
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
-                <Area type="monotone" dataKey="水分量" stroke="#afeeee" fill="#afeeee" />
+                <Area type="monotone" dataKey="水分量" stroke="#8884d8" fill="#8884d8" />
               </AreaChart>
             </ResponsiveContainer>
             <AreaChart

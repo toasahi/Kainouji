@@ -131,10 +131,10 @@ const SRegisterField = styled.div`
   flex-direction: column-reverse;
   align-content: space-between;
   justify-content: space-between;
-  min-height: 95vh;
+  min-height: 100vh;
 
   main {
-    width: 80%;
+    width: 100%;
 
     select {
       color: ${Color.primary};
@@ -152,6 +152,9 @@ const SRegisterField = styled.div`
   }
 
   @media (min-width: ${Responsive.md}) {
+    main {
+      width: 80%;
+    }
     flex-direction: row;
     justify-content: start;
     align-content: center;
@@ -159,6 +162,43 @@ const SRegisterField = styled.div`
 `;
 
 const SCard = styled.section`
+  margin: 0 auto;
+  width: 85%;
+
+  h1 {
+    font-size: ${Font.text3xl};
+    text-align: center;
+    padding: 5px;
+    margin: 20px 0;
+    position: relative;
+    font-weight: ${FontWeight.fontSemiBold};
+
+    ::after {
+      background-color: ${Color.secondary}; /* 線色 */
+      border-radius: 5px; /* 線幅の半分 */
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 30%;
+      width: 40%;
+      opacity: 25%;
+      height: 15px; /* 線幅 */
+    }
+  }
+
+  .buttonContainer {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .item {
+    margin-top: 15px;
+
+    label {
+      line-height: 2;
+    }
+  }
+
   @media (min-width: ${Responsive.md}) {
     width: 85%;
     height: 680px;

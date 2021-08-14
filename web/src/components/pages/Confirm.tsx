@@ -1,7 +1,7 @@
 import { ChangeEvent, memo, useEffect, useState, VFC } from 'react';
 import styled from 'styled-components';
 
-import { Color, Font, Responsive } from '../../constant/BaseCss';
+import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
@@ -24,8 +24,6 @@ export const Confirm: VFC = memo(() => {
 
   const onChangeTest = () => console.log(1);
   const state = history.location.state;
-
-  console.log(state.fieldName);
 
   return (
     <SConfirm>
@@ -66,7 +64,13 @@ export const Confirm: VFC = memo(() => {
                 />
               </div>
             </section>
-            <section style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div className="item">
+              <label htmlFor="fieldImage">畑の画像</label>
+              <label htmlFor="fieldImage">
+                <img src={state.imageUrl} style={{ width: '100%', height: '180px' }} />
+              </label>
+            </div>
+            <section className="buttonContainer">
               <PrimaryButton children="前に戻る" position="before" onClick={onClickBack} />
               <PrimaryButton children="登録する" position="after" onClick={onClickRegister} />
             </section>
@@ -82,13 +86,17 @@ const SConfirm = styled.div`
   flex-direction: column-reverse;
   align-content: space-between;
   justify-content: space-between;
-  min-height: 95vh;
+  min-height: 100vh;
 
   main {
-    width: 80%;
+    width: 100%;
   }
 
   @media (min-width: ${Responsive.md}) {
+    main {
+      width: 80%;
+    }
+
     flex-direction: row;
     justify-content: start;
     align-content: center;
@@ -96,20 +104,62 @@ const SConfirm = styled.div`
 `;
 
 const SCard = styled.section`
+  margin: 0 auto;
+  width: 85%;
+
+  h1 {
+    font-size: ${Font.text3xl};
+    text-align: center;
+    padding: 5px;
+    margin: 20px 0;
+    position: relative;
+    font-weight: ${FontWeight.fontSemiBold};
+
+    ::after {
+      background-color: ${Color.secondary}; /* 線色 */
+      border-radius: 5px; /* 線幅の半分 */
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 30%;
+      width: 40%;
+      opacity: 25%;
+      height: 15px; /* 線幅 */
+    }
+  }
+
+  .item {
+    margin-top: 15px;
+
+    label {
+      line-height: 2;
+    }
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+
+    button {
+      width: 45%;
+    }
+  }
+
   @media (min-width: ${Responsive.md}) {
     width: 650px;
 
     .container {
       width: 80%;
       margin: 0 auto;
+    }
 
-      section {
-        display: flex;
-        justify-content: space-between;
+    section {
+      display: flex;
+      justify-content: space-between;
 
-        .item {
-          width: 45%;
-        }
+      .item {
+        width: 45%;
       }
     }
   }
@@ -127,7 +177,6 @@ const SCard = styled.section`
 
     h1 {
       font-size: ${Font.text5xl};
-      text-align: center;
       padding: 5px;
       margin: 30px 0;
       position: relative;
@@ -146,8 +195,16 @@ const SCard = styled.section`
     }
 
     .item {
-      max-width: 700px;
+      margin-top: 20px;
+
+      label {
+        line-height: 3;
+      }
       width: 100%;
+    }
+
+    .buttonContainer {
+      margin-top: 35px;
     }
   }
 `;
