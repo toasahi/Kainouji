@@ -13,7 +13,7 @@ import {
   YAxis,
 } from 'recharts';
 import styled from 'styled-components';
-import { Responsive, Font, Color } from '../../constant/BaseCss';
+import { Responsive, Font, Color, FontWeight } from '../../constant/BaseCss';
 import { useMoistureData } from '../../hooks/useMoistureData';
 
 import { Header } from '../layouts/Header';
@@ -75,20 +75,6 @@ export const Moisture: VFC = memo(() => {
           <h1>越智自動車前畑</h1>
           <section className="moisture-graph">
             <h2>水分量</h2>
-            {/* <LineChart width={700} height={500} data={moisture}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="created_at" interval="preserveStartEnd" />
-                <YAxis interval="preserveStartEnd" />
-                <Legend />
-                <Line type="monotone" dataKey="moisture" stroke="#8884d8" activeDot={{ r: 8 }} />
-              </LineChart> */}
-            {/* <LineChart width={700} height={500} data={data}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="created_at" interval="preserveStartEnd" />
-                <YAxis interval="preserveStartEnd" />
-                <Legend />
-                <Line type="monotone" dataKey="水分量" stroke="#8884d8" activeDot={{ r: 8 }} />
-              </LineChart> */}
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart
                 width={500}
@@ -108,9 +94,9 @@ export const Moisture: VFC = memo(() => {
                 <Area type="monotone" dataKey="水分量" stroke="#8884d8" fill="#8884d8" />
               </AreaChart>
             </ResponsiveContainer>
-            <AreaChart
-              width={500}
-              height={400}
+            {/* <AreaChart
+              width={200}
+              height={200}
               data={data}
               margin={{
                 top: 10,
@@ -124,7 +110,7 @@ export const Moisture: VFC = memo(() => {
               <YAxis />
               <Tooltip />
               <Area type="monotone" dataKey="水分量" stroke="#8884d8" fill="#8884d8" />
-            </AreaChart>
+            </AreaChart> */}
           </section>
         </main>
       </SMoisture>
@@ -138,21 +124,21 @@ const SMoisture = styled.div`
   flex-direction: column-reverse;
   align-content: space-between;
   justify-content: space-between;
-  min-height: 95vh;
+  min-height: 100vh;
 
   main {
-    width: 80%;
+    width: 100%;
 
     section {
       margin: 0 auto;
     }
 
     h1 {
-      font-size: ${Font.text5xl};
-      padding: 5px;
-      margin: 30px 0;
+      font-size: ${Font.text2xl};
       text-align: center;
       position: relative;
+      font-weight: ${FontWeight.fontSemiBold};
+      margin-top: 20px;
 
       ::after {
         background-color: ${Color.secondary}; /* 線色 */
@@ -160,10 +146,8 @@ const SMoisture = styled.div`
         content: '';
         position: absolute;
         bottom: 0;
-        left: 30%;
-        width: 40%;
         opacity: 25%;
-        height: 15px; /* 線幅 */
+        height: 10px;
       }
     }
   }
@@ -177,8 +161,17 @@ const SMoisture = styled.div`
       width: 80%;
 
       h1 {
+        font-size: ${Font.text5xl};
+        padding: 5px;
+        margin: 30px 0;
         margin-top: 75px;
         margin-bottom: 30px;
+
+        ::after {
+          left: 30%;
+          width: 40%;
+          height: 15px; /* 線幅 */
+        }
       }
 
       section {

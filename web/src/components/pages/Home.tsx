@@ -20,7 +20,7 @@ const SHome = styled.div`
   min-height: 95vh;
 
   main {
-    width: 80%;
+    width: 100%;
     height: 80%;
   }
 

@@ -17,55 +17,64 @@ export const LookField: VFC = memo(() => {
             <Link to="lookfield/moisture/1">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
-                <h2>越智自動車前畑</h2>
-                <p>設置日 : 2021/09/02</p>
+                <div>
+                  <h2>越智自動車前畑</h2>
+                  <p>設置日 : 2021/09/02</p>
+                </div>
               </div>
             </Link>
             <Link to="lookfield/moisture/2">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
-
-                <h2>越智自動車前畑</h2>
-                <p>設置日 : 2021/09/02</p>
+                <div>
+                  <h2>越智自動車前畑</h2>
+                  <p>設置日 : 2021/09/02</p>
+                </div>
               </div>
             </Link>
             <Link to="lookfield/moisture/3">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
-
-                <h2>越智自動車前畑</h2>
-                <p>設置日 : 2021/09/02</p>
+                <div>
+                  <h2>越智自動車前畑</h2>
+                  <p>設置日 : 2021/09/02</p>
+                </div>
               </div>
             </Link>
             <Link to="lookfield/moisture">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
-
-                <h2>越智自動車前畑</h2>
-                <p>設置日 : 2021/09/02</p>
+                <div>
+                  <h2>越智自動車前畑</h2>
+                  <p>設置日 : 2021/09/02</p>
+                </div>
               </div>
             </Link>
             <Link to="lookfield/moisture">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
-
-                <h2>越智自動車前畑</h2>
-                <p>設置日 : 2021/09/02</p>
+                <div>
+                  <h2>越智自動車前畑</h2>
+                  <p>設置日 : 2021/09/02</p>
+                </div>
               </div>
             </Link>
             <Link to="lookfield/moisture">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
-
-                <h2>越智自動車前畑</h2>
-                <p>設置日 : 2021/09/02</p>
+                <div>
+                  <h2>越智自動車前畑</h2>
+                  <p>設置日 : 2021/09/02</p>
+                </div>
               </div>
             </Link>
             <Link to="lookfield/moisture">
               <div className="filedContent">
-                <img src="" />
-                <h2>越智自動車前畑</h2>
-                <p>設置日 : 2021/09/02</p>
+                <img src={defaultImage} />
+                <div>
+                  <h2>越智自動車前畑</h2>
+                  <p>設置日 : 2021/09/02</p>
+                </div>
               </div>
             </Link>
           </SContainer>
@@ -171,6 +180,15 @@ const SContainer = styled.div`
       img {
         border-radius: 12px 12px 0 0;
         height: 160px;
+      }
+
+      div{
+        text-align:left;
+        padding:10px 15px;
+        h2{
+          font-size: ${Font.textXl};
+        }
+
       }
     }
 

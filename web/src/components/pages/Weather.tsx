@@ -26,12 +26,16 @@ const SContainer = styled.div`
   min-height: 100vh;
 
   main {
-    width: 80%;
+    width: 100%;
   }
 
   @media (min-width: ${Responsive.md}) {
     flex-direction: row;
     justify-content: start;
     align-content: center;
+
+    main {
+      width: 80%;
+    }
   }
 `;
