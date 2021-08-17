@@ -19,7 +19,7 @@ export const LookField: VFC = memo(() => {
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
                   <h2>越智自動車前畑</h2>
-                  <p>設置日 : 2021/09/02</p>
+                  <p>設置日:2021/09/02</p>
                 </div>
               </div>
             </Link>
@@ -28,7 +28,7 @@ export const LookField: VFC = memo(() => {
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
                   <h2>越智自動車前畑</h2>
-                  <p>設置日 : 2021/09/02</p>
+                  <p>設置日:2021/09/02</p>
                 </div>
               </div>
             </Link>
@@ -37,7 +37,7 @@ export const LookField: VFC = memo(() => {
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
                   <h2>越智自動車前畑</h2>
-                  <p>設置日 : 2021/09/02</p>
+                  <p>設置日:2021/09/02</p>
                 </div>
               </div>
             </Link>
@@ -46,7 +46,7 @@ export const LookField: VFC = memo(() => {
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
                   <h2>越智自動車前畑</h2>
-                  <p>設置日 : 2021/09/02</p>
+                  <p>設置日:2021/09/02</p>
                 </div>
               </div>
             </Link>
@@ -55,7 +55,7 @@ export const LookField: VFC = memo(() => {
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
                   <h2>越智自動車前畑</h2>
-                  <p>設置日 : 2021/09/02</p>
+                  <p>設置日:2021/09/02</p>
                 </div>
               </div>
             </Link>
@@ -64,7 +64,7 @@ export const LookField: VFC = memo(() => {
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
                   <h2>越智自動車前畑</h2>
-                  <p>設置日 : 2021/09/02</p>
+                  <p>設置日:2021/09/02</p>
                 </div>
               </div>
             </Link>
@@ -73,7 +73,7 @@ export const LookField: VFC = memo(() => {
                 <img src={defaultImage} />
                 <div>
                   <h2>越智自動車前畑</h2>
-                  <p>設置日 : 2021/09/02</p>
+                  <p>設置日:2021/09/02</p>
                 </div>
               </div>
             </Link>
@@ -153,6 +153,18 @@ const SContainer = styled.div`
       width: 100%;
       height: 90px;
     }
+
+    div {
+      text-align: left;
+    }
+  }
+
+  @media (min-width: ${Responsive.sm}) {
+    .filedContent {
+      div {
+        line-height: 2;
+      }
+    }
   }
 
   @media (min-width: ${Responsive.md}) {
@@ -173,6 +185,14 @@ const SContainer = styled.div`
       --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 
+      div {
+        padding: 5px 5px;
+
+        p {
+          font-size: ${Font.textSm};
+        }
+      }
+
       &:hover {
         background-color: rgba(0, 0, 0, 0.01);
       }
@@ -181,19 +201,22 @@ const SContainer = styled.div`
         border-radius: 12px 12px 0 0;
         height: 160px;
       }
-
-      div{
-        text-align:left;
-        padding:10px 15px;
-        h2{
-          font-size: ${Font.textXl};
-        }
-
-      }
     }
 
     a {
       width: 30%;
+    }
+  }
+
+  @media (min-width: ${Responsive.lg}) {
+    .filedContent {
+      div {
+        padding: 5px 1opx;
+
+        h2 {
+          font-size: ${Font.textXl};
+        }
+      }
     }
   }
 
@@ -202,6 +225,10 @@ const SContainer = styled.div`
 
     .filedContent {
       width: 300px;
+
+      div {
+        padding: 10px 15px;
+      }
     }
   }
 `;
