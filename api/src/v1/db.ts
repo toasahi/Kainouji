@@ -45,13 +45,31 @@ export const getMoisture = async () => {
   return rows;
 };
 
+
+export const getMoisturePeriod = async (id?:string,period?:string) => {
+  const conn = await mysql.createConnection(dbSetting);
+  let sql='';
+  switch(period){
+    case 'all':
+      sql = `SELECT * From soil_moistures where field_id = ${id}`;
+      break;
+    case 'one':
+      sql = `SELECT * From soil_moistures where field_id = ${id} && Created >= (NOW() - INTERVAL 7 DAY)`;
+      break;
+    case 'two':
+      sql = `SELECT * From soil_moistures where field_id = ${id} && Created >= (NOW() - INTERVAL 14 DAY)`;
+      break;
+  }
+  const [rows, fields] = await conn.query(sql);
+  return rows;
+}
+
 /**
  * 土壌の水分量を取得
  * @async
  * @returns rows
  */
 export const getFieldMoisture = async (id?: string) => {
-  console.log(id);
   const conn = await mysql.createConnection(dbSetting);
   const sql = `SELECT * From soil_moistures where field_id = ${id}`;
   const [rows, fields] = await conn.query(sql);
