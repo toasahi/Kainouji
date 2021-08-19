@@ -54,10 +54,10 @@ export const getMoisturePeriod = async (id?:string,period?:string) => {
       sql = `SELECT * From soil_moistures where field_id = ${id}`;
       break;
     case 'one':
-      sql = `SELECT * From soil_moistures where field_id = ${id} && Created >= (NOW() - INTERVAL 7 DAY)`;
+      sql = `SELECT * From soil_moistures where field_id = ${id} && updated_at >= (NOW() - INTERVAL 7 DAY)`;
       break;
     case 'two':
-      sql = `SELECT * From soil_moistures where field_id = ${id} && Created >= (NOW() - INTERVAL 14 DAY)`;
+      sql = `SELECT * From soil_moistures where field_id = ${id} && updated_at >= (NOW() - INTERVAL 14 DAY)`;
       break;
   }
   const [rows, fields] = await conn.query(sql);
