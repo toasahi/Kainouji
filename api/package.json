@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/index.js",
+    "start-ts": "npx ts-node src/index.ts",
     "build": "webpack --mode=production",
     "prettier": "prettier --write \"**/*.{js,ts,ts}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
