@@ -185,7 +185,7 @@ const SRegisterField = styled.div`
     width: 100%;
 
     span {
-      color: red;
+      color: #ed4956;
       font-size: ${Font.textSm};
       line-height: 2;
     }

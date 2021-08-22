@@ -3,5 +3,6 @@ export interface IFormValues {
   fieldImage: string;
   vegetable: string;
   settingDay: string;
-  名前: string;
+  email: string;
+  password: string;
 }

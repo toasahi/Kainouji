@@ -12,7 +12,7 @@ export const Weather: VFC = memo(() => {
         <Header />
         <main style={{ width: '80%' }}>
           <div className="" style={{ width: '100%', height: 2000 }}>
-            <h1>開発中です</h1>
+            <h1>準備中です</h1>
             <img
               src={workerImage}
               className="animation keyframe2"

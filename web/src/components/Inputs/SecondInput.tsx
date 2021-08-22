@@ -6,24 +6,22 @@ import { IFormValues } from '../../types/form/form';
 
 type Props = {
   label: Path<IFormValues>;
-  inputType?: 'text' | 'email' | 'date' | 'file';
+  inputType?: 'text' | 'email' | 'date' | 'file' | 'password';
   register: UseFormRegister<IFormValues>;
   placeHolder?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   value?: string;
-  hidden?: boolean;
   required: boolean;
 };
 
 export const SecondInput: VFC<Props> = memo((props) => {
-  const { label, register, required, inputType, placeHolder, hidden = false, onChange, value } = props;
+  const { label, register, required, inputType, placeHolder, onChange, value } = props;
   return (
     <>
       <SInput
         type={inputType}
         id={label}
         {...register(label, { required })}
-        hidden={hidden}
         onChange={onChange}
         defaultValue={value || ''}
       />
