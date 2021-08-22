@@ -10,10 +10,10 @@ export const useGetField = () => {
     axios
       .get<Array<Field>>(`http://localhost:4000/v1/field/${id}`)
       .then((res) => {
-        setField(res.data)
+        setField(res.data);
         setLoading(false);
       })
       .catch(() => setLoading(false));
   }, []);
-  return { loading, getField,field };
+  return { loading, getField, field };
 };
