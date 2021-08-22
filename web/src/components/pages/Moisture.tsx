@@ -3,23 +3,25 @@ import { useParams } from 'react-router-dom';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import styled from 'styled-components';
 import { Responsive, Font, Color, FontWeight } from '../../constant/BaseCss';
+import { useGetGraphData } from '../../hooks/useGetGraphData';
 import { useMoistureData } from '../../hooks/useMoistureData';
 
 import { Header } from '../layouts/Header';
 
 export const Moisture: VFC = memo(() => {
   const { loading, moisture, getMoistures } = useMoistureData();
-  const [graphData, setGraphData] = useState('');
-  const [period, setPeriod] = useState('');
+  const { getGraphData } = useGetGraphData();
+  const [graphData, setGraphData] = useState('moisture');
+  const [period, setPeriod] = useState('all');
   const onChangeGraphData = (event: ChangeEvent<HTMLSelectElement>) => setGraphData(event.target.value);
+
   const onChangePeriod = (event: ChangeEvent<HTMLSelectElement>) => setPeriod(event.target.value);
   const onClickSetting = () => console.log(1);
   const param = useParams<{ id: string }>();
   const today = new Date();
 
-  console.log('change');
-
-  useEffect(() => getMoistures(param.id), []);
+  // useEffect(() => getMoistures(param.id), []);
+  useEffect(() => getGraphData(graphData, period, param.id), [graphData, period]);
 
   const data = [
     {
