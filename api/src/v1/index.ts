@@ -12,6 +12,6 @@ router.use('/moisture', moistureRouter);
 router.use('/threshold', thresholdRouter);
 router.use('/vegetable', vegetableRouter);
 router.use('/field', filedRouter);
-router.use('/temperature',temperatureRouter);
+router.use('/temperature', temperatureRouter);
 
 export { router };

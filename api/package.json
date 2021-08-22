@@ -34,6 +34,8 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
+    "@types/dotenv-webpack": "^7.0.3",
+    "dotenv-webpack": "^7.0.3",
     "express": "^4.17.1"
   }
 }

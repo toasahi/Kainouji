@@ -1,5 +1,5 @@
 import express from 'express';
-import { getFieldMoisture, getMoisture,getMoisturePeriod } from './db';
+import { getFieldMoisture, getMoisture, getMoisturePeriod } from './db';
 
 const moistureRouter = express.Router();
 
@@ -28,7 +28,7 @@ moistureRouter.get('/:id', (req: express.Request, res: express.Response) => {
 moistureRouter.get('/:id/period/:period', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   try {
-    getMoisturePeriod(req.params.id,req.params.period).then((result) => {
+    getMoisturePeriod(req.params.id, req.params.period).then((result) => {
       res.status(200).json(result);
     });
   } catch (error) {

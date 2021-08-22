@@ -11,5 +11,5 @@
 /web/index.js
 /web/dist/  
 /web/src/images
-.env
+/web/.env
 .DS_Store

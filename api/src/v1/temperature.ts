@@ -1,4 +1,4 @@
-import express from 'express'
+import express from 'express';
 import { getTemperaturePeriod } from './db';
 
 const temperatureRouter = express.Router();
@@ -6,7 +6,7 @@ const temperatureRouter = express.Router();
 temperatureRouter.get('/:id/period/:period', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   try {
-    getTemperaturePeriod(req.params.id,req.params.period).then((result) => {
+    getTemperaturePeriod(req.params.id, req.params.period).then((result) => {
       res.status(200).json(result);
     });
   } catch (error) {
