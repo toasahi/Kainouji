@@ -10,6 +10,7 @@ type Props = {
   inputId?: string;
   hidden?: boolean;
   readonly?: boolean;
+  required?: boolean;
 };
 
 export const PrimaryInput: VFC<Props> = memo((props) => {
@@ -21,6 +22,7 @@ export const PrimaryInput: VFC<Props> = memo((props) => {
     inputId = '',
     hidden = false,
     readonly = false,
+    required = false,
   } = props;
   return (
     <SInput

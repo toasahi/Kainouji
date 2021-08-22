@@ -165,12 +165,12 @@ const SMoisture = styled.div`
 
     section {
       margin: 0 auto;
-      margin-top:100px;
+      margin-top: 100px;
 
-      .graph{
+      .graph {
         display: flex;
         justify-content: space-between;
-        margin-bottom:15px;
+        margin-bottom: 15px;
       }
 
       select,

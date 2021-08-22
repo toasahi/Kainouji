@@ -43,7 +43,7 @@ export const RegisterField: VFC = memo(() => {
 
   useEffect(() => getVegetables(), []);
 
-  console.log(vegetableLists);
+  console.log(imageUrl);
 
   return (
     <SRegisterField>
@@ -65,7 +65,7 @@ export const RegisterField: VFC = memo(() => {
             <section>
               <div className="item">
                 <label htmlFor="vegetable">育てる野菜</label>
-                <select id="vegetable" value={vegetable} onChange={onChangeVegetable}>
+                <select id="vegetable" value={vegetable} onChange={onChangeVegetable} required>
                   <option value="">選択してください</option>
                   {vegetableLists.map((vegetableList) => (
                     <option key={vegetableList.id} value={vegetableList.id}>

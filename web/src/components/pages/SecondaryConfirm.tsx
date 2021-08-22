@@ -7,20 +7,25 @@ import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
 import { useRegisterField } from '../../hooks/useRegisterField';
 import { PrimaryInput } from '../Inputs/PrimaryInput';
+import { IFormValues } from '../../types/form/form';
 
 type State = {
-  fieldName: string;
-  vegetable: string;
-  settingDay: string;
-  settingPlace?: string;
-  imageUrl: string;
+  data: IFormValues;
+  imageUrl?: string;
 };
 
-export const Confirm: VFC = memo(() => {
+export const SecondaryConfirm: VFC = memo(() => {
   const history = useHistory<State>();
-  const onClickBack = () => history.push('/registerfield');
-  const onClickRegister = () => registerField(state);
-  const { registerField, loading, success } = useRegisterField();
+  const onClickBack = () =>
+    history.push({
+      pathname: '/registerfield',
+      state: {
+        data: state.data,
+        imageUrl: state.imageUrl ?? '',
+      },
+    });
+  //   const onClickRegister = () => registerField(state);
+  //   const { registerField, loading, success } = useRegisterField();
 
   const onChangeTest = () => console.log(1);
   const state = history.location.state;
@@ -40,7 +45,7 @@ export const Confirm: VFC = memo(() => {
                 inputType="text"
                 inputId="fieldName"
                 onChange={onChangeTest}
-                value={state.fieldName}
+                value={state.data.fieldName}
                 readonly={true}
               />
             </div>
@@ -51,7 +56,7 @@ export const Confirm: VFC = memo(() => {
                   inputType="text"
                   inputId="vegetable"
                   onChange={onChangeTest}
-                  value={state.vegetable}
+                  value={state.data.vegetable}
                   readonly={true}
                 />
               </div>
@@ -61,7 +66,7 @@ export const Confirm: VFC = memo(() => {
                   inputType="date"
                   inputId="settingDay"
                   onChange={onChangeTest}
-                  value={state.settingDay}
+                  value={state.data.settingDay}
                   readonly={true}
                 />
               </div>
@@ -74,7 +79,7 @@ export const Confirm: VFC = memo(() => {
             </div>
             <section className="buttonContainer">
               <PrimaryButton children="前に戻る" position="before" onClick={onClickBack} />
-              <PrimaryButton children="登録する" position="after" onClick={onClickRegister} />
+              {/* <PrimaryButton children="登録する" position="after" onClick={onClickRegister} /> */}
             </section>
           </div>
         </SCard>
@@ -189,8 +194,6 @@ const SCard = styled.section`
         content: '';
         position: absolute;
         bottom: 0;
-        left: 33.5%;
-        width: 250px;
         opacity: 25%;
         height: 15px; /* 線幅 */
       }
