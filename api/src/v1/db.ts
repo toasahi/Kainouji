@@ -38,6 +38,7 @@ const dbSetting: Setting = {
  * @async
  * @returns rows
  */
+
 export const getMoisture = async () => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = 'SELECT * From soil_moistures';
@@ -45,6 +46,11 @@ export const getMoisture = async () => {
   return rows;
 };
 
+/**
+ * 土壌の水分量を期間に応じて取得
+ * @async
+ * @returns rows
+ */
 
 export const getMoisturePeriod = async (id?:string,period?:string) => {
   const conn = await mysql.createConnection(dbSetting);
@@ -75,6 +81,30 @@ export const getFieldMoisture = async (id?: string) => {
   const [rows, fields] = await conn.query(sql);
   return rows;
 };
+
+/**
+ * 気温を期間に応じて取得
+ * @async
+ * @returns rows
+ */
+
+export const getTemperaturePeriod = async (id?:string,period?:string) => {
+  const conn = await mysql.createConnection(dbSetting);
+  let sql='';
+  switch(period){
+    case 'all':
+      sql = `SELECT * From temperatures where field_id = ${id}`;
+      break;
+    case 'one':
+      sql = `SELECT * From temperatures where field_id = ${id} && updated_at >= (NOW() - INTERVAL 7 DAY)`;
+      break;
+    case 'two':
+      sql = `SELECT * From temperatures where field_id = ${id} && updated_at >= (NOW() - INTERVAL 14 DAY)`;
+      break;
+  }
+  const [rows, fields] = await conn.query(sql);
+  return rows;
+}
 
 /**
  * 閾値の更新
