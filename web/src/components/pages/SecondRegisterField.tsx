@@ -21,7 +21,6 @@ type State = {
 export const SecondRegisterField: VFC = memo(() => {
   const history = useHistory<State>();
   const state = history.location.state;
-  console.log();
   const historyState = state === undefined;
   const [imageUrl, setImageUrl] = useState(historyState ? '' : state.data?.fieldImage);
   const { getVegetables, loading, vegetableLists } = useGetVegitables();
