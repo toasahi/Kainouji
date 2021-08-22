@@ -49,6 +49,13 @@ h1,h2,h3{
   font-family: 'Noto Sans SC',"Yu Gothic Medium", "游ゴシック Medium", 'ヒラギノ角ゴ Pro W3', sans-serif;
 }
 
+.animation{
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-duration: 1.5s;
+  }
+  
 `;
 
 export default App;

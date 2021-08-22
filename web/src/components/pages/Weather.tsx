@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Font, Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
+import workerImage from '../../images/worker.png';
 
 export const Weather: VFC = memo(() => {
   return (
@@ -10,8 +11,14 @@ export const Weather: VFC = memo(() => {
       <SContainer>
         <Header />
         <main style={{ width: '80%' }}>
-          <h1>天気のページです</h1>
-          <div className="" style={{ width: '100%', height: 2000 }}></div>
+          <div className="" style={{ width: '100%', height: 2000 }}>
+            <h1>開発中です</h1>
+            <img
+              src={workerImage}
+              className="animation keyframe2"
+              style={{ width: '400px', height: '300px', display: 'block', margin: '0 auto', marginTop: '200px' }}
+            />
+          </div>
         </main>
       </SContainer>
     </>
@@ -36,6 +43,20 @@ const SContainer = styled.div`
 
     main {
       width: 80%;
+
+      .keyframe2 {
+        margin-top: 300px;
+        animation-name: anim_h;
+      }
+
+      @keyframes anim_h {
+        0% {
+          transform: translate(0px, 0);
+        }
+        100% {
+          transform: translate(80px, 0);
+        }
+      }
     }
   }
 `;

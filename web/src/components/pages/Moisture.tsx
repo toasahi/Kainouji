@@ -78,24 +78,9 @@ export const Moisture: VFC = memo(() => {
                   <option value="humidity">湿度</option>
                 </select>
                 <select onChange={onChangePeriod}>
-                  <option value="all">
-                    全期間
-                    {/* <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5.5 6L0.73686 0.75L10.2631 0.75L5.5 6Z" fill="#0E0E0E" fill-opacity="0.6" />
-                    </svg> */}
-                  </option>
-                  <option value="one">
-                    １週間
-                    {/* <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5.5 6L0.73686 0.75L10.2631 0.75L5.5 6Z" fill="#0E0E0E" fill-opacity="0.6" />
-                    </svg> */}
-                  </option>
-                  <option value="two">
-                    ２週間
-                    {/* <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5.5 6L0.73686 0.75L10.2631 0.75L5.5 6Z" fill="#0E0E0E" fill-opacity="0.6" />
-                    </svg> */}
-                  </option>
+                  <option value="all">全期間</option>
+                  <option value="one">１週間</option>
+                  <option value="two">２週間</option>
                 </select>
                 <button onClick={onClickSetting}>
                   <svg
