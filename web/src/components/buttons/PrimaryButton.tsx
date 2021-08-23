@@ -35,6 +35,7 @@ const SButton = styled.button`
   position: relative;
 
   &:hover {
+    transition: background-color ease 0.4s, color ease 0.4s;
     background-color: ${Color.tertiary};
     color: #fefefe;
     opacity: 100%;

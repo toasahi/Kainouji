@@ -6,18 +6,18 @@ import reset from 'styled-reset';
 
 import { PrimaryButton } from './components/buttons/PrimaryButton';
 import { Color } from './constant/BaseCss';
+import { LoginUserProvider } from './providers/LoginUserProvider';
 import { Router } from './router/Router';
 import { Moisture } from './types/api/moisture';
 
 function App() {
-  console.log(process.env.REACT_APP_S3_BUCKET);
   return (
-    <div className="App">
+    <LoginUserProvider>
       <GlobalStyle />
       <BrowserRouter>
         <Router />
       </BrowserRouter>
-    </div>
+    </LoginUserProvider>
   );
 }
 
