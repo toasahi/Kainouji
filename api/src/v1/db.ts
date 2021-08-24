@@ -1,5 +1,5 @@
 import mysql from 'mysql2/promise';
-import bcrypt from 'bcrypt';
+// import bcrypt from 'bcrypt';
 import { Setting } from '../setting';
 
 type Setting = {
@@ -196,10 +196,18 @@ export const getField = async () => {
   return rows;
 };
 
-
 export const insertUser = async (data: User) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = `SELECT COUNT(*) From users WHERE email = ${data.email}`;
+  let sql = `SELECT * FROM users WHERE email = '${data.email}' LIMIT 1`;
   const [rows, fields] = await conn.query(sql);
-  const hashPassword = bcrypt.hashSync(data.password,10);
-}
+  let status:number;
+  if (Object.keys(rows).length === 0) {
+    sql = `INSERT INTO users(email,password,username) value('${data.email}','${data.password}','${data.username}')`;
+    await conn.query(sql);
+    status = 200;
+  }else{
+    status = 500;
+  }
+  return status;
+  // const hashPassword = bcrypt.hashSync(data.password,10);
+};

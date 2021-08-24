@@ -3,6 +3,7 @@ import { filedRouter } from './field';
 import { moistureRouter } from './moisture';
 import { temperatureRouter } from './temperature';
 import { thresholdRouter } from './threshold';
+import { userRouter } from './user';
 import { vegetableRouter } from './vegetable';
 
 const router = express.Router();
@@ -13,5 +14,6 @@ router.use('/threshold', thresholdRouter);
 router.use('/vegetable', vegetableRouter);
 router.use('/field', filedRouter);
 router.use('/temperature', temperatureRouter);
+router.use('/user', userRouter);
 
 export { router };
