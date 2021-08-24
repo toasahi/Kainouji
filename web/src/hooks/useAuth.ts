@@ -11,10 +11,10 @@ export const useAuth = () => {
   const { setLoginUser } = useLoginUser();
 
   const login = useCallback(
-    (id: string) => {
+    (email: string, password: string) => {
       setLoading(true);
       axios
-        .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .get<User>(`https://jsonplaceholder.typicode.com/users/`)
         .then((res) => {
           if (res.data) {
           } else {

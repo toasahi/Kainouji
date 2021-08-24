@@ -5,4 +5,5 @@ export interface IFormValues {
   settingDay: string;
   email: string;
   password: string;
+  username: string;
 }

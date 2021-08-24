@@ -1,4 +1,4 @@
-import { ChangeEvent, memo, useEffect, useState, VFC } from 'react';
+import { ChangeEvent, ChangeEventHandler, memo, useEffect, useState, VFC } from 'react';
 import styled from 'styled-components';
 
 import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
@@ -23,7 +23,11 @@ export const SecondRegisterField: VFC = memo(() => {
   const state = history.location.state;
   const historyState = state === undefined;
   const [imageUrl, setImageUrl] = useState(historyState ? '' : state.data?.fieldImage);
+  const [vegetable, setVegetable] = useState(historyState ? '' : state.data?.vegetable);
   const { getVegetables, loading, vegetableLists } = useGetVegitables();
+  const onChangeVegetable = (event: ChangeEvent<HTMLSelectElement>) => {
+    setVegetable(event.target.value);
+  };
   const onChangeProcessImage = (event: ChangeEvent<HTMLInputElement>) =>
     event.currentTarget.files !== null
       ? setImageUrl(URL.createObjectURL(event.currentTarget.files[0]))
@@ -67,11 +71,16 @@ export const SecondRegisterField: VFC = memo(() => {
               <section>
                 <div className="item">
                   <label htmlFor="vegetable">育てる野菜</label>
-                  <select id="vegetable" {...register('vegetable', { required: true })}>
+                  <select
+                    id="vegetable"
+                    {...register('vegetable', { required: true })}
+                    onChange={onChangeVegetable}
+                    value={vegetable}
+                  >
                     <option value="">選択してください</option>
-                    <option value="きゅうり">きゅうり</option>
-                    <option value="キャベツ">キャベツ</option>
-                    <option value="トマト">トマト</option>
+                    <option value="1">きゅうり</option>
+                    <option value="2">キャベツ</option>
+                    <option value="3">トマト</option>
                   </select>
                   {errors.vegetable && <span>野菜を選択してください</span>}
                 </div>

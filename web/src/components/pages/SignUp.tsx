@@ -1,16 +1,16 @@
-import { ChangeEvent, memo, useContext, useEffect, useState, VFC } from 'react';
-import styled from 'styled-components';
-
+import { memo, VFC } from 'react';
 import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
-import { useGetVegitables } from '../../hooks/useGetVegitables';
 import { Header } from '../layouts/Header';
-import { PrimaryButton } from '../buttons/PrimaryButton';
-import { Link, useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import { SecondInput } from '../Inputs/SecondInput';
+import { Link } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IFormValues } from '../../types/form/form';
+import { PrimaryButton } from '../buttons/PrimaryButton';
+import { useSingUp } from '../../hooks/useSingUp';
 
-export const Login: VFC = memo(() => {
+export const SignUp: VFC = memo(() => {
+  const {singUp,loading} = useSingUp();
   const {
     register,
     handleSubmit,
@@ -18,20 +18,26 @@ export const Login: VFC = memo(() => {
   } = useForm<IFormValues>();
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
     alert(JSON.stringify(data));
+    singUp(data);
   };
 
   return (
-    <SLogin>
+    <SSignUp>
       <Header />
       <main>
         <SCard>
           <div className="container">
-            <h1>ログイン</h1>
+            <h1>ユーザー登録</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="item">
                 <label htmlFor="email">メールアドレス</label>
                 <SecondInput label="email" inputType="email" register={register} required />
-                {errors.email && <span>ユーザ名を入力してください</span>}
+                {errors.email && <span>メールアドレスを入力してください</span>}
+              </div>
+              <div className="item">
+                <label htmlFor="username">ユーザ名</label>
+                <SecondInput label="username" inputType="text" register={register} required />
+                {errors.username && <span>ユーザ名を入力してください</span>}
               </div>
               <div className="item">
                 <label htmlFor="password">パスワード</label>
@@ -39,27 +45,18 @@ export const Login: VFC = memo(() => {
                 {errors.password && <span>パスワードを入力してください</span>}
               </div>
               <div className="buttonContainer">
-                <PrimaryButton children="ログイン" position="after" onClick={() => console.log()} />
+                <PrimaryButton children="登録" position="after" onClick={() => console.log()} />
               </div>
             </form>
-            <section>
-            <div className="item">
-            <Link to='/signup'>ユーザー登録</Link>
-            </div>
-            <div className="item">
-            <Link to=''>パスワードを忘れましたか？</Link>
-            </div>
-            </section>
-            
-            
+            <Link to='/login'>ログイン</Link>
           </div>
         </SCard>
       </main>
-    </SLogin>
+    </SSignUp>
   );
 });
 
-const SLogin = styled.div`
+const SSignUp = styled.div`
   display: flex;
   flex-direction: column-reverse;
   align-content: space-between;
@@ -199,8 +196,8 @@ const SCard = styled.section`
       ::after {
         border-radius: 5px; /* 線幅の半分 */
         bottom: 0;
-        left: 28%;
-        width: 250px;
+        left: 22%;
+        width: 320px;
         height: 15px; /* 線幅 */
       }
     }

@@ -25,8 +25,6 @@ export const Confirm: VFC = memo(() => {
   const onChangeTest = () => console.log(1);
   const state = history.location.state;
 
-  console.log(state);
-
   return (
     <SConfirm>
       <Header />

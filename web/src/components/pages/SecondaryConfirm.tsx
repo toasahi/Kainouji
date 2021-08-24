@@ -14,6 +14,17 @@ type State = {
   imageUrl?: string;
 };
 
+type Vegetable = {
+  [key: string]: string;
+};
+
+// 仮データ
+const vegetableList: Vegetable = {
+  '1': 'きゅうり',
+  '2': 'キャベツ',
+  '3': 'トマト',
+};
+
 export const SecondaryConfirm: VFC = memo(() => {
   const history = useHistory<State>();
   const onClickBack = () =>
@@ -24,8 +35,8 @@ export const SecondaryConfirm: VFC = memo(() => {
         imageUrl: state.imageUrl ?? '',
       },
     });
-  //   const onClickRegister = () => registerField(state);
-  //   const { registerField, loading, success } = useRegisterField();
+    // const onClickRegister = () => registerField(state);
+    // const { registerField, loading, success } = useRegisterField();
 
   const onChangeTest = () => console.log(1);
   const state = history.location.state;
@@ -56,7 +67,7 @@ export const SecondaryConfirm: VFC = memo(() => {
                   inputType="text"
                   inputId="vegetable"
                   onChange={onChangeTest}
-                  value={state.data.vegetable}
+                  value={vegetableList[state.data.vegetable]}
                   readonly={true}
                 />
               </div>
@@ -79,7 +90,7 @@ export const SecondaryConfirm: VFC = memo(() => {
             </div>
             <section className="buttonContainer">
               <PrimaryButton children="前に戻る" position="before" onClick={onClickBack} />
-              {/* <PrimaryButton children="登録する" position="after" onClick={onClickRegister} /> */}
+              <PrimaryButton children="登録する" position="after" onClick={()=>console.log()} />
             </section>
           </div>
         </SCard>

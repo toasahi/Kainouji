@@ -9,6 +9,7 @@ import { Moisture } from '../components/pages/Moisture';
 import { Confirm } from '../components/pages/Confirm';
 import { Register } from '../components/pages/Register';
 import { SecondaryConfirm } from '../components/pages/SecondaryConfirm';
+import { SignUp } from '../components/pages/SignUp';
 
 export const homeRoutes = [
   {
@@ -38,13 +39,18 @@ export const homeRoutes = [
   },
   {
     path: '/weather',
-    exact: false,
+    exact: true,
     children: <Weather />,
   },
   {
     path: '/login',
-    exact: false,
+    exact: true,
     children: <Login />,
+  },
+  {
+    path: '/signup',
+    exact: true,
+    children: <SignUp />,
   },
   {
     path: '/*',
