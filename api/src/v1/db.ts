@@ -1,4 +1,5 @@
 import mysql from 'mysql2/promise';
+import bcrypt from 'bcrypt';
 import { Setting } from '../setting';
 
 type Setting = {
@@ -23,6 +24,13 @@ export type Field = {
   vegetable_id: string;
   setting_date: string;
   image_path?: string;
+};
+
+export type User = {
+  email: string;
+  password: string;
+  username?: string;
+  status?: string;
 };
 
 const dbSetting: Setting = {
@@ -159,7 +167,7 @@ export const getVegetables = async () => {
  * @returns rows
  */
 
-export const InsertVegetables = async () => {
+export const insertVegetables = async () => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = `SELECT vegetable From vegetables Where`;
   const [rows, fields] = await conn.query(sql);
@@ -172,7 +180,7 @@ export const InsertVegetables = async () => {
  * @returns rows
  */
 
-export const InsertField = async (data: Field) => {
+export const insertField = async (data: Field) => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = `INSERT INTO fields(field_name,vegetable_id,setting_date,image_path) value('${data.field_name}','${
     data.vegetable_id
@@ -187,3 +195,11 @@ export const getField = async () => {
   const [rows, fields] = await conn.query(sql);
   return rows;
 };
+
+
+export const insertUser = async (data: User) => {
+  const conn = await mysql.createConnection(dbSetting);
+  const sql = `SELECT COUNT(*) From users WHERE email = ${data.email}`;
+  const [rows, fields] = await conn.query(sql);
+  const hashPassword = bcrypt.hashSync(data.password,10);
+}
