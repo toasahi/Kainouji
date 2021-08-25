@@ -1,5 +1,5 @@
 import express from 'express';
-import { insertUser, User } from './db';
+import { getUser, insertUser, User } from './db';
 
 const userRouter = express.Router();
 
@@ -11,12 +11,24 @@ userRouter.post('/', (req: express.Request, res: express.Response) => {
       if(result === 200){
         res.status(200).json({ message: 'OK', status: 200 });
       }else{
-        res.status(200).json({ message: 'NO', status: 500 });
+        res.status(500).json({ message: 'NO', status: 500 });
       }
     });
   } catch (error) {
     res.status(500).json({ message: error.message, status: 500 });
   }
+});
+
+userRouter.get('/email/:email/password/:password', (req: express.Request, res: express.Response) => {
+  res.set({ 'Access-Control-Allow-Origin': '*' });
+  getUser(req.params.email,req.params.password)
+  // try {
+  //   getFieldMoisture(req.params.id).then((result) => {
+  //     res.status(200).json(result);
+  //   });
+  // } catch (error) {
+  //   res.status(400).json({ message: error.message });
+  // }
 });
 
 export { userRouter };

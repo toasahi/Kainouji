@@ -9,6 +9,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { SecondInput } from '../Inputs/SecondInput';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IFormValues } from '../../types/form/form';
+import { useLogin } from '../../hooks/useLogin';
 
 export const Login: VFC = memo(() => {
   const {
@@ -17,8 +18,10 @@ export const Login: VFC = memo(() => {
     formState: { errors },
   } = useForm<IFormValues>();
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
-    alert(JSON.stringify(data));
+    login(data);
   };
+
+  const {login,loading } = useLogin();
 
   return (
     <SLogin>

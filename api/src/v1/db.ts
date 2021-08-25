@@ -211,3 +211,7 @@ export const insertUser = async (data: User) => {
   return status;
   // const hashPassword = bcrypt.hashSync(data.password,10);
 };
+
+export const getUser = async(email:string,password:string) => {
+  console.log(email,password);
+}
