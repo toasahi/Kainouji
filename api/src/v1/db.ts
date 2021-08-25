@@ -1,5 +1,5 @@
 import mysql from 'mysql2/promise';
-// import bcrypt from 'bcrypt';
+import crypto from 'crypto-js';
 import { Setting } from '../setting';
 
 type Setting = {
@@ -214,4 +214,6 @@ export const insertUser = async (data: User) => {
 
 export const getUser = async(email:string,password:string) => {
   console.log(email,password);
+  const shaPass = crypto.SHA256(password).toString;
+  console.log(shaPass)
 }
