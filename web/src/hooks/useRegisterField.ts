@@ -26,13 +26,11 @@ export const useRegisterField = () => {
         },
       })
       .then((res) => {
-        console.log(res);
         setSuccess(true);
         setLoading(false);
       })
       .catch((error) => {
         alert('登録失敗');
-        console.log(error);
         setLoading(false);
       });
     console.log(data);
