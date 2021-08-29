@@ -65,13 +65,13 @@ export const getMoisturePeriod = async (id?: string, period?: string) => {
   let sql = '';
   switch (period) {
     case 'all':
-      sql = `SELECT * From soil_moistures where field_id = ${id}`;
+      sql = `SELECT moisture as 水分量,created_at From soil_moistures where field_id = ${id}`;
       break;
     case 'one':
-      sql = `SELECT * From soil_moistures where field_id = ${id} && updated_at >= (NOW() - INTERVAL 7 DAY)`;
+      sql = `SELECT moisture as 水分量,created_at From soil_moistures where field_id = ${id} && updated_at >= (NOW() - INTERVAL 7 DAY)`;
       break;
     case 'two':
-      sql = `SELECT * From soil_moistures where field_id = ${id} && updated_at >= (NOW() - INTERVAL 14 DAY)`;
+      sql = `SELECT moisture as 水分量,created_at From soil_moistures where field_id = ${id} && updated_at >= (NOW() - INTERVAL 14 DAY)`;
       break;
   }
   const [rows, fields] = await conn.query(sql);
