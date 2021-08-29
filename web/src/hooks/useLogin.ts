@@ -11,7 +11,7 @@ export const useLogin = () => {
   const { setLoginUser } = useLoginUser();
 
   const login = useCallback(
-    (data:User) => {
+    (data: User) => {
       setLoading(true);
       axios
         .get<User>(`http://localhost:4000/v1/user/email/${data.email}/password/${data.password}`)

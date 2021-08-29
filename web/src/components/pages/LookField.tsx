@@ -18,8 +18,8 @@ export const LookField: VFC = memo(() => {
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
-                  <h2>越智自動車前畑</h2>
-                  <p>設置日:2021/09/02</p>
+                  <h2>きゅうり畑</h2>
+                  <p>設置日:2021/08/02</p>
                 </div>
               </div>
             </Link>

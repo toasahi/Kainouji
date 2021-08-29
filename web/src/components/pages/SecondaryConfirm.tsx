@@ -35,8 +35,8 @@ export const SecondaryConfirm: VFC = memo(() => {
         imageUrl: state.imageUrl ?? '',
       },
     });
-    // const onClickRegister = () => registerField(state);
-    // const { registerField, loading, success } = useRegisterField();
+  // const onClickRegister = () => registerField(state);
+  // const { registerField, loading, success } = useRegisterField();
 
   const onChangeTest = () => console.log(1);
   const state = history.location.state;
@@ -90,7 +90,7 @@ export const SecondaryConfirm: VFC = memo(() => {
             </div>
             <section className="buttonContainer">
               <PrimaryButton children="前に戻る" position="before" onClick={onClickBack} />
-              <PrimaryButton children="登録する" position="after" onClick={()=>console.log()} />
+              <PrimaryButton children="登録する" position="after" onClick={() => console.log()} />
             </section>
           </div>
         </SCard>

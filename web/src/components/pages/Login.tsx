@@ -21,7 +21,7 @@ export const Login: VFC = memo(() => {
     login(data);
   };
 
-  const {login,loading } = useLogin();
+  const { login, loading } = useLogin();
 
   return (
     <SLogin>
@@ -46,15 +46,13 @@ export const Login: VFC = memo(() => {
               </div>
             </form>
             <section>
-            <div className="item">
-            <Link to='/signup'>ユーザー登録</Link>
-            </div>
-            <div className="item">
-            <Link to=''>パスワードを忘れましたか？</Link>
-            </div>
+              <div className="item">
+                <Link to="/signup">ユーザー登録</Link>
+              </div>
+              <div className="item">
+                <Link to="">パスワードを忘れましたか？</Link>
+              </div>
             </section>
-            
-            
           </div>
         </SCard>
       </main>

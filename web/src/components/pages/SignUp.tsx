@@ -10,7 +10,7 @@ import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useSingUp } from '../../hooks/useSingUp';
 
 export const SignUp: VFC = memo(() => {
-  const {singUp,loading} = useSingUp();
+  const { singUp, loading } = useSingUp();
   const {
     register,
     handleSubmit,
@@ -48,7 +48,7 @@ export const SignUp: VFC = memo(() => {
                 <PrimaryButton children="登録" position="after" onClick={() => console.log()} />
               </div>
             </form>
-            <Link to='/login'>ログイン</Link>
+            <Link to="/login">ログイン</Link>
           </div>
         </SCard>
       </main>

@@ -16,22 +16,23 @@ export const useSingUp = () => {
       params.append('username', data.username!!);
       setLoading(true);
       axios
-        .post<Result>(`http://localhost:4000/v1/user`,params,{
+        .post<Result>(`http://localhost:4000/v1/user`, params, {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
         })
         .then((res) => {
           if (res.data.status === 200) {
-            setLoading(false)
+            setLoading(false);
             history.push('/login');
           } else {
-            setLoading(false)
+            setLoading(false);
           }
         })
         .catch(() => {
-          setLoading(false)
-        }).finally(()=>{
+          setLoading(false);
+        })
+        .finally(() => {
           params.delete('email');
           params.delete('password');
           params.delete('username');

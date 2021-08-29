@@ -10,10 +10,10 @@ import { Header } from '../layouts/Header';
 
 export const Moisture: VFC = memo(() => {
   const { loading, moisture, getMoistures } = useMoistureData();
-  const { getGraphData } = useGetGraphData();
-  const [graphData, setGraphData] = useState('moisture');
+  const { getGraphData, graphData } = useGetGraphData();
+  const [graph, setGraph] = useState('moisture');
   const [period, setPeriod] = useState('all');
-  const onChangeGraphData = (event: ChangeEvent<HTMLSelectElement>) => setGraphData(event.target.value);
+  const onChangeGraphData = (event: ChangeEvent<HTMLSelectElement>) => setGraph(event.target.value);
 
   const onChangePeriod = (event: ChangeEvent<HTMLSelectElement>) => setPeriod(event.target.value);
   const onClickSetting = () => console.log(1);
@@ -21,7 +21,9 @@ export const Moisture: VFC = memo(() => {
   const today = new Date();
 
   // useEffect(() => getMoistures(param.id), []);
-  useEffect(() => getGraphData(graphData, period, param.id), [graphData, period]);
+  useEffect(() => getGraphData(graph, period, param.id), [graph, period]);
+
+  console.log(graphData);
 
   const data = [
     {
@@ -69,7 +71,7 @@ export const Moisture: VFC = memo(() => {
       <SMoisture>
         <Header />
         <main>
-          <h1>越智自動車前畑</h1>
+          <h1>きゅうり畑</h1>
           <section>
             <div className="graph" style={{ display: 'flex', justifyContent: 'space-between' }}>
               <div className="dataContainer">
@@ -117,7 +119,7 @@ export const Moisture: VFC = memo(() => {
               <AreaChart
                 width={500}
                 height={400}
-                data={data}
+                data={graphData}
                 margin={{
                   top: 10,
                   right: 30,
@@ -126,7 +128,7 @@ export const Moisture: VFC = memo(() => {
                 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
+                <XAxis dataKey="created_at" />
                 <YAxis />
                 <Tooltip />
                 <Area type="monotone" dataKey="水分量" stroke="#8884d8" fill="#8884d8" />
