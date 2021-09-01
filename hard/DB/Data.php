@@ -112,4 +112,43 @@ class Data extends Database
         return $result;
     }
     
+    /**
+     * 畑のデータを登録する
+     * @param int $moisture 土壌の水分量
+     * @param int $temperature 気温
+     * @param int $humid 湿度
+     * @param int $air_pressure 気圧
+     */
+
+    public function insertFieldData($moisture,$temperature,$humid,$air_pressure){
+        $sql = "INSERT INTO datas (moisture,$temperature,$humid,$air_pressure) VALUES ('{$moisture}','{$temperature}','{$humid}','{$air_pressure}')";
+        $stmt = $this->pdo->prepare($sql);
+        $result = $stmt->execute($input_parameters);
+        return $result;
+    }
+     
+    /**
+     * ユーザーを登録する
+     * @param string $email
+     * @param string $user_name
+     * @param string $password
+     */
+
+    public function signUpDatabase($email,$password,$username,$input_parameters = NULL){
+        $sql = "SELECT COUNT(*) FROM users WHERE email = '{$email}'";
+        $stmt = $this->pdo->prepare($sql);
+        $flag = $stmt->execute($input_parameters);
+        if(!$flag){
+            return false;
+        }
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if($result[0]["COUNT(*)"] === 1){
+            return false;
+        }else{
+            $sql = "INSERT INTO users (email,password,username) VALUES ('{$email}','{$password}','{$username}')";
+            $stmt = $this->pdo->prepare($sql);
+            $result = $stmt->execute($input_parameters);
+        }
+        return $result;
+    }
 }
