@@ -1,12 +1,24 @@
-import { memo, VFC } from 'react';
+import { memo, useEffect, VFC } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 import defaultImage from '../../images/defaultImage.jpeg';
+import { useGetField } from '../../hooks/useGetFields';
+import { useLoginUser } from '../../hooks/useLoginUser';
 
 export const LookField: VFC = memo(() => {
+  const {loading,field,getField} = useGetField();
+  const {loginUser} = useLoginUser();
+  useEffect(()=>{
+    if(loginUser !== null){
+      getField(loginUser.id ?? '1');
+    }else{
+      getField('1');
+    }
+  },[]);
+  console.log(field);
   return (
     <SLookField>
       <Header />
