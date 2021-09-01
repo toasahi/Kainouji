@@ -1,5 +1,5 @@
 import mysql from 'mysql2/promise';
-import crypto from 'crypto-js';
+import bcrypt from 'bcrypt';
 import { Setting } from '../setting';
 
 type Setting = {
@@ -189,9 +189,9 @@ export const insertField = async (data: Field) => {
   return sql;
 };
 
-export const getField = async () => {
+export const getField = async (userId:string) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = 'SELECT * From fields';
+  const sql = `SELECT * From fields where user_id = ${userId}`;
   const [rows, fields] = await conn.query(sql);
   return rows;
 };
@@ -202,18 +202,34 @@ export const insertUser = async (data: User) => {
   const [rows, fields] = await conn.query(sql);
   let status:number;
   if (Object.keys(rows).length === 0) {
-    sql = `INSERT INTO users(email,password,username) value('${data.email}','${data.password}','${data.username}')`;
+    const hashPass = bcrypt.hashSync(data.password,10);
+    sql = `INSERT INTO users(email,password,username) value('${data.email}','${hashPass}','${data.username}')`;
     await conn.query(sql);
     status = 200;
   }else{
     status = 500;
   }
   return status;
-  // const hashPassword = bcrypt.hashSync(data.password,10);
 };
 
-export const getUser = async(email:string,password:string) => {
-  console.log(email,password);
-  const shaPass = crypto.SHA256(password).toString;
-  console.log(shaPass)
+/**
+ * ユーザーのパスワードを取得
+ * @param email メールアドレス
+ * @returns rows
+ */
+
+const getPassword = async(email:string) =>{
+  const conn = await mysql.createConnection(dbSetting);
+  const sql = "SELECT password FROM users WHERE email = '${data.email}' LIMIT 1";
+  const [rows, fields] = await conn.query(sql);
+  return rows;
 }
+
+
+export const getUser = async(email:string,password:string) => {
+  const conn = await mysql.createConnection(dbSetting);
+  getPassword(email).then((result)=>{
+    // const hashPass = result.password;
+  })
+}
+

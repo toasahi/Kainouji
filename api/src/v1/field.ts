@@ -16,10 +16,10 @@ filedRouter.post('/', (req: express.Request, res: express.Response) => {
   console.log(field);
 });
 
-filedRouter.get('/', (req: express.Request, res: express.Response) => {
+filedRouter.get('/:id', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   try {
-    getField().then((result) => {
+    getField(req.params.id).then((result) => {
       res.status(200).json(result);
     });
   } catch (error) {
