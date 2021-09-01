@@ -8,12 +8,10 @@ export const useGetGraphData = () => {
   const [loading, setLoading] = useState(false);
   const getGraphData = useCallback((data: string, period: string, id: string) => {
     setLoading(true);
-    console.log(`http://localhost:4000/v1/${data}/${id}/period/${period}`);
     axios
       .get<Array<GraphData>>(`http://localhost:4000/v1/${data}/${id}/period/${period}`)
       .then((result) => {
         setGraphData(result.data);
-        console.log(result);
         setLoading(false);
       })
       .catch(() => setLoading(false));
