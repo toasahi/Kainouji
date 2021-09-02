@@ -20,7 +20,7 @@ export const useLogin = () => {
             setLoginUser(res.data);
             setLoading(false);
           } else {
-            alert('ログインに失敗しました'); 
+            alert('ログインに失敗しました');
             setLoading(false);
           }
         })
