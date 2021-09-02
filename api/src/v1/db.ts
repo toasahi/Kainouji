@@ -218,26 +218,25 @@ export const insertUser = async (data: User) => {
  * @returns rows
  */
 
-const getPassword = async(email:string) =>{
+export const getHashPassword = async(email:string) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = "SELECT password FROM users WHERE email = '${data.email}' LIMIT 1";
-  const [rows, fields] = await conn.query(sql);
-  return rows;
+  const sql = `SELECT password FROM users WHERE email = '${email}' LIMIT 1`;
+  const [rows, fields] = await conn.query(sql) as any;
+  if (Object.keys(rows).length === 0) {
+    const status = 500;
+    return status;
+  }else{
+    return rows[0].password
+  }
 }
 
 
-export const getUser = async(email:string,password:string) => {
+export const getUser = async(email:string,password:string,hashPass:string) => {
   const conn = await mysql.createConnection(dbSetting);
-  getPassword(email).then((result)=>{
-    const hashPass = JSON.stringify(result);
-  })
-  // // const hashPass = bcrypt.hashSync(password,10);
-  // // console.log(hashPass);
-  // // console.log(bcrypt.compareSync(password,hashPass));
-
-  // if(bcrypt.compareSync(password,hashPass)){
-  //   const sql = `SELECT id,email,password,username FROM users where email = '${email}'`;
-  //   const [rows, fields] = await conn.query(sql);
-  // }
+  if(bcrypt.compareSync(password,hashPass)){
+    const sql = `SELECT id,email,username FROM users where email = '${email}'`;
+    const [rows, fields] = await conn.query(sql);
+    return rows;
+  }
 }
 
