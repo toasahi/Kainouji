@@ -11,6 +11,7 @@ import { useLoginUser } from '../../hooks/useLoginUser';
 export const LookField: VFC = memo(() => {
   const {loading,field,getField} = useGetField();
   const {loginUser} = useLoginUser();
+  console.log(loginUser);
   useEffect(()=>{
     if(loginUser !== null){
       getField(loginUser.id ?? '1');

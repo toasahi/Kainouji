@@ -12,7 +12,7 @@ export const useSingUp = () => {
   const singUp = useCallback(
     (data: User) => {
       params.append('email', data.email);
-      params.append('password', data.password);
+      params.append('password', data.password!!);
       params.append('username', data.username!!);
       setLoading(true);
       axios
