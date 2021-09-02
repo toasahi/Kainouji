@@ -27,7 +27,7 @@ userRouter.get('/email/:email/password/:password', (req: express.Request, res: e
         res.status(200).json(result);
       })
     }else{
-      res.status(500).json({ message: 'NO', status: result })
+      res.status(500).json({status: result});
     }
   })
 });

@@ -234,7 +234,7 @@ export const getHashPassword = async(email:string) => {
 export const getUser = async(email:string,password:string,hashPass:string) => {
   const conn = await mysql.createConnection(dbSetting);
   if(bcrypt.compareSync(password,hashPass)){
-    const sql = `SELECT id,email,username FROM users where email = '${email}'`;
+    const sql = `SELECT id,email,username,status FROM users where email = '${email}'`;
     const [rows, fields] = await conn.query(sql);
     return rows;
   }

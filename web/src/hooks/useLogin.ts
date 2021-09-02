@@ -16,10 +16,13 @@ export const useLogin = () => {
       axios
         .get<User>(`http://localhost:4000/v1/user/email/${data.email}/password/${data.password}`)
         .then((res) => {
-          // if (res.data) {
-          //   setLoginUser(res.data);
-          // } else {
-          // }
+          if (res.data) {
+            setLoginUser(res.data);
+            setLoading(false);
+          } else {
+            alert('ログインに失敗しました'); 
+            setLoading(false);
+          }
         })
         .catch(() => {});
     },
