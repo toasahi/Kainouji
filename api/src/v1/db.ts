@@ -229,7 +229,15 @@ const getPassword = async(email:string) =>{
 export const getUser = async(email:string,password:string) => {
   const conn = await mysql.createConnection(dbSetting);
   getPassword(email).then((result)=>{
-    // const hashPass = result.password;
+    const hashPass = JSON.stringify(result);
   })
+  // // const hashPass = bcrypt.hashSync(password,10);
+  // // console.log(hashPass);
+  // // console.log(bcrypt.compareSync(password,hashPass));
+
+  // if(bcrypt.compareSync(password,hashPass)){
+  //   const sql = `SELECT id,email,password,username FROM users where email = '${email}'`;
+  //   const [rows, fields] = await conn.query(sql);
+  // }
 }
 
