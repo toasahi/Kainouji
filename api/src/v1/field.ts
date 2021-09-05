@@ -6,6 +6,7 @@ const filedRouter = express.Router();
 filedRouter.post('/', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   const field: Field = req.body;
+  console.log(field);
   try {
     insertField(field).then(() => {
       res.status(200).json({ message: 'OK', status: 200 });
@@ -13,7 +14,6 @@ filedRouter.post('/', (req: express.Request, res: express.Response) => {
   } catch (error) {
     res.status(400).json({ message: error.message, status: 404 });
   }
-  console.log(field);
 });
 
 filedRouter.get('/:id', (req: express.Request, res: express.Response) => {

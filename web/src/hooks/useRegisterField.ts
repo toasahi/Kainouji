@@ -17,10 +17,10 @@ export const useRegisterField = () => {
     params.append('field_name', data.fieldName);
     params.append('vegetable_id', data.vegetable);
     params.append('setting_date', data.settingDay);
-    params.append('image_url', data.imageUrl || '');
+    params.append('image_url', data.imageUrl ?? '');
     setLoading(true);
     axios
-      .post('http://localhost:4000/v1/field', params, {
+      .post<State>('http://localhost:4000/v1/field', params, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
@@ -32,6 +32,11 @@ export const useRegisterField = () => {
       .catch((error) => {
         alert('登録失敗');
         setLoading(false);
+      }).finally(()=>{
+        params.delete('field_name');
+        params.delete('vegetable_id');
+        params.delete('setting_date');
+        params.delete('image_url');
       });
     console.log(data);
   }, []);

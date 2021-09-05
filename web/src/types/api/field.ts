@@ -5,7 +5,7 @@ export type Field = {
   threshold_id: number;
   setting_date: string;
   place: string;
-  imageUrl: string;
+  imageUrl: File;
   created_at: string;
   updated_at: string;
 };
