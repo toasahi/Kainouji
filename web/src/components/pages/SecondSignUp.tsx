@@ -48,7 +48,7 @@ export const SecondSignUp = memo(() => {
             <ul className="account-nav">
               <li className="account-nav-item">
                 <label>アカウントをお持ちですか？</label>
-                <Link to="/login">ログイン</Link>
+                <Link to="/">ログイン</Link>
               </li>
             </ul>
           </nav>
@@ -90,7 +90,7 @@ const SSecondSignUp = styled.div`
         text-align: center;
         button {
           margin: 0 auto;
-          margin-top: 20px;
+          margin-top: 30px;
 
           &:after {
             content: '';
@@ -105,6 +105,7 @@ const SSecondSignUp = styled.div`
         display: flex;
         margin-top: 20px;
         padding: 10px 20px;
+        justify-content: center;
 
         .account-nav-item {
           a {

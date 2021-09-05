@@ -27,7 +27,7 @@ export const LookField: VFC = memo(() => {
         <section>
           <h1>畑を見る</h1>
           <SContainer>
-            <Link to="lookfield/moisture/1">
+            <Link to="lookfield/graph/1">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
@@ -36,7 +36,7 @@ export const LookField: VFC = memo(() => {
                 </div>
               </div>
             </Link>
-            <Link to="lookfield/moisture/2">
+            <Link to="lookfield/graph/2">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
@@ -45,7 +45,7 @@ export const LookField: VFC = memo(() => {
                 </div>
               </div>
             </Link>
-            <Link to="lookfield/moisture/3">
+            <Link to="lookfield/graph/3">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
@@ -54,7 +54,7 @@ export const LookField: VFC = memo(() => {
                 </div>
               </div>
             </Link>
-            <Link to="lookfield/moisture">
+            <Link to="lookfield/graph">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
@@ -63,7 +63,7 @@ export const LookField: VFC = memo(() => {
                 </div>
               </div>
             </Link>
-            <Link to="lookfield/moisture">
+            <Link to="lookfield/graph">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
@@ -72,7 +72,7 @@ export const LookField: VFC = memo(() => {
                 </div>
               </div>
             </Link>
-            <Link to="lookfield/moisture">
+            <Link to="lookfield/graph">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
@@ -81,7 +81,7 @@ export const LookField: VFC = memo(() => {
                 </div>
               </div>
             </Link>
-            <Link to="lookfield/moisture">
+            <Link to="lookfield/graph">
               <div className="filedContent">
                 <img src={defaultImage} />
                 <div>

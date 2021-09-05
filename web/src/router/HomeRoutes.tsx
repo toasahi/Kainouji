@@ -12,12 +12,13 @@ import { SecondaryConfirm } from '../components/pages/SecondaryConfirm';
 import { SignUp } from '../components/pages/SignUp';
 import { SecondLogin } from '../components/pages/SecondLogin';
 import { SecondSignUp } from '../components/pages/SecondSignUp';
+import { Graph } from '../components/pages/Graph';
 
 export const homeRoutes = [
   {
     path: '/',
     exact: true,
-    children: <SecondSignUp />,
+    children: <SecondLogin />,
   },
   {
     path: '/lookfield',
@@ -25,9 +26,9 @@ export const homeRoutes = [
     children: <LookField />,
   },
   {
-    path: '/lookfield/moisture/:id',
+    path: '/lookfield/graph/:id',
     exact: false,
-    children: <Moisture />,
+    children: <Graph />,
   },
   {
     path: '/registerfield',
@@ -45,12 +46,12 @@ export const homeRoutes = [
     children: <Weather />,
   },
   {
-    path: '/login',
+    path: '/signup',
     exact: true,
-    children: <SecondLogin />,
+    children: <SecondSignUp />,
   },
   {
-    path: '/signup',
+    path: '/user',
     exact: true,
     children: <SecondSignUp />,
   },

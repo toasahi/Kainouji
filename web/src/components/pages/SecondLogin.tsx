@@ -43,7 +43,7 @@ export const SecondLogin: VFC = memo(() => {
             <nav>
               <ul className="account-nav">
                 <li className="account-nav-item">
-                  <Link to="/signup">ユーザー登録</Link>
+                  <Link to="/signup">アカウント作成</Link>
                 </li>
                 <li className="account-nav-item">
                   <Link to="">パスワードを忘れましたか？</Link>
@@ -89,7 +89,7 @@ const SSecondLogin = styled.div`
         text-align: center;
         button {
           margin: 0 auto;
-          margin-top: 20px;
+          margin-top: 30px;
 
           &:after {
             content: '';
