@@ -35,13 +35,13 @@ export const SecondaryConfirm: VFC = memo(() => {
         imageUrl: state.imageUrl ?? '',
       },
     });
-  // const onClickRegister = () => registerField(state);
-  // const { registerField, loading, success } = useRegisterField();
+  const onClickRegister = () => registerField(state.data);
+  const { registerField, loading, success } = useRegisterField();
 
   const onChangeTest = () => console.log(1);
   const state = history.location.state;
 
-  console.log(state);
+  console.log(state.imageUrl);
 
   return (
     <SConfirm>

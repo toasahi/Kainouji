@@ -13,6 +13,7 @@ import { SignUp } from '../components/pages/SignUp';
 import { SecondLogin } from '../components/pages/SecondLogin';
 import { SecondSignUp } from '../components/pages/SecondSignUp';
 import { Graph } from '../components/pages/Graph';
+import { User } from '../components/pages/User';
 
 export const homeRoutes = [
   {
@@ -53,7 +54,7 @@ export const homeRoutes = [
   {
     path: '/user',
     exact: true,
-    children: <SecondSignUp />,
+    children: <User />,
   },
   {
     path: '/*',
