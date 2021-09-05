@@ -13,7 +13,7 @@ class Data extends Database
 
     public function insertSoilMoisture($moisture, $input_parameters = NULL)
     {
-        $sql = "INSERT INTO soil_moistures (moisture) VALUES ('{$moisture}')";
+        $sql = "INSERT INTO soil_moistures (moisture,field_id) VALUES ('{$moisture}',1)";
         $stmt = $this->pdo->prepare($sql);
         $result = $stmt->execute($input_parameters);
         return $result;
@@ -118,37 +118,13 @@ class Data extends Database
      * @param int $temperature 気温
      * @param int $humid 湿度
      * @param int $air_pressure 気圧
+     * @param int $field_id 畑の識別ID
      */
 
-    public function insertFieldData($moisture,$temperature,$humid,$air_pressure){
-        $sql = "INSERT INTO datas (moisture,$temperature,$humid,$air_pressure) VALUES ('{$moisture}','{$temperature}','{$humid}','{$air_pressure}')";
+    public function insertFieldData($moisture,$temperature,$humidity,$air_pressure,$field_id,$input_parameters=NULL){
+        $sql = "INSERT INTO datas (moisture,temperature,humidity,air_pressure,field_id) VALUES ('{$moisture}','{$temperature}','{$humidity}','{$air_pressure}','{$field_id}')";
         $stmt = $this->pdo->prepare($sql);
         $result = $stmt->execute($input_parameters);
-        return $result;
-    }
-     
-    /**
-     * ユーザーを登録する
-     * @param string $email
-     * @param string $user_name
-     * @param string $password
-     */
-
-    public function signUpDatabase($email,$password,$username,$input_parameters = NULL){
-        $sql = "SELECT COUNT(*) FROM users WHERE email = '{$email}'";
-        $stmt = $this->pdo->prepare($sql);
-        $flag = $stmt->execute($input_parameters);
-        if(!$flag){
-            return false;
-        }
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        if($result[0]["COUNT(*)"] === 1){
-            return false;
-        }else{
-            $sql = "INSERT INTO users (email,password,username) VALUES ('{$email}','{$password}','{$username}')";
-            $stmt = $this->pdo->prepare($sql);
-            $result = $stmt->execute($input_parameters);
-        }
         return $result;
     }
 }
