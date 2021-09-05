@@ -19,6 +19,7 @@ export const useLogin = () => {
           if (res.data) {
             setLoginUser(res.data);
             setLoading(false);
+            history.push('/lookfield');
           } else {
             alert('ログインに失敗しました');
             setLoading(false);

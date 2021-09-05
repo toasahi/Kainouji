@@ -10,12 +10,14 @@ import { Confirm } from '../components/pages/Confirm';
 import { Register } from '../components/pages/Register';
 import { SecondaryConfirm } from '../components/pages/SecondaryConfirm';
 import { SignUp } from '../components/pages/SignUp';
+import { SecondLogin } from '../components/pages/SecondLogin';
+import { SecondSignUp } from '../components/pages/SecondSignUp';
 
 export const homeRoutes = [
   {
     path: '/',
     exact: true,
-    children: <Home />,
+    children: <SecondSignUp />,
   },
   {
     path: '/lookfield',
@@ -45,12 +47,12 @@ export const homeRoutes = [
   {
     path: '/login',
     exact: true,
-    children: <Login />,
+    children: <SecondLogin />,
   },
   {
     path: '/signup',
     exact: true,
-    children: <SignUp />,
+    children: <SecondSignUp />,
   },
   {
     path: '/*',

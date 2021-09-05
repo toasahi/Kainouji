@@ -1,7 +1,7 @@
 import { memo, useState, VFC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { Color, Responsive,Font } from '../../constant/BaseCss';
+import { Color, Responsive, Font } from '../../constant/BaseCss';
 import { useLogin } from '../../hooks/useLogin';
 import { IFormValues } from '../../types/form/form';
 import { PrimaryButton } from '../buttons/PrimaryButton';
