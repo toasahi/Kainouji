@@ -18,13 +18,28 @@ export const SecondInput: VFC<Props> = memo((props) => {
   const { label, register, required, inputType, placeHolder, onChange, value } = props;
   return (
     <>
-      <SInput
-        type={inputType}
-        id={label}
-        {...register(label, { required })}
-        onChange={onChange}
-        defaultValue={value || ''}
-      />
+      {inputType !== 'file' ? (
+        <>
+          <SInput
+            type={inputType}
+            id={label}
+            {...register(label, { required })}
+            onChange={onChange}
+            defaultValue={value || ''}
+          />
+        </>
+      ) : (
+        <>
+          <SInput
+            type={inputType}
+            id={label}
+            {...register(label, { required })}
+            onChange={onChange}
+            defaultValue={value ?? ''}
+            accept='.jpg,image/jpeg,image/png'
+          />
+        </>
+      )}
     </>
   );
 });

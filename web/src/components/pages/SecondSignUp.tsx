@@ -75,7 +75,6 @@ const SSecondSignUp = styled.div`
       label {
         line-height: 3;
         opacity: 75%;
-        font-size:${Font.textSm};
       }
 
       .button-container {
@@ -106,6 +105,9 @@ const SSecondSignUp = styled.div`
         justify-content: center;
 
         .account-nav-item {
+          label{
+            font-size:${Font.textSm};
+          }
           a {
             margin-left: 10px;
             opacity: 50%;
