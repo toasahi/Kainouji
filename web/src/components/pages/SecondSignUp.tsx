@@ -59,20 +59,11 @@ export const SecondSignUp = memo(() => {
 });
 
 const SSecondSignUp = styled.div`
-  main {
-    border: 1px solid #e8e6e6;
-
-    span {
-      color: #ed4956;
-      font-size: ${Font.textSm};
-      line-height: 2;
-    }
-  }
-  @media (min-width: ${Responsive.md}) {
     main {
       margin: 0 auto;
+      border: 1px solid #e8e6e6;
       margin-top: 50px;
-      width: 30%;
+      width: 65%;
       background-color: #fefefe;
       padding: 30px 20px;
       border-radius: 10px;
@@ -84,6 +75,7 @@ const SSecondSignUp = styled.div`
       label {
         line-height: 3;
         opacity: 75%;
+        font-size:${Font.textSm};
       }
 
       .button-container {
@@ -101,6 +93,12 @@ const SSecondSignUp = styled.div`
         }
       }
 
+      span {
+        color: #ed4956;
+        font-size: ${Font.textSm};
+        line-height: 2;
+      }
+
       .account-nav {
         display: flex;
         margin-top: 20px;
@@ -115,6 +113,16 @@ const SSecondSignUp = styled.div`
               opacity: 100%;
             }
           }
+        }
+      }
+    }
+
+    @media(min-width:${Responsive.sm}){
+      main{
+        width:35%;
+
+        label{
+          font-size:${Font.textBase};
         }
       }
     }

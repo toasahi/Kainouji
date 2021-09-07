@@ -58,23 +58,20 @@ export const SecondLogin: VFC = memo(() => {
 });
 
 const SSecondLogin = styled.div`
-  main {
-    border: 1px solid #e8e6e6;
-
-    span {
-      color: #ed4956;
-      font-size: ${Font.textSm};
-      line-height: 2;
-    }
-  }
-  @media (min-width: ${Responsive.md}) {
     main {
       margin: 0 auto;
       margin-top: 50px;
-      width: 30%;
+      width: 65%;
       background-color: #fefefe;
       padding: 30px 20px;
       border-radius: 10px;
+      border: 1px solid #e8e6e6;
+
+      span {
+        color: #ed4956;
+        font-size: ${Font.textSm};
+        line-height: 2;
+      }
 
       .user-info-container {
         margin-top: 30px;
@@ -90,6 +87,8 @@ const SSecondLogin = styled.div`
         button {
           margin: 0 auto;
           margin-top: 30px;
+          text-align:center;
+          padding-left:0;
 
           &:after {
             content: '';
@@ -101,14 +100,13 @@ const SSecondLogin = styled.div`
       }
 
       .account-nav {
-        display: flex;
-        justify-content: space-around;
         margin-top: 20px;
         padding: 10px 20px;
 
         .account-nav-item {
           a {
             opacity: 50%;
+            padding-top:10px;
             &:hover {
               opacity: 100%;
             }
@@ -116,5 +114,22 @@ const SSecondLogin = styled.div`
         }
       }
     }
-  }
+
+    @media(min-width:${Responsive.sm}){
+      main{
+        width:30%;
+      .account-nav-item{
+        a{
+          font-size:${Font.textBase};
+        }
+      }
+    }
+    }
+
+    @media(min-width: ${Responsive.md}){
+      .account-nav {
+        display: flex;
+        justify-content: space-around;
+      }
+    }
 `;

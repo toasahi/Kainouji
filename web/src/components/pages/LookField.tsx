@@ -109,12 +109,13 @@ const SLookField = styled.div`
 
     section {
       text-align: center;
+      padding:10px;
     }
 
     h1 {
       font-size: ${Font.text3xl};
       padding: 5px;
-      margin-top: 75px;
+      margin-top:20px;
       margin-bottom: 30px;
       position: relative;
       font-weight: ${FontWeight.fontSemiBold};

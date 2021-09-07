@@ -71,7 +71,7 @@ export const Graph: VFC = memo(() => {
         <main>
           <h1>きゅうり畑</h1>
           <section>
-            <div className="graph" style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div className="graph" >
               <div className="dataContainer">
                 <select onChange={onChangeGraphData}>
                   <option value="moisture">水分量</option>
@@ -115,8 +115,8 @@ export const Graph: VFC = memo(() => {
             </div>
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart
-                width={500}
-                height={400}
+                width={300}
+                height={300}
                 data={graphData}
                 margin={{
                   top: 10,
@@ -149,15 +149,15 @@ const SGraph = styled.div`
 
   main {
     width: 100%;
+    padding:5px;
 
     section {
       margin: 0 auto;
-      margin-top: 100px;
+      margin-top:45px;
+      width:100%;
 
-      .graph {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 15px;
+      .graph{
+        margin-bottom:10px;
       }
 
       select,
@@ -176,8 +176,14 @@ const SGraph = styled.div`
         }
       }
 
+      .dataContainer {
+        display: flex;
+        justify-content: space-around;
+      }
+
       .today {
         margin-top: 30px;
+        text-align:right;
       }
     }
 
@@ -206,7 +212,18 @@ const SGraph = styled.div`
         bottom: 0;
         opacity: 25%;
         height: 10px;
+        width:40%;
+        left:29%;
       }
+    }
+  }
+
+  @media(min-width:${Responsive.sm}){
+    
+    .graph {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
     }
   }
 
@@ -217,6 +234,9 @@ const SGraph = styled.div`
 
     main {
       width: 80%;
+      section{
+        margin-top: 100px;
+      }
 
       .dataContainer {
         width: 350px;
