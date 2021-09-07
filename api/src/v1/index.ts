@@ -1,5 +1,6 @@
 import express from 'express';
 import { filedRouter } from './field';
+import { graphRouter } from './graph';
 import { moistureRouter } from './moisture';
 import { temperatureRouter } from './temperature';
 import { thresholdRouter } from './threshold';
@@ -15,5 +16,6 @@ router.use('/vegetable', vegetableRouter);
 router.use('/field', filedRouter);
 router.use('/temperature', temperatureRouter);
 router.use('/user', userRouter);
+router.use('/graph',graphRouter);
 
 export { router };

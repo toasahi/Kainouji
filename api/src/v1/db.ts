@@ -240,3 +240,20 @@ export const getUser = async(email:string,password:string,hashPass:string) => {
   }
 }
 
+export const getGraphDatas = async(id?: string, period?: string) =>{
+  const conn = await mysql.createConnection(dbSetting);
+  let sql = '';
+  switch (period) {
+    case 'all':
+      sql = `SELECT moisture as 水分量,humidity as 湿度,temperature as 気温,air_pressure as 気圧,created_at From datas where field_id = ${id}`;
+      break;
+    case 'one':
+      sql = `SELECT moisture as 水分量,humidity as 湿度,temperature as 気温,air_pressure as 気圧,created_at From datas where field_id = ${id} && updated_at >= (NOW() - INTERVAL 7 DAY)`;
+      break;
+    case 'two':
+      sql = `SELECT moisture as 水分量,humidity as 湿度,temperature as 気温,air_pressure as 気圧,created_at From datas where field_id = ${id} && updated_at >= (NOW() - INTERVAL 14 DAY)`;
+      break;
+  }
+  const [rows, fields] = await conn.query(sql);
+  return rows;
+}
