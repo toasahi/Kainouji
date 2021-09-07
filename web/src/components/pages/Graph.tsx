@@ -25,12 +25,12 @@ export const Graph: VFC = memo(() => {
 
   return (
     <>
-      {loading ? (
+      {/* {loading ? (
         <div className="spinner-container" style={{ textAlign: 'center', marginTop: '300px' }}>
           <PrimarySpinner />
         </div>
       ) : (
-        <>
+        <> */}
           <SGraph>
             <Header />
             <main>
@@ -100,8 +100,8 @@ export const Graph: VFC = memo(() => {
               </section>
             </main>
           </SGraph>
-        </>
-      )}
+        {/* </>
+      )} */}
     </>
   );
 });
