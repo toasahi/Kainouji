@@ -32,7 +32,8 @@ export const useRegisterField = () => {
       .catch((error) => {
         alert('登録失敗');
         setLoading(false);
-      }).finally(()=>{
+      })
+      .finally(() => {
         params.delete('field_name');
         params.delete('vegetable_id');
         params.delete('setting_date');

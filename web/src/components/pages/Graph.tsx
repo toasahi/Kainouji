@@ -8,8 +8,8 @@ import { useGetGraphData } from '../../hooks/useGetGraphData';
 import { Header } from '../layouts/Header';
 
 export const Graph: VFC = memo(() => {
-  const { getGraphData, graphData } = useGetGraphData();
-  const [graph, setGraph] = useState('moisture');
+  const { getGraphData, graphData, loading } = useGetGraphData();
+  const [graph, setGraph] = useState('水分量');
   const [period, setPeriod] = useState('all');
   const onChangeGraphData = (event: ChangeEvent<HTMLSelectElement>) => setGraph(event.target.value);
 
@@ -19,65 +19,27 @@ export const Graph: VFC = memo(() => {
   const today = new Date();
 
   // useEffect(() => getMoistures(param.id), []);
-  useEffect(() => getGraphData(graph, period, param.id), [graph, period]);
+  // useEffect(() => getGraphData(graph, period, param.id), [graph, period]);
+  useEffect(() => getGraphData(period, param.id), [period]);
 
-  console.log(graphData);
-
-  const data = [
-    {
-      name: '2010年',
-      水分量: 4000,
-    },
-    {
-      name: '2011年',
-      水分量: 3000,
-    },
-    {
-      name: '2012年',
-      水分量: 2000,
-    },
-    {
-      name: '2013年',
-      水分量: 2780,
-    },
-    {
-      name: '2014年',
-      水分量: 1890,
-    },
-    {
-      name: '2015年',
-      水分量: 2390,
-    },
-    {
-      name: '2016年',
-      水分量: 3490,
-    },
-    {
-      name: '2017年',
-      水分量: 5700,
-    },
-    {
-      name: '2018年',
-      水分量: 5490,
-    },
-  ];
   return (
     <>
       {/* {loading ? (
         <h1>水分量のページです</h1>
-      ) : ( */}
+      ) : (
+        <> */}
       <SGraph>
         <Header />
         <main>
           <h1>きゅうり畑</h1>
           <section>
-            <div className="graph" >
+            <div className="graph">
               <div className="dataContainer">
                 <select onChange={onChangeGraphData}>
-                  <option value="moisture">水分量</option>
-                  <option value="atmosphere">気圧</option>
-                  <option value="temperature">気温</option>
-                  <option value="humidity">湿度</option>
+                  <option value="水分量">水分量</option>
+                  <option value="気圧">気圧</option>
+                  <option value="気温">気温</option>
+                  <option value="湿度">湿度</option>
                 </select>
                 <select onChange={onChangePeriod}>
                   <option value="all">全期間</option>
@@ -129,13 +91,13 @@ export const Graph: VFC = memo(() => {
                 <XAxis dataKey="created_at" />
                 <YAxis />
                 <Tooltip />
-                <Area type="monotone" dataKey="水分量" stroke="#8884d8" fill="#8884d8" />
+                <Area type="monotone" dataKey={graph} stroke="#8884d8" fill="#8884d8" />
               </AreaChart>
             </ResponsiveContainer>
           </section>
         </main>
       </SGraph>
-      {/* )} */}
+      {/* </>)} */}
     </>
   );
 });
@@ -149,15 +111,15 @@ const SGraph = styled.div`
 
   main {
     width: 100%;
-    padding:5px;
+    padding: 5px;
 
     section {
       margin: 0 auto;
-      margin-top:45px;
-      width:100%;
+      margin-top: 45px;
+      width: 100%;
 
-      .graph{
-        margin-bottom:10px;
+      .graph {
+        margin-bottom: 10px;
       }
 
       select,
@@ -183,7 +145,7 @@ const SGraph = styled.div`
 
       .today {
         margin-top: 30px;
-        text-align:right;
+        text-align: right;
       }
     }
 
@@ -212,14 +174,13 @@ const SGraph = styled.div`
         bottom: 0;
         opacity: 25%;
         height: 10px;
-        width:40%;
-        left:29%;
+        width: 40%;
+        left: 29%;
       }
     }
   }
 
-  @media(min-width:${Responsive.sm}){
-    
+  @media (min-width: ${Responsive.sm}) {
     .graph {
       display: flex;
       justify-content: space-between;
@@ -234,7 +195,7 @@ const SGraph = styled.div`
 
     main {
       width: 80%;
-      section{
+      section {
         margin-top: 100px;
       }
 

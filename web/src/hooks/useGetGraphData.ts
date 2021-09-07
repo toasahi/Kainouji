@@ -1,15 +1,14 @@
 import axios from 'axios';
 import { useCallback, useState } from 'react';
-import { GraphData } from '../types/api/graphdata';
-import { Moisture } from '../types/api/moisture';
+import { Graph } from '../types/api/graphdata';
 
 export const useGetGraphData = () => {
-  const [graphData, setGraphData] = useState<Array<GraphData>>([]);
+  const [graphData, setGraphData] = useState<Array<Graph>>([]);
   const [loading, setLoading] = useState(false);
-  const getGraphData = useCallback((data: string, period: string, id: string) => {
+  const getGraphData = useCallback((period: string, id: string) => {
     setLoading(true);
     axios
-      .get<Array<GraphData>>(`http://localhost:4000/v1/${data}/${id}/period/${period}`)
+      .get<Array<Graph>>(`http://localhost:4000/v1/graph/${id}/period/${period}`)
       .then((result) => {
         setGraphData(result.data);
         setLoading(false);
