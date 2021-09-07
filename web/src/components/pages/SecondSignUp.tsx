@@ -119,7 +119,7 @@ const SSecondSignUp = styled.div`
 
     @media(min-width:${Responsive.sm}){
       main{
-        width:35%;
+        width:30%;
 
         label{
           font-size:${Font.textBase};

@@ -30,6 +30,7 @@ export const useSingUp = () => {
           }
         })
         .catch(() => {
+          alert('登録に失敗しました');
           setLoading(false);
         })
         .finally(() => {

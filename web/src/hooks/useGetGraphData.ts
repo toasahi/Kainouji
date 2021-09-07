@@ -9,8 +9,8 @@ export const useGetGraphData = () => {
     setLoading(true);
     axios
       .get<Array<Graph>>(`http://localhost:4000/v1/graph/${id}/period/${period}`)
-      .then((result) => {
-        setGraphData(result.data);
+      .then((res) => {
+        setGraphData(res.data);
         setLoading(false);
       })
       .catch(() => setLoading(false));

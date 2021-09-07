@@ -16,7 +16,7 @@ export const useLogin = () => {
       axios
         .get<User>(`http://localhost:4000/v1/user/email/${data.email}/password/${data.password}`)
         .then((res) => {
-          if (res.data) {
+          if (res.data.stauts === '200') {
             setLoginUser(res.data);
             setLoading(false);
             history.push('/lookfield');
@@ -25,7 +25,7 @@ export const useLogin = () => {
             setLoading(false);
           }
         })
-        .catch(() => {});
+        .catch((error) => alert('ログインに失敗しました'));
     },
     [history, setLoginUser],
   );
