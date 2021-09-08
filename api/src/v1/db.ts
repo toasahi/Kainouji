@@ -24,6 +24,7 @@ export type Field = {
   vegetable_id: string;
   setting_date: string;
   image_path?: string;
+  image?: FileList;
 };
 
 export type User = {
@@ -182,14 +183,19 @@ export const insertVegetables = async () => {
 
 export const insertField = async (data: Field) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = `INSERT INTO fields(field_name,vegetable_id,setting_date,image_path) value('${data.field_name}','${
-    data.vegetable_id
-  }','${data.setting_date}','${data.image_path || ''}')`;
+  let sql = '';
+  if (data.image !== undefined) {
+    sql = `INSERT INTO fields(field_name,vegetable_id,setting_date,image_path) value('${data.field_name}','${
+      data.vegetable_id
+    }','${data.setting_date}','${data.image[0].name ?? ''}')`;
+  } else {
+    sql = `INSERT INTO fields(field_name,vegetable_id,setting_date) value('${data.field_name}','${data.vegetable_id}','${data.setting_date}')`;
+  }
   const [rows, fields] = await conn.query(sql);
-  return sql;
+  return rows;
 };
 
-export const getField = async (userId:string) => {
+export const getField = async (userId: string) => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = `SELECT * From fields where user_id = ${userId}`;
   const [rows, fields] = await conn.query(sql);
@@ -200,13 +206,13 @@ export const insertUser = async (data: User) => {
   const conn = await mysql.createConnection(dbSetting);
   let sql = `SELECT * FROM users WHERE email = '${data.email}' LIMIT 1`;
   const [rows, fields] = await conn.query(sql);
-  let status:number;
+  let status: number;
   if (Object.keys(rows).length === 0) {
-    const hashPass = bcrypt.hashSync(data.password,10);
+    const hashPass = bcrypt.hashSync(data.password, 10);
     sql = `INSERT INTO users(email,password,username) value('${data.email}','${hashPass}','${data.username}')`;
     await conn.query(sql);
     status = 200;
-  }else{
+  } else {
     status = 500;
   }
   return status;
@@ -218,29 +224,28 @@ export const insertUser = async (data: User) => {
  * @returns rows
  */
 
-export const getHashPassword = async(email:string) => {
+export const getHashPassword = async (email: string) => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = `SELECT password FROM users WHERE email = '${email}' LIMIT 1`;
-  const [rows, fields] = await conn.query(sql) as any;
+  const [rows, fields] = (await conn.query(sql)) as any;
   if (Object.keys(rows).length === 0) {
     const status = 500;
     return status;
-  }else{
-    return rows[0].password
+  } else {
+    return rows[0].password;
   }
-}
+};
 
-
-export const getUser = async(email:string,password:string,hashPass:string) => {
+export const getUser = async (email: string, password: string, hashPass: string) => {
   const conn = await mysql.createConnection(dbSetting);
-  if(bcrypt.compareSync(password,hashPass)){
+  if (bcrypt.compareSync(password, hashPass)) {
     const sql = `SELECT id,email,username,status FROM users where email = '${email}'`;
     const [rows, fields] = await conn.query(sql);
     return rows;
   }
-}
+};
 
-export const getGraphDatas = async(id?: string, period?: string) =>{
+export const getGraphDatas = async (id?: string, period?: string) => {
   const conn = await mysql.createConnection(dbSetting);
   let sql = '';
   switch (period) {
@@ -256,4 +261,4 @@ export const getGraphDatas = async(id?: string, period?: string) =>{
   }
   const [rows, fields] = await conn.query(sql);
   return rows;
-}
+};

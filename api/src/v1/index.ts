@@ -16,6 +16,6 @@ router.use('/vegetable', vegetableRouter);
 router.use('/field', filedRouter);
 router.use('/temperature', temperatureRouter);
 router.use('/user', userRouter);
-router.use('/graph',graphRouter);
+router.use('/graph', graphRouter);
 
 export { router };

@@ -7,17 +7,24 @@ type State = {
   settingDay: string;
   settingPlace?: string;
   imageUrl?: string;
+  image?: FileList;
 };
 
 export const useRegisterField = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const params = new URLSearchParams();
+  // const params = new FormData();
   const registerField = useCallback((data: State) => {
     params.append('field_name', data.fieldName);
     params.append('vegetable_id', data.vegetable);
     params.append('setting_date', data.settingDay);
     params.append('image_url', data.imageUrl ?? '');
+    // if(data.image !== undefined){
+    //   params.append('image',data.image[0]);
+    // }else{
+    //   params.append('image','');
+    // }
     setLoading(true);
     axios
       .post<State>('http://localhost:4000/v1/field', params, {
