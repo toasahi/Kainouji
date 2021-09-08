@@ -4,14 +4,11 @@ import styled from 'styled-components';
 import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 import { useGetVegitables } from '../../hooks/useGetVegitables';
 import { Header } from '../layouts/Header';
-import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
-import { useGetThreshold } from '../../hooks/useGetThreshold';
 import { SecondInput } from '../Inputs/SecondInput';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IFormValues } from '../../types/form/form';
-import addImage from '../../images/addImage.png';
 
 type State = {
   data?: IFormValues;
@@ -39,6 +36,7 @@ export const SecondRegisterField: VFC = memo(() => {
     handleSubmit,
     formState: { errors },
   } = useForm<IFormValues>();
+
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
     history.push({
       pathname: '/registerfield/confirm',
@@ -99,11 +97,11 @@ export const SecondRegisterField: VFC = memo(() => {
               </section>
 
               <div className="item">
-                <label htmlFor="fieldImage">畑の画像</label>
+                <label htmlFor="image">畑の画像</label>
                 <div style={{ height: '160px' }}>
                   <SecondInput
                     inputType="file"
-                    label="fieldImage"
+                    label="image"
                     register={register}
                     onChange={onChangeProcessImage}
                     required={false}

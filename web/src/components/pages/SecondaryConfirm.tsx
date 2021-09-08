@@ -41,8 +41,6 @@ export const SecondaryConfirm: VFC = memo(() => {
   const onChangeTest = () => console.log(1);
   const state = history.location.state;
 
-  console.log(state.imageUrl);
-
   return (
     <SConfirm>
       <Header />
@@ -83,14 +81,14 @@ export const SecondaryConfirm: VFC = memo(() => {
               </div>
             </section>
             <div className="item">
-              <label htmlFor="fieldImage">畑の画像</label>
-              <label htmlFor="fieldImage">
+              <label htmlFor="image">畑の画像</label>
+              <label htmlFor="image">
                 <img src={state.imageUrl} style={{ width: '100%', height: '180px' }} />
               </label>
             </div>
             <section className="buttonContainer">
               <PrimaryButton children="前に戻る" position="before" onClick={onClickBack} />
-              <PrimaryButton children="登録する" position="after" onClick={() => console.log()} />
+              <PrimaryButton children="登録する" position="after" onClick={onClickRegister} />
             </section>
           </div>
         </SCard>

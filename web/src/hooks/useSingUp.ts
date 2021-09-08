@@ -24,7 +24,7 @@ export const useSingUp = () => {
         .then((res) => {
           if (res.data.status === 200) {
             setLoading(false);
-            history.push('/login');
+            history.push('/');
           } else {
             setLoading(false);
           }

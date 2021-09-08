@@ -25,17 +25,12 @@ export const RegisterField: VFC = memo(() => {
     });
   const [fieldName, setFieldName] = useState('');
   const [vegetable, setVegetable] = useState('');
-  const [waterTiming, setWaterTiming] = useState('');
   const [settingDay, setSettingDay] = useState('');
-  const [settingPlace, setSettingPlace] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const { getVegetables, loading, vegetableLists } = useGetVegitables();
-  const { getThreshold, thresholds } = useGetThreshold();
   const onChangeFieldName = (event: ChangeEvent<HTMLInputElement>) => setFieldName(event.target.value);
   const onChangeVegetable = (event: ChangeEvent<HTMLSelectElement>) => setVegetable(event.target.value);
-  const onChangeWaterTiming = (event: ChangeEvent<HTMLSelectElement>) => setWaterTiming(event.target.value);
   const onChangeSettingDay = (event: ChangeEvent<HTMLInputElement>) => setSettingDay(event.target.value);
-  const onChangeSettingPlace = (event: ChangeEvent<HTMLInputElement>) => setSettingPlace(event.target.value);
   const onChangeProcessImage = (event: ChangeEvent<HTMLInputElement>) =>
     event.currentTarget.files !== null
       ? setImageUrl(URL.createObjectURL(event.currentTarget.files[0]))
@@ -89,16 +84,6 @@ export const RegisterField: VFC = memo(() => {
                 <PrimaryInput inputType="date" inputId="settingDay" onChange={onChangeSettingDay} value={settingDay} />
               </div>
             </section>
-            {/* <section>
-            <div className="item">
-                <label htmlFor="settingPlace">設置場所</label>
-                <PrimaryInput inputType="text" inputId="settingPlace" onChange={onChangeSettingPlace} value={settingPlace} />
-              </div>
-              <div className="item">
-                <label htmlFor="settingDay">設置日</label>
-                <PrimaryInput inputType="date" inputId="settingDay" onChange={onChangeSettingDay} value={settingDay} />
-              </div>
-            </section> */}
             <div className="item">
               <label htmlFor="fieldImage">畑の画像</label>
               {imageUrl === '' ? (
