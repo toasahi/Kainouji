@@ -34,6 +34,20 @@ const SContainer = styled.div`
 
   main {
     width: 100%;
+
+    .keyframe2 {
+      margin-top: 300px;
+      animation-name: anim_h;
+    }
+
+    @keyframes anim_h {
+      0% {
+        transform: translate(0px, 0);
+      }
+      100% {
+        transform: translate(80px, 0);
+      }
+    }
   }
 
   @media (min-width: ${Responsive.md}) {
@@ -43,20 +57,6 @@ const SContainer = styled.div`
 
     main {
       width: 80%;
-
-      .keyframe2 {
-        margin-top: 300px;
-        animation-name: anim_h;
-      }
-
-      @keyframes anim_h {
-        0% {
-          transform: translate(0px, 0);
-        }
-        100% {
-          transform: translate(80px, 0);
-        }
-      }
     }
   }
 `;

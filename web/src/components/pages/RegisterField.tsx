@@ -121,6 +121,10 @@ const SRegisterField = styled.div`
   main {
     width: 100%;
 
+    section {
+      padding: 10px;
+    }
+
     select {
       color: ${Color.primary};
       outline: none;

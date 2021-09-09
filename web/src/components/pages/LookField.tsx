@@ -19,7 +19,6 @@ export const LookField: VFC = memo(() => {
       getField('1');
     }
   }, []);
-  console.log(field);
   return (
     <SLookField>
       <Header />
@@ -162,6 +161,7 @@ const SLookField = styled.div`
 const SContainer = styled.div`
   .filedContent {
     display: flex;
+    margin-bottom: 10px;
 
     img {
       width: 100%;
@@ -170,6 +170,10 @@ const SContainer = styled.div`
 
     div {
       text-align: left;
+      line-height: 2;
+      p {
+        white-space: nowrap;
+      }
     }
   }
 

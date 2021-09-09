@@ -31,7 +31,7 @@ export const Header: VFC = memo(() => {
     {
       path: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAByElEQVRIie3WMWsUQRjG8Z/2iSaohR7BTjGilloKNipoJAQbK4UgivpBFK1V/ABaGARDWv0GsQgciiAXS41yFgqunMXMcctyN7N7p2KRB15ueW+e+c87Mzs7bOsfaUeDtnO4iPM4iFbMf8QHvMQLbP6pwR3AQxToZeIXnsWBTaQFfKsBrEYXF8aF3hEqaAotV3+7KXRhQmgZXrvylvGmNzXt++uAn2Q66mARUzEuoZ3xPM5B56R3bwezQ3yzwms0ylcYvH5DdSsz8sXY7lwEbeJszC1lvDdT4LWMeSq2K1fXibnpjHc1BX6XMfdVN1+OdgrcnaDiXRlvtwzaWQH3pHUm/i4brPFy5b9RSva9kRl12+hd/Tbj3UiBVzPmnlDlkrCZpoWdnoP2hK/XSN2o0cG4cT0F3ouffwFaYF8KTDjehpm/4zmu4Dh2xzgRcyuxzTDvoxy0X/VWyfQDdzFTwzuDe9HT93/GnjpgwmexEA6UQ6X8KTzAOr7GWMd9nCy1O4z3wrI1vhBcw3x8nsdr+bV8hSPRcxRXm0Kr+lID2o+tOh1WT65RWhGmPqdCuGlm1eR628JlnMYxgw3zCW+EaX4qXHe39f/oNxZ9XSe55I4ZAAAAAElFTkSuQmCC',
       to: onClickUser,
-      children: 'ユーザー',
+      children: 'マイページ',
     },
   ];
   return (
@@ -64,6 +64,9 @@ export const Header: VFC = memo(() => {
           ))}
         </ul>
       </nav>
+      <footer>
+        <small>Copyright &copy; 2021 AsaFarm</small>
+      </footer>
     </SHeader>
   );
 });
@@ -82,6 +85,7 @@ const SHeader = styled.header`
   ul {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     margin-top: 10px;
   }
 
@@ -101,6 +105,7 @@ const SHeader = styled.header`
 
   @media (min-width: ${Responsive.md}) {
     width: 25%;
+    min-width: 230px;
     top: 0;
     border-top: none;
     border-right: solid 2px #e8e6e6;
@@ -115,9 +120,9 @@ const SHeader = styled.header`
 
     ul {
       display: block;
-      padding: 15px;
-      text-align: center;
-      margin-top: 130px;
+      padding: 30px;
+      margin-top: 135px;
+      white-space: nowrap;
     }
 
     li {
@@ -131,10 +136,25 @@ const SHeader = styled.header`
       height: 20px;
       margin-right: 25px;
     }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      small {
+        font-size: ${Font.textSm};
+        padding: 30px;
+        opacity: 30%;
+      }
+    }
   }
 
   @media (min-width: ${Responsive.lg}) {
     width: 20%;
+
+    ul {
+      margin-left: 13px;
+    }
+
     a {
       font-size: ${Font.text2xl};
     }

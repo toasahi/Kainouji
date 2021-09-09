@@ -36,7 +36,7 @@ export const SecondInput: VFC<Props> = memo((props) => {
             {...register(label, { required })}
             onChange={onChange}
             defaultValue={value ?? ''}
-            accept='.jpg,image/jpeg,image/png'
+            accept=".jpg,image/jpeg,image/png"
           />
         </>
       )}

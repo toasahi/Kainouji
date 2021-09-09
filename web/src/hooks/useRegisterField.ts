@@ -19,12 +19,11 @@ export const useRegisterField = () => {
     params.append('field_name', data.fieldName);
     params.append('vegetable_id', data.vegetable);
     params.append('setting_date', data.settingDay);
-    params.append('image_url', data.imageUrl ?? '');
-    // if(data.image !== undefined){
-    //   params.append('image',data.image[0]);
-    // }else{
-    //   params.append('image','');
-    // }
+    if (data.image !== undefined) {
+      params.append('image', data.image[0].name);
+    } else {
+      params.append('image', '');
+    }
     setLoading(true);
     axios
       .post<State>('http://localhost:4000/v1/field', params, {
@@ -44,7 +43,7 @@ export const useRegisterField = () => {
         params.delete('field_name');
         params.delete('vegetable_id');
         params.delete('setting_date');
-        params.delete('image_url');
+        params.delete('image');
       });
     console.log(data);
   }, []);
