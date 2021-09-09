@@ -7,18 +7,23 @@ import { Header } from '../layouts/Header';
 import defaultImage from '../../images/defaultImage.jpeg';
 import { useGetField } from '../../hooks/useGetFields';
 import { useLoginUser } from '../../hooks/useLoginUser';
+import { useCookies } from 'react-cookie';
 
 export const LookField: VFC = memo(() => {
   const { loading, field, getField } = useGetField();
   const { loginUser } = useLoginUser();
+  const [cookies, setCookie] = useCookies(['id']);
   console.log(loginUser);
   useEffect(() => {
     if (loginUser !== null) {
       getField(loginUser.id ?? '1');
+      setCookie('id',loginUser.id);
     } else {
       getField('1');
     }
   }, []);
+
+  console.log(cookies);
   return (
     <SLookField>
       <Header />

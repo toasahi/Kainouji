@@ -9,7 +9,6 @@ export const useLogin = () => {
   const history = useHistory();
 
   const [loading, setLoading] = useState(false);
-  const [cookies, setCookie] = useCookies(['id']);
   const { setLoginUser } = useLoginUser();
 
   const login = useCallback(
@@ -20,7 +19,6 @@ export const useLogin = () => {
         .then((res) => {
           if (res.data) {
             setLoginUser(res.data[0]);
-            setCookie('id', res.data[0].id);
             setLoading(false);
             history.push('/lookfield');
           } else {
@@ -32,5 +30,5 @@ export const useLogin = () => {
     },
     [history, setLoginUser],
   );
-  return { login, loading, cookies };
+  return { login, loading };
 };
