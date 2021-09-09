@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import styled from 'styled-components';
 import { Responsive, Font, Color, FontWeight } from '../../constant/BaseCss';
+import { useGetDetailField } from '../../hooks/useGetDetailField';
 import { useGetGraphData } from '../../hooks/useGetGraphData';
 
 import { Header } from '../layouts/Header';
@@ -11,6 +12,7 @@ import { PrimarySpinner } from '../spinners/PrimarySpinner';
 
 export const Graph: VFC = memo(() => {
   const { getGraphData, graphData, loading } = useGetGraphData();
+  const {getDetailField,field} = useGetDetailField();
   const [graph, setGraph] = useState('水分量');
   const [period, setPeriod] = useState('all');
   const [show, setShow] = useState(false);
@@ -27,6 +29,9 @@ export const Graph: VFC = memo(() => {
   // useEffect(() => getMoistures(param.id), []);
   // useEffect(() => getGraphData(graph, period, param.id), [graph, period]);
   useEffect(() => getGraphData(period, param.id), [period]);
+  useEffect(()=> getDetailField(param.id),[]);
+
+  console.log(field);
 
   return (
     <>
