@@ -153,10 +153,10 @@ export const insertVegetables = async () => {
 export const insertField = async (data: Field) => {
   const conn = await mysql.createConnection(dbSetting);
   let sql = '';
-  if (data.image !== undefined) {
+  if (data.image_name !== undefined) {
     sql = `INSERT INTO fields(field_name,vegetable_id,setting_date,image_path) value('${data.field_name}','${
       data.vegetable_id
-    }','${data.setting_date}','${data.image[0].name ?? ''}')`;
+    }','${data.setting_date}','${data.image_name ?? ''}')`;
   } else {
     sql = `INSERT INTO fields(field_name,vegetable_id,setting_date) value('${data.field_name}','${data.vegetable_id}','${data.setting_date}')`;
   }
@@ -166,8 +166,8 @@ export const insertField = async (data: Field) => {
 
 /**
  * 登録されている畑を取得
- * @param userId 
- * @returns 
+ * @param userId
+ * @returns
  */
 
 export const getField = async (userId: string) => {
@@ -177,17 +177,17 @@ export const getField = async (userId: string) => {
   return rows;
 };
 
-export const getDetailField = async(fieldId: string) =>{
+export const getDetailField = async (fieldId: string) => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = `SELECT * From fields where id = ${fieldId}`;
   const [rows, fields] = await conn.query(sql);
   return rows;
-}
+};
 
 /**
  * ユーザーを登録
- * @param data 
- * @returns 
+ * @param data
+ * @returns
  */
 
 export const insertUser = async (data: User) => {
@@ -226,10 +226,10 @@ export const getHashPassword = async (email: string) => {
 
 /**
  * ユーザーを取得
- * @param email 
- * @param password 
- * @param hashPass 
- * @returns 
+ * @param email
+ * @param password
+ * @param hashPass
+ * @returns
  */
 
 export const getUser = async (email: string, password: string, hashPass: string) => {
@@ -243,9 +243,9 @@ export const getUser = async (email: string, password: string, hashPass: string)
 
 /**
  * ESP32のデータを取得
- * @param id 
+ * @param id
  * @param period 期間
- * @returns 
+ * @returns
  */
 
 export const getGraphDatas = async (id?: string, period?: string) => {
