@@ -1,5 +1,6 @@
 import express from 'express';
-import { Threshold, getThreshold, editThreshold } from './db';
+import { Threshold } from 'types/type';
+import {  getThreshold, editThreshold } from './db';
 
 const thresholdRouter = express.Router();
 

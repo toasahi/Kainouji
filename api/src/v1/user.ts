@@ -1,5 +1,6 @@
 import express from 'express';
-import { getUser, insertUser, getHashPassword, User } from './db';
+import { User } from 'types/type';
+import { getUser, insertUser, getHashPassword } from './db';
 
 const userRouter = express.Router();
 

@@ -1,44 +1,13 @@
 import mysql from 'mysql2/promise';
 import bcrypt from 'bcrypt';
-import { Setting } from '../setting';
-
-type Setting = {
-  host: string;
-  user: string;
-  password: string;
-  database: string;
-  dateStrings: boolean;
-};
-
-export type Threshold = {
-  moisture: number;
-  temperature_high: number;
-  temperature_low: number;
-  humidity_high: number;
-  humidity_low: number;
-  air_pressure: number;
-};
-
-export type Field = {
-  field_name: string;
-  vegetable_id: string;
-  setting_date: string;
-  image_path?: string;
-  image?: FileList;
-};
-
-export type User = {
-  email: string;
-  password: string;
-  username?: string;
-  status?: string;
-};
+import { Config } from '../config';
+import { Field, Setting, Threshold, User } from 'types/type';
 
 const dbSetting: Setting = {
-  host: Setting.MYSQL_HOST,
-  user: Setting.MYSQL_USER,
-  password: Setting.MYSQL_PASSWORD,
-  database: Setting.MYSQL_HOST_DATABASE,
+  host: Config.MYSQL_HOST,
+  user: Config.MYSQL_USER,
+  password: Config.MYSQL_PASSWORD,
+  database: Config.MYSQL_HOST_DATABASE,
   dateStrings: true,
 };
 
@@ -195,12 +164,31 @@ export const insertField = async (data: Field) => {
   return rows;
 };
 
+/**
+ * 登録されている畑を取得
+ * @param userId 
+ * @returns 
+ */
+
 export const getField = async (userId: string) => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = `SELECT * From fields where user_id = ${userId}`;
   const [rows, fields] = await conn.query(sql);
   return rows;
 };
+
+export const getDetailField = async(fieldId: string) =>{
+  const conn = await mysql.createConnection(dbSetting);
+  const sql = `SELECT * From fields where id = ${fieldId}`;
+  const [rows, fields] = await conn.query(sql);
+  return rows;
+}
+
+/**
+ * ユーザーを登録
+ * @param data 
+ * @returns 
+ */
 
 export const insertUser = async (data: User) => {
   const conn = await mysql.createConnection(dbSetting);
@@ -236,6 +224,14 @@ export const getHashPassword = async (email: string) => {
   }
 };
 
+/**
+ * ユーザーを取得
+ * @param email 
+ * @param password 
+ * @param hashPass 
+ * @returns 
+ */
+
 export const getUser = async (email: string, password: string, hashPass: string) => {
   const conn = await mysql.createConnection(dbSetting);
   if (bcrypt.compareSync(password, hashPass)) {
@@ -244,6 +240,13 @@ export const getUser = async (email: string, password: string, hashPass: string)
     return rows;
   }
 };
+
+/**
+ * ESP32のデータを取得
+ * @param id 
+ * @param period 期間
+ * @returns 
+ */
 
 export const getGraphDatas = async (id?: string, period?: string) => {
   const conn = await mysql.createConnection(dbSetting);

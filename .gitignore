@@ -1,7 +1,7 @@
 /hard/config
 /api/node_modules
 /api/package-lock.json
-/api/src/setting.ts
+/api/src/config.ts
 /api/webpack.config.js
 /api/dist
 /web/node_modules
