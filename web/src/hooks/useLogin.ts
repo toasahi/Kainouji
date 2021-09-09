@@ -14,10 +14,10 @@ export const useLogin = () => {
     (data: User) => {
       setLoading(true);
       axios
-        .get<User>(`http://localhost:4000/v1/user/email/${data.email}/password/${data.password}`)
+        .get<Array<User>>(`http://localhost:4000/v1/user/email/${data.email}/password/${data.password}`)
         .then((res) => {
           if (res.data) {
-            setLoginUser(res.data);
+            setLoginUser(res.data[0]);
             setLoading(false);
             history.push('/lookfield');
           } else {

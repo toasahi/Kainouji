@@ -6,7 +6,8 @@ export const useRegisterField = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const params = new URLSearchParams();
-  const registerField = useCallback((data: RegisterData) => {
+  const registerField = useCallback((id: string, data: RegisterData) => {
+    params.append('user_id', id);
     params.append('field_name', data.fieldName);
     params.append('vegetable_id', data.vegetable);
     params.append('setting_date', data.settingDay);
@@ -36,7 +37,6 @@ export const useRegisterField = () => {
         params.delete('setting_date');
         params.delete('image_name');
       });
-    console.log(data);
   }, []);
 
   return { registerField, loading, success };

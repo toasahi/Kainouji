@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { useRegisterField } from '../../hooks/useRegisterField';
 import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { IFormValues } from '../../types/form/form';
+import { useLoginUser } from '../../hooks/useLoginUser';
 
 type State = {
   data: IFormValues;
@@ -35,7 +36,15 @@ export const SecondaryConfirm: VFC = memo(() => {
         imageUrl: state.imageUrl ?? '',
       },
     });
-  const onClickRegister = () => registerField(state.data);
+  const { loginUser } = useLoginUser();
+  const onClickRegister = () => {
+    // if(loginUser.id !== undefined){
+    //   registerField(loginUser.id,state.data)
+    // }
+    if (loginUser !== null && loginUser.id !== undefined) {
+      registerField(loginUser.id, state.data);
+    }
+  };
   const { registerField, loading, success } = useRegisterField();
 
   const onChangeTest = () => console.log(1);

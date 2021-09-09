@@ -28,6 +28,7 @@ export type RegisterData = {
 };
 
 export type FieldState = {
+  userId: string;
   fieldName: string;
   vegetable: string;
   settingDay: string;

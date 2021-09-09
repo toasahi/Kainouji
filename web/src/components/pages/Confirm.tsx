@@ -19,7 +19,7 @@ type State = {
 export const Confirm: VFC = memo(() => {
   const history = useHistory<State>();
   const onClickBack = () => history.push('/registerfield');
-  const onClickRegister = () => registerField(state);
+  const onClickRegister = () => registerField('1', state);
   const { registerField, loading, success } = useRegisterField();
 
   const onChangeTest = () => console.log(1);

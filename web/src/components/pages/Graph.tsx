@@ -13,6 +13,7 @@ import { PrimarySpinner } from '../spinners/PrimarySpinner';
 export const Graph: VFC = memo(() => {
   const { getGraphData, graphData, loading } = useGetGraphData();
   const { getDetailField, field } = useGetDetailField();
+  console.log(graphData);
   const [graph, setGraph] = useState('水分量');
   const [period, setPeriod] = useState('all');
   const [show, setShow] = useState(false);
