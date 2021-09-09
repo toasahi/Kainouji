@@ -153,12 +153,12 @@ export const insertVegetables = async () => {
 export const insertField = async (data: Field) => {
   const conn = await mysql.createConnection(dbSetting);
   let sql = '';
-  if (data.image_name !== undefined) {
-    sql = `INSERT INTO fields(field_name,vegetable_id,setting_date,image_path) value('${data.field_name}','${
+  if (data.image_name !== '') {
+    sql = `INSERT INTO fields(user_id,field_name,vegetable_id,setting_date,image_name) value('${data.user_id}','${data.field_name}','${
       data.vegetable_id
-    }','${data.setting_date}','${data.image_name ?? ''}')`;
+    }','${data.setting_date}','${data.image_name}')`;
   } else {
-    sql = `INSERT INTO fields(field_name,vegetable_id,setting_date) value('${data.field_name}','${data.vegetable_id}','${data.setting_date}')`;
+    sql = `INSERT INTO fields(user_id,field_name,vegetable_id,setting_date) value('${data.user_id}','${data.field_name}','${data.vegetable_id}','${data.setting_date}')`;
   }
   const [rows, fields] = await conn.query(sql);
   return rows;
