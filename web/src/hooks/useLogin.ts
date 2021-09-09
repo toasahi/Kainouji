@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useCallback, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import { useHistory } from 'react-router';
 import { User } from '../types/api/user';
 import { useLoginUser } from './useLoginUser';
@@ -8,6 +9,7 @@ export const useLogin = () => {
   const history = useHistory();
 
   const [loading, setLoading] = useState(false);
+  const [cookies, setCookie] = useCookies(['id']);
   const { setLoginUser } = useLoginUser();
 
   const login = useCallback(
@@ -18,6 +20,7 @@ export const useLogin = () => {
         .then((res) => {
           if (res.data) {
             setLoginUser(res.data[0]);
+            setCookie('id', res.data[0].id);
             setLoading(false);
             history.push('/lookfield');
           } else {
@@ -29,5 +32,5 @@ export const useLogin = () => {
     },
     [history, setLoginUser],
   );
-  return { login, loading };
+  return { login, loading, cookies };
 };

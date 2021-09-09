@@ -44,6 +44,7 @@
     "@types/dotenv-webpack": "^7.0.3",
     "dotenv-webpack": "^7.0.3",
     "react": "^17.0.2",
+    "react-cookie": "^4.1.1",
     "react-dom": "^17.0.2",
     "react-loader-spinner": "^4.0.0",
     "recharts": "^2.0.9",
