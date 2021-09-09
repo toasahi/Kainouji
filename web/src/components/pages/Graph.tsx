@@ -12,11 +12,11 @@ import { PrimarySpinner } from '../spinners/PrimarySpinner';
 
 export const Graph: VFC = memo(() => {
   const { getGraphData, graphData, loading } = useGetGraphData();
-  const {getDetailField,field} = useGetDetailField();
+  const { getDetailField, field } = useGetDetailField();
   const [graph, setGraph] = useState('水分量');
   const [period, setPeriod] = useState('all');
   const [show, setShow] = useState(false);
-  const [percent,setPercent] = useState('0');
+  const [percent, setPercent] = useState('0');
   const onClickModal = () => setShow(!show);
   const onChangeGraphData = (event: ChangeEvent<HTMLSelectElement>) => setGraph(event.target.value);
   const onChangeRange = (event: ChangeEvent<HTMLInputElement>) => setPercent(event.target.value);
@@ -29,7 +29,7 @@ export const Graph: VFC = memo(() => {
   // useEffect(() => getMoistures(param.id), []);
   // useEffect(() => getGraphData(graph, period, param.id), [graph, period]);
   useEffect(() => getGraphData(period, param.id), [period]);
-  useEffect(()=> getDetailField(param.id),[]);
+  useEffect(() => getDetailField(param.id), []);
 
   console.log(field);
 

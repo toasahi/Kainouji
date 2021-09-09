@@ -7,13 +7,13 @@ import { RangeSlider } from '../Inputs/RangeSlider';
 
 type Props = {
   show: boolean;
-  percent:string;
+  percent: string;
   onClick: () => void;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const Modal: VFC<Props> = memo((props) => {
-  const { show,percent, onClick,onChange } = props;
+  const { show, percent, onClick, onChange } = props;
   return (
     <>
       {show ? (
@@ -46,13 +46,13 @@ export const Modal: VFC<Props> = memo((props) => {
                 </svg>
               </header>
               <div className="container">
-              <h2>水をやるタイミングを設定できます</h2>
+                <h2>水をやるタイミングを設定できます</h2>
                 <div className="waterContainer">
-                <label>水分量</label>
-                <RangeSlider percent={percent} onChange={onChange}/>
+                  <label>水分量</label>
+                  <RangeSlider percent={percent} onChange={onChange} />
                 </div>
                 <div className="buttonContainer">
-                <PrimaryButton children="設定する" position="after" onClick={() => console.log()} />
+                  <PrimaryButton children="設定する" position="after" onClick={() => console.log()} />
                 </div>
                 {/* <button onClick={onClick}>閉じる</button> */}
               </div>
@@ -98,17 +98,17 @@ const SModal = styled.div`
     }
   }
 
-  .waterContainer{
-    margin-top:20px;
-    label{
-      line-height:2;
-      opacity:70%;
+  .waterContainer {
+    margin-top: 20px;
+    label {
+      line-height: 2;
+      opacity: 70%;
     }
   }
 
   @media (min-width: ${Responsive.lg}) {
-    .buttonContainer{
-      margin-top:45px;
+    .buttonContainer {
+      margin-top: 45px;
     }
   }
 `;

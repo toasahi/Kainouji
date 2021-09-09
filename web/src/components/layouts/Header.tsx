@@ -103,6 +103,10 @@ const SHeader = styled.header`
     }
   }
 
+  footer {
+    display: none;
+  }
+
   @media (min-width: ${Responsive.md}) {
     width: 25%;
     min-width: 230px;
@@ -138,6 +142,7 @@ const SHeader = styled.header`
     }
 
     footer {
+      display: block;
       position: absolute;
       bottom: 20px;
       small {

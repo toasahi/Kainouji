@@ -19,3 +19,17 @@ export type Field = {
   created_at: string;
   updated_at: string;
 };
+
+export type RegisterData = {
+  fieldName: string;
+  vegetable: string;
+  settingDay: string;
+  image?: FileList;
+};
+
+export type FieldState = {
+  fieldName: string;
+  vegetable: string;
+  settingDay: string;
+  image_name: string;
+};

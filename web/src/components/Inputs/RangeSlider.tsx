@@ -4,19 +4,20 @@ import styled from 'styled-components';
 type Props = {
   percent: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-}
+};
 
 export const RangeSlider: VFC<Props> = memo((props) => {
-    const {percent,onChange} = props;
-    // const [percent,setPercent] = useState('0');
-    // const onChangeRange = (event: ChangeEvent<HTMLInputElement>) => setPercent(event.target.value);
-    return (
+  const { percent, onChange } = props;
+  // const [percent,setPercent] = useState('0');
+  // const onChangeRange = (event: ChangeEvent<HTMLInputElement>) => setPercent(event.target.value);
+  return (
     <SRangeSlider>
       <input type="range" value={percent} onChange={onChange} />
       <div id="h4-container">
         <div id="h4-subcontainer">
           <h4>
-            {percent}<span></span>
+            {percent}
+            <span></span>
           </h4>
         </div>
       </div>

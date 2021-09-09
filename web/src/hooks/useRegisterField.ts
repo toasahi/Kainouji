@@ -1,32 +1,23 @@
 import axios from 'axios';
 import { useCallback, useState } from 'react';
-
-type State = {
-  fieldName: string;
-  vegetable: string;
-  settingDay: string;
-  settingPlace?: string;
-  imageUrl?: string;
-  image?: FileList;
-};
+import { RegisterData, FieldState } from '../types/api/field';
 
 export const useRegisterField = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const params = new URLSearchParams();
-  // const params = new FormData();
-  const registerField = useCallback((data: State) => {
+  const registerField = useCallback((data: RegisterData) => {
     params.append('field_name', data.fieldName);
     params.append('vegetable_id', data.vegetable);
     params.append('setting_date', data.settingDay);
-    if (data.image !== undefined) {
-      params.append('image', data.image[0].name);
+    if (data.image !== undefined && data.image.length !== 0) {
+      params.append('image_name', data.image[0].name);
     } else {
-      params.append('image', '');
+      params.append('image_name', '');
     }
     setLoading(true);
     axios
-      .post<State>('http://localhost:4000/v1/field', params, {
+      .post<FieldState>('http://localhost:4000/v1/field', params, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
@@ -43,7 +34,7 @@ export const useRegisterField = () => {
         params.delete('field_name');
         params.delete('vegetable_id');
         params.delete('setting_date');
-        params.delete('image');
+        params.delete('image_name');
       });
     console.log(data);
   }, []);
