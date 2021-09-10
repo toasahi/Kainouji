@@ -1,6 +1,6 @@
 export type Threshold = {
   id: number;
-  moisture: number;
+  moisture: string;
   temperature_high: number;
   temperature_low: number;
   humidity_high: number;

@@ -15,30 +15,28 @@ export const Graph: VFC = memo(() => {
   const { getGraphData, graphData, loading } = useGetGraphData();
   const { getDetailField, field } = useGetDetailField();
   const { getThreshold, thresholds } = useGetThreshold();
-  console.log(graphData);
+  const [percent, setPercent] = useState('0');
   const [graph, setGraph] = useState('水分量');
   const [period, setPeriod] = useState('all');
   const [show, setShow] = useState(false);
-  const [percent, setPercent] = useState('0');
+
   const onClickModal = () => setShow(!show);
   const onChangeGraphData = (event: ChangeEvent<HTMLSelectElement>) => setGraph(event.target.value);
   const onChangeRange = (event: ChangeEvent<HTMLInputElement>) => setPercent(event.target.value);
 
   const onChangePeriod = (event: ChangeEvent<HTMLSelectElement>) => setPeriod(event.target.value);
-  const onClickSetting = () => console.log(1);
+  const onClickSetting = () => {
+    setPercent(thresholds?.moisture ?? '0');
+    setShow(!show);
+  };
   const param = useParams<{ id: string }>();
   const today = new Date();
-
-  // useEffect(() => getMoistures(param.id), []);
-  // useEffect(() => getGraphData(graph, period, param.id), [graph, period]);
   useEffect(() => getGraphData(period, param.id), [period]);
 
   useEffect(() => {
     getDetailField(param.id);
     getThreshold();
   }, []);
-
-  console.log(field);
 
   return (
     <>
@@ -66,7 +64,7 @@ export const Graph: VFC = memo(() => {
                   <option value="one">１週間</option>
                   <option value="two">２週間</option>
                 </select>
-                <button onClick={onClickModal}>
+                <button onClick={onClickSetting}>
                   <svg
                     width="15"
                     height="15"
