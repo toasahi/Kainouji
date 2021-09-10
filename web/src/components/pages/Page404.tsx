@@ -4,7 +4,6 @@ import { Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 
 export const Page404: VFC = memo(() => {
-
   return (
     <>
       <SPage404>

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Responsive, Font, Color, FontWeight } from '../../constant/BaseCss';
 import { useGetDetailField } from '../../hooks/useGetDetailField';
 import { useGetGraphData } from '../../hooks/useGetGraphData';
+import { useGetThreshold } from '../../hooks/useGetThreshold';
 
 import { Header } from '../layouts/Header';
 import { Modal } from '../modals/Modal';
@@ -13,6 +14,7 @@ import { PrimarySpinner } from '../spinners/PrimarySpinner';
 export const Graph: VFC = memo(() => {
   const { getGraphData, graphData, loading } = useGetGraphData();
   const { getDetailField, field } = useGetDetailField();
+  const { getThreshold, thresholds } = useGetThreshold();
   console.log(graphData);
   const [graph, setGraph] = useState('水分量');
   const [period, setPeriod] = useState('all');
@@ -30,7 +32,11 @@ export const Graph: VFC = memo(() => {
   // useEffect(() => getMoistures(param.id), []);
   // useEffect(() => getGraphData(graph, period, param.id), [graph, period]);
   useEffect(() => getGraphData(period, param.id), [period]);
-  useEffect(() => getDetailField(param.id), []);
+
+  useEffect(() => {
+    getDetailField(param.id);
+    getThreshold();
+  }, []);
 
   console.log(field);
 

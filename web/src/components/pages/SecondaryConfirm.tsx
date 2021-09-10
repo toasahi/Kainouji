@@ -43,7 +43,7 @@ export const SecondaryConfirm: VFC = memo(() => {
     // if(loginUser.id !== undefined){
     //   registerField(loginUser.id,state.data)
     // }
-    if (Object.keys(cookies).length !== 0 || loginUser !== null && loginUser.id !== undefined) {
+    if (Object.keys(cookies).length !== 0 || (loginUser !== null && loginUser.id !== undefined)) {
       registerField(cookies.id, state.data);
     }
   };
