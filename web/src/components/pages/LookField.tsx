@@ -10,16 +10,16 @@ import { useLoginUser } from '../../hooks/useLoginUser';
 import { useCookies } from 'react-cookie';
 
 export const LookField: VFC = memo(() => {
-  const { loading, field, getField } = useGetField();
+  const { loading, fields, getFields } = useGetField();
   const { loginUser } = useLoginUser();
   const [cookies, setCookie] = useCookies(['id']);
   useEffect(() => {
     if (loginUser !== null && loginUser.id !== undefined) {
       setCookie('id', loginUser.id, { path: '/' });
-      getField(loginUser.id);
+      getFields(loginUser.id);
     } else {
       if (Object.keys(cookies).length !== 0) {
-        getField(cookies.id);
+        getFields(cookies.id);
       }
     }
   }, []);
@@ -32,6 +32,20 @@ export const LookField: VFC = memo(() => {
         <section>
           <h1>畑を見る</h1>
           <SContainer>
+            {fields?.map((field) => (
+              <Link to={`lookfield/graph/${field.id}`}>
+                <div className="filedContent">
+                  <img
+                    src={field.image_name === '' ? defaultImage : process.env.REACT_APP_S3_URL + field.image_name}
+                    alt="畑の画像"
+                  />
+                  <div>
+                    <h2>{field.field_name}</h2>
+                    <p>設置日:{field.created_at}</p>
+                  </div>
+                </div>
+              </Link>
+            ))}
             <Link to="lookfield/graph/1">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
@@ -114,7 +128,6 @@ const SLookField = styled.div`
 
     section {
       text-align: center;
-      padding: 10px;
     }
 
     h1 {
@@ -135,6 +148,12 @@ const SLookField = styled.div`
         width: 40%;
         opacity: 25%;
         height: 15px; /* 線幅 */
+      }
+    }
+
+    .filedContent {
+      div {
+        padding: 5px;
       }
     }
   }
@@ -165,6 +184,7 @@ const SLookField = styled.div`
 `;
 
 const SContainer = styled.div`
+  padding: 10px;
   .filedContent {
     display: flex;
     margin-bottom: 10px;

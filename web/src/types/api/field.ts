@@ -15,7 +15,7 @@ export type Field = {
   field_name: string;
   vegetable_id: number;
   setting_date: string;
-  image_path: string;
+  image_name: string;
   created_at: string;
   updated_at: string;
 };

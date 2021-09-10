@@ -25,6 +25,7 @@ export const useRegisterField = () => {
       })
       .then((res) => {
         setSuccess(true);
+        alert('登録できました');
         setLoading(false);
       })
       .catch((error) => {

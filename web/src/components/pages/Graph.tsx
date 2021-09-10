@@ -93,10 +93,10 @@ export const Graph: VFC = memo(() => {
                 {today.getMonth() + 1}月{today.getDate()}日までの情報を表示
               </p>
             </div>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={350}>
               <AreaChart
-                width={300}
-                height={300}
+                width={400}
+                height={350}
                 data={graphData}
                 margin={{
                   top: 10,
@@ -131,7 +131,6 @@ const SGraph = styled.div`
 
   main {
     width: 100%;
-    padding: 5px;
 
     section {
       margin: 0 auto;
@@ -165,6 +164,7 @@ const SGraph = styled.div`
 
       .today {
         margin-top: 30px;
+        margin-right: 10px;
         text-align: right;
       }
     }
@@ -180,11 +180,11 @@ const SGraph = styled.div`
     }
 
     h1 {
-      font-size: ${Font.text2xl};
+      font-size: ${Font.text3xl};
       text-align: center;
       position: relative;
       font-weight: ${FontWeight.fontSemiBold};
-      margin-top: 20px;
+      margin-top: 30px;
 
       ::after {
         background-color: ${Color.secondary}; /* 線色 */
@@ -200,14 +200,6 @@ const SGraph = styled.div`
     }
   }
 
-  @media (min-width: ${Responsive.sm}) {
-    .graph {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
-    }
-  }
-
   @media (min-width: ${Responsive.md}) {
     flex-direction: row;
     justify-content: start;
@@ -217,6 +209,12 @@ const SGraph = styled.div`
       width: 80%;
       section {
         margin-top: 100px;
+      }
+
+      .graph {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
       }
 
       .dataContainer {
