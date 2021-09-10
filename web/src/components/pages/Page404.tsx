@@ -1,10 +1,10 @@
 import { memo, VFC } from 'react';
 import styled from 'styled-components';
-
 import { Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 
 export const Page404: VFC = memo(() => {
+
   return (
     <>
       <SPage404>

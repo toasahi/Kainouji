@@ -13,11 +13,10 @@ export const LookField: VFC = memo(() => {
   const { loading, field, getField } = useGetField();
   const { loginUser } = useLoginUser();
   const [cookies, setCookie] = useCookies(['id']);
-  console.log(loginUser);
   useEffect(() => {
     if (loginUser !== null) {
+      setCookie('id',loginUser.id,{path:'/'});
       getField(loginUser.id ?? '1');
-      setCookie('id',loginUser.id);
     } else {
       getField('1');
     }

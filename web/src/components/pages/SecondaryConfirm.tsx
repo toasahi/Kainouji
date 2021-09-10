@@ -9,6 +9,7 @@ import { useRegisterField } from '../../hooks/useRegisterField';
 import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { IFormValues } from '../../types/form/form';
 import { useLoginUser } from '../../hooks/useLoginUser';
+import { useCookies } from 'react-cookie';
 
 type State = {
   data: IFormValues;
@@ -36,13 +37,14 @@ export const SecondaryConfirm: VFC = memo(() => {
         imageUrl: state.imageUrl ?? '',
       },
     });
+  const [cookies, setCookie] = useCookies(['id']);
   const { loginUser } = useLoginUser();
   const onClickRegister = () => {
     // if(loginUser.id !== undefined){
     //   registerField(loginUser.id,state.data)
     // }
-    if (loginUser !== null && loginUser.id !== undefined) {
-      registerField(loginUser.id, state.data);
+    if (Object.keys(cookies).length !== 0 || loginUser !== null && loginUser.id !== undefined) {
+      registerField(cookies.id, state.data);
     }
   };
   const { registerField, loading, success } = useRegisterField();
