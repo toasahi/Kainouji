@@ -169,7 +169,7 @@ const SLookField = styled.div`
       h1 {
         font-size: ${Font.text5xl};
         padding: 5px;
-        margin-top: 75px;
+        margin-top: 78px;
         margin-bottom: 30px;
 
         ::after {

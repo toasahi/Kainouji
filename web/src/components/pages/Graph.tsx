@@ -115,7 +115,7 @@ export const Graph: VFC = memo(() => {
           </section>
         </main>
       </SGraph>
-      <Modal show={show} percent={percent} onClick={onClickModal} onChange={onChangeRange} />
+      <Modal show={show} fieldId={param.id} percent={percent} onClick={onClickModal} onChange={onChangeRange} />
       {/* </>
       )} */}
     </>
