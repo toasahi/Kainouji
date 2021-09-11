@@ -32,7 +32,7 @@ export const LookField: VFC = memo(() => {
         <section>
           <h1>畑を見る</h1>
           <SContainer>
-            {fields?.map((field,index) => (
+            {fields?.map((field, index) => (
               <Link key={index} to={`lookfield/graph/${field.id}`}>
                 <div className="filedContent">
                   <img
@@ -150,12 +150,6 @@ const SLookField = styled.div`
         height: 15px; /* 線幅 */
       }
     }
-
-    .filedContent {
-      div {
-        padding: 5px;
-      }
-    }
   }
 
   @media (min-width: ${Responsive.md}) {
@@ -192,9 +186,11 @@ const SContainer = styled.div`
     img {
       width: 100%;
       height: 90px;
+      object-fit:cover;
     }
 
     div {
+      padding:5px;
       text-align: left;
       line-height: 2;
       p {
@@ -230,7 +226,7 @@ const SContainer = styled.div`
       box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 
       div {
-        padding: 5px 5px;
+        padding: 10px;
 
         p {
           font-size: ${Font.textSm};
@@ -255,7 +251,6 @@ const SContainer = styled.div`
   @media (min-width: ${Responsive.lg}) {
     .filedContent {
       div {
-        padding: 5px 1opx;
 
         h2 {
           font-size: ${Font.textXl};
