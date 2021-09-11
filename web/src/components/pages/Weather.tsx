@@ -1,12 +1,23 @@
-import { memo, VFC } from 'react';
+import { ChangeEvent, memo, useState, VFC } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 import workerImage from '../../images/worker.png';
+import { useUploadImage } from '../../hooks/useUploadImage'; 
 
 export const Weather: VFC = memo(() => {
   const sunny = [...Array(8)].map((_, i) => i);
+  const {uploadImage} = useUploadImage();
+  const [selectedFile, setSelectedFile] = useState<File>();
+  const [flag,setFlag] = useState(false);
+  const onChangeImage = (event: ChangeEvent<HTMLInputElement>) =>
+  event.currentTarget.files !== null
+    ? (setSelectedFile(event.currentTarget.files[0]),setFlag(true))
+    : console.log('失敗');
+
+  const onClickUpload = ()=>uploadImage(selectedFile!);
+  // const onClickUpload = ()=>console.log('1');
   return (
     <>
       <SContainer>
@@ -27,6 +38,9 @@ export const Weather: VFC = memo(() => {
               style={{ width: '400px', height: '300px', display: 'block', margin: '0 auto', marginTop: '100px' }}
             />
           </div>
+          <input type='file' onChange={onChangeImage}/>
+          {flag ? (<button onClick={onClickUpload}> Upload to S3</button>) : ('') }
+          
         </main>
       </SContainer>
     </>

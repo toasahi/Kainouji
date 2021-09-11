@@ -25,6 +25,10 @@ export const useUploadImage = () => {
       ContentType: file.type,
     };
 
+    console.log(file);
+
+    console.log(params);
+
     myBucket
       .putObject(params)
       .on('httpUploadProgress', (evt) => {
