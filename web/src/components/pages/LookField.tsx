@@ -24,7 +24,7 @@ export const LookField: VFC = memo(() => {
     }
   }, []);
 
-  console.log(cookies);
+  console.log(process.env.REACT_APP_S3_URL);
   return (
     <SLookField>
       <Header />
@@ -32,8 +32,8 @@ export const LookField: VFC = memo(() => {
         <section>
           <h1>畑を見る</h1>
           <SContainer>
-            {fields?.map((field) => (
-              <Link to={`lookfield/graph/${field.id}`}>
+            {fields?.map((field,index) => (
+              <Link key={index} to={`lookfield/graph/${field.id}`}>
                 <div className="filedContent">
                   <img
                     src={field.image_name === '' ? defaultImage : process.env.REACT_APP_S3_URL + field.image_name}
@@ -41,7 +41,7 @@ export const LookField: VFC = memo(() => {
                   />
                   <div>
                     <h2>{field.field_name}</h2>
-                    <p>設置日:{field.created_at}</p>
+                    <p>設置日:{field.setting_date}</p>
                   </div>
                 </div>
               </Link>
