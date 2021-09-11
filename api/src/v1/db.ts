@@ -90,17 +90,21 @@ export const getTemperaturePeriod = async (id?: string, period?: string) => {
  * @returns rows
  */
 
-export const editThreshold = async (threshold: Threshold) => {
+export const editThreshold = async (field_id:string,moisture:string) => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = `UPDATE thresholds SET 
-                moisture = ${threshold.moisture},
-                temperature_high = ${threshold.temperature_high},
-                temperature_low = ${threshold.temperature_low},
-                humidity_high = ${threshold.humidity_high},
-                humidity_low = ${threshold.humidity_low},
-                air_pressure = ${threshold.air_pressure}
-                WHERE id = 1
+                moisture = ${moisture}
+                WHERE field_id = ${field_id}
               `;
+  // const sql = `UPDATE thresholds SET 
+  //               moisture = ${threshold.moisture},
+  //               temperature_high = ${threshold.temperature_high},
+  //               temperature_low = ${threshold.temperature_low},
+  //               humidity_high = ${threshold.humidity_high},
+  //               humidity_low = ${threshold.humidity_low},
+  //               air_pressure = ${threshold.air_pressure}
+  //               WHERE id = 1
+  //             `;
   const [rows, fields] = await conn.query(sql);
   return rows;
 };

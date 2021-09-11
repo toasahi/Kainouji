@@ -8,8 +8,8 @@ const thresholdRouter = express.Router();
 thresholdRouter.post('/', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   try {
-    const threshold: Threshold = req.body;
-    editThreshold(threshold).then(() => {
+    const threshold:{id:string,moisture:string} = req.body;
+    editThreshold(threshold.id,threshold.moisture).then(() => {
       res.status(200).json({ message: 'OK', status: 200 });
     });
   } catch (error) {
