@@ -122,9 +122,9 @@ export const insertThreshold = async (field_id:string) => {
  * @returns rows
  */
 
-export const getThreshold = async () => {
+export const getThreshold = async (field_id:string) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = 'SELECT * From thresholds';
+  const sql = `SELECT * From thresholds WHERE field_id = ${field_id}`;
   const [rows, fields] = await conn.query(sql);
   return rows;
 };
