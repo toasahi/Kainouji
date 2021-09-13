@@ -22,8 +22,9 @@ export const useRegisterThresholds = () => {
         setLoading(false);
       })
       .finally(() => {
-       params.delete('field_id');
-  })}, []);
+        params.delete('field_id');
+      });
+  }, []);
 
   return { registerThreshold, loading, success };
 };

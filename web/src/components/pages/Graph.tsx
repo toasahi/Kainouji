@@ -16,7 +16,7 @@ export const Graph: VFC = memo(() => {
   const { getGraphData, graphData } = useGetGraphData();
   const { getDetailField, field } = useGetDetailField();
   const { getThreshold, thresholds } = useGetThreshold();
-  const { registerThreshold} = useRegisterThresholds();
+  const { registerThreshold } = useRegisterThresholds();
   const [percent, setPercent] = useState('0');
   const [graph, setGraph] = useState('水分量');
   const [period, setPeriod] = useState('all');
@@ -27,33 +27,21 @@ export const Graph: VFC = memo(() => {
   const onChangeRange = (event: ChangeEvent<HTMLInputElement>) => setPercent(event.target.value);
 
   const onChangePeriod = (event: ChangeEvent<HTMLSelectElement>) => setPeriod(event.target.value);
-  useEffect(()=>{
-    getThreshold(param.id)
-  },[show])
-  const onClickSettingt = () => {
-    // if(thresholds === undefined){
-    //   registerThreshold(param.id);
-    //   getThreshold(param.id);
-    //   setPercent('30');
-    // }else{
-    //   console.log(thresholds);
-      setPercent(thresholds?.moisture ?? '0');
-    // }
-    setShow(!show);
-  };
+  useEffect(() => {
+    getThreshold(param.id);
+  }, [show]);
 
-  const onClickSetting = useCallback(()=>{
-    if(thresholds === undefined){
+  const onClickSetting = useCallback(() => {
+    if (thresholds === undefined) {
       registerThreshold(param.id);
       getThreshold(param.id);
       setPercent('30');
-    }else{
+    } else {
       getThreshold(param.id);
       setPercent(thresholds?.moisture ?? '0');
     }
     setShow(!show);
-  },[thresholds,show,getThreshold,setPercent,setShow]);
-
+  }, [thresholds, show, getThreshold, setPercent, setShow]);
 
   const param = useParams<{ id: string }>();
   const today = new Date();

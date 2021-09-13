@@ -122,4 +122,4 @@ const Card = styled.section`
   }
 `;
 
-export { Font, Responsive, Color, FontWeight, BaseContainer,Card };
+export { Font, Responsive, Color, FontWeight, BaseContainer, Card };

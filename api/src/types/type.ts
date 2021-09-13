@@ -16,7 +16,7 @@ export type Threshold = {
 };
 
 export type Field = {
-  user_id : string;
+  user_id: string;
   field_name: string;
   vegetable_id: string;
   setting_date: string;

@@ -105,51 +105,50 @@ export const SecondaryConfirm: VFC = memo(() => {
   );
 });
 
-const SConfirm = styled(BaseContainer)`
-`;
+const SConfirm = styled(BaseContainer)``;
 
 const SCard = styled(Card)`
-.item {
-  margin-top: 15px;
-
-  label {
-    line-height: 2;
-  }
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 5px;
-
-  button {
-    width: 35%;
-  }
-}
-
-@media (min-width: ${Responsive.md}) {
-  section {
-    display: flex;
-    justify-content: space-between;
-
-    .item {
-      width: 45%;
-    }
-  }
-}
-
-@media (min-width: ${Responsive.lg}) {
   .item {
-    margin-top: 20px;
+    margin-top: 15px;
 
     label {
-      line-height: 3;
+      line-height: 2;
     }
-    width: 100%;
   }
 
   .buttonContainer {
-    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+
+    button {
+      width: 35%;
+    }
   }
-}
-`
+
+  @media (min-width: ${Responsive.md}) {
+    section {
+      display: flex;
+      justify-content: space-between;
+
+      .item {
+        width: 45%;
+      }
+    }
+  }
+
+  @media (min-width: ${Responsive.lg}) {
+    .item {
+      margin-top: 20px;
+
+      label {
+        line-height: 3;
+      }
+      width: 100%;
+    }
+
+    .buttonContainer {
+      margin-top: 35px;
+    }
+  }
+`;
