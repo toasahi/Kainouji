@@ -1,7 +1,7 @@
 import { ChangeEvent, memo, useEffect, useState, VFC } from 'react';
 import styled from 'styled-components';
 
-import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
+import { BaseContainer, Card, Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
@@ -40,9 +40,6 @@ export const SecondaryConfirm: VFC = memo(() => {
   const [cookies, setCookie] = useCookies(['id']);
   const { loginUser } = useLoginUser();
   const onClickRegister = () => {
-    // if(loginUser.id !== undefined){
-    //   registerField(loginUser.id,state.data)
-    // }
     if (Object.keys(cookies).length !== 0 || (loginUser !== null && loginUser.id !== undefined)) {
       registerField(cookies.id, state.data);
     }
@@ -108,128 +105,51 @@ export const SecondaryConfirm: VFC = memo(() => {
   );
 });
 
-const SConfirm = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
-  align-content: space-between;
-  justify-content: space-between;
-  min-height: 100vh;
+const SConfirm = styled(BaseContainer)`
+`;
 
-  main {
+const SCard = styled(Card)`
+.item {
+  margin-top: 15px;
+
+  label {
+    line-height: 2;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+
+  button {
+    width: 35%;
+  }
+}
+
+@media (min-width: ${Responsive.md}) {
+  section {
+    display: flex;
+    justify-content: space-between;
+
+    .item {
+      width: 45%;
+    }
+  }
+}
+
+@media (min-width: ${Responsive.lg}) {
+  .item {
+    margin-top: 20px;
+
+    label {
+      line-height: 3;
+    }
     width: 100%;
   }
 
-  @media (min-width: ${Responsive.md}) {
-    main {
-      width: 80%;
-    }
-
-    flex-direction: row;
-    justify-content: start;
-    align-content: center;
-  }
-`;
-
-const SCard = styled.section`
-  margin: 0 auto;
-  width: 85%;
-
-  h1 {
-    font-size: ${Font.text3xl};
-    text-align: center;
-    padding: 5px;
-    margin: 20px 0;
-    position: relative;
-    font-weight: ${FontWeight.fontSemiBold};
-
-    ::after {
-      background-color: ${Color.secondary}; /* 線色 */
-      border-radius: 5px; /* 線幅の半分 */
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 30%;
-      width: 40%;
-      opacity: 25%;
-      height: 15px; /* 線幅 */
-    }
-  }
-
-  .item {
-    margin-top: 15px;
-
-    label {
-      line-height: 2;
-    }
-  }
-
   .buttonContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-
-    button {
-      width: 35%;
-    }
+    margin-top: 35px;
   }
-
-  @media (min-width: ${Responsive.md}) {
-    width: 650px;
-
-    .container {
-      width: 80%;
-      margin: 0 auto;
-    }
-
-    section {
-      display: flex;
-      justify-content: space-between;
-
-      .item {
-        width: 45%;
-      }
-    }
-  }
-
-  @media (min-width: ${Responsive.lg}) {
-    width: 700px;
-    height: 680px;
-    background-color: #fefefe;
-    margin: 0 auto;
-    margin-top: 25px;
-    border-radius: 30px;
-    padding: 25px;
-    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-
-    h1 {
-      font-size: ${Font.text5xl};
-      padding: 5px;
-      margin: 30px 0;
-      position: relative;
-
-      ::after {
-        background-color: ${Color.secondary}; /* 線色 */
-        border-radius: 5px; /* 線幅の半分 */
-        content: '';
-        position: absolute;
-        bottom: 0;
-        opacity: 25%;
-        height: 15px; /* 線幅 */
-      }
-    }
-
-    .item {
-      margin-top: 20px;
-
-      label {
-        line-height: 3;
-      }
-      width: 100%;
-    }
-
-    .buttonContainer {
-      margin-top: 35px;
-    }
-  }
-`;
+}
+`

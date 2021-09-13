@@ -27,7 +27,7 @@ const s3 = new S3n({
   accessKeyId: config.accessKeyId,
   secretAccessKey: config.secretAccessKey,
   region: REGION,
-})
+});
 
 export const useUploadImage = () => {
   const [progress, setProgress] = useState(0);
@@ -39,15 +39,15 @@ export const useUploadImage = () => {
       Key: file.name,
       ContentType: file.type,
     };
-    
+
     const uploadParams = {
       Body: file,
       Bucket: S3_BUCKET!,
       Key: file.name,
       ContentType: file.type,
-    }
+    };
 
-    return s3.upload(uploadParams).promise()
+    return s3.upload(uploadParams).promise();
     // myBucket
     //   .putObject(params)
     //   .on('httpUploadProgress', (evt) => {

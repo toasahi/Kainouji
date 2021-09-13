@@ -200,7 +200,6 @@ const SCard = styled.section`
 
   @media (min-width: ${Responsive.md}) {
     width: 85%;
-    height: 680px;
     padding: 15px;
     background-color: #fefefe;
     margin: 0 auto;

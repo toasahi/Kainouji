@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 import icon from '../../images/icon.png';
 
-
 export const Header: VFC = memo(() => {
   const history = useHistory();
 
@@ -54,7 +53,7 @@ export const Header: VFC = memo(() => {
         </svg> */}
 
         <div className="iconContainer" onClick={onClickIcon}>
-        <img src={icon}/>
+          <img src={icon} />
         </div>
         <ul>
           {headerLinks.map((link, index) => (
@@ -107,8 +106,8 @@ const SHeader = styled.header`
     margin-top: 35px;
   }
 
-  .iconContainer{
-    display:none;
+  .iconContainer {
+    display: none;
   }
 
   svg {
@@ -139,17 +138,17 @@ const SHeader = styled.header`
     height: 100%;
     min-height: 100vh;
 
-    .iconContainer{
-      display:block;
-      margin-top:10px;
+    .iconContainer {
+      display: block;
+      margin-top: 10px;
     }
-    
+
     a {
       font-size: ${Font.textXl};
       height: 30px;
     }
 
-    nav{
+    nav {
       margin-top: 40px;
       padding: 30px;
     }
@@ -187,10 +186,10 @@ const SHeader = styled.header`
   @media (min-width: ${Responsive.lg}) {
     width: 20%;
 
-    nav{
+    nav {
       margin-top: 30px;
-    margin-left: 13px;
-    padding: 30px;
+      margin-left: 13px;
+      padding: 30px;
     }
 
     a {
