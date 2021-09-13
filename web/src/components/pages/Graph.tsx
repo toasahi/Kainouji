@@ -1,4 +1,4 @@
-import { ChangeEvent, memo, useEffect, useState, VFC } from 'react';
+import { ChangeEvent, memo, useCallback, useEffect, useState, VFC } from 'react';
 import { useParams } from 'react-router-dom';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import styled from 'styled-components';
@@ -6,15 +6,17 @@ import { Responsive, Font, Color, FontWeight } from '../../constant/BaseCss';
 import { useGetDetailField } from '../../hooks/useGetDetailField';
 import { useGetGraphData } from '../../hooks/useGetGraphData';
 import { useGetThreshold } from '../../hooks/useGetThreshold';
+import { useRegisterThresholds } from '../../hooks/useRegisterThreshold';
 
 import { Header } from '../layouts/Header';
 import { Modal } from '../modals/Modal';
 import { PrimarySpinner } from '../spinners/PrimarySpinner';
 
 export const Graph: VFC = memo(() => {
-  const { getGraphData, graphData, loading } = useGetGraphData();
+  const { getGraphData, graphData } = useGetGraphData();
   const { getDetailField, field } = useGetDetailField();
   const { getThreshold, thresholds } = useGetThreshold();
+  const { registerThreshold} = useRegisterThresholds();
   const [percent, setPercent] = useState('0');
   const [graph, setGraph] = useState('水分量');
   const [period, setPeriod] = useState('all');
@@ -25,17 +27,40 @@ export const Graph: VFC = memo(() => {
   const onChangeRange = (event: ChangeEvent<HTMLInputElement>) => setPercent(event.target.value);
 
   const onChangePeriod = (event: ChangeEvent<HTMLSelectElement>) => setPeriod(event.target.value);
-  const onClickSetting = () => {
-    setPercent(thresholds?.moisture ?? '0');
+  useEffect(()=>{
+    getThreshold(param.id)
+  },[show])
+  const onClickSettingt = () => {
+    // if(thresholds === undefined){
+    //   registerThreshold(param.id);
+    //   getThreshold(param.id);
+    //   setPercent('30');
+    // }else{
+    //   console.log(thresholds);
+      setPercent(thresholds?.moisture ?? '0');
+    // }
     setShow(!show);
   };
+
+  const onClickSetting = useCallback(()=>{
+    if(thresholds === undefined){
+      registerThreshold(param.id);
+      getThreshold(param.id);
+      setPercent('30');
+    }else{
+      getThreshold(param.id);
+      setPercent(thresholds?.moisture ?? '0');
+    }
+    setShow(!show);
+  },[thresholds,show,getThreshold,setPercent,setShow]);
+
+
   const param = useParams<{ id: string }>();
   const today = new Date();
   useEffect(() => getGraphData(period, param.id), [period]);
 
   useEffect(() => {
     getDetailField(param.id);
-    getThreshold();
   }, []);
 
   return (

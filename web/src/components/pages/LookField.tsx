@@ -24,7 +24,7 @@ export const LookField: VFC = memo(() => {
     }
   }, []);
 
-  console.log(process.env.REACT_APP_S3_URL);
+  console.log(fields);
   return (
     <SLookField>
       <Header />
@@ -73,7 +73,7 @@ export const LookField: VFC = memo(() => {
                 </div>
               </div>
             </Link>
-            <Link to="lookfield/graph">
+            <Link to="lookfield/graph/4">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
@@ -82,7 +82,7 @@ export const LookField: VFC = memo(() => {
                 </div>
               </div>
             </Link>
-            <Link to="lookfield/graph">
+            <Link to="lookfield/graph/5">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
                 <div>
@@ -91,7 +91,7 @@ export const LookField: VFC = memo(() => {
                 </div>
               </div>
             </Link>
-            <Link to="lookfield/graph">
+            <Link to="lookfield/graph/6">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
                 <div>

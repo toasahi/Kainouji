@@ -24,7 +24,10 @@ export const useUpdateThreshold = () => {
         alert('失敗');
         setLoading(false);
       })
-      .finally(() => {});
+      .finally(() => {
+        params.delete('moisture');
+        params.delete('id');
+      });
   }, []);
 
   return { updateThreshold, loading, success };

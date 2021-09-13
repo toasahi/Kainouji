@@ -6,7 +6,7 @@ export const useRegisterThresholds = () => {
   const [success, setSuccess] = useState(false);
   const params = new URLSearchParams();
   const registerThreshold = useCallback((id: string) => {
-    params.append('user_id', id);
+    params.append('field_id', id);
     setLoading(true);
     axios
       .post('http://localhost:4000/v1/threshold/add', params, {
@@ -16,15 +16,13 @@ export const useRegisterThresholds = () => {
       })
       .then((res) => {
         setSuccess(true);
-        alert('登録できました');
         setLoading(false);
       })
       .catch((error) => {
-        alert('登録失敗');
         setLoading(false);
       })
       .finally(() => {
-       params.delete('id');
+       params.delete('field_id');
   })}, []);
 
   return { registerThreshold, loading, success };
