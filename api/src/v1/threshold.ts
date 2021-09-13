@@ -1,6 +1,6 @@
 import express from 'express';
 import { Threshold } from 'types/type';
-import { getThreshold, editThreshold } from './db';
+import { getThreshold, editThreshold, insertThreshold } from './db';
 
 const thresholdRouter = express.Router();
 
@@ -16,6 +16,20 @@ thresholdRouter.post('/', (req: express.Request, res: express.Response) => {
     res.status(400).json({ message: error.message, status: 400 });
   }
 });
+
+//UPDATE method route
+thresholdRouter.post('/add/', (req: express.Request, res: express.Response) => {
+  res.set({ 'Access-Control-Allow-Origin': '*' });
+  try {
+    const threshold:{id:string} = req.body;
+    insertThreshold(threshold.id).then(() => {
+      res.status(200).json({ message: 'OK', status: 200 });
+    });
+  } catch (error) {
+    res.status(400).json({ message: error.message, status: 400 });
+  }
+});
+
 
 thresholdRouter.get('/', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });

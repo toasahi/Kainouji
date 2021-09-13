@@ -109,6 +109,13 @@ export const editThreshold = async (field_id:string,moisture:string) => {
   return rows;
 };
 
+export const insertThreshold = async (field_id:string) => {
+  const conn = await mysql.createConnection(dbSetting);
+  const sql = `INSERT INTO thresholds (field_id) values ('${field_id}')`;
+  const [rows, fields] = await conn.query(sql);
+  return rows;
+};
+
 /**
  * 閾値の取得
  * @async

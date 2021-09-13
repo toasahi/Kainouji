@@ -33,6 +33,7 @@ export const useRegisterField = () => {
         setLoading(false);
       })
       .finally(() => {
+        params.delete('user_id');
         params.delete('field_name');
         params.delete('vegetable_id');
         params.delete('setting_date');
