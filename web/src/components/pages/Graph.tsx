@@ -49,7 +49,7 @@ export const Graph: VFC = memo(() => {
       <SGraph>
         <Header />
         <main>
-          <h1>きゅうり畑</h1>
+          <h1>{field?.field_name ?? '畑の名前'}</h1>
           <section>
             <div className="graph">
               <div className="dataContainer">

@@ -186,11 +186,11 @@ const SContainer = styled.div`
     img {
       width: 100%;
       height: 90px;
-      object-fit:cover;
+      object-fit: cover;
     }
 
     div {
-      padding:5px;
+      padding: 5px;
       text-align: left;
       line-height: 2;
       p {
@@ -251,7 +251,6 @@ const SContainer = styled.div`
   @media (min-width: ${Responsive.lg}) {
     .filedContent {
       div {
-
         h2 {
           font-size: ${Font.textXl};
         }
