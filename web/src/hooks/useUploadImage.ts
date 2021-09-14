@@ -2,19 +2,11 @@ import { useCallback, useState } from 'react';
 import AWS from 'aws-sdk';
 
 const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
-const REGION = process.env.REACT_APP_S3_BUCKET;
-
-const config = {
-  bucketName: S3_BUCKET,
-  dirName: process.env.REACT_APP_S3_DIRECTORY /* optional */,
-  region: REGION,
-  accessKeyId: process.env.REACT_APP_S3_ACCESS_KEY_ID,
-  secretAccessKey: process.env.REACT_APP_S3_SECRET_ACCESS_KEY,
-};
+const REGION = process.env.REACT_APP_S3_REGION;
 
 AWS.config.update({
-  accessKeyId: config.accessKeyId,
-  secretAccessKey: config.secretAccessKey,
+  accessKeyId: process.env.REACT_APP_S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_S3_SECRET_ACCESS_KEY,
 });
 
 const myBucket = new AWS.S3({
@@ -30,7 +22,6 @@ export const useUploadImage = () => {
       Body: file,
       Bucket: S3_BUCKET!,
       Key: file.name,
-      ContentType: file.type,
     };
 
     // return s3.upload(uploadParams).promise();
