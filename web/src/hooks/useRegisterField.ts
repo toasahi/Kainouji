@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { useCallback, useState } from 'react';
 import { RegisterData, FieldState } from '../types/api/field';
+import { useUploadImage } from './useUploadImage';
 
 export const useRegisterField = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const { uploadImage } = useUploadImage();
   const params = new URLSearchParams();
   const registerField = useCallback((id: string, data: RegisterData) => {
     params.append('user_id', id);
@@ -25,6 +27,9 @@ export const useRegisterField = () => {
       })
       .then((res) => {
         setSuccess(true);
+        if (data.image !== undefined && data.image.length !== 0) {
+          uploadImage(data.image[0]);
+        }
         alert('登録できました');
         setLoading(false);
       })

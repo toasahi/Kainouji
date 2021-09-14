@@ -24,11 +24,11 @@ export const useUploadImage = () => {
       Key: file.name,
     };
 
-    // return s3.upload(uploadParams).promise();
     myBucket
       .putObject(params)
       .on('httpUploadProgress', (evt) => {
         setProgress(Math.round((evt.loaded / evt.total) * 100));
+        console.log(progress);
       })
       .send((err) => {
         if (err) console.log(err);
