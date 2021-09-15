@@ -1,25 +1,49 @@
 import { ChangeEvent, memo, useEffect, useState, VFC } from 'react';
 import styled from 'styled-components';
 
-import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
+import { BaseContainer, Card, Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
 import { useRegisterField } from '../../hooks/useRegisterField';
 import { PrimaryInput } from '../Inputs/PrimaryInput';
+import { IFormValues } from '../../types/form/form';
+import { useLoginUser } from '../../hooks/useLoginUser';
+import { useCookies } from 'react-cookie';
 
 type State = {
-  fieldName: string;
-  vegetable: string;
-  settingDay: string;
-  settingPlace?: string;
-  imageUrl: string;
+  data: IFormValues;
+  imageUrl?: string;
+};
+
+type Vegetable = {
+  [key: string]: string;
+};
+
+// 仮データ
+const vegetableList: Vegetable = {
+  '1': 'きゅうり',
+  '2': 'キャベツ',
+  '3': 'トマト',
 };
 
 export const Confirm: VFC = memo(() => {
   const history = useHistory<State>();
-  const onClickBack = () => history.push('/registerfield');
-  const onClickRegister = () => registerField('1', state);
+  const onClickBack = () =>
+    history.push({
+      pathname: '/registerfield',
+      state: {
+        data: state.data,
+        imageUrl: state.imageUrl ?? '',
+      },
+    });
+  const [cookies, setCookie] = useCookies(['id']);
+  const { loginUser } = useLoginUser();
+  const onClickRegister = () => {
+    if (Object.keys(cookies).length !== 0 || (loginUser !== null && loginUser.id !== undefined)) {
+      registerField(cookies.id, state.data);
+    }
+  };
   const { registerField, loading, success } = useRegisterField();
 
   const onChangeTest = () => console.log(1);
@@ -38,7 +62,7 @@ export const Confirm: VFC = memo(() => {
                 inputType="text"
                 inputId="fieldName"
                 onChange={onChangeTest}
-                value={state.fieldName}
+                value={state.data.fieldName}
                 readonly={true}
               />
             </div>
@@ -49,7 +73,7 @@ export const Confirm: VFC = memo(() => {
                   inputType="text"
                   inputId="vegetable"
                   onChange={onChangeTest}
-                  value={state.vegetable}
+                  value={vegetableList[state.data.vegetable]}
                   readonly={true}
                 />
               </div>
@@ -59,14 +83,14 @@ export const Confirm: VFC = memo(() => {
                   inputType="date"
                   inputId="settingDay"
                   onChange={onChangeTest}
-                  value={state.settingDay}
+                  value={state.data.settingDay}
                   readonly={true}
                 />
               </div>
             </section>
             <div className="item">
-              <label htmlFor="fieldImage">畑の画像</label>
-              <label htmlFor="fieldImage">
+              <label htmlFor="image">畑の画像</label>
+              <label htmlFor="image">
                 <img src={state.imageUrl} style={{ width: '100%', height: '180px' }} />
               </label>
             </div>
@@ -81,53 +105,9 @@ export const Confirm: VFC = memo(() => {
   );
 });
 
-const SConfirm = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
-  align-content: space-between;
-  justify-content: space-between;
-  min-height: 100vh;
+const SConfirm = styled(BaseContainer)``;
 
-  main {
-    width: 100%;
-  }
-
-  @media (min-width: ${Responsive.md}) {
-    main {
-      width: 80%;
-    }
-
-    flex-direction: row;
-    justify-content: start;
-    align-content: center;
-  }
-`;
-
-const SCard = styled.section`
-  margin: 0 auto;
-  width: 85%;
-
-  h1 {
-    font-size: ${Font.text3xl};
-    text-align: center;
-    padding: 5px;
-    margin: 20px 0;
-    position: relative;
-    font-weight: ${FontWeight.fontSemiBold};
-
-    ::after {
-      background-color: ${Color.secondary}; /* 線色 */
-      border-radius: 5px; /* 線幅の半分 */
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 30%;
-      width: 40%;
-      opacity: 25%;
-      height: 15px; /* 線幅 */
-    }
-  }
-
+const SCard = styled(Card)`
   .item {
     margin-top: 15px;
 
@@ -147,13 +127,6 @@ const SCard = styled.section`
   }
 
   @media (min-width: ${Responsive.md}) {
-    width: 650px;
-
-    .container {
-      width: 80%;
-      margin: 0 auto;
-    }
-
     section {
       display: flex;
       justify-content: space-between;
@@ -165,35 +138,6 @@ const SCard = styled.section`
   }
 
   @media (min-width: ${Responsive.lg}) {
-    width: 700px;
-    height: 680px;
-    background-color: #fefefe;
-    margin: 0 auto;
-    margin-top: 25px;
-    border-radius: 30px;
-    padding: 25px;
-    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-
-    h1 {
-      font-size: ${Font.text5xl};
-      padding: 5px;
-      margin: 30px 0;
-      position: relative;
-
-      ::after {
-        background-color: ${Color.secondary}; /* 線色 */
-        border-radius: 5px; /* 線幅の半分 */
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 33.5%;
-        width: 250px;
-        opacity: 25%;
-        height: 15px; /* 線幅 */
-      }
-    }
-
     .item {
       margin-top: 20px;
 

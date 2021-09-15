@@ -1,44 +1,51 @@
-import { ChangeEvent, memo, useEffect, useState, VFC } from 'react';
+import { ChangeEvent, ChangeEventHandler, memo, useEffect, useState, VFC } from 'react';
 import styled from 'styled-components';
 
 import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 import { useGetVegitables } from '../../hooks/useGetVegitables';
 import { Header } from '../layouts/Header';
-import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
-import Images from 'images/defaultImage.jpeg';
-import { PrimarySelect } from '../selects/PrimarySelect';
-import { useGetThreshold } from '../../hooks/useGetThreshold';
+import { SecondInput } from '../Inputs/SecondInput';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { IFormValues } from '../../types/form/form';
+
+type State = {
+  data?: IFormValues;
+  imageUrl?: string;
+};
 
 export const RegisterField: VFC = memo(() => {
-  const history = useHistory();
-  const onClickConfirm = () =>
-    history.push({
-      pathname: '/registerfield/confirm',
-      state: {
-        fieldName: fieldName,
-        vegetable: vegetable,
-        settingDay: settingDay,
-        imageUrl: imageUrl,
-      },
-    });
-  const [fieldName, setFieldName] = useState('');
-  const [vegetable, setVegetable] = useState('');
-  const [settingDay, setSettingDay] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  const history = useHistory<State>();
+  const state = history.location.state;
+  const historyState = state === undefined;
+  const [imageUrl, setImageUrl] = useState(historyState ? '' : state.data?.fieldImage);
+  const [vegetable, setVegetable] = useState(historyState ? '' : state.data?.vegetable);
   const { getVegetables, loading, vegetableLists } = useGetVegitables();
-  const onChangeFieldName = (event: ChangeEvent<HTMLInputElement>) => setFieldName(event.target.value);
-  const onChangeVegetable = (event: ChangeEvent<HTMLSelectElement>) => setVegetable(event.target.value);
-  const onChangeSettingDay = (event: ChangeEvent<HTMLInputElement>) => setSettingDay(event.target.value);
+  const onChangeVegetable = (event: ChangeEvent<HTMLSelectElement>) => {
+    setVegetable(event.target.value);
+  };
   const onChangeProcessImage = (event: ChangeEvent<HTMLInputElement>) =>
     event.currentTarget.files !== null
       ? setImageUrl(URL.createObjectURL(event.currentTarget.files[0]))
       : setImageUrl('');
 
   useEffect(() => getVegetables(), []);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormValues>();
 
-  console.log(imageUrl);
+  const onSubmit: SubmitHandler<IFormValues> = (data) => {
+    history.push({
+      pathname: '/registerfield/confirm',
+      state: {
+        data: data,
+        imageUrl: imageUrl,
+      },
+    });
+  };
 
   return (
     <SRegisterField>
@@ -47,63 +54,64 @@ export const RegisterField: VFC = memo(() => {
         <SCard>
           <div className="container">
             <h1>畑を登録</h1>
-            <div className="item">
-              <label htmlFor="fieldName">名前</label>
-              <PrimaryInput
-                inputType="text"
-                inputId="fieldName"
-                onChange={onChangeFieldName}
-                value={fieldName}
-                placeHolder="畑の名前"
-              />
-            </div>
-            <section>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="item">
-                <label htmlFor="vegetable">育てる野菜</label>
-                <select id="vegetable" value={vegetable} onChange={onChangeVegetable} required>
-                  <option value="">選択してください</option>
-                  {vegetableLists.map((vegetableList) => (
-                    <option key={vegetableList.id} value={vegetableList.id}>
-                      {vegetableList.vegetable}
-                    </option>
-                  ))}
-                </select>
-                {/* <PrimarySelect selectId="vegetableKind" labelText="育てる野菜" lists={vegetableLists}/> */}
+                <label htmlFor="fieldName">名前</label>
+                <SecondInput
+                  label="fieldName"
+                  inputType="text"
+                  register={register}
+                  required
+                  value={historyState ? '' : state.data?.fieldName}
+                />
+                {errors.fieldName && <span>畑の名前を入力してください</span>}
               </div>
-              {/* <div className="item">
-                <label htmlFor="waterTiming">水をやるタイミング</label>
-                <select id="waterTiming" value={waterTiming} onChange={onChangeWaterTiming}>
-                  <option value="">選択してください</option>
-                  <option value="10%">10%</option>
-                  <option value="20%">20%</option>
-                  <option value="30%">30%</option>
-                </select>
-              </div> */}
+              <section>
+                <div className="item">
+                  <label htmlFor="vegetable">育てる野菜</label>
+                  <select
+                    id="vegetable"
+                    {...register('vegetable', { required: true })}
+                    onChange={onChangeVegetable}
+                    value={vegetable}
+                  >
+                    <option value="">選択してください</option>
+                    <option value="1">きゅうり</option>
+                    <option value="2">キャベツ</option>
+                    <option value="3">トマト</option>
+                  </select>
+                  {errors.vegetable && <span>野菜を選択してください</span>}
+                </div>
+
+                <div className="item">
+                  <label htmlFor="settingDay">設置日</label>
+                  <SecondInput
+                    inputType="date"
+                    label="settingDay"
+                    register={register}
+                    required
+                    value={historyState ? '' : state.data?.settingDay}
+                  />
+                  {errors.settingDay && <span>設置日を入力してください</span>}
+                </div>
+              </section>
+
               <div className="item">
-                <label htmlFor="settingDay">設置日</label>
-                <PrimaryInput inputType="date" inputId="settingDay" onChange={onChangeSettingDay} value={settingDay} />
+                <label htmlFor="image">畑の画像</label>
+                <div style={{ height: '160px' }}>
+                  <SecondInput
+                    inputType="file"
+                    label="image"
+                    register={register}
+                    onChange={onChangeProcessImage}
+                    required={false}
+                  />
+                </div>
               </div>
-            </section>
-            <div className="item">
-              <label htmlFor="fieldImage">畑の画像</label>
-              {imageUrl === '' ? (
-                <>
-                  <div style={{ height: '198px' }}>
-                    <PrimaryInput inputType="file" inputId="fieldImage" onChange={onChangeProcessImage} />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <label htmlFor="fieldImage">
-                    <img src={imageUrl} style={{ width: '100%', height: '180px' }} />
-                  </label>
-                  <PrimaryInput inputType="file" inputId="fieldImage" onChange={onChangeProcessImage} hidden={true} />
-                </>
-              )}
-            </div>
-            <div className="buttonContainer">
-              <PrimaryButton children="確認画面へ進む" position="after" onClick={onClickConfirm} />
-            </div>
+              <div className="buttonContainer">
+                <PrimaryButton children="確認画面へ" position="after" onClick={() => console.log()} />
+              </div>
+            </form>
           </div>
         </SCard>
       </main>
@@ -121,8 +129,10 @@ const SRegisterField = styled.div`
   main {
     width: 100%;
 
-    section {
-      padding: 10px;
+    span {
+      color: #ed4956;
+      font-size: ${Font.textSm};
+      line-height: 2;
     }
 
     select {
@@ -190,7 +200,6 @@ const SCard = styled.section`
 
   @media (min-width: ${Responsive.md}) {
     width: 85%;
-    height: 680px;
     padding: 15px;
     background-color: #fefefe;
     margin: 0 auto;

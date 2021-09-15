@@ -1,17 +1,16 @@
-import { ChangeEvent, memo, useContext, useEffect, useState, VFC } from 'react';
-import styled from 'styled-components';
-
-import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
-import { useGetVegitables } from '../../hooks/useGetVegitables';
-import { Header } from '../layouts/Header';
-import { PrimaryButton } from '../buttons/PrimaryButton';
-import { Link, useHistory } from 'react-router-dom';
-import { SecondInput } from '../Inputs/SecondInput';
+import { memo, useState, VFC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { IFormValues } from '../../types/form/form';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { Color, Responsive, Font } from '../../constant/BaseCss';
 import { useLogin } from '../../hooks/useLogin';
+import { IFormValues } from '../../types/form/form';
+import { PrimaryButton } from '../buttons/PrimaryButton';
+import { SecondInput } from '../Inputs/SecondInput';
 
 export const Login: VFC = memo(() => {
+  const [userForm, setUserForm] = useState(true);
+  const onClickChangeForm = () => setUserForm(!userForm);
   const {
     register,
     handleSubmit,
@@ -20,194 +19,117 @@ export const Login: VFC = memo(() => {
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
     login(data);
   };
-
   const { login, loading } = useLogin();
-
   return (
-    <SLogin>
-      <Header />
-      <main>
-        <SCard>
-          <div className="container">
-            <h1>ログイン</h1>
+    <SSecondLogin>
+      <>
+        <main>
+          <div className="user-info-container">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="item">
                 <label htmlFor="email">メールアドレス</label>
                 <SecondInput label="email" inputType="email" register={register} required />
-                {errors.email && <span>ユーザ名を入力してください</span>}
+                {errors.email && <span>メールアドレスを入力してください</span>}
               </div>
               <div className="item">
                 <label htmlFor="password">パスワード</label>
                 <SecondInput label="password" inputType="password" register={register} required />
                 {errors.password && <span>パスワードを入力してください</span>}
               </div>
-              <div className="buttonContainer">
+              <div className="button-container">
                 <PrimaryButton children="ログイン" position="after" onClick={() => console.log()} />
               </div>
             </form>
-            <section>
-              <div className="item">
-                <Link to="/signup">ユーザー登録</Link>
-              </div>
-              <div className="item">
-                <Link to="">パスワードを忘れましたか？</Link>
-              </div>
-            </section>
+            <nav>
+              <ul className="account-nav">
+                <li className="account-nav-item">
+                  <Link to="/signup">アカウント作成</Link>
+                </li>
+                <li className="account-nav-item">
+                  <Link to="">パスワードを忘れましたか？</Link>
+                </li>
+              </ul>
+            </nav>
           </div>
-        </SCard>
-      </main>
-    </SLogin>
+        </main>
+      </>
+    </SSecondLogin>
   );
 });
 
-const SLogin = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
-  align-content: space-between;
-  justify-content: space-between;
-  min-height: 100vh;
-
+const SSecondLogin = styled.div`
   main {
-    width: 100%;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 65%;
+    background-color: #fefefe;
+    padding: 30px 20px;
+    border-radius: 10px;
+    border: 1px solid #e8e6e6;
 
     span {
       color: #ed4956;
       font-size: ${Font.textSm};
       line-height: 2;
     }
-  }
 
-  @media (min-width: ${Responsive.md}) {
-    flex-direction: row;
-    justify-content: start;
-    align-content: center;
-
-    main {
-      width: 80%;
+    .user-info-container {
+      margin-top: 30px;
     }
-  }
-`;
-
-const SCard = styled.section`
-  margin: 0 auto;
-  width: 85%;
-
-  h1 {
-    font-size: ${Font.text3xl};
-    text-align: center;
-    padding: 5px;
-    margin: 20px 0;
-    position: relative;
-    font-weight: ${FontWeight.fontSemiBold};
-
-    ::after {
-      background-color: ${Color.secondary}; /* 線色 */
-      border-radius: 5px; /* 線幅の半分 */
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 30%;
-      width: 40%;
-      opacity: 25%;
-      height: 15px; /* 線幅 */
-    }
-  }
-
-  .buttonContainer {
-    text-align: center;
-    margin-top: 10px;
-  }
-
-  .item {
-    margin-top: 15px;
 
     label {
-      line-height: 2;
+      line-height: 3;
+      opacity: 75%;
+    }
+
+    .button-container {
+      text-align: center;
+      button {
+        margin: 0 auto;
+        margin-top: 30px;
+        text-align: center;
+        padding-left: 0;
+
+        &:after {
+          content: '';
+          width: 0px;
+          height: 0px;
+          border: 0;
+        }
+      }
+    }
+
+    .account-nav {
+      margin-top: 20px;
+      padding: 10px 20px;
+
+      .account-nav-item {
+        a {
+          opacity: 50%;
+          padding-top: 10px;
+          &:hover {
+            opacity: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: ${Responsive.sm}) {
+    main {
+      width: 30%;
+      .account-nav-item {
+        a {
+          font-size: ${Font.textBase};
+        }
+      }
     }
   }
 
   @media (min-width: ${Responsive.md}) {
-    width: 85%;
-    height: 680px;
-    padding: 15px;
-    background-color: #fefefe;
-    margin: 0 auto;
-    margin-top: 25px;
-    border-radius: 30px;
-    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-
-    h1 {
-      font-size: ${Font.text3xl};
-      text-align: center;
-      padding: 5px;
-      margin: 20px 0;
-      position: relative;
-      font-weight: ${FontWeight.fontSemiBold};
-
-      ::after {
-        background-color: ${Color.secondary}; /* 線色 */
-        border-radius: 5px; /* 線幅の半分 */
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 30%;
-        width: 40%;
-        opacity: 25%;
-        height: 15px; /* 線幅 */
-      }
-    }
-
-    section {
+    .account-nav {
       display: flex;
-      justify-content: space-between;
-
-      .item {
-        width: 45%;
-      }
-    }
-
-    .container {
-      width: 80%;
-      margin: 0 auto;
-    }
-
-    .item {
-      margin-top: 20px;
-
-      label {
-        line-height: 3;
-      }
-    }
-
-    .buttonContainer {
-      text-align: center;
-      margin-top: 25px;
-    }
-  }
-
-  @media (min-width: ${Responsive.lg}) {
-    width: 700px;
-    height: 680px;
-    margin-top: 25px;
-    padding: 25px;
-
-    h1 {
-      font-size: ${Font.text5xl};
-      padding: 5px;
-      margin: 30px 0;
-
-      ::after {
-        border-radius: 5px; /* 線幅の半分 */
-        bottom: 0;
-        left: 28%;
-        width: 250px;
-        height: 15px; /* 線幅 */
-      }
-    }
-
-    .item {
-      width: 100%;
+      justify-content: space-around;
     }
   }
 `;

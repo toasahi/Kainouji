@@ -7,12 +7,16 @@ import { SecondLogin } from '../components/pages/SecondLogin';
 import { SecondSignUp } from '../components/pages/SecondSignUp';
 import { Graph } from '../components/pages/Graph';
 import { User } from '../components/pages/User';
+import { Login } from '../components/pages/Login';
+import { RegisterField } from '../components/pages/RegisterField';
+import { Confirm } from '../components/pages/Confirm';
+import { SignUp } from '../components/pages/SignUp';
 
 export const homeRoutes = [
   {
     path: '/',
     exact: true,
-    children: <SecondLogin />,
+    children: <Login />,
   },
   {
     path: '/lookfield',
@@ -27,12 +31,12 @@ export const homeRoutes = [
   {
     path: '/registerfield',
     exact: true,
-    children: <SecondRegisterField />,
+    children: <RegisterField />,
   },
   {
     path: '/registerfield/confirm',
     exact: false,
-    children: <SecondaryConfirm />,
+    children: <Confirm />,
   },
   {
     path: '/weather',
@@ -42,7 +46,7 @@ export const homeRoutes = [
   {
     path: '/signup',
     exact: true,
-    children: <SecondSignUp />,
+    children: <SignUp />,
   },
   {
     path: '/user',
