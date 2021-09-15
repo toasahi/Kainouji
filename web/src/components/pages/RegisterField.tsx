@@ -76,9 +76,9 @@ export const RegisterField: VFC = memo(() => {
                     value={vegetable}
                   >
                     <option value="">選択してください</option>
-                    <option value="1">きゅうり</option>
-                    <option value="2">キャベツ</option>
-                    <option value="3">トマト</option>
+                    {vegetableLists.map((vegetableList)=>(
+                      <option key={vegetableList.id} value={vegetableList.id}>{vegetableList.vegetable}</option>
+                    ))}
                   </select>
                   {errors.vegetable && <span>野菜を選択してください</span>}
                 </div>

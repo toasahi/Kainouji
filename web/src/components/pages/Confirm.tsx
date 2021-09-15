@@ -25,6 +25,10 @@ const vegetableList: Vegetable = {
   '1': 'きゅうり',
   '2': 'キャベツ',
   '3': 'トマト',
+  '4': 'さくらひめ',
+  '5': 'さといも',
+  '6': 'お米',
+  '7': 'なす'
 };
 
 export const Confirm: VFC = memo(() => {

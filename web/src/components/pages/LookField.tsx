@@ -46,51 +46,6 @@ export const LookField: VFC = memo(() => {
                 </div>
               </Link>
             ))}
-            <Link to="lookfield/graph/1">
-              <div className="filedContent">
-                <img src={defaultImage} alt="畑の画像" />
-                <div>
-                  <h2>きゅうり畑</h2>
-                  <p>設置日:2021/08/02</p>
-                </div>
-              </div>
-            </Link>
-            <Link to="lookfield/graph/2">
-              <div className="filedContent">
-                <img src={defaultImage} alt="畑の画像" />
-                <div>
-                  <h2>越智自動車前畑</h2>
-                  <p>設置日:2021/09/02</p>
-                </div>
-              </div>
-            </Link>
-            <Link to="lookfield/graph/3">
-              <div className="filedContent">
-                <img src={defaultImage} alt="畑の画像" />
-                <div>
-                  <h2>越智自動車前畑</h2>
-                  <p>設置日:2021/09/02</p>
-                </div>
-              </div>
-            </Link>
-            <Link to="lookfield/graph/4">
-              <div className="filedContent">
-                <img src={defaultImage} alt="畑の画像" />
-                <div>
-                  <h2>越智自動車前畑</h2>
-                  <p>設置日:2021/09/02</p>
-                </div>
-              </div>
-            </Link>
-            <Link to="lookfield/graph/5">
-              <div className="filedContent">
-                <img src={defaultImage} alt="畑の画像" />
-                <div>
-                  <h2>越智自動車前畑</h2>
-                  <p>設置日:2021/09/02</p>
-                </div>
-              </div>
-            </Link>
             <Link to="lookfield/graph/6">
               <div className="filedContent">
                 <img src={defaultImage} alt="畑の画像" />
@@ -104,7 +59,7 @@ export const LookField: VFC = memo(() => {
               <div className="filedContent">
                 <img src={defaultImage} />
                 <div>
-                  <h2>越智自動車前畑</h2>
+                  <h2>山城の畑</h2>
                   <p>設置日:2021/09/02</p>
                 </div>
               </div>

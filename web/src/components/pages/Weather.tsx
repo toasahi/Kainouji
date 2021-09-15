@@ -37,8 +37,6 @@ export const Weather: VFC = memo(() => {
               style={{ width: '400px', height: '300px', display: 'block', margin: '0 auto', marginTop: '100px' }}
             />
           </div>
-          <input type="file" onChange={onChangeImage} />
-          {flag ? <button onClick={onClickUpload}> Upload to S3</button> : ''}
         </main>
       </SContainer>
     </>

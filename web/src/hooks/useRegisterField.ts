@@ -6,7 +6,7 @@ import { useUploadImage } from './useUploadImage';
 export const useRegisterField = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const { uploadImage } = useUploadImage();
+  const { uploadImage,finishUpload } = useUploadImage();
   const params = new URLSearchParams();
   const registerField = useCallback((id: string, data: RegisterData) => {
     params.append('user_id', id);
@@ -29,8 +29,10 @@ export const useRegisterField = () => {
         setSuccess(true);
         if (data.image !== undefined && data.image.length !== 0) {
           uploadImage(data.image[0]);
+          if(!finishUpload){
+            alert('登録できました');
+          }
         }
-        alert('登録できました');
         setLoading(false);
       })
       .catch((error) => {
