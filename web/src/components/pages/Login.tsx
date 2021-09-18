@@ -1,16 +1,14 @@
-import { memo, useState, VFC } from 'react';
+import { memo, VFC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Color, Responsive, Font } from '../../constant/BaseCss';
+import { Responsive, Font } from '../../constant/BaseCss';
 import { useLogin } from '../../hooks/useLogin';
 import { IFormValues } from '../../types/form/form';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { SecondInput } from '../Inputs/SecondInput';
 
 export const Login: VFC = memo(() => {
-  const [userForm, setUserForm] = useState(true);
-  const onClickChangeForm = () => setUserForm(!userForm);
   const {
     register,
     handleSubmit,

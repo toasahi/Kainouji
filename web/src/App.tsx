@@ -1,14 +1,10 @@
-import axios from 'axios';
-import { useCallback, useEffect, useState } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import styled, { createGlobalStyle } from 'styled-components';
+import { BrowserRouter } from 'react-router-dom';
+import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
-import { PrimaryButton } from './components/buttons/PrimaryButton';
 import { Color } from './constant/BaseCss';
 import { LoginUserProvider } from './providers/LoginUserProvider';
 import { Router } from './router/Router';
-import { Moisture } from './types/api/moisture';
 
 function App() {
   return (

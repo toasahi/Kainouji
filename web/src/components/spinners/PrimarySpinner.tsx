@@ -1,6 +1,5 @@
 import { memo, VFC } from 'react';
 import Loader from 'react-loader-spinner';
-import styled from 'styled-components';
 
 export const PrimarySpinner: VFC = memo(() => {
   return (

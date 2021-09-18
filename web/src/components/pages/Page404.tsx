@@ -1,6 +1,6 @@
 import { memo, VFC } from 'react';
 import styled from 'styled-components';
-import { BaseContainer, Responsive } from '../../constant/BaseCss';
+import { BaseContainer } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 
 export const Page404: VFC = memo(() => {

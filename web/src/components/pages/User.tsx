@@ -1,7 +1,7 @@
 import { ChangeEvent, memo, useState, VFC } from 'react';
 import styled from 'styled-components';
 
-import { Card, Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
+import { Card, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { Header } from '../layouts/Header';
 

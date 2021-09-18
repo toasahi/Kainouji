@@ -3,15 +3,6 @@ import { memo, VFC } from 'react';
 import styled from 'styled-components';
 import { Vegetable } from '../../types/api/vegetable';
 
-// type list = {
-//   id: number;
-//   child: string;
-// };
-
-// type Props = {
-//   lists: VegetableName | WaterTiming | null;
-// };
-
 type Props = {
   selectId: string;
   labelText: string;

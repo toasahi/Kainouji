@@ -1,9 +1,8 @@
-import React, { ChangeEvent, memo, VFC } from 'react';
+import { ChangeEvent, memo, VFC } from 'react';
 import styled from 'styled-components';
 import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 import { useUpdateThreshold } from '../../hooks/useUpdateThreshold';
 import { PrimaryButton } from '../buttons/PrimaryButton';
-import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { RangeSlider } from '../Inputs/RangeSlider';
 
 type Props = {
