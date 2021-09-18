@@ -107,17 +107,6 @@ const Card = styled.section`
       font-size: ${Font.text5xl};
       padding: 5px;
       margin: 30px 0;
-      position: relative;
-
-      ::after {
-        background-color: ${Color.secondary}; /* 線色 */
-        border-radius: 5px; /* 線幅の半分 */
-        content: '';
-        position: absolute;
-        bottom: 0;
-        opacity: 25%;
-        height: 15px; /* 線幅 */
-      }
     }
   }
 `;

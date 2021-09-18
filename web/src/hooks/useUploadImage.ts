@@ -16,7 +16,7 @@ const myBucket = new AWS.S3({
 
 export const useUploadImage = () => {
   const [progress, setProgress] = useState(0);
-  const [finishUpload,setFinishUpload] = useState(false);
+  const [finishUpload, setFinishUpload] = useState(false);
   const uploadImage = useCallback((file: File) => {
     setFinishUpload(true);
     const params = {
@@ -30,7 +30,7 @@ export const useUploadImage = () => {
       .putObject(params)
       .on('httpUploadProgress', (evt) => {
         setProgress(Math.round((evt.loaded / evt.total) * 100));
-        if(progress === 100){
+        if (progress === 100) {
           setFinishUpload(false);
         }
       })

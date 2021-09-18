@@ -28,7 +28,7 @@ const vegetableList: Vegetable = {
   '4': 'さくらひめ',
   '5': 'さといも',
   '6': 'お米',
-  '7': 'なす'
+  '7': 'なす',
 };
 
 export const Confirm: VFC = memo(() => {

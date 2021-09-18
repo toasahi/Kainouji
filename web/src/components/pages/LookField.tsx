@@ -2,7 +2,7 @@ import { memo, useEffect, VFC } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
+import { BaseContainer, Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 import defaultImage from '../../images/defaultImage.jpeg';
 import { useGetField } from '../../hooks/useGetFields';
@@ -10,7 +10,7 @@ import { useLoginUser } from '../../hooks/useLoginUser';
 import { useCookies } from 'react-cookie';
 
 export const LookField: VFC = memo(() => {
-  const { loading, fields, getFields } = useGetField();
+  const { fields, getFields } = useGetField();
   const { loginUser } = useLoginUser();
   const [cookies, setCookie] = useCookies(['id']);
   useEffect(() => {
@@ -71,16 +71,8 @@ export const LookField: VFC = memo(() => {
   );
 });
 
-const SLookField = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
-  align-content: space-between;
-  justify-content: space-between;
-  min-height: 100vh;
-
+const SLookField = styled(BaseContainer)`
   main {
-    width: 100%;
-
     section {
       text-align: center;
     }
@@ -106,15 +98,8 @@ const SLookField = styled.div`
       }
     }
   }
-
   @media (min-width: ${Responsive.md}) {
-    flex-direction: row;
-    justify-content: start;
-    align-content: center;
-
     main {
-      width: 80%;
-
       h1 {
         font-size: ${Font.text5xl};
         padding: 5px;
