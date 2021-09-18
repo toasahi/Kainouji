@@ -15,7 +15,7 @@ export const useLogin = () => {
     (data: User) => {
       setLoading(true);
       axios
-        .get<Array<User>>(`http://localhost:4000/v1/user/email/${data.email}/password/${data.password}`)
+        .get<Array<User>>(`http://127.0.0.1:4000/v1/user/email/${data.email}/password/${data.password}`)
         .then((res) => {
           if (res.data) {
             setLoginUser(res.data[0]);

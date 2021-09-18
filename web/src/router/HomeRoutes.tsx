@@ -1,10 +1,6 @@
 import { Page404 } from '../components/pages/Page404';
 import { Weather } from '../components/pages/Weather';
 import { LookField } from '../components/pages/LookField';
-import { SecondRegisterField } from '../components/pages/SecondRegisterField';
-import { SecondaryConfirm } from '../components/pages/SecondaryConfirm';
-import { SecondLogin } from '../components/pages/SecondLogin';
-import { SecondSignUp } from '../components/pages/SecondSignUp';
 import { Graph } from '../components/pages/Graph';
 import { User } from '../components/pages/User';
 import { Login } from '../components/pages/Login';
