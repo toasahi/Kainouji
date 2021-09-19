@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { useCallback, useState } from 'react';
+import { axios } from '../constant/BaseAxios';
 import { Graph } from '../types/api/graphdata';
 
 export const useGetGraphData = () => {
@@ -8,7 +8,7 @@ export const useGetGraphData = () => {
   const getGraphData = useCallback((period: string, id: string) => {
     setLoading(true);
     axios
-      .get<Array<Graph>>(`http://localhost:4000/v1/graph/${id}/period/${period}`)
+      .get<Array<Graph>>(`graph/${id}/period/${period}`)
       .then((res) => {
         setGraphData(res.data);
         setLoading(false);

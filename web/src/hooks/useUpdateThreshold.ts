@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { useCallback, useState } from 'react';
+import { axios } from '../constant/BaseAxios';
 
 export const useUpdateThreshold = () => {
   const [loading, setLoading] = useState(false);
@@ -10,11 +10,7 @@ export const useUpdateThreshold = () => {
     params.append('id', id);
     setLoading(true);
     axios
-      .post('http://localhost:4000/v1/threshold', params, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      })
+      .post('threshold', params)
       .then((res) => {
         setSuccess(true);
         alert('更新しました');

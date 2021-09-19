@@ -1,6 +1,6 @@
-import axios from 'axios';
 import { useCallback, useState } from 'react';
 import { useHistory } from 'react-router';
+import { axios } from '../constant/BaseAxios';
 import { Result } from '../types/api/result';
 import { User } from '../types/api/user';
 
@@ -16,11 +16,7 @@ export const useSingUp = () => {
       params.append('username', data.username!!);
       setLoading(true);
       axios
-        .post<Result>(`http://localhost:4000/v1/user`, params, {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-        })
+        .post<Result>(`user`, params)
         .then((res) => {
           if (res.data.status === 200) {
             setLoading(false);

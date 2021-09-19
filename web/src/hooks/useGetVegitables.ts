@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import axios from 'axios';
+import { axios } from '../constant/BaseAxios';
 import { Vegetable } from '../types/api/vegetable';
 
 export const useGetVegitables = () => {
@@ -9,7 +9,7 @@ export const useGetVegitables = () => {
   const getVegetables = useCallback(() => {
     setLoading(true);
     axios
-      .get<Array<Vegetable>>('http://localhost:4000/v1/vegetable')
+      .get<Array<Vegetable>>('vegetable')
       .then((res) => setVegetableLists(res.data))
       .catch(() => setLoading(false))
       .finally(() => setLoading(false));

@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { useCallback, useState } from 'react';
+import { axios } from '../constant/BaseAxios';
 import { RegisterData, FieldState } from '../types/api/field';
 import { useUploadImage } from './useUploadImage';
 
@@ -20,11 +20,7 @@ export const useRegisterField = () => {
     }
     setLoading(true);
     axios
-      .post<FieldState>('http://localhost:4000/v1/field', params, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      })
+      .post<FieldState>('field', params)
       .then((res) => {
         setSuccess(true);
         if (data.image !== undefined && data.image.length !== 0) {

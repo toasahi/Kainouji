@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { useCallback, useState } from 'react';
+import { axios } from '../constant/BaseAxios';
 import { Field } from '../types/api/field';
 
 export const useGetField = () => {
@@ -8,7 +8,7 @@ export const useGetField = () => {
   const getFields = useCallback((id: string) => {
     setLoading(true);
     axios
-      .get<Array<Field>>(`http://localhost:4000/v1/field/${id}`)
+      .get<Array<Field>>(`field/${id}`)
       .then((res) => {
         setFields(res.data);
         setLoading(false);
