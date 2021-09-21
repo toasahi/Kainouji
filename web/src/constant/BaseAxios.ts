@@ -8,8 +8,6 @@ export const DefaultAxiosConfig: AxiosRequestConfig = {
   responseType: 'json',
 };
 
-console.log(DefaultAxiosConfig);
-
 export const axios = baseAxios.create({
   ...DefaultAxiosConfig,
 });
