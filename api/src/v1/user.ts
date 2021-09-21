@@ -22,11 +22,12 @@ userRouter.post('/', (req: express.Request, res: express.Response) => {
   }
 });
 
-userRouter.get('/email/:email/password/:password', (req: express.Request, res: express.Response) => {
+userRouter.post('/auth', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
-  getHashPassword(req.params.email).then((result) => {
+  const user: User = req.body;
+  getHashPassword(user.email).then((result) => {
     if (result !== 500) {
-      getUser(req.params.email, req.params.password, result).then((result) => {
+      getUser(user.email, user.password, result).then((result) => {
         res.status(200).json(result);
       });
     } else {
