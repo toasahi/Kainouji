@@ -92,8 +92,8 @@ const SHeader = styled.header`
     align-items: center;
     margin-top: 35px;
 
-    li{
-      cursor:pointer;
+    li {
+      cursor: pointer;
     }
   }
 

@@ -14,23 +14,10 @@ export const useLogin = () => {
   const login = useCallback(
     (data: User) => {
       setLoading(true);
-      params.append('email',data.email);
-      params.append('password',data.password!);
-      // axios
-      //   .get<Array<User>>(`user/email/${data.email}/password/${data.password}`)
-      //   .then((res) => {
-      //     if (res.data) {
-      //       setLoginUser(res.data[0]);
-      //       setLoading(false);
-      //       history.push('/lookfield');
-      //     } else {
-      //       alert('ログインに失敗しました');
-      //       setLoading(false);
-      //     }
-      //   })
-      //   .catch(() => alert('ログインに失敗しました'));
+      params.append('email', data.email);
+      params.append('password', data.password!);
       axios
-        .post(`/user/auth`,params)
+        .post(`/user/auth`, params)
         .then((res) => {
           if (res.data) {
             setLoginUser(res.data[0]);
@@ -41,7 +28,11 @@ export const useLogin = () => {
             setLoading(false);
           }
         })
-        .catch(() => alert('ログインに失敗しました'));
+        .catch(() => alert('ログインに失敗しました'))
+        .finally(() => {
+          params.delete('email');
+          params.delete('password');
+        });
     },
     [history, setLoginUser],
   );

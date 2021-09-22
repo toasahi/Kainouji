@@ -60,7 +60,6 @@ export const Modal: VFC<Props> = memo((props) => {
                 <div className="buttonContainer">
                   <PrimaryButton children="設定する" position="after" onClick={onClickUpdateThreshold} />
                 </div>
-                {/* <button onClick={onClick}>閉じる</button> */}
               </div>
             </SModal>
           </SOverlay>

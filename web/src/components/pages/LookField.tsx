@@ -24,7 +24,6 @@ export const LookField: VFC = memo(() => {
     }
   }, []);
 
-  console.log(fields);
   return (
     <SLookField>
       <Header />
