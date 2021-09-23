@@ -7,7 +7,7 @@ export const useUpdateThreshold = () => {
   const params = new URLSearchParams();
   const updateThreshold = useCallback((id: string, moisture: string) => {
     params.append('moisture', moisture);
-    params.append('id', id);
+    params.append('field_id', id);
     setLoading(true);
     axios
       .post('threshold', params)
@@ -22,7 +22,7 @@ export const useUpdateThreshold = () => {
       })
       .finally(() => {
         params.delete('moisture');
-        params.delete('id');
+        params.delete('field_id');
       });
   }, []);
 

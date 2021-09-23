@@ -5,10 +5,10 @@ import { Graph } from '../types/api/graphdata';
 export const useGetGraphData = () => {
   const [graphData, setGraphData] = useState<Array<Graph>>([]);
   const [loading, setLoading] = useState(false);
-  const getGraphData = useCallback((period: string, id: string) => {
+  const getGraphData = useCallback((period: string, fieldId: string) => {
     setLoading(true);
     axios
-      .get<Array<Graph>>(`graph/${id}/period/${period}`)
+      .get<Array<Graph>>(`graph/${fieldId}/period/${period}`)
       .then((res) => {
         setGraphData(res.data);
         setLoading(false);
