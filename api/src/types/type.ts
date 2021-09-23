@@ -8,11 +8,11 @@ export type Setting = {
 
 export type Threshold = {
   moisture: number;
-  temperature_high: number;
-  temperature_low: number;
-  humidity_high: number;
-  humidity_low: number;
-  air_pressure: number;
+  temperatureHigh: number;
+  temperatureLow: number;
+  humidityHigh: number;
+  humidityLow: number;
+  airPressure: number;
 };
 
 export type Field = {
@@ -29,3 +29,11 @@ export type User = {
   username?: string;
   status?: string;
 };
+
+export type Field2 = {
+  userId: string;
+  fieldName: string;
+  vegetableId: string;
+  settingDate: string;
+  imageName?: string;
+}
