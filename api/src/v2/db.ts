@@ -1,7 +1,7 @@
 import mysql from 'mysql2/promise';
 import bcrypt from 'bcrypt';
 import { Config } from '../config';
-import { Field2, Setting,User } from 'types/type';
+import { Field, Field2, Setting,User } from 'types/type';
 
 const dbSetting: Setting = {
   host: Config.MYSQL_HOST,
@@ -18,29 +18,17 @@ const dbSetting: Setting = {
  * @returns rows
  */
 
-export const editThreshold = async (fieldId: string, moisture: string) => {
+export const editThreshold = async (field_id: string, moisture: string) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = `UPDATE thresholds SET 
-                moisture = ?
-                WHERE field_id = ?
-              `;
-  // const sql = `UPDATE thresholds SET
-  //               moisture = ${threshold.moisture},
-  //               temperature_high = ${threshold.temperature_high},
-  //               temperature_low = ${threshold.temperature_low},
-  //               humidity_high = ${threshold.humidity_high},
-  //               humidity_low = ${threshold.humidity_low},
-  //               air_pressure = ${threshold.air_pressure}
-  //               WHERE id = 1
-  //             `;
-  const [rows, fields] = await conn.query(sql,[moisture,fieldId]);
+  const sql = `UPDATE thresholds SET moisture = ? WHERE field_id = ?`;
+  const [rows, fields] = await conn.query(sql,[moisture,field_id]);
   return rows;
 };
 
-export const insertThreshold = async (fieldId: string) => {
+export const insertThreshold = async (field_id: string) => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = `INSERT INTO thresholds (field_id) values (?)`;
-  const [rows, fields] = await conn.query(sql,[fieldId]);
+  const [rows, fields] = await conn.query(sql,[field_id]);
   return rows;
 };
 
@@ -50,10 +38,10 @@ export const insertThreshold = async (fieldId: string) => {
  * @returns rows
  */
 
-export const getThreshold = async (fieldId: string) => {
+export const getThreshold = async (field_id: string) => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = `SELECT * From thresholds WHERE field_id = ?`;
-  const [rows, fields] = await conn.query(sql,[fieldId]);
+  const [rows, fields] = await conn.query(sql,[field_id]);
   return rows;
 };
 
@@ -89,15 +77,15 @@ export const insertVegetables = async () => {
  * @returns rows
  */
 
-export const insertField = async (data: Field2) => {
+export const insertField = async (data: Field) => {
   const conn = await mysql.createConnection(dbSetting);
   let sql = '';
-  if (data.imageName !== '') {
+  if (data.image_name !== '') {
     sql = `INSERT INTO fields(user_id,field_name,vegetable_id,setting_date,image_name) value(?,?,?,?,?)`;
   } else {
     sql = `INSERT INTO fields(user_id,field_name,vegetable_id,setting_date) value(?,?,?,?)`;
   }
-  const [rows, fields] = await conn.query(sql,[data.userId,data.fieldName,data.vegetableId,data.settingDate,data.imageName]);
+  const [rows, fields] = await conn.query(sql,[data.user_id,data.field_name,data.vegetable_id,data.setting_date,data.image_name]);
   return rows;
 };
 
@@ -107,10 +95,10 @@ export const insertField = async (data: Field2) => {
  * @returns
  */
 
-export const getField = async (userId: string) => {
+export const getField = async (user_id: string) => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = `SELECT * From fields where user_id = ?`;
-  const [rows, fields] = await conn.query(sql,[userId]);
+  const [rows, fields] = await conn.query(sql,[user_id]);
   return rows;
 };
 
@@ -185,7 +173,7 @@ export const getUser = async (email: string, password: string, hashPass: string)
  * @returns
  */
 
-export const getGraphDatas = async (fieldId?: string, period?: string) => {
+export const getGraphDatas = async (field_id?: string, period?: string) => {
   const conn = await mysql.createConnection(dbSetting);
   let sql = '';
   switch (period) {
@@ -199,6 +187,6 @@ export const getGraphDatas = async (fieldId?: string, period?: string) => {
       sql = `SELECT moisture as 水分量,humidity as 湿度,temperature as 気温,air_pressure as 気圧,created_at From datas where field_id = ? && updated_at >= (NOW() - INTERVAL 14 DAY)`;
       break;
   }
-  const [rows, fields] = await conn.query(sql,[fieldId]);
+  const [rows, fields] = await conn.query(sql,[field_id]);
   return rows;
 };

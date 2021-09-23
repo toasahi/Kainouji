@@ -1,12 +1,12 @@
 import express from 'express';
-import { Field, Field2 } from 'types/type';
+import { Field } from 'types/type';
 import { insertField, getField, getDetailField } from './db';
 
 const filedRouter = express.Router();
 
 filedRouter.post('/', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
-  const field: Field2 = req.body;
+  const field: Field = req.body;
   try {
     insertField(field).then(() => {
       res.status(200).json({ message: 'OK', status: 200 });
@@ -17,10 +17,10 @@ filedRouter.post('/', (req: express.Request, res: express.Response) => {
   console.log(field);
 });
 
-filedRouter.get('/:userId', (req: express.Request, res: express.Response) => {
+filedRouter.get('/:user_id', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   try {
-    getField(req.params.userId).then((result) => {
+    getField(req.params.user_id).then((result) => {
       res.status(200).json(result);
     });
   } catch (error) {

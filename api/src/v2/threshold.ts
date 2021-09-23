@@ -7,8 +7,8 @@ const thresholdRouter = express.Router();
 thresholdRouter.post('/', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   try {
-    const threshold: { fieldId: string; moisture: string } = req.body;
-    editThreshold(threshold.fieldId, threshold.moisture).then(() => {
+    const threshold: { field_id: string; moisture: string } = req.body;
+    editThreshold(threshold.field_id, threshold.moisture).then(() => {
       res.status(200).json({ message: 'OK', status: 200 });
     });
   } catch (error) {
@@ -20,8 +20,8 @@ thresholdRouter.post('/', (req: express.Request, res: express.Response) => {
 thresholdRouter.post('/add/', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   try {
-    const threshold: { fieldId: string } = req.body;
-    insertThreshold(threshold.fieldId).then(() => {
+    const threshold: { field_id: string } = req.body;
+    insertThreshold(threshold.field_id).then(() => {
       res.status(200).json({ message: 'OK', status: 200 });
     });
   } catch (error) {
@@ -29,10 +29,10 @@ thresholdRouter.post('/add/', (req: express.Request, res: express.Response) => {
   }
 });
 
-thresholdRouter.get('/:fieldId', (req: express.Request, res: express.Response) => {
+thresholdRouter.get('/:field_id', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   try {
-    getThreshold(req.params.fieldId).then((result) => {
+    getThreshold(req.params.field_id).then((result) => {
       res.status(200).json(result);
     });
   } catch (error) {
