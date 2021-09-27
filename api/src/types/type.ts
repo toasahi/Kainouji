@@ -36,4 +36,4 @@ export type Field2 = {
   vegetableId: string;
   settingDate: string;
   imageName?: string;
-}
+};

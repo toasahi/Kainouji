@@ -1,7 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
-import path from 'path'
-import cors from 'cors'
+import path from 'path';
+import cors from 'cors';
 // import { router } from './v1/index';
 import { router } from './v2/index';
 
@@ -17,7 +17,7 @@ app.use('/v2', router);
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.use(cors())
+app.use(cors());
 
 //サーバー起動
 app.listen(4000, () => console.log('Express Server Now Running'));
