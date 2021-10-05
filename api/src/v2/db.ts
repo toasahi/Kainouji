@@ -23,6 +23,13 @@ export const editThreshold = async (field_id: string, moisture: string) => {
   return rows;
 };
 
+/**
+ * 閾値の登録
+ * @async
+ * @param string field_id 
+ * @returns rows
+ */
+
 export const insertThreshold = async (field_id: string) => {
   const conn = await mysql.createConnection(dbSetting);
   const sql = `INSERT INTO thresholds (field_id) values (?)`;
@@ -33,6 +40,7 @@ export const insertThreshold = async (field_id: string) => {
 /**
  * 閾値の取得
  * @async
+ * @param string field_id 
  * @returns rows
  */
 
@@ -105,6 +113,12 @@ export const getField = async (user_id: string) => {
   const [rows, fields] = await conn.query(sql, [user_id]);
   return rows;
 };
+
+/**
+ * 登録されている畑の詳細情報を取得
+ * @param id
+ * @returns
+ */
 
 export const getDetailField = async (id: string) => {
   const conn = await mysql.createConnection(dbSetting);
