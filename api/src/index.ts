@@ -20,4 +20,4 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(cors());
 
 //サーバー起動
-app.listen(4000, () => console.log('Express Server Now Running'));
+app.listen(process.env.SERVER_PORT, () => console.log('Express Server Now Running'));
