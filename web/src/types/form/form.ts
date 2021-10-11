@@ -3,6 +3,7 @@ export interface IFormValues {
   fieldImage: string;
   vegetable: string;
   settingDay: string;
+  chipId: string;
   email: string;
   password: string;
   username: string;
