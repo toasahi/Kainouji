@@ -38,6 +38,7 @@ const FontWeight = {
 
 const BaseContainer = styled.div`
   display: flex;
+  -webkit-display: flex;
   flex-direction: column-reverse;
   align-content: space-between;
   justify-content: space-between;

@@ -37,6 +37,7 @@ const SSelect = styled.select`
   border-radius: 10px;
   border: solid 1px rgba(232, 230, 230, 0.95);
   padding: 10px;
+  -webkit-padding: 10px;
   transition: all 0.25s ease 0s;
   width: 100%;
 
