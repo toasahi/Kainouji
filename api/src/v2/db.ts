@@ -66,7 +66,7 @@ export const getVegetables = async () => {
 
 export const getDetailVegetable = async (id: string) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = 'SELECT vegetable From vegetables Where id = ?';
+  const sql = 'SELECT * From vegetables Where id = ?';
   const [rows, fields] = await conn.query(sql, [id]);
   return rows;
 };
