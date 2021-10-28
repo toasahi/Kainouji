@@ -1,7 +1,7 @@
 import { memo, useEffect, VFC } from 'react';
 import styled from 'styled-components';
 
-import { BaseContainer, Card,Responsive } from '../../constant/BaseCss';
+import { BaseContainer, Card, Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
@@ -17,21 +17,6 @@ type State = {
   imageUrl?: string;
 };
 
-type Vegetable = {
-  [key: string]: string;
-};
-
-// 仮データ
-const vegetableList: Vegetable = {
-  '1': 'きゅうり',
-  '2': 'キャベツ',
-  '3': 'トマト',
-  '4': 'さくらひめ',
-  '5': 'さといも',
-  '6': 'お米',
-  '7': 'なす',
-};
-
 export const Confirm: VFC = memo(() => {
   const history = useHistory<State>();
   const onClickBack = () =>
@@ -43,7 +28,7 @@ export const Confirm: VFC = memo(() => {
       },
     });
   const [cookies, setCookie] = useCookies(['id']);
-  const { getDetailVegetable,detailVegetable } = useGetVegitables();
+  const { getDetailVegetable, detailVegetable } = useGetVegitables();
   const { loginUser } = useLoginUser();
   const onClickRegister = () => {
     if (Object.keys(cookies).length !== 0 || (loginUser !== null && loginUser.id !== undefined)) {
@@ -80,7 +65,7 @@ export const Confirm: VFC = memo(() => {
                   inputType="text"
                   inputId="vegetable"
                   onChange={onChangeTest}
-                  value={vegetableList[state.data.vegetable]}
+                  value={detailVegetable?.vegetable}
                   readonly={true}
                 />
               </div>

@@ -16,14 +16,14 @@ export const useGetVegitables = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const getDetailVegetable = useCallback((id:string)=>{
+  const getDetailVegetable = useCallback((id: string) => {
     setLoading(true);
     axios
-      .get<Vegetable>(`vegetable/${id}`)
-      .then((res) => setDetailVegetable(res.data))
+      .get<Array<Vegetable>>(`vegetable/${id}`)
+      .then((res) => setDetailVegetable(res.data[0]))
       .catch(() => setLoading(false))
       .finally(() => setLoading(false));
   }, []);
 
-  return { loading, vegetableLists, getVegetables,detailVegetable,getDetailVegetable };
+  return { loading, vegetableLists, getVegetables, detailVegetable, getDetailVegetable };
 };
