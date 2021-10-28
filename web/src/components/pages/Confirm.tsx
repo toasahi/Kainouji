@@ -1,7 +1,7 @@
-import { ChangeEvent, memo, useEffect, useState, VFC } from 'react';
+import { memo, useEffect, VFC } from 'react';
 import styled from 'styled-components';
 
-import { BaseContainer, Card, Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
+import { BaseContainer, Card,Responsive } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { IFormValues } from '../../types/form/form';
 import { useLoginUser } from '../../hooks/useLoginUser';
 import { useCookies } from 'react-cookie';
+import { useGetVegitables } from '../../hooks/useGetVegitables';
 
 type State = {
   data: IFormValues;
@@ -42,6 +43,7 @@ export const Confirm: VFC = memo(() => {
       },
     });
   const [cookies, setCookie] = useCookies(['id']);
+  const { getDetailVegetable,detailVegetable } = useGetVegitables();
   const { loginUser } = useLoginUser();
   const onClickRegister = () => {
     if (Object.keys(cookies).length !== 0 || (loginUser !== null && loginUser.id !== undefined)) {
@@ -49,9 +51,10 @@ export const Confirm: VFC = memo(() => {
     }
   };
   const { registerField, loading, success } = useRegisterField();
-
   const onChangeTest = () => console.log(1);
   const state = history.location.state;
+
+  useEffect(() => getDetailVegetable(state.data.vegetable), []);
 
   return (
     <SConfirm>
