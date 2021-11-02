@@ -1,7 +1,6 @@
 import mysql from 'mysql2/promise';
 import bcrypt from 'bcrypt';
 import { Field, Setting, User } from 'types/type';
-import { connect } from 'http2';
 
 const dbSetting: Setting = {
   host: process.env.MYSQL_HOST!,
@@ -9,7 +8,6 @@ const dbSetting: Setting = {
   password: process.env.MYSQL_PASSWORD!,
   database: process.env.MYSQL_HOST_DATABASE!,
   dateStrings: true,
-  connectionLimit:10
 };
 
 /**
@@ -20,16 +18,15 @@ const dbSetting: Setting = {
 
 export const editThreshold = async (field_id: string, moisture: string) => {
   const conn = await mysql.createConnection(dbSetting);
-  try{
+  try {
     const sql = `UPDATE thresholds SET moisture = ? WHERE field_id = ?`;
     const [rows, fields] = await conn.query(sql, [moisture, field_id]);
     return rows;
-  }catch(e){
-    console.log(e)
-  }finally{
-    conn.end()
+  } catch (e) {
+    console.log(e);
+  } finally {
+    conn.end();
   }
-  
 };
 
 /**
@@ -41,6 +38,15 @@ export const editThreshold = async (field_id: string, moisture: string) => {
 
 export const insertThreshold = async (field_id: string) => {
   const conn = await mysql.createConnection(dbSetting);
+  try {
+    const sql = `INSERT INTO thresholds (field_id) values (?)`;
+    const [rows, fields] = await conn.query(sql, [field_id]);
+    return rows;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    conn.end();
+  }
   const sql = `INSERT INTO thresholds (field_id) values (?)`;
   const [rows, fields] = await conn.query(sql, [field_id]);
   return rows;
@@ -55,9 +61,15 @@ export const insertThreshold = async (field_id: string) => {
 
 export const getThreshold = async (field_id: string) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = `SELECT * From thresholds WHERE field_id = ?`;
-  const [rows, fields] = await conn.query(sql, [field_id]);
-  return rows;
+  try {
+    const sql = `SELECT * From thresholds WHERE field_id = ?`;
+    const [rows, fields] = await conn.query(sql, [field_id]);
+    return rows;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    conn.end();
+  }
 };
 
 /**
@@ -68,16 +80,28 @@ export const getThreshold = async (field_id: string) => {
 
 export const getVegetables = async () => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = 'SELECT id,vegetable From vegetables';
-  const [rows, fields] = await conn.query(sql);
-  return rows;
+  try {
+    const sql = 'SELECT id,vegetable From vegetables';
+    const [rows, fields] = await conn.query(sql);
+    return rows;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    conn.end();
+  }
 };
 
 export const getDetailVegetable = async (id: string) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = 'SELECT * From vegetables Where id = ?';
-  const [rows, fields] = await conn.query(sql, [id]);
-  return rows;
+  try {
+    const sql = 'SELECT * From vegetables Where id = ?';
+    const [rows, fields] = await conn.query(sql, [id]);
+    return rows;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    conn.end();
+  }
 };
 
 /**
@@ -88,9 +112,15 @@ export const getDetailVegetable = async (id: string) => {
 
 export const insertVegetables = async () => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = `SELECT vegetable From vegetables Where`;
-  const [rows, fields] = await conn.query(sql);
-  return rows;
+  try {
+    const sql = `SELECT vegetable From vegetables Where`;
+    const [rows, fields] = await conn.query(sql);
+    return rows;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    conn.end();
+  }
 };
 
 /**
@@ -101,20 +131,26 @@ export const insertVegetables = async () => {
 
 export const insertField = async (data: Field) => {
   const conn = await mysql.createConnection(dbSetting);
-  let sql = '';
-  if (data.image_name !== '') {
-    sql = `INSERT INTO fields(user_id,field_name,vegetable_id,setting_date,image_name) value(?,?,?,?,?)`;
-  } else {
-    sql = `INSERT INTO fields(user_id,field_name,vegetable_id,setting_date) value(?,?,?,?)`;
+  try {
+    let sql = '';
+    if (data.image_name !== '') {
+      sql = `INSERT INTO fields(user_id,field_name,vegetable_id,setting_date,image_name) value(?,?,?,?,?)`;
+    } else {
+      sql = `INSERT INTO fields(user_id,field_name,vegetable_id,setting_date) value(?,?,?,?)`;
+    }
+    const [rows, fields] = await conn.query(sql, [
+      data.user_id,
+      data.field_name,
+      data.vegetable_id,
+      data.setting_date,
+      data.image_name,
+    ]);
+    return rows;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    conn.end();
   }
-  const [rows, fields] = await conn.query(sql, [
-    data.user_id,
-    data.field_name,
-    data.vegetable_id,
-    data.setting_date,
-    data.image_name,
-  ]);
-  return rows;
 };
 
 /**
@@ -125,9 +161,15 @@ export const insertField = async (data: Field) => {
 
 export const getField = async (user_id: string) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = `SELECT * From fields where user_id = ?`;
-  const [rows, fields] = await conn.query(sql, [user_id]);
-  return rows;
+  try {
+    const sql = `SELECT * From fields where user_id = ?`;
+    const [rows, fields] = await conn.query(sql, [user_id]);
+    return rows;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    conn.end();
+  }
 };
 
 /**
@@ -138,9 +180,15 @@ export const getField = async (user_id: string) => {
 
 export const getDetailField = async (id: string) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = `SELECT * From fields where id = ?`;
-  const [rows, fields] = await conn.query(sql, [id]);
-  return rows;
+  try {
+    const sql = `SELECT * From fields where id = ?`;
+    const [rows, fields] = await conn.query(sql, [id]);
+    return rows;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    conn.end();
+  }
 };
 
 /**
@@ -151,18 +199,24 @@ export const getDetailField = async (id: string) => {
 
 export const insertUser = async (data: User) => {
   const conn = await mysql.createConnection(dbSetting);
-  let sql = `SELECT * FROM users WHERE email = ? LIMIT 1`;
-  const [rows, fields] = await conn.query(sql, [data.email]);
-  let status: number;
-  if (Object.keys(rows).length === 0) {
-    const hashPass = bcrypt.hashSync(data.password, 10);
-    sql = `INSERT INTO users(email,password,username) value(?,?,?)`;
-    await conn.query(sql, [data.email, hashPass, data.username]);
-    status = 200;
-  } else {
-    status = 500;
+  try {
+    let sql = `SELECT * FROM users WHERE email = ? LIMIT 1`;
+    const [rows, fields] = await conn.query(sql, [data.email]);
+    let status: number;
+    if (Object.keys(rows).length === 0) {
+      const hashPass = bcrypt.hashSync(data.password, 10);
+      sql = `INSERT INTO users(email,password,username) value(?,?,?)`;
+      await conn.query(sql, [data.email, hashPass, data.username]);
+      status = 200;
+    } else {
+      status = 500;
+    }
+    return status;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    conn.end();
   }
-  return status;
 };
 
 /**
@@ -173,13 +227,19 @@ export const insertUser = async (data: User) => {
 
 export const getHashPassword = async (email: string) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = `SELECT password FROM users WHERE email = ? LIMIT 1`;
-  const [rows, fields] = (await conn.query(sql, [email])) as any;
-  if (Object.keys(rows).length === 0) {
-    const status = 500;
-    return status;
-  } else {
-    return rows[0].password;
+  try {
+    const sql = `SELECT password FROM users WHERE email = ? LIMIT 1`;
+    const [rows, fields] = (await conn.query(sql, [email])) as any;
+    if (Object.keys(rows).length === 0) {
+      const status = 500;
+      return status;
+    } else {
+      return rows[0].password;
+    }
+  } catch (e) {
+    console.log(e);
+  } finally {
+    conn.end();
   }
 };
 
@@ -193,10 +253,16 @@ export const getHashPassword = async (email: string) => {
 
 export const getUser = async (email: string, password: string, hashPass: string) => {
   const conn = await mysql.createConnection(dbSetting);
-  if (bcrypt.compareSync(password, hashPass)) {
-    const sql = `SELECT id,email,username,status FROM users where email = ?`;
-    const [rows, fields] = await conn.query(sql, [email]);
-    return rows;
+  try {
+    if (bcrypt.compareSync(password, hashPass)) {
+      const sql = `SELECT id,email,username,status FROM users where email = ?`;
+      const [rows, fields] = await conn.query(sql, [email]);
+      return rows;
+    }
+  } catch (e) {
+    console.log(e);
+  } finally {
+    conn.end();
   }
 };
 
@@ -209,18 +275,24 @@ export const getUser = async (email: string, password: string, hashPass: string)
 
 export const getGraphDatas = async (field_id?: string, period?: string) => {
   const conn = await mysql.createConnection(dbSetting);
-  let sql = '';
-  switch (period) {
-    case 'all':
-      sql = `SELECT moisture as 水分量,humidity as 湿度,temperature as 気温,air_pressure as 気圧,created_at From datas where field_id = ?`;
-      break;
-    case 'one':
-      sql = `SELECT moisture as 水分量,humidity as 湿度,temperature as 気温,air_pressure as 気圧,created_at From datas where field_id = ? && updated_at >= (NOW() - INTERVAL 7 DAY)`;
-      break;
-    case 'two':
-      sql = `SELECT moisture as 水分量,humidity as 湿度,temperature as 気温,air_pressure as 気圧,created_at From datas where field_id = ? && updated_at >= (NOW() - INTERVAL 14 DAY)`;
-      break;
+  try {
+    let sql = '';
+    switch (period) {
+      case 'all':
+        sql = `SELECT moisture as 水分量,humidity as 湿度,temperature as 気温,air_pressure as 気圧,created_at From datas where field_id = ?`;
+        break;
+      case 'one':
+        sql = `SELECT moisture as 水分量,humidity as 湿度,temperature as 気温,air_pressure as 気圧,created_at From datas where field_id = ? && updated_at >= (NOW() - INTERVAL 7 DAY)`;
+        break;
+      case 'two':
+        sql = `SELECT moisture as 水分量,humidity as 湿度,temperature as 気温,air_pressure as 気圧,created_at From datas where field_id = ? && updated_at >= (NOW() - INTERVAL 14 DAY)`;
+        break;
+    }
+    const [rows, fields] = await conn.query(sql, [field_id]);
+    return rows;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    conn.end();
   }
-  const [rows, fields] = await conn.query(sql, [field_id]);
-  return rows;
 };

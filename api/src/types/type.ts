@@ -4,7 +4,6 @@ export type Setting = {
   password: string;
   database: string;
   dateStrings: boolean;
-  connectionLimit: number;
 };
 
 export type Threshold = {
