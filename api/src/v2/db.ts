@@ -1,6 +1,7 @@
 import mysql from 'mysql2/promise';
 import bcrypt from 'bcrypt';
 import { Field, Setting, User } from 'types/type';
+import { connect } from 'http2';
 
 const dbSetting: Setting = {
   host: process.env.MYSQL_HOST!,
@@ -8,6 +9,7 @@ const dbSetting: Setting = {
   password: process.env.MYSQL_PASSWORD!,
   database: process.env.MYSQL_HOST_DATABASE!,
   dateStrings: true,
+  connectionLimit:10
 };
 
 /**
@@ -18,9 +20,16 @@ const dbSetting: Setting = {
 
 export const editThreshold = async (field_id: string, moisture: string) => {
   const conn = await mysql.createConnection(dbSetting);
-  const sql = `UPDATE thresholds SET moisture = ? WHERE field_id = ?`;
-  const [rows, fields] = await conn.query(sql, [moisture, field_id]);
-  return rows;
+  try{
+    const sql = `UPDATE thresholds SET moisture = ? WHERE field_id = ?`;
+    const [rows, fields] = await conn.query(sql, [moisture, field_id]);
+    return rows;
+  }catch(e){
+    console.log(e)
+  }finally{
+    conn.end()
+  }
+  
 };
 
 /**
