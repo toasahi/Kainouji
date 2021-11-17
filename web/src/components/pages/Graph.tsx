@@ -1,13 +1,12 @@
 import { ChangeEvent, memo, useCallback, useEffect, useState, VFC } from 'react';
 import { useParams } from 'react-router-dom';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import styled from 'styled-components';
-import { Responsive, Font, Color, FontWeight } from '../../constant/BaseCss';
+
+import { SGraph } from '../../constant/BaseCss';
 import { useGetDetailField } from '../../hooks/useGetDetailField';
 import { useGetGraphData } from '../../hooks/useGetGraphData';
 import { useGetThreshold } from '../../hooks/useGetThreshold';
 import { useRegisterThresholds } from '../../hooks/useRegisterThreshold';
-
 import { Header } from '../layouts/Header';
 import { Modal } from '../modals/Modal';
 import { PrimarySpinner } from '../spinners/PrimarySpinner';
@@ -134,125 +133,3 @@ export const Graph: VFC = memo(() => {
     </>
   );
 });
-
-const SGraph = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
-  align-content: space-between;
-  justify-content: space-between;
-  min-height: 100vh;
-
-  main {
-    width: 100%;
-
-    section {
-      margin: 0 auto;
-      margin-top: 45px;
-      width: 100%;
-
-      .graph {
-        margin-bottom: 10px;
-      }
-
-      select,
-      button {
-        color: ${Color.primary};
-        background-color: #fefefe;
-        outline: none;
-        border-radius: 25px;
-        border: solid 1px rgba(232, 230, 230, 0.95);
-        padding: 10px 15px;
-        transition: all 0.25s ease 0s;
-        width: 100px;
-
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.01);
-        }
-      }
-
-      .dataContainer {
-        display: flex;
-        justify-content: space-around;
-      }
-
-      .today {
-        margin-top: 30px;
-        margin-right: 10px;
-        text-align: right;
-      }
-    }
-
-    button {
-      position: relative;
-
-      svg {
-        position: absolute;
-        top: 30%;
-        left: 10%;
-      }
-    }
-
-    h1 {
-      font-size: ${Font.text3xl};
-      text-align: center;
-      position: relative;
-      font-weight: ${FontWeight.fontSemiBold};
-      margin-top: 30px;
-
-      ::after {
-        background-color: ${Color.secondary}; /* 線色 */
-        border-radius: 5px; /* 線幅の半分 */
-        content: '';
-        position: absolute;
-        bottom: 0;
-        opacity: 25%;
-        height: 10px;
-        width: 40%;
-        left: 29%;
-      }
-    }
-  }
-
-  @media (min-width: ${Responsive.md}) {
-    flex-direction: row;
-    justify-content: start;
-    align-content: center;
-
-    main {
-      width: 80%;
-      section {
-        margin-top: 100px;
-      }
-
-      .graph {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 15px;
-      }
-
-      .dataContainer {
-        width: 350px;
-        display: flex;
-        justify-content: space-around;
-      }
-
-      h1 {
-        font-size: ${Font.text5xl};
-        padding: 5px;
-        margin: 30px 0;
-        margin-top: 75px;
-        margin-bottom: 30px;
-
-        ::after {
-          left: 30%;
-          width: 40%;
-          height: 15px; /* 線幅 */
-        }
-      }
-
-      section {
-        width: 900px;
-      }
-    }
-  }
-`;

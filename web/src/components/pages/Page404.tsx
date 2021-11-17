@@ -1,6 +1,5 @@
 import { memo, VFC } from 'react';
-import styled from 'styled-components';
-import { BaseContainer } from '../../constant/BaseCss';
+import { SPage404 } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 
 export const Page404: VFC = memo(() => {
@@ -13,5 +12,3 @@ export const Page404: VFC = memo(() => {
     </>
   );
 });
-
-const SPage404 = styled(BaseContainer)``;

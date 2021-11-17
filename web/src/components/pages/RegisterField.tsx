@@ -1,7 +1,6 @@
-import { ChangeEvent, ChangeEventHandler, memo, useEffect, useState, VFC } from 'react';
-import styled from 'styled-components';
+import { ChangeEvent, memo, useEffect, useState, VFC } from 'react';
 
-import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
+import { SRegisterField,SRegisterFieldCard} from '../../constant/BaseCss';
 import { useGetVegitables } from '../../hooks/useGetVegitables';
 import { Header } from '../layouts/Header';
 import { PrimaryButton } from '../buttons/PrimaryButton';
@@ -51,7 +50,7 @@ export const RegisterField: VFC = memo(() => {
     <SRegisterField>
       <Header />
       <main>
-        <SCard>
+        <SRegisterFieldCard>
           <div className="container">
             <h1>畑を登録</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -115,172 +114,8 @@ export const RegisterField: VFC = memo(() => {
               </div>
             </form>
           </div>
-        </SCard>
+        </SRegisterFieldCard>
       </main>
     </SRegisterField>
   );
 });
-
-const SRegisterField = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
-  align-content: space-between;
-  justify-content: space-between;
-  min-height: 100vh;
-
-  main {
-    width: 100%;
-
-    span {
-      color: #ed4956;
-      font-size: ${Font.textSm};
-      line-height: 2;
-    }
-
-    select {
-      color: ${Color.primary};
-      outline: none;
-      border-radius: 10px;
-      border: solid 1px rgba(232, 230, 230, 0.95);
-      padding: 13px;
-      transition: all 0.25s ease 0s;
-      width: 100%;
-
-      &:focus {
-        border: solid 1px #491818;
-      }
-    }
-  }
-
-  @media (min-width: ${Responsive.md}) {
-    main {
-      width: 80%;
-    }
-    flex-direction: row;
-    justify-content: start;
-    align-content: center;
-  }
-`;
-
-const SCard = styled.section`
-  margin: 0 auto;
-  width: 85%;
-
-  h1 {
-    font-size: ${Font.text3xl};
-    text-align: center;
-    padding: 5px;
-    margin: 20px 0;
-    position: relative;
-    font-weight: ${FontWeight.fontSemiBold};
-
-    ::after {
-      background-color: ${Color.secondary}; /* 線色 */
-      border-radius: 5px; /* 線幅の半分 */
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 30%;
-      width: 40%;
-      opacity: 25%;
-      height: 15px; /* 線幅 */
-    }
-  }
-
-  .buttonContainer {
-    text-align: center;
-    margin-top: 10px;
-  }
-
-  .item {
-    margin-top: 15px;
-
-    label {
-      line-height: 2;
-    }
-  }
-
-  @media (min-width: ${Responsive.md}) {
-    width: 85%;
-    padding: 15px;
-    background-color: #fefefe;
-    margin: 0 auto;
-    margin-top: 25px;
-    border-radius: 30px;
-    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-
-    h1 {
-      font-size: ${Font.text3xl};
-      text-align: center;
-      padding: 5px;
-      margin: 20px 0;
-      position: relative;
-      font-weight: ${FontWeight.fontSemiBold};
-
-      ::after {
-        background-color: ${Color.secondary}; /* 線色 */
-        border-radius: 5px; /* 線幅の半分 */
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 30%;
-        width: 40%;
-        opacity: 25%;
-        height: 15px; /* 線幅 */
-      }
-    }
-
-    section {
-      display: flex;
-      justify-content: space-between;
-
-      .item {
-        width: 45%;
-      }
-    }
-
-    .container {
-      width: 80%;
-      margin: 0 auto;
-    }
-
-    .item {
-      margin-top: 20px;
-
-      label {
-        line-height: 3;
-      }
-    }
-
-    .buttonContainer {
-      text-align: center;
-      margin-top: 25px;
-    }
-  }
-
-  @media (min-width: ${Responsive.lg}) {
-    width: 700px;
-    height: 680px;
-    margin-top: 25px;
-    padding: 25px;
-
-    h1 {
-      font-size: ${Font.text5xl};
-      padding: 5px;
-      margin: 30px 0;
-
-      ::after {
-        border-radius: 5px; /* 線幅の半分 */
-        bottom: 0;
-        left: 28%;
-        width: 250px;
-        height: 15px; /* 線幅 */
-      }
-    }
-
-    .item {
-      width: 100%;
-    }
-  }
-`;

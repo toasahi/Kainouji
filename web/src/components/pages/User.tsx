@@ -1,7 +1,6 @@
 import { ChangeEvent, memo, useState, VFC } from 'react';
-import styled from 'styled-components';
 
-import { Card, Font, FontWeight, Responsive } from '../../constant/BaseCss';
+import { SUser, SUserCard } from '../../constant/BaseCss';
 import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { Header } from '../layouts/Header';
 
@@ -16,7 +15,7 @@ export const User: VFC = memo(() => {
       <SUser>
         <Header />
         <main>
-          <SCard>
+          <SUserCard>
             <div className="container">
               <h1>マイページ</h1>
               <section className="userContainer">
@@ -73,108 +72,9 @@ export const User: VFC = memo(() => {
                 </div>
               </section>
             </div>
-          </SCard>
+          </SUserCard>
         </main>
       </SUser>
     </>
   );
 });
-
-const SUser = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
-  align-content: space-between;
-  justify-content: space-between;
-  min-height: 100vh;
-
-  main {
-    width: 100%;
-  }
-
-  @media (min-width: ${Responsive.md}) {
-    flex-direction: row;
-    justify-content: start;
-    align-content: center;
-
-    main {
-      width: 80%;
-    }
-  }
-`;
-
-const SCard = styled(Card)`
-  h1 {
-    ::after {
-      left: 25%;
-      width: 50%;
-    }
-  }
-
-  .userContainer {
-    margin-left: 20px;
-    margin-top: 20px;
-    line-height: 2;
-    h2 {
-      font-size: ${Font.text2xl};
-      font-weight: ${FontWeight.fontSemiBold};
-    }
-    .userImage {
-      .iconImage {
-        width: 100px;
-        height: 100px;
-        border-radius: 100%;
-        object-fit: cover;
-      }
-    }
-  }
-
-  @media (min-width: ${Responsive.md}) {
-    height: 400px;
-    padding: 15px;
-
-    h1 {
-      font-size: ${Font.text3xl};
-
-      ::after {
-        left: 30%;
-        width: 40%;
-      }
-    }
-    .container {
-      .userContainer {
-        display: flex;
-        margin-top: 60px;
-        margin-left: 45px;
-        padding: 10px;
-        display: flex;
-
-        .userInfo {
-          padding: 0 10px;
-          margin-left: 25px;
-          line-height: 2;
-          h2 {
-            font-size: ${Font.text3xl};
-            font-weight: ${FontWeight.fontSemiBold};
-          }
-        }
-      }
-    }
-  }
-
-  @media (min-width: ${Responsive.lg}) {
-    height: 400px;
-    margin-top: 25px;
-    padding: 25px;
-
-    h1 {
-      font-size: ${Font.text5xl};
-      padding: 5px;
-      margin: 30px 0;
-
-      ::after {
-        left: 27%;
-        width: 280px;
-      }
-    }
-  }
-`;

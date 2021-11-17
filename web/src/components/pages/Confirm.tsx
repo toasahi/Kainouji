@@ -1,7 +1,6 @@
 import { memo, useEffect, VFC } from 'react';
-import styled from 'styled-components';
 
-import { BaseContainer, Card, Responsive } from '../../constant/BaseCss';
+import { SConfirm, SConfirmCard } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
@@ -45,7 +44,7 @@ export const Confirm: VFC = memo(() => {
     <SConfirm>
       <Header />
       <main>
-        <SCard>
+        <SConfirmCard>
           <div className="container ">
             <h1>確認画面</h1>
             <div className="item">
@@ -91,56 +90,8 @@ export const Confirm: VFC = memo(() => {
               <PrimaryButton children="登録する" position="after" onClick={onClickRegister} />
             </section>
           </div>
-        </SCard>
+        </SConfirmCard>
       </main>
     </SConfirm>
   );
 });
-
-const SConfirm = styled(BaseContainer)``;
-
-const SCard = styled(Card)`
-  .item {
-    margin-top: 15px;
-
-    label {
-      line-height: 2;
-    }
-  }
-
-  .buttonContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-
-    button {
-      width: 35%;
-    }
-  }
-
-  @media (min-width: ${Responsive.md}) {
-    section {
-      display: flex;
-      justify-content: space-between;
-
-      .item {
-        width: 45%;
-      }
-    }
-  }
-
-  @media (min-width: ${Responsive.lg}) {
-    .item {
-      margin-top: 20px;
-
-      label {
-        line-height: 3;
-      }
-      width: 100%;
-    }
-
-    .buttonContainer {
-      margin-top: 35px;
-    }
-  }
-`;
