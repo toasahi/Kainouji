@@ -14,7 +14,6 @@ type Props = InputProps & {
 export const PrimaryInput: VFC<Props> = memo((props) => {
   const { onChange, value = '', inputId = '', ...inputProps } = props;
   return (
-    // <input {...inputProps} accept="image/jpeg,image/png" id={inputId} onChange={onChange} value={value} />
     <SInput {...inputProps} accept="image/jpeg,image/png" id={inputId} onChange={onChange} value={value}/>
   );
 });
