@@ -8,14 +8,13 @@ type Props = {
   label: Path<IFormValues>;
   inputType?: 'text' | 'email' | 'date' | 'file' | 'password' | 'number';
   register: UseFormRegister<IFormValues>;
-  placeHolder?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   value?: string;
   required: boolean;
 };
 
 export const SecondInput: VFC<Props> = memo((props) => {
-  const { label, register, required, inputType, placeHolder, onChange, value } = props;
+  const { label, register, required, inputType, onChange, value } = props;
   return (
     <>
       {inputType !== 'file' ? (

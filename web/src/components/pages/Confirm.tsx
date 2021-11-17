@@ -51,7 +51,7 @@ export const Confirm: VFC = memo(() => {
             <div className="item">
               <label htmlFor="fieldName">名前</label>
               <PrimaryInput
-                inputType="text"
+                type="text"
                 inputId="fieldName"
                 onChange={onChangeTest}
                 value={state.data.fieldName}
@@ -62,7 +62,7 @@ export const Confirm: VFC = memo(() => {
               <div className="item">
                 <label htmlFor="vegetable">育てる野菜</label>
                 <PrimaryInput
-                  inputType="text"
+                  type="text"
                   inputId="vegetable"
                   onChange={onChangeTest}
                   value={detailVegetable?.vegetable}
@@ -72,7 +72,7 @@ export const Confirm: VFC = memo(() => {
               <div className="item">
                 <label htmlFor="settingDay">設置日</label>
                 <PrimaryInput
-                  inputType="date"
+                  type="date"
                   inputId="settingDay"
                   onChange={onChangeTest}
                   value={state.data.settingDay}

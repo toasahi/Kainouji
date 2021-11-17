@@ -2,39 +2,20 @@ import { ChangeEvent, memo, VFC } from 'react';
 import styled from 'styled-components';
 import { Color, Responsive } from '../../constant/BaseCss';
 
-type Props = {
-  placeHolder?: string;
+type InputProps = Omit<JSX.IntrinsicElements['input'],"ref">;
+
+type Props = InputProps & {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   value?: string;
-  inputType: 'text' | 'email' | 'date' | 'file';
   inputId?: string;
-  hidden?: boolean;
   readonly?: boolean;
-  required?: boolean;
 };
 
 export const PrimaryInput: VFC<Props> = memo((props) => {
-  const {
-    placeHolder = '',
-    onChange,
-    value = '',
-    inputType = 'text',
-    inputId = '',
-    hidden = false,
-    readonly = false,
-    required = false,
-  } = props;
+  const { onChange, value = '', inputId = '', ...inputProps } = props;
   return (
-    <SInput
-      type={inputType}
-      accept="image/jpeg,image/png"
-      id={inputId}
-      placeholder={placeHolder}
-      onChange={onChange}
-      value={value}
-      hidden={hidden}
-      readOnly={readonly}
-    />
+    // <input {...inputProps} accept="image/jpeg,image/png" id={inputId} onChange={onChange} value={value} />
+    <SInput {...inputProps} accept="image/jpeg,image/png" id={inputId} onChange={onChange} value={value}/>
   );
 });
 

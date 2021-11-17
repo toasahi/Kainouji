@@ -56,14 +56,14 @@ export const User: VFC = memo(() => {
                           </defs>
                         </svg>
                       </label>
-                      <PrimaryInput inputType="file" inputId="image" onChange={onChangeProcessImage} hidden />
+                      <PrimaryInput type="file" inputId="image" onChange={onChangeProcessImage} hidden />
                     </>
                   ) : (
                     <>
                       <label htmlFor="image">
                         <img src={imageUrl} className="iconImage" />
                       </label>
-                      <PrimaryInput inputType="file" inputId="image" onChange={onChangeProcessImage} hidden={true} />
+                      <PrimaryInput type="file" inputId="image" onChange={onChangeProcessImage} hidden={true} />
                     </>
                   )}
                 </div>
