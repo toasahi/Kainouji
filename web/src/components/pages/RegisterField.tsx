@@ -1,6 +1,6 @@
 import { ChangeEvent, memo, useEffect, useState, VFC } from 'react';
 
-import { SRegisterField,SRegisterFieldCard} from '../../constant/BaseCss';
+import { SRegisterField, SRegisterFieldCard } from '../../constant/BaseCss';
 import { useGetVegitables } from '../../hooks/useGetVegitables';
 import { Header } from '../layouts/Header';
 import { PrimaryButton } from '../buttons/PrimaryButton';

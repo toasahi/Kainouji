@@ -1,6 +1,5 @@
 import { ChangeEvent, memo, VFC } from 'react';
-import styled from 'styled-components';
-import { Color, Font, FontWeight, Responsive } from '../../constant/BaseCss';
+import { SOverlay, SModal } from '../../constant/BaseCss';
 import { useUpdateThreshold } from '../../hooks/useUpdateThreshold';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { RangeSlider } from '../Inputs/RangeSlider';
@@ -70,73 +69,3 @@ export const Modal: VFC<Props> = memo((props) => {
     </>
   );
 });
-
-const SOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-`;
-
-const SModal = styled.div`
-  background-color: #f9f9f9;
-  border-radius: 25px;
-  z-index: 2;
-  width: 75%;
-  padding: 2em;
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    overflow: hidden;
-    h1 {
-      font-size: ${Font.text3xl};
-      font-weight: ${FontWeight.fontBold};
-      text-align: center;
-      margin-bottom: 15px;
-    }
-
-    .svgContainer {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      padding: 5px;
-      transition: all 0.3s ease 0s;
-
-      &:hover {
-        background-color: ${Color.secondary};
-      }
-    }
-  }
-
-  .container {
-    margin-top: 10px;
-    h2 {
-      font-size: ${Font.textLg};
-    }
-    .waterContainer {
-      margin-top: 20px;
-      label {
-        line-height: 2;
-        opacity: 70%;
-      }
-    }
-
-    .buttonContainer {
-      margin-top: 45px;
-    }
-  }
-
-  @media (min-width: ${Responsive.md}) {
-    width: 30%;
-    .buttonContainer {
-      margin-top: 45px;
-    }
-  }
-`;

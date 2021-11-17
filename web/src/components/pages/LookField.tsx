@@ -1,7 +1,7 @@
 import { memo, useEffect, VFC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { SLookField,SContainer} from '../../constant/BaseCss';
+import { SLookField, SContainer } from '../../constant/BaseCss';
 import { Header } from '../layouts/Header';
 import defaultImage from '../../images/defaultImage.jpeg';
 import { useGetField } from '../../hooks/useGetFields';

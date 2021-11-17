@@ -36,6 +36,400 @@ const FontWeight = {
   fontBold: 700,
 };
 
+const SInput = styled.input`
+  background-color: #fefefe;
+  border: solid 1px rgba(232, 230, 230, 0.95);
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.25s ease 0s;
+  width: 100%;
+  box-sizing: border-box;
+
+  ::placeholder {
+    color: ${Color.primary};
+    opacity: 65%;
+  }
+
+  &:focus {
+    border: solid 1px ${Color.tertiary};
+  }
+
+  @media (min-width: ${Responsive.sm}) {
+    padding: 15px;
+  }
+`;
+
+// ------------ButtonのStyle-----------------
+const SButton = styled.button`
+  background-color: #fefefe;
+  text-align: left;
+  width: 180px;
+  padding: 10px;
+  opacity: 90%;
+  color: ${Color.tertiary};
+  border: solid 1px ${Color.tertiary};
+  border-radius: 40px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    transition: background-color ease 0.4s, color ease 0.4s;
+    background-color: ${Color.tertiary};
+    color: #fefefe;
+    opacity: 100%;
+  }
+`;
+
+const SButtonAfter = styled(SButton)`
+  padding-left: 25px;
+
+  &:after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-top: solid 1px ${Color.tertiary};
+    border-right: solid 1px ${Color.tertiary};
+    position: absolute;
+    right: 20px;
+    top: 40%;
+    transform: rotate(45deg);
+  }
+
+  &:hover::after {
+    border-top: solid 1px #fefefe;
+    border-right: solid 1px #fefefe;
+  }
+`;
+
+const SButtonBefore = styled(SButton)`
+  text-align: right;
+  padding-right: 25px;
+
+  &:before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-bottom: solid 1px ${Color.tertiary};
+    border-left: solid 1px ${Color.tertiary};
+    position: absolute;
+    left: 20px;
+    top: 40%;
+    transform: rotate(45deg);
+  }
+
+  &:hover::before {
+    border-bottom: solid 1px #fefefe;
+    border-left: solid 1px #fefefe;
+  }
+`;
+
+// ------------SliderのStyle-----------------
+const SRangeSlider = styled.div`
+  h3 {
+    color: #aaa;
+    font-weight: 500;
+  }
+  h4 {
+    color: #999;
+    font-weight: 500;
+    &:after {
+      content: '%';
+      padding-left: 1px;
+    }
+  }
+
+  input[type='range'] {
+    outline: 0;
+    border: 0;
+    border-radius: 500px;
+    width: 400px;
+    max-width: 100%;
+    margin: 0px 0 16px;
+    transition: box-shadow 0.2s ease-in-out;
+    // Chrome
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+      & {
+        overflow: hidden;
+        height: 40px;
+        -webkit-appearance: none;
+        background-color: #ddd;
+      }
+      &::-webkit-slider-runnable-track {
+        height: 40px;
+        -webkit-appearance: none;
+        color: #444;
+        // margin-top: -1px;
+        transition: box-shadow 0.2s ease-in-out;
+      }
+      &::-webkit-slider-thumb {
+        width: 40px;
+        -webkit-appearance: none;
+        height: 40px;
+        cursor: ew-resize;
+        background: #fff;
+        box-shadow: -340px 0 0 320px #1597ff, inset 0 0 0 40px #1597ff;
+        border-radius: 50%;
+        transition: box-shadow 0.2s ease-in-out;
+        position: relative;
+        // top: 1px;
+      }
+      &:active::-webkit-slider-thumb {
+        background: #fff;
+        box-shadow: -340px 0 0 320px #1597ff, inset 0 0 0 3px #1597ff;
+      }
+    }
+    // Firefox
+    &::-moz-range-progress {
+      background-color: #43e5f7;
+    }
+    &::-moz-range-track {
+      background-color: #9a905d;
+    }
+    // IE
+    &::-ms-fill-lower {
+      background-color: #43e5f7;
+    }
+    &::-ms-fill-upper {
+      background-color: #9a905d;
+    }
+  }
+
+  #h4-container {
+    width: 400px;
+    max-width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: relative;
+    #h4-subcontainer {
+      width: 100%;
+      position: relative;
+      h4 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        color: #fff !important;
+        font-size: 12px;
+        transform-origin: center -10px;
+        transform: translateX(-50%);
+        transition: margin-top 0.15s ease-in-out, opacity 0.15s ease-in-out;
+        span {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-color: #1597ff;
+          border-radius: 0 50% 50% 50%;
+          transform: rotate(45deg);
+          z-index: -1;
+        }
+      }
+    }
+  }
+  input:not(:active) + #h4-container h4 {
+    opacity: 0;
+    margin-top: -50px;
+    pointer-events: none;
+  }
+`;
+
+// ------------HeaderのStyle-----------------
+const SHeader = styled.header`
+  background-color: #fefefe;
+  border-top: solid 2px #e8e6e6;
+  width: 100%;
+  height: 80px;
+  position: sticky;
+  bottom: 0;
+  position: -webkit-sticky;
+  /* position: fixed; */
+  z-index: 999;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 35px;
+
+    li {
+      cursor: pointer;
+    }
+  }
+
+  .iconContainer {
+    display: none;
+  }
+
+  svg {
+    display: none;
+  }
+
+  a {
+    font-size: ${Font.textBase};
+    font-weight: ${FontWeight.fontExtralLight};
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+      color: ${Color.secondary};
+    }
+  }
+
+  footer {
+    display: none;
+  }
+
+  @media (min-width: ${Responsive.md}) {
+    width: 25%;
+    min-width: 230px;
+    top: 0;
+    border-top: none;
+    border-right: solid 2px #e8e6e6;
+    display: block;
+    height: 100%;
+    min-height: 100vh;
+
+    .iconContainer {
+      display: block;
+      margin-top: 10px;
+    }
+
+    a {
+      font-size: ${Font.textXl};
+      height: 30px;
+    }
+
+    nav {
+      margin-top: 40px;
+      padding: 30px;
+    }
+
+    ul {
+      display: block;
+      margin-top: 65px;
+      white-space: nowrap;
+    }
+
+    li {
+      margin-top: 2.5rem;
+      padding-right: 15px;
+    }
+
+    svg {
+      display: inline;
+      width: 20px;
+      height: 20px;
+      margin-right: 25px;
+    }
+
+    footer {
+      display: block;
+      position: absolute;
+      bottom: 20px;
+      small {
+        font-size: ${Font.textSm};
+        padding: 30px;
+        opacity: 30%;
+      }
+    }
+  }
+
+  @media (min-width: ${Responsive.lg}) {
+    width: 20%;
+
+    nav {
+      margin-top: 30px;
+      margin-left: 13px;
+      padding: 30px;
+    }
+
+    a {
+      font-size: ${Font.text2xl};
+    }
+
+    svg {
+      width: 26px;
+      height: 26px;
+      margin-right: 25px;
+    }
+  }
+`;
+
+const SOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
+const SModal = styled.div`
+  background-color: #f9f9f9;
+  border-radius: 25px;
+  z-index: 2;
+  width: 75%;
+  padding: 2em;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    h1 {
+      font-size: ${Font.text3xl};
+      font-weight: ${FontWeight.fontBold};
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .svgContainer {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      padding: 5px;
+      transition: all 0.3s ease 0s;
+
+      &:hover {
+        background-color: ${Color.secondary};
+      }
+    }
+  }
+
+  .container {
+    margin-top: 10px;
+    h2 {
+      font-size: ${Font.textLg};
+    }
+    .waterContainer {
+      margin-top: 20px;
+      label {
+        line-height: 2;
+        opacity: 70%;
+      }
+    }
+
+    .buttonContainer {
+      margin-top: 45px;
+    }
+  }
+
+  @media (min-width: ${Responsive.md}) {
+    width: 30%;
+    .buttonContainer {
+      margin-top: 45px;
+    }
+  }
+`;
+
 const BaseContainer = styled.div`
   display: flex;
   -webkit-display: flex;
@@ -112,7 +506,7 @@ const Card = styled.section`
   }
 `;
 
-//PageのWrapper
+//------------PageのStyle-----------------
 const SSecondLogin = styled.div`
   main {
     margin: 0 auto;
@@ -404,13 +798,13 @@ const SContainer = styled.div`
 `;
 
 const SRegisterField = styled(BaseContainer)`
-  main{
+  main {
     span {
       color: #ed4956;
-        font-size: ${Font.textSm};
-        line-height: 2;
+      font-size: ${Font.textSm};
+      line-height: 2;
     }
-      
+
     select {
       color: ${Color.primary};
       outline: none;
@@ -419,7 +813,7 @@ const SRegisterField = styled(BaseContainer)`
       padding: 13px;
       transition: all 0.25s ease 0s;
       width: 100%;
-      
+
       &:focus {
         border: solid 1px #491818;
       }
@@ -474,7 +868,6 @@ const SRegisterFieldCard = styled(Card)`
     }
   }
 `;
-
 
 const SGraph = styled.div`
   display: flex;
@@ -772,8 +1165,14 @@ export {
   Responsive,
   Color,
   FontWeight,
+  SInput,
+  SButtonAfter,
+  SButtonBefore,
+  SRangeSlider,
+  SOverlay,
+  SModal,
+  SHeader,
   BaseContainer,
-  Card,
   SSecondSignUp,
   SWeather,
   SSecondLogin,
