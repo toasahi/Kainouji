@@ -1,6 +1,5 @@
 import { memo, VFC } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import { SHeader } from '../../constant/BaseCss';
 import icon from '../../images/icon.png';
 

@@ -3,7 +3,6 @@ import { ChangeEvent, memo, VFC } from 'react';
 import { SInput } from '../../constant/BaseCss';
 
 type InputProps = Omit<JSX.IntrinsicElements['input'], 'ref'>;
-
 type Props = InputProps & {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   value?: string;

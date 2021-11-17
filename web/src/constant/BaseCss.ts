@@ -36,6 +36,8 @@ const FontWeight = {
   fontBold: 700,
 };
 
+// ------------InputのStyle-----------------
+
 const SInput = styled.input`
   background-color: #fefefe;
   border: solid 1px rgba(232, 230, 230, 0.95);
@@ -360,6 +362,7 @@ const SHeader = styled.header`
   }
 `;
 
+// ------------ModalのStyle-----------------
 const SOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -453,6 +456,7 @@ const BaseContainer = styled.div`
   }
 `;
 
+// ------------CardのStyle-----------------
 const Card = styled.section`
   margin: 0 auto;
   width: 85%;
@@ -1161,10 +1165,6 @@ const SUserCard = styled(Card)`
 const SPage404 = styled(BaseContainer)``;
 
 export {
-  Font,
-  Responsive,
-  Color,
-  FontWeight,
   SInput,
   SButtonAfter,
   SButtonBefore,
