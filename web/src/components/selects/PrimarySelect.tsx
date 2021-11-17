@@ -14,7 +14,7 @@ export const PrimarySelect: VFC<Props> = memo((props) => {
   const { selectId, labelText, lists = [] } = props;
   return (
     <>
-      <SLavel htmlFor={selectId}>{labelText}</SLavel>
+      <SLabel htmlFor={selectId}>{labelText}</SLabel>
       <SSelect id={selectId}>
         <option value="">選択してください</option>
         {lists.map((list) => (
@@ -27,7 +27,7 @@ export const PrimarySelect: VFC<Props> = memo((props) => {
   );
 });
 
-const SLavel = styled.label`
+const SLabel = styled.label`
   color: ${Color.primary};
 `;
 
