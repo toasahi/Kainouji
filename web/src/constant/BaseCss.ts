@@ -475,7 +475,8 @@ const Card = styled.section`
       content: '';
       position: absolute;
       bottom: 0;
-      left: 30%;
+      left: 50%;
+      transform: translate(-50%, 0);
       width: 40%;
       opacity: 25%;
       height: 15px; /* 線幅 */
@@ -681,8 +682,9 @@ const SLookField = styled(BaseContainer)`
         content: '';
         position: absolute;
         bottom: 0;
-        left: 30%;
-        width: 40%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width:40%;
         opacity: 25%;
         height: 15px; /* 線幅 */
       }
@@ -697,8 +699,7 @@ const SLookField = styled(BaseContainer)`
         margin-bottom: 30px;
 
         ::after {
-          left: 38%;
-          width: 24%;
+          width: 40%;
           opacity: 25%;
           height: 15px; /* 線幅 */
         }
@@ -945,8 +946,27 @@ const SGraph = styled.div`
         bottom: 0;
         opacity: 25%;
         height: 10px;
-        width: 40%;
-        left: 29%;
+        width: 35%;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+    }
+  }
+
+  @media (min-width: ${Responsive.sm}) {
+    main{
+      h1 {
+        font-size: ${Font.text4xl};
+        padding: 5px;
+        margin: 30px 0;
+        margin-top: 75px;
+        margin-bottom: 30px;
+      }
+    
+      .graph {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
       }
     }
   }
@@ -982,8 +1002,9 @@ const SGraph = styled.div`
         margin-bottom: 30px;
 
         ::after {
-          left: 30%;
-          width: 40%;
+          left: 50%;
+          transform: translate(-50%, 0);
+          width: 30%;
           height: 15px; /* 線幅 */
         }
       }
@@ -1088,7 +1109,8 @@ const SUser = styled(BaseContainer)``;
 const SUserCard = styled(Card)`
   h1 {
     ::after {
-      left: 25%;
+      left: 50%;
+      transform: translate(-50%, 0);
       width: 50%;
     }
   }
@@ -1119,7 +1141,8 @@ const SUserCard = styled(Card)`
       font-size: ${Font.text3xl};
 
       ::after {
-        left: 30%;
+        left: 50%;
+        transform: translate(-50%, 0);
         width: 40%;
       }
     }
@@ -1155,7 +1178,8 @@ const SUserCard = styled(Card)`
       margin: 30px 0;
 
       ::after {
-        left: 27%;
+        left: 50%;
+        transform: translate(-50%, 0);
         width: 280px;
       }
     }
@@ -1165,6 +1189,7 @@ const SUserCard = styled(Card)`
 const SPage404 = styled(BaseContainer)``;
 
 export {
+  Color,
   SInput,
   SButtonAfter,
   SButtonBefore,

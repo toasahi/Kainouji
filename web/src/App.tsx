@@ -33,7 +33,7 @@ a{
 }
 
 h1,h2,h3{
-  font-family: 'Noto Sans SC',"Yu Gothic Medium", "游ゴシック Medium", 'ヒラギノ角ゴ Pro W3', sans-serif;
+  font-family: 'Noto Sans JP',"Yu Gothic Medium", "游ゴシック Medium", 'ヒラギノ角ゴ Pro W3', sans-serif;
 }
 
 .animation{
