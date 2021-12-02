@@ -13,3 +13,4 @@
 /web/src/images
 .env
 .DS_Store
+.idea
