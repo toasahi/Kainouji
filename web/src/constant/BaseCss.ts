@@ -467,7 +467,7 @@ const Card = styled.section`
     padding: 5px;
     margin: 20px 0;
     position: relative;
-    font-weight: ${FontWeight.fontSemiBold};
+    font-weight: ${FontWeight.fontMedium};
 
     ::after {
       background-color: ${Color.secondary}; /* 線色 */
@@ -650,13 +650,12 @@ const SSecondSignUp = styled.div`
       }
     }
 
-    @media(min-width:${Responsive.sm}){
-      main{
-        width:30%;
+  @media(min-width:${Responsive.sm}){
+    main{
+      width:30%;
 
-        label{
-          font-size:${Font.textBase};
-        }
+      label{
+        font-size:${Font.textBase};
       }
     }
   }
@@ -674,7 +673,7 @@ const SLookField = styled(BaseContainer)`
       margin-top: 20px;
       margin-bottom: 30px;
       position: relative;
-      font-weight: ${FontWeight.fontSemiBold};
+      font-weight: ${FontWeight.fontMedium};
 
       ::after {
         background-color: ${Color.secondary}; /* 線色 */
@@ -684,7 +683,7 @@ const SLookField = styled(BaseContainer)`
         bottom: 0;
         left: 50%;
         transform: translate(-50%, 0);
-        width:40%;
+        width:30%;
         opacity: 25%;
         height: 15px; /* 線幅 */
       }
@@ -697,12 +696,6 @@ const SLookField = styled(BaseContainer)`
         padding: 5px;
         margin-top: 78px;
         margin-bottom: 30px;
-
-        ::after {
-          width: 40%;
-          opacity: 25%;
-          height: 15px; /* 線幅 */
-        }
       }
     }
   }
@@ -935,7 +928,7 @@ const SGraph = styled.div`
       font-size: ${Font.text3xl};
       text-align: center;
       position: relative;
-      font-weight: ${FontWeight.fontSemiBold};
+      font-weight: ${FontWeight.fontMedium};
       margin-top: 30px;
 
       ::after {
@@ -1026,7 +1019,7 @@ const SWeather = styled(BaseContainer)`
       margin-top: 20px;
       margin-bottom: 30px;
       position: relative;
-      font-weight: ${FontWeight.fontSemiBold};
+      font-weight: ${FontWeight.fontMedium};
     }
 
     .keyframe2 {
@@ -1121,7 +1114,7 @@ const SUserCard = styled(Card)`
     line-height: 2;
     h2 {
       font-size: ${Font.text2xl};
-      font-weight: ${FontWeight.fontSemiBold};
+      font-weight: ${FontWeight.fontMedium};
     }
     .userImage {
       .iconImage {
@@ -1160,7 +1153,7 @@ const SUserCard = styled(Card)`
           line-height: 2;
           h2 {
             font-size: ${Font.text3xl};
-            font-weight: ${FontWeight.fontSemiBold};
+            font-weight: ${FontWeight.fontMedium};
           }
         }
       }
