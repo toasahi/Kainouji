@@ -18,7 +18,10 @@ export const useLogin = () => {
           setLoading(false);
           history.push('/lookfield');
         })
-        .catch(() => alert('ログインに失敗しました。'));
+        .catch(() => {
+          setLoading(false);
+          alert('ログインに失敗しました。');
+        });
     },
     [history, setLoginUser],
   );

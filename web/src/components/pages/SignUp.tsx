@@ -9,7 +9,7 @@ import { PrimaryButton } from '../buttons/PrimaryButton';
 import { SecondInput } from '../Inputs/SecondInput';
 
 export const SignUp = memo(() => {
-  const { singUp } = useSingUp();
+  const { singUp, loading } = useSingUp();
   const {
     register,
     handleSubmit,
