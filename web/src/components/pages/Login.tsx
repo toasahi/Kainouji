@@ -17,7 +17,7 @@ export const Login: VFC = memo(() => {
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
     login(data);
   };
-  const { login, loading } = useLogin();
+  const { login } = useLogin();
   return (
     <SSecondLogin>
       <>
