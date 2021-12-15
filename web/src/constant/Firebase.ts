@@ -11,8 +11,7 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
-//firebaseの初期化(複数回行わない)
-if (firebase.app.length === 0) {
-  firebase.initializeApp(firebaseConfig);
-}
+//firebaseの初期化
+firebase.initializeApp(firebaseConfig);
+
 export const auth = firebase.auth();
