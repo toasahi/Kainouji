@@ -2,7 +2,7 @@ import { memo, VFC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
-import { SSecondLogin } from '../../constant/BaseCss';
+import { SLogin } from '../../constant/BaseCss';
 import { useLogin } from '../../hooks/useLogin';
 import { IFormValues } from '../../types/form/form';
 import { PrimaryButton } from '../buttons/PrimaryButton';
@@ -19,7 +19,7 @@ export const Login: VFC = memo(() => {
   };
   const { login } = useLogin();
   return (
-    <SSecondLogin>
+    <SLogin>
       <main>
         <div className="user-info-container">
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -49,6 +49,6 @@ export const Login: VFC = memo(() => {
           </nav>
         </div>
       </main>
-    </SSecondLogin>
+    </SLogin>
   );
 });

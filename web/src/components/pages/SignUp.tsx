@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
-import { SSecondSignUp } from '../../constant/BaseCss';
+import { SSignUp } from '../../constant/BaseCss';
 import { useSingUp } from '../../hooks/useSingUp';
 import { IFormValues } from '../../types/form/form';
 import { PrimaryButton } from '../buttons/PrimaryButton';
@@ -20,7 +20,7 @@ export const SignUp = memo(() => {
   };
 
   return (
-    <SSecondSignUp>
+    <SSignUp>
       <main>
         <div className="user-info-container">
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -53,6 +53,6 @@ export const SignUp = memo(() => {
           </nav>
         </div>
       </main>
-    </SSecondSignUp>
+    </SSignUp>
   );
 });

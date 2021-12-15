@@ -2,7 +2,7 @@ import { memo, VFC } from 'react';
 import { SecondInput } from '../Inputs/SecondInput';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { Link } from 'react-router-dom';
-import { SSecondLogin } from '../../constant/BaseCss';
+import { SPasswordChange } from '../../constant/BaseCss';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IFormValues } from '../../types/form/form';
 import { useChangePassword } from '../../hooks/useChangePassword';
@@ -20,7 +20,7 @@ export const ChangePassword: VFC = memo(() => {
     changePassword(data.email);
   };
   return (
-    <SSecondLogin>
+    <SPasswordChange>
       <main>
         <div className="user-info-container">
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -45,6 +45,6 @@ export const ChangePassword: VFC = memo(() => {
           </nav>
         </div>
       </main>
-    </SSecondLogin>
+    </SPasswordChange>
   );
 });

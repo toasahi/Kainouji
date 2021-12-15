@@ -148,7 +148,7 @@ const SRangeSlider = styled.div`
     border-radius: 500px;
     width: 400px;
     max-width: 100%;
-    margin: 0px 0 16px;
+    margin: 0 0 16px;
     transition: box-shadow 0.2s ease-in-out;
     // Chrome
     @media screen and (-webkit-min-device-pixel-ratio: 0) {
@@ -435,7 +435,6 @@ const SModal = styled.div`
 
 const BaseContainer = styled.div`
   display: flex;
-  -webkit-display: flex;
   flex-direction: column-reverse;
   align-content: space-between;
   justify-content: space-between;
@@ -487,8 +486,7 @@ const Card = styled.section`
     width: 85%;
     height: 680px;
     background-color: #fefefe;
-    margin: 0 auto;
-    margin-top: 25px;
+    margin: 25px auto 0;
     border-radius: 30px;
     padding: 25px;
     --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -512,10 +510,9 @@ const Card = styled.section`
 `;
 
 //------------PageのStyle-----------------
-const SSecondLogin = styled.div`
+const SLogin = styled.div`
   main {
-    margin: 0 auto;
-    margin-top: 50px;
+    margin: 50px auto 0;
     width: 65%;
     background-color: #fefefe;
     padding: 30px 20px;
@@ -539,16 +536,16 @@ const SSecondLogin = styled.div`
 
     .button-container {
       text-align: center;
+
       button {
-        margin: 0 auto;
-        margin-top: 30px;
+        margin: 30px auto 0;
         text-align: center;
         padding-left: 0;
 
         &:after {
           content: '';
-          width: 0px;
-          height: 0px;
+          width: 0;
+          height: 0;
           border: 0;
         }
       }
@@ -562,6 +559,7 @@ const SSecondLogin = styled.div`
         a {
           opacity: 50%;
           padding-top: 10px;
+
           &:hover {
             opacity: 100%;
           }
@@ -573,6 +571,7 @@ const SSecondLogin = styled.div`
   @media (min-width: ${Responsive.sm}) {
     main {
       width: 30%;
+
       .account-nav-item {
         a {
           font-size: ${Font.textBase};
@@ -589,11 +588,88 @@ const SSecondLogin = styled.div`
   }
 `;
 
-const SSecondSignUp = styled.div`
+const SPasswordChange = styled.div`
   main {
-    margin: 0 auto;
+    margin: 50px auto 0;
+    width: 65%;
+    background-color: #fefefe;
+    padding: 30px 20px;
+    border-radius: 10px;
     border: 1px solid #e8e6e6;
-    margin-top: 50px;
+
+    span {
+      color: #ed4956;
+      font-size: ${Font.textSm};
+      line-height: 2;
+    }
+
+    .user-info-container {
+      margin-top: 30px;
+    }
+
+    label {
+      line-height: 3;
+      opacity: 75%;
+    }
+
+    .button-container {
+      text-align: center;
+
+      button {
+        margin: 30px auto 0;
+        text-align: center;
+        padding-left: 0;
+
+        &:after {
+          content: '';
+          width: 0;
+          height: 0;
+          border: 0;
+        }
+      }
+    }
+
+    .account-nav {
+      margin-top: 20px;
+      padding: 10px 20px;
+
+      .account-nav-item {
+        a {
+          opacity: 50%;
+          padding-top: 10px;
+
+          &:hover {
+            opacity: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: ${Responsive.sm}) {
+    main {
+      width: 30%;
+
+      .account-nav-item {
+        a {
+          font-size: ${Font.textBase};
+        }
+      }
+    }
+  }
+
+  @media (min-width: ${Responsive.md}) {
+    .account-nav {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+`;
+
+const SSignUp = styled.div`
+  main {
+    border: 1px solid #e8e6e6;
+    margin: 50px auto 0;
     width: 65%;
     background-color: #fefefe;
     padding: 30px 20px;
@@ -610,14 +686,14 @@ const SSecondSignUp = styled.div`
 
     .button-container {
       text-align: center;
+
       button {
-        margin: 0 auto;
-        margin-top: 30px;
+        margin: 30px auto 0;
 
         &:after {
           content: '';
-          width: 0px;
-          height: 0px;
+          width: 0;
+          height: 0;
           border: 0;
         }
       }
@@ -639,9 +715,11 @@ const SSecondSignUp = styled.div`
         label {
           font-size: ${Font.textSm};
         }
+
         a {
           margin-left: 10px;
           opacity: 50%;
+
           &:hover {
             opacity: 100%;
           }
@@ -951,9 +1029,7 @@ const SGraph = styled.div`
       h1 {
         font-size: ${Font.text4xl};
         padding: 5px;
-        margin: 30px 0;
-        margin-top: 75px;
-        margin-bottom: 30px;
+        margin: 75px 0 30px;
       }
 
       .graph {
@@ -971,6 +1047,7 @@ const SGraph = styled.div`
 
     main {
       width: 80%;
+
       section {
         margin-top: 100px;
       }
@@ -990,9 +1067,7 @@ const SGraph = styled.div`
       h1 {
         font-size: ${Font.text5xl};
         padding: 5px;
-        margin: 30px 0;
-        margin-top: 75px;
-        margin-bottom: 30px;
+        margin: 75px 0 30px;
 
         ::after {
           left: 50%;
@@ -1145,7 +1220,6 @@ const SUserCard = styled(Card)`
         margin-top: 60px;
         margin-left: 45px;
         padding: 10px;
-        display: flex;
 
         .userInfo {
           padding: 0 10px;
@@ -1191,9 +1265,10 @@ export {
   SModal,
   SHeader,
   BaseContainer,
-  SSecondSignUp,
+  SSignUp,
   SWeather,
-  SSecondLogin,
+  SLogin,
+  SPasswordChange,
   SLookField,
   SContainer,
   SRegisterField,
