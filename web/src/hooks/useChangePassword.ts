@@ -8,20 +8,20 @@ export const useChangePassword = () => {
   const history = useHistory();
 
   const changePassword = useCallback(
-    (password: string) => {
+    (email: string) => {
       setLoading(true);
-      // updatePassword(auth.currentUser!, password)
-      //   .then(() => {
-      //     setLoading(false);
-      //     history.push('/');
-      //   })
-      //   .catch((error) => {
-      //     setLoading(false);
-      //     alert('パスワードの文字数が足りません');
-      //   });
-      //   auth.sendPasswordResetEmail(()=>{
-      //
-      //   })
+      auth
+        .sendPasswordResetEmail(email)
+        .then(() => {
+          setLoading(false);
+          history.push('/');
+        })
+        .catch((error) => {
+          setLoading(false);
+          alert('メールを送ることができませんでした');
+          const errorCode = error.code;
+          console.log(errorCode);
+        });
     },
     [history],
   );

@@ -17,7 +17,7 @@ export const ChangePassword: VFC = memo(() => {
   const { changePassword, loading } = useChangePassword();
 
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
-    changePassword(data.password);
+    changePassword(data.email);
   };
   return (
     <SSecondLogin>
@@ -25,17 +25,12 @@ export const ChangePassword: VFC = memo(() => {
         <div className="user-info-container">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="item">
-              <label htmlFor="password">パスワード</label>
-              <SecondInput label="password" inputType="password" register={register} required />
-              {errors.password && <span>パスワードを入力してください</span>}
-            </div>
-            <div className="item">
-              <label htmlFor="password">確認パスワード</label>
-              <SecondInput label="password" inputType="password" register={register} required />
-              {errors.password && <span>パスワードを入力してください</span>}
+              <label htmlFor="email">メール</label>
+              <SecondInput label="email" inputType="email" register={register} required />
+              {errors.email && <span>メールを入力してください</span>}
             </div>
             <div className="button-container">
-              <PrimaryButton children="ログイン" position="after" onClick={() => console.log()} />
+              <PrimaryButton children="再設定メールを送信" position="after" onClick={() => console.log()} />
             </div>
           </form>
           <nav>
