@@ -1,35 +1,36 @@
 import { memo, VFC } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-
-import { SSecondLogin } from '../../constant/BaseCss';
-import { useLogin } from '../../hooks/useLogin';
-import { IFormValues } from '../../types/form/form';
-import { PrimaryButton } from '../buttons/PrimaryButton';
 import { SecondInput } from '../Inputs/SecondInput';
+import { PrimaryButton } from '../buttons/PrimaryButton';
+import { Link } from 'react-router-dom';
+import { SSecondLogin } from '../../constant/BaseCss';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { IFormValues } from '../../types/form/form';
+import { useChangePassword } from '../../hooks/useChangePassword';
 
-export const Login: VFC = memo(() => {
+export const ChangePassword: VFC = memo(() => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormValues>();
+
+  const { changePassword, loading } = useChangePassword();
+
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
-    login(data);
+    changePassword(data.password);
   };
-  const { login } = useLogin();
   return (
     <SSecondLogin>
       <main>
         <div className="user-info-container">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="item">
-              <label htmlFor="email">メールアドレス</label>
-              <SecondInput label="email" inputType="email" register={register} required />
-              {errors.email && <span>メールアドレスを入力してください</span>}
+              <label htmlFor="password">パスワード</label>
+              <SecondInput label="password" inputType="password" register={register} required />
+              {errors.password && <span>パスワードを入力してください</span>}
             </div>
             <div className="item">
-              <label htmlFor="password">パスワード</label>
+              <label htmlFor="password">確認パスワード</label>
               <SecondInput label="password" inputType="password" register={register} required />
               {errors.password && <span>パスワードを入力してください</span>}
             </div>
@@ -40,10 +41,10 @@ export const Login: VFC = memo(() => {
           <nav>
             <ul className="account-nav">
               <li className="account-nav-item">
-                <Link to="/signup">アカウント作成</Link>
+                <Link to="/">ログイン</Link>
               </li>
               <li className="account-nav-item">
-                <Link to="changepassword">パスワードを忘れましたか？</Link>
+                <Link to="/signup">アカウント登録</Link>
               </li>
             </ul>
           </nav>

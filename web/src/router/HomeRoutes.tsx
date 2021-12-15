@@ -7,6 +7,7 @@ import { Login } from '../components/pages/Login';
 import { RegisterField } from '../components/pages/RegisterField';
 import { Confirm } from '../components/pages/Confirm';
 import { SignUp } from '../components/pages/SignUp';
+import { ChangePassword } from '../components/pages/ChangePassword';
 
 export const homeRoutes = [
   {
@@ -48,6 +49,11 @@ export const homeRoutes = [
     path: '/user',
     exact: true,
     children: <User />,
+  },
+  {
+    path: '/changepassword',
+    exact: true,
+    children: <ChangePassword />,
   },
   {
     path: '/*',
