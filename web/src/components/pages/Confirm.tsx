@@ -26,7 +26,7 @@ export const Confirm: VFC = memo(() => {
         imageUrl: state.imageUrl ?? '',
       },
     });
-  const [cookies, setCookie] = useCookies(['id']);
+  const [cookies] = useCookies(['id']);
   const { getDetailVegetable, detailVegetable } = useGetVegitables();
   const { loginUser } = useLoginUser();
   const onClickRegister = () => {
@@ -34,7 +34,7 @@ export const Confirm: VFC = memo(() => {
       registerField(cookies.id, state.data);
     }
   };
-  const { registerField, loading, success } = useRegisterField();
+  const { registerField } = useRegisterField();
   const onChangeTest = () => console.log(1);
   const state = history.location.state;
 
@@ -82,7 +82,7 @@ export const Confirm: VFC = memo(() => {
             <div className="item">
               <label htmlFor="image">畑の画像</label>
               <label htmlFor="image">
-                <img src={state.imageUrl} style={{ width: '100%', height: '180px' }} />
+                <img src={state.imageUrl} style={{ width: '100%', height: '180px' }} alt="畑の画像" />
               </label>
             </div>
             <section className="buttonContainer">
