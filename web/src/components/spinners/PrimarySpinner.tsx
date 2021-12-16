@@ -1,6 +1,6 @@
 import { memo, VFC } from 'react';
 import Loader from 'react-loader-spinner';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const PrimarySpinner: VFC = memo(() => {
   return (
@@ -19,8 +19,8 @@ export const PrimarySpinner: VFC = memo(() => {
 });
 
 const SSpiner = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-45,-50);
-`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-45, -50);
+`;

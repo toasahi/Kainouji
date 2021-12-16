@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { SecondInput } from '../Inputs/SecondInput';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IFormValues } from '../../types/form/form';
-import {PrimarySpinner} from "../spinners/PrimarySpinner";
+import { PrimarySpinner } from '../spinners/PrimarySpinner';
 
 type State = {
   data?: IFormValues;
@@ -48,8 +48,11 @@ export const RegisterField: VFC = memo(() => {
   };
 
   return (
-      <>
-        {loading ? (<PrimarySpinner/>) : (<SRegisterField>
+    <>
+      {loading ? (
+        <PrimarySpinner />
+      ) : (
+        <SRegisterField>
           <Header />
           <main>
             <SRegisterFieldCard>
@@ -59,11 +62,11 @@ export const RegisterField: VFC = memo(() => {
                   <div className="item">
                     <label htmlFor="fieldName">名前</label>
                     <SecondInput
-                        label="fieldName"
-                        inputType="text"
-                        register={register}
-                        required
-                        value={historyState ? '' : state.data?.fieldName}
+                      label="fieldName"
+                      inputType="text"
+                      register={register}
+                      required
+                      value={historyState ? '' : state.data?.fieldName}
                     />
                     {errors.fieldName && <span>畑の名前を入力してください</span>}
                   </div>
@@ -71,16 +74,16 @@ export const RegisterField: VFC = memo(() => {
                     <div className="item">
                       <label htmlFor="vegetable">育てる野菜</label>
                       <select
-                          id="vegetable"
-                          {...register('vegetable', { required: true })}
-                          onChange={onChangeVegetable}
-                          value={vegetable}
+                        id="vegetable"
+                        {...register('vegetable', { required: true })}
+                        onChange={onChangeVegetable}
+                        value={vegetable}
                       >
                         <option value="">選択してください</option>
                         {vegetableLists.map((vegetableList) => (
-                            <option key={vegetableList.id} value={vegetableList.id}>
-                              {vegetableList.vegetable}
-                            </option>
+                          <option key={vegetableList.id} value={vegetableList.id}>
+                            {vegetableList.vegetable}
+                          </option>
                         ))}
                       </select>
                       {errors.vegetable && <span>野菜を選択してください</span>}
@@ -89,11 +92,11 @@ export const RegisterField: VFC = memo(() => {
                     <div className="item">
                       <label htmlFor="settingDay">設置日</label>
                       <SecondInput
-                          inputType="date"
-                          label="settingDay"
-                          register={register}
-                          required
-                          value={historyState ? '' : state.data?.settingDay}
+                        inputType="date"
+                        label="settingDay"
+                        register={register}
+                        required
+                        value={historyState ? '' : state.data?.settingDay}
                       />
                       {errors.settingDay && <span>設置日を入力してください</span>}
                     </div>
@@ -103,11 +106,11 @@ export const RegisterField: VFC = memo(() => {
                     <label htmlFor="image">畑の画像</label>
                     <div style={{ height: '160px' }}>
                       <SecondInput
-                          inputType="file"
-                          label="image"
-                          register={register}
-                          onChange={onChangeProcessImage}
-                          required={false}
+                        inputType="file"
+                        label="image"
+                        register={register}
+                        onChange={onChangeProcessImage}
+                        required={false}
                       />
                     </div>
                   </div>
@@ -118,8 +121,8 @@ export const RegisterField: VFC = memo(() => {
               </div>
             </SRegisterFieldCard>
           </main>
-        </SRegisterField>)}
-      </>
-
+        </SRegisterField>
+      )}
+    </>
   );
 });
