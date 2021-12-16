@@ -25,5 +25,5 @@ export const useLogin = () => {
     },
     [history, setLoginUser],
   );
-  return { login };
+  return { login, loading };
 };
