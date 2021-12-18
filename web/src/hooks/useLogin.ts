@@ -11,10 +11,9 @@ export const useLogin = () => {
 
   const loginState = useCallback(() => {
     // setLoading(true);
-      auth.onAuthStateChanged((user) => {
-        setLoginUser(user);
-      });
-
+    auth.onAuthStateChanged((user) => {
+      setLoginUser(user);
+    });
   }, []);
 
   const login = useCallback(

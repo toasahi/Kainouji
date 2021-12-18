@@ -18,10 +18,10 @@ export const LookField: VFC = memo(() => {
   useEffect(() => {
     loginState();
     console.log(`11:${loginUser}`);
-    if(loginUser != null){
+    if (loginUser != null) {
       setCookie('id', loginUser.uid, { path: '/' });
-      console.log("nullではありません");
-      console.log(cookies.id)
+      console.log('nullではありません');
+      console.log(cookies.id);
     }
     // if (loginUser !== null && loginUser.id !== undefined) {
     //   setCookie('id', loginUser.id, { path: '/' });
