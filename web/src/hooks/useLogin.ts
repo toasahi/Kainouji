@@ -7,7 +7,15 @@ import { useLoginUser } from './useLoginUser';
 export const useLogin = () => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const { setLoginUser } = useLoginUser();
+  const { setLoginUser, loginUser } = useLoginUser();
+
+  const loginState = useCallback(() => {
+    // setLoading(true);
+      auth.onAuthStateChanged((user) => {
+        setLoginUser(user);
+      });
+
+  }, []);
 
   const login = useCallback(
     (data: User) => {
@@ -15,6 +23,12 @@ export const useLogin = () => {
       auth
         .signInWithEmailAndPassword(data.email, data.password!)
         .then(() => {
+          // setLoginUser(auth.currentUser);
+          // auth.onAuthStateChanged((user) => {
+          //   setLoginUser(user);
+          //   console.log(`1: ${user?.uid}` )
+          // });
+          // loginState();
           setLoading(false);
           history.push('/lookfield');
         })
@@ -25,5 +39,6 @@ export const useLogin = () => {
     },
     [history, setLoginUser],
   );
-  return { login, loading };
+
+  return { login, loading, loginState };
 };
