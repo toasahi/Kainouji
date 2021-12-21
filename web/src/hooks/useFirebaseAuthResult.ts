@@ -1,44 +1,42 @@
-type FirebaseAuthResultStatus = {
-  code:
-    | 'Successful'
-    | 'EmailAlreadyExists'
-    | 'WrongPassword'
-    | 'InvalidEmail'
-    | 'UserNotFound'
-    | 'UserDisabled'
-    | 'OperationNotAllowed'
-    | 'TooManyRequests'
-    | 'Undefined';
-};
+type FirebaseAuthResultStatus =
+  | 'auth-successful'
+  | 'auth/email-already-in-use'
+  | 'auth/wrong-password'
+  | 'auth/invalid-email'
+  | 'auth/user-not-found'
+  | 'auth/user-disabled'
+  | 'auth/operation-not-allowed'
+  | 'auth/too-many-requests'
+  | 'auth/undefined';
 
-export const useFirebaseAuthResult = ({ code }: FirebaseAuthResultStatus) => {
+export const useFirebaseAuthResult = (code: FirebaseAuthResultStatus) => {
   switch (code) {
-    case 'Successful':
+    case 'auth-successful':
       alert('');
       break;
-    case 'EmailAlreadyExists':
-      alert('');
+    case 'auth/email-already-in-use':
+      alert('このメールアドレスは使用されています');
       break;
-    case 'WrongPassword':
-      alert('');
+    case 'auth/wrong-password':
+      alert('メールアドレスまたはパスワードが違います');
       break;
-    case 'InvalidEmail':
-      alert('');
+    case 'auth/invalid-email':
+      alert('メールアドレスの形式が正しくありません');
       break;
-    case 'UserNotFound':
-      alert('');
+    case 'auth/user-not-found':
+      alert('ユーザーが存在しません');
       break;
-    case 'UserDisabled':
-      alert('');
+    case 'auth/user-disabled':
+      alert('無効なユーザーです');
       break;
-    case 'OperationNotAllowed':
-      alert();
+    case 'auth/operation-not-allowed':
+      alert('現在この認証方法はご利用頂けません');
       break;
-    case 'UserNotFound':
-      alert('');
+    case 'auth/too-many-requests':
+      alert('認証回数の上限回数を超えました');
       break;
     default:
-      alert('');
+      alert('少々お待ちください');
       break;
   }
 };

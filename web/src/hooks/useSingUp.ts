@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import { auth } from '../constant/Firebase';
 import { User } from '../types/api/user';
 import { axios } from '../constant/BaseAxios';
-import { FieldState } from '../types/api/field';
+import { useFirebaseAuthResult } from './useFirebaseAuthResult';
 
 export const useSingUp = () => {
   const history = useHistory();
@@ -28,9 +28,8 @@ export const useSingUp = () => {
           //   });
         })
         .catch((error) => {
-          console.log(error.code);
+          useFirebaseAuthResult(error.code);
           setLoading(false);
-          alert('ユーザを作成できませんでした');
         });
     },
     [history],

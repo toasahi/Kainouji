@@ -3,11 +3,12 @@ import { useHistory } from 'react-router';
 import { auth } from '../constant/Firebase';
 import { User } from '../types/api/user';
 import { useLoginUser } from './useLoginUser';
+import { useFirebaseAuthResult } from './useFirebaseAuthResult';
 
 export const useLogin = () => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const { setLoginUser, loginUser } = useLoginUser();
+  const { setLoginUser } = useLoginUser();
 
   const loginState = useCallback(() => {
     // setLoading(true);
@@ -31,9 +32,9 @@ export const useLogin = () => {
           setLoading(false);
           history.push('/lookfield');
         })
-        .catch(() => {
+        .catch((error) => {
+          useFirebaseAuthResult(error.code);
           setLoading(false);
-          alert('ログインに失敗しました。');
         });
     },
     [history, setLoginUser],
