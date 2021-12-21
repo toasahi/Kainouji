@@ -30,7 +30,7 @@ export const Confirm: VFC = memo(() => {
   const { getDetailVegetable, detailVegetable } = useGetVegitables();
   const { loginUser } = useLoginUser();
   const onClickRegister = () => {
-    if (Object.keys(cookies).length !== 0 || (loginUser !== null && loginUser.id !== undefined)) {
+    if (Object.keys(cookies).length !== 0 || (loginUser !== null && loginUser.uid !== undefined)) {
       registerField(cookies.id, state.data);
     }
   };

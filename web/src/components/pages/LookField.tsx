@@ -8,22 +8,31 @@ import { useGetField } from '../../hooks/useGetFields';
 import { useLoginUser } from '../../hooks/useLoginUser';
 import { useCookies } from 'react-cookie';
 import { PrimarySpinner } from '../spinners/PrimarySpinner';
+import { useLogin } from '../../hooks/useLogin';
 
 export const LookField: VFC = memo(() => {
   const { fields, getFields, loading } = useGetField();
   const { loginUser } = useLoginUser();
+  const { loginState } = useLogin();
   const [cookies, setCookie] = useCookies(['id']);
   useEffect(() => {
-    if (loginUser !== null && loginUser.id !== undefined) {
-      setCookie('id', loginUser.id, { path: '/' });
-      getFields(loginUser.id);
-    } else {
-      if (Object.keys(cookies).length !== 0) {
-        getFields(cookies.id);
-      }
+    loginState();
+    console.log(`11:${loginUser}`);
+    if (loginUser != null) {
+      setCookie('id', loginUser.uid, { path: '/' });
+      console.log('nullではありません');
+      console.log(cookies.id);
     }
-  }, []);
-
+    // if (loginUser !== null && loginUser.id !== undefined) {
+    //   setCookie('id', loginUser.id, { path: '/' });
+    //   getFields(loginUser.id);
+    // } else {
+    //   if (Object.keys(cookies).length !== 0) {
+    //     getFields(cookies.id);
+    //   }
+    // }
+  }, [loginUser]);
+  console.log(3);
   return (
     <>
       {loading ? (
