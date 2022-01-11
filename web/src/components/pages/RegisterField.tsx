@@ -59,17 +59,31 @@ export const RegisterField: VFC = memo(() => {
               <div className="container">
                 <h1>畑を登録</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className="item">
-                    <label htmlFor="fieldName">名前</label>
-                    <SecondInput
-                      label="fieldName"
-                      inputType="text"
-                      register={register}
-                      required
-                      value={historyState ? '' : state.data?.fieldName}
-                    />
-                    {errors.fieldName && <span>畑の名前を入力してください</span>}
-                  </div>
+                  <section>
+                    <div className="item">
+                      <label htmlFor="fieldName">名前</label>
+                      <SecondInput
+                        label="fieldName"
+                        inputType="text"
+                        register={register}
+                        required
+                        value={historyState ? '' : state.data?.fieldName}
+                      />
+                      {errors.fieldName && <span>畑の名前を入力してください</span>}
+                    </div>
+                    <div className="item">
+                      <label htmlFor="chipId">チップID</label>
+                      <SecondInput
+                        label="chipId"
+                        inputType="text"
+                        register={register}
+                        required
+                        value={historyState ? '' : state.data?.chipId}
+                      />
+                      {errors.fieldName && <span>チップIDを入力してください</span>}
+                    </div>
+                  </section>
+
                   <section>
                     <div className="item">
                       <label htmlFor="vegetable">育てる野菜</label>
