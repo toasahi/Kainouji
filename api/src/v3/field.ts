@@ -2,9 +2,9 @@ import express from 'express';
 import { Field } from 'types/type';
 import { getField, getDetailField, createField } from './db';
 
-const filedRouter = express.Router();
+const fieldRouter = express.Router();
 
-filedRouter.post('/create', (req: express.Request, res: express.Response) => {
+fieldRouter.post('/create', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   const field: Field = req.body;
   try {
@@ -17,7 +17,7 @@ filedRouter.post('/create', (req: express.Request, res: express.Response) => {
   console.log(field);
 });
 
-filedRouter.get('/:user_id', (req: express.Request, res: express.Response) => {
+fieldRouter.get('/:user_id', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   try {
     getField(req.params.user_id).then((result) => {
@@ -28,7 +28,7 @@ filedRouter.get('/:user_id', (req: express.Request, res: express.Response) => {
   }
 });
 
-filedRouter.get('/detail/:id', (req: express.Request, res: express.Response) => {
+fieldRouter.get('/detail/:id', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   try {
     getDetailField(req.params.id).then((result) => {
@@ -39,4 +39,4 @@ filedRouter.get('/detail/:id', (req: express.Request, res: express.Response) => 
   }
 });
 
-export { filedRouter };
+export { fieldRouter };
