@@ -14,7 +14,6 @@ fieldRouter.post('/create', (req: express.Request, res: express.Response) => {
   } catch (error) {
     res.status(400).json({ message: error.message, status: 404 });
   }
-  console.log(field);
 });
 
 fieldRouter.get('/:user_id', (req: express.Request, res: express.Response) => {

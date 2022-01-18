@@ -10,6 +10,7 @@ import { IFormValues } from '../../types/form/form';
 import { useLoginUser } from '../../hooks/useLoginUser';
 import { useCookies } from 'react-cookie';
 import { useGetVegitables } from '../../hooks/useGetVegitables';
+import defaultImage from '../../images/defaultImage.jpeg';
 
 type State = {
   data: IFormValues;
@@ -23,7 +24,7 @@ export const Confirm: VFC = memo(() => {
       pathname: '/registerfield',
       state: {
         data: state.data,
-        imageUrl: state.imageUrl ?? '',
+        imageUrl: state.imageUrl ?? defaultImage,
       },
     });
   const [cookies] = useCookies(['id']);
@@ -47,16 +48,29 @@ export const Confirm: VFC = memo(() => {
         <SConfirmCard>
           <div className="container ">
             <h1>確認画面</h1>
-            <div className="item">
-              <label htmlFor="fieldName">名前</label>
-              <PrimaryInput
-                type="text"
-                inputId="fieldName"
-                onChange={onChangeTest}
-                value={state.data.fieldName}
-                readonly={true}
-              />
-            </div>
+            <section>
+              <div className="item">
+                <label htmlFor="fieldName">名前</label>
+                <PrimaryInput
+                  type="text"
+                  inputId="fieldName"
+                  onChange={onChangeTest}
+                  value={state.data.fieldName}
+                  readonly={true}
+                />
+              </div>
+              <div className="item">
+                <label htmlFor="chipId">チップID</label>
+                <PrimaryInput
+                  type="text"
+                  inputId="chipId"
+                  onChange={onChangeTest}
+                  value={state.data.chipId}
+                  readonly={true}
+                />
+              </div>
+            </section>
+
             <section>
               <div className="item">
                 <label htmlFor="vegetable">育てる野菜</label>
@@ -82,7 +96,7 @@ export const Confirm: VFC = memo(() => {
             <div className="item">
               <label htmlFor="image">畑の画像</label>
               <label htmlFor="image">
-                <img src={state.imageUrl} style={{ width: '100%', height: '180px' }} alt="畑の画像" />
+                <img src={state.imageUrl} style={{ width: '100%', height: '180px' }} />
               </label>
             </div>
             <section className="buttonContainer">

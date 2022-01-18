@@ -137,17 +137,20 @@ export const createField = async (data: Field) => {
   const conn = await mysql.createConnection(dbSetting);
   try {
     let sql: string;
+    // sql = `INSERT INTO chips(id) values(?)`;
+    // await conn.query(sql, [data.chip_id]);
     if (data.image_name !== '') {
-      sql = `INSERT INTO fields(user_id,field_name,vegetable_id,chip_id,setting_date,image_name) value(?,?,?,?,?,?)`;
+      sql = `INSERT INTO fields(user_id,field_name,vegetable_id,chip_id,setting_date,image_name) values(?,?,?,?,?,?)`;
     } else {
-      sql = `INSERT INTO fields(user_id,field_name,vegetable_id,chip_id,setting_date) value(?,?,?,?,?)`;
+      sql = `INSERT INTO fields(user_id,field_name,vegetable_id,chip_id,setting_date) values(?,?,?,?,?)`;
     }
+
     const [rows] = await conn.query(sql, [
       data.user_id,
       data.field_name,
       data.vegetable_id,
-      data.setting_date,
       data.chip_id,
+      data.setting_date,
       data.image_name,
     ]);
     return rows;

@@ -3,7 +3,8 @@ import logger from 'morgan';
 import path from 'path';
 import cors from 'cors';
 // import { router } from './v1/index';
-import { router } from './v2/index';
+// import { router } from './v2/index';
+import { router } from './v3/index';
 
 const app: express.Express = express();
 app.use(logger('dev'));
@@ -13,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //ルーティング
-app.use('/v2', router);
+app.use('/v3', router);
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
