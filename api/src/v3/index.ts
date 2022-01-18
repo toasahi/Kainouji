@@ -3,7 +3,7 @@ import { fieldRouter } from './field';
 import { graphRouter } from './graph';
 import { vegetableRouter } from './vegetable';
 import { chipRouter } from './chip';
-import { userRouter } from './user2';
+import { userRouter } from './user';
 
 const router = express.Router();
 
