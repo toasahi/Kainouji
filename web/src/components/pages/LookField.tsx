@@ -20,17 +20,18 @@ export const LookField: VFC = memo(() => {
     console.log(`11:${loginUser}`);
     if (loginUser != null) {
       setCookie('id', loginUser.uid, { path: '/' });
-      console.log('nullではありません');
       console.log(cookies.id);
     }
-    // if (loginUser !== null && loginUser.id !== undefined) {
-    //   setCookie('id', loginUser.id, { path: '/' });
-    //   getFields(loginUser.id);
-    // } else {
-    //   if (Object.keys(cookies).length !== 0) {
-    //     getFields(cookies.id);
-    //   }
-    // }
+    if (loginUser !== null && loginUser.uid !== undefined) {
+      setCookie('id', loginUser.uid, { path: '/' });
+      if (loginUser.uid != null) {
+        getFields(loginUser.uid);
+      }
+    } else {
+      if (Object.keys(cookies).length !== 0) {
+        getFields(cookies.id);
+      }
+    }
   }, [loginUser]);
   console.log(3);
   return (

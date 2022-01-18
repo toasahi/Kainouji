@@ -37,6 +37,8 @@ export const RegisterField: VFC = memo(() => {
     formState: { errors },
   } = useForm<IFormValues>();
 
+  console.log(vegetable);
+
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
     history.push({
       pathname: '/registerfield/confirm',

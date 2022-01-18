@@ -19,6 +19,7 @@ export type Field = {
   user_id: string;
   field_name: string;
   vegetable_id: string;
+  chip_id: string;
   setting_date: string;
   image_name?: string;
 };

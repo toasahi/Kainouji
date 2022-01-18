@@ -10,6 +10,7 @@ export type Field = {
 
 export type RegisterData = {
   fieldName: string;
+  chipId: string;
   vegetable: string;
   settingDay: string;
   image?: FileList;
@@ -18,6 +19,7 @@ export type RegisterData = {
 export type FieldState = {
   userId: string;
   fieldName: string;
+  chipId?: number;
   vegetable: string;
   settingDay: string;
   image_name: string;

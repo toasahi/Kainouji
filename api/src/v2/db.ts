@@ -20,55 +20,55 @@ export const editThreshold = async (field_id: string, moisture: string) => {
   const conn = await mysql.createConnection(dbSetting);
   try {
     const sql = `UPDATE thresholds SET moisture = ? WHERE field_id = ?`;
-    const [rows, fields] = await conn.query(sql, [moisture, field_id]);
+    const [rows] = await conn.query(sql, [moisture, field_id]);
     return rows;
   } catch (e) {
     console.log(e);
   } finally {
-    conn.end();
+    await conn.end();
   }
 };
 
 /**
  * 閾値の登録
  * @async
- * @param string field_id
  * @returns rows
+ * @param field_id
  */
 
 export const insertThreshold = async (field_id: string) => {
   const conn = await mysql.createConnection(dbSetting);
   try {
     const sql = `INSERT INTO thresholds (field_id) values (?)`;
-    const [rows, fields] = await conn.query(sql, [field_id]);
+    const [rows] = await conn.query(sql, [field_id]);
     return rows;
   } catch (e) {
     console.log(e);
   } finally {
-    conn.end();
+    await conn.end();
   }
   const sql = `INSERT INTO thresholds (field_id) values (?)`;
-  const [rows, fields] = await conn.query(sql, [field_id]);
+  const [rows] = await conn.query(sql, [field_id]);
   return rows;
 };
 
 /**
  * 閾値の取得
  * @async
- * @param string field_id
  * @returns rows
+ * @param field_id
  */
 
 export const getThreshold = async (field_id: string) => {
   const conn = await mysql.createConnection(dbSetting);
   try {
     const sql = `SELECT * From thresholds WHERE field_id = ?`;
-    const [rows, fields] = await conn.query(sql, [field_id]);
+    const [rows] = await conn.query(sql, [field_id]);
     return rows;
   } catch (e) {
     console.log(e);
   } finally {
-    conn.end();
+    await conn.end();
   }
 };
 
@@ -82,12 +82,12 @@ export const getVegetables = async () => {
   const conn = await mysql.createConnection(dbSetting);
   try {
     const sql = 'SELECT id,vegetable From vegetables';
-    const [rows, fields] = await conn.query(sql);
+    const [rows] = await conn.query(sql);
     return rows;
   } catch (e) {
     console.log(e);
   } finally {
-    conn.end();
+    await conn.end();
   }
 };
 
@@ -95,12 +95,12 @@ export const getDetailVegetable = async (id: string) => {
   const conn = await mysql.createConnection(dbSetting);
   try {
     const sql = 'SELECT * From vegetables Where id = ?';
-    const [rows, fields] = await conn.query(sql, [id]);
+    const [rows] = await conn.query(sql, [id]);
     return rows;
   } catch (e) {
     console.log(e);
   } finally {
-    conn.end();
+    await conn.end();
   }
 };
 
@@ -114,12 +114,12 @@ export const insertVegetables = async () => {
   const conn = await mysql.createConnection(dbSetting);
   try {
     const sql = `SELECT vegetable From vegetables Where`;
-    const [rows, fields] = await conn.query(sql);
+    const [rows] = await conn.query(sql);
     return rows;
   } catch (e) {
     console.log(e);
   } finally {
-    conn.end();
+    await conn.end();
   }
 };
 
@@ -132,13 +132,13 @@ export const insertVegetables = async () => {
 export const insertField = async (data: Field) => {
   const conn = await mysql.createConnection(dbSetting);
   try {
-    let sql = '';
+    let sql: string;
     if (data.image_name !== '') {
       sql = `INSERT INTO fields(user_id,field_name,vegetable_id,setting_date,image_name) value(?,?,?,?,?)`;
     } else {
       sql = `INSERT INTO fields(user_id,field_name,vegetable_id,setting_date) value(?,?,?,?)`;
     }
-    const [rows, fields] = await conn.query(sql, [
+    const [rows] = await conn.query(sql, [
       data.user_id,
       data.field_name,
       data.vegetable_id,
@@ -149,26 +149,26 @@ export const insertField = async (data: Field) => {
   } catch (e) {
     console.log(e);
   } finally {
-    conn.end();
+    await conn.end();
   }
 };
 
 /**
  * 登録されている畑を取得
- * @param userId
  * @returns
+ * @param user_id
  */
 
 export const getField = async (user_id: string) => {
   const conn = await mysql.createConnection(dbSetting);
   try {
     const sql = `SELECT * From fields where user_id = ?`;
-    const [rows, fields] = await conn.query(sql, [user_id]);
+    const [rows] = await conn.query(sql, [user_id]);
     return rows;
   } catch (e) {
     console.log(e);
   } finally {
-    conn.end();
+    await conn.end();
   }
 };
 
@@ -182,12 +182,12 @@ export const getDetailField = async (id: string) => {
   const conn = await mysql.createConnection(dbSetting);
   try {
     const sql = `SELECT * From fields where id = ?`;
-    const [rows, fields] = await conn.query(sql, [id]);
+    const [rows] = await conn.query(sql, [id]);
     return rows;
   } catch (e) {
     console.log(e);
   } finally {
-    conn.end();
+    await conn.end();
   }
 };
 
@@ -201,7 +201,7 @@ export const insertUser = async (data: User) => {
   const conn = await mysql.createConnection(dbSetting);
   try {
     let sql = `SELECT * FROM users WHERE email = ? LIMIT 1`;
-    const [rows, fields] = await conn.query(sql, [data.email]);
+    const [rows] = await conn.query(sql, [data.email]);
     let status: number;
     if (Object.keys(rows).length === 0) {
       const hashPass = bcrypt.hashSync(data.password, 10);
@@ -215,7 +215,27 @@ export const insertUser = async (data: User) => {
   } catch (e) {
     console.log(e);
   } finally {
-    conn.end();
+    await conn.end();
+  }
+};
+
+/**
+ * ユーザーを登録
+ * @param id ユーザーid
+ * @param username ユーザー名
+ * @returns
+ */
+
+export const insertUser2 = async (id: string, username: string) => {
+  const conn = await mysql.createConnection(dbSetting);
+  try {
+    const sql = `INSERT INTO users(id,username) value(?,?)`;
+    const [rows] = await conn.query(sql, [id, username]);
+    return rows;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    await conn.end();
   }
 };
 
@@ -229,17 +249,16 @@ export const getHashPassword = async (email: string) => {
   const conn = await mysql.createConnection(dbSetting);
   try {
     const sql = `SELECT password FROM users WHERE email = ? LIMIT 1`;
-    const [rows, fields] = (await conn.query(sql, [email])) as any;
+    const [rows] = (await conn.query(sql, [email])) as any;
     if (Object.keys(rows).length === 0) {
-      const status = 500;
-      return status;
+      return 500;
     } else {
       return rows[0].password;
     }
   } catch (e) {
     console.log(e);
   } finally {
-    conn.end();
+    await conn.end();
   }
 };
 
@@ -256,19 +275,19 @@ export const getUser = async (email: string, password: string, hashPass: string)
   try {
     if (bcrypt.compareSync(password, hashPass)) {
       const sql = `SELECT id,email,username,status FROM users where email = ?`;
-      const [rows, fields] = await conn.query(sql, [email]);
+      const [rows] = await conn.query(sql, [email]);
       return rows;
     }
   } catch (e) {
     console.log(e);
   } finally {
-    conn.end();
+    await conn.end();
   }
 };
 
 /**
  * ESP32のデータを取得
- * @param id
+ * @param field_id
  * @param period 期間
  * @returns
  */
@@ -288,11 +307,11 @@ export const getGraphDatas = async (field_id?: string, period?: string) => {
         sql = `SELECT moisture as 水分量,humidity as 湿度,temperature as 気温,air_pressure as 気圧,created_at From datas where field_id = ? && updated_at >= (NOW() - INTERVAL 14 DAY)`;
         break;
     }
-    const [rows, fields] = await conn.query(sql, [field_id]);
+    const [rows] = await conn.query(sql, [field_id]);
     return rows;
   } catch (e) {
     console.log(e);
   } finally {
-    conn.end();
+    await conn.end();
   }
 };
