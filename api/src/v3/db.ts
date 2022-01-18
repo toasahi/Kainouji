@@ -137,8 +137,8 @@ export const createField = async (data: Field) => {
   const conn = await mysql.createConnection(dbSetting);
   try {
     let sql: string;
-    // sql = `INSERT INTO chips(id) values(?)`;
-    // await conn.query(sql, [data.chip_id]);
+    sql = `INSERT IGNORE INTO chips(id) values(?)`;
+    await conn.query(sql, [data.chip_id]);
     if (data.image_name !== '') {
       sql = `INSERT INTO fields(user_id,field_name,vegetable_id,chip_id,setting_date,image_name) values(?,?,?,?,?,?)`;
     } else {
