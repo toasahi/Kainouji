@@ -7,22 +7,22 @@ export const useUpdateThreshold = () => {
   const params = new URLSearchParams();
   const updateThreshold = useCallback((id: string, moisture: string) => {
     params.append('moisture', moisture);
-    params.append('field_id', id);
+    params.append('chip_id', id);
     setLoading(true);
     axios
-      .post('threshold', params)
-      .then((res) => {
+      .post('chip/update', params)
+      .then(() => {
         setSuccess(true);
         alert('更新しました');
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(() => {
         alert('失敗');
         setLoading(false);
       })
       .finally(() => {
         params.delete('moisture');
-        params.delete('field_id');
+        params.delete('chip_id');
       });
   }, []);
 

@@ -10,13 +10,13 @@ export type Field = {
 };
 
 export type DetailField = {
-  id:number;
+  id: number;
   field_name: string;
   vegetable: string;
   setting_date: string;
-  chip_id:string;
+  chip_id: string;
   moisture: string;
-}
+};
 
 export type RegisterData = {
   fieldName: string;

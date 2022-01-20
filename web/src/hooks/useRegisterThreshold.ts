@@ -9,12 +9,12 @@ export const useRegisterThresholds = () => {
     params.append('field_id', id);
     setLoading(true);
     axios
-      .post('threshold/add', params)
-      .then((res) => {
+      .post('chip/create', params)
+      .then(() => {
         setSuccess(true);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(() => {
         setLoading(false);
       })
       .finally(() => {
