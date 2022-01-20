@@ -6,9 +6,11 @@ $humidity = $_POST['humidity'];
 $airPressure = $_POST['air_pressure'];
 $chipId = $_POST['chip_id'];
 $dataHandle = new Data();
+
 try{
-    if(isset($moisture,$temperature,$humidity,$airPressure,$chipId)){
-        $dataHandle->insertFieldData($moisture,$temperature,$humidity,$airPressure,$chipId);
+    if(isset($chipId,$moisture,$temperature,$humidity,$airPressure)){
+        $fieldId = $dataHandle->getFieldId($chipId);
+        $dataHandle->createFieldData($chipId,$moisture,$temperature,$humidity,$airPressure,$fieldId[0]['id']);
     }else{
         print("error");
     }

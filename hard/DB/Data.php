@@ -39,9 +39,30 @@ class Data extends Database
 
     public function createFieldData($chip_id,$moisture,$temperature,$humidity,$air_pressure,$field_id,$input_parameters=NULL){
         $sql = "select @detail_num := max(detail_no) +1 as detail_no from datas where field_id = {$field_id}";
-        $this->pdo->prepare($sql);
-        $sql = "insert into datas (field_id,detail_no,chip_id,moisture,humidity,temperature,air_pressure) values('{$field_id}',@detail_num,'{$chip_id}','{$moisture}','{$humidity}','{$temperature}','{$air_pressure}')";
-        return $this->pdo->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($input_parameters);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if($result[0]['detail_no'] == null){
+            $detail_no = 0;
+        }else{
+            $detail_no = $result[0]['detail_no'];
+        }
+        $sql = "insert into datas (field_id,detail_no,chip_id,moisture,humidity,temperature,air_pressure) values('{$field_id}','{$detail_no}','{$chip_id}','{$moisture}','{$humidity}','{$temperature}','{$air_pressure}')";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute($input_parameters);
     }
 
+    public function getFieldId($chip_id,$input_parameters=NULL){
+        $sql = "SELECT
+        F.id
+      FROM
+        fields AS F 
+        JOIN chips AS C
+          ON F.chip_id = C.id
+      WHERE
+        F.chip_id= $chip_id;";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($input_parameters);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
