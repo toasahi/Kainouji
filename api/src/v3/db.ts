@@ -189,7 +189,18 @@ export const getField = async (user_id: string) => {
 export const getDetailField = async (id: string) => {
   const conn = await mysql.createConnection(dbSetting);
   try {
-    const sql = `SELECT * From fields where id = ?`;
+    // const sql = `SELECT * From fields where id = ?`;
+    //     const sql = ` SELECT F.id,
+    //   F.field_name,
+    //   C.moisture
+    // FROM
+    //   fields AS F
+    //   JOIN chips AS C
+    //   ON F.chip_id = C.id
+    // WHERE
+    //   F.id= ?;`;
+    const sql = `SELECT F.id, F.field_name, V.vegetable,F.setting_date,F.chip_id,C.moisture FROM 
+                    fields AS F JOIN chips AS C ON F.chip_id = C.id JOIN vegetables AS V ON F.vegetable_id = V.id WHERE F.id= ?;`;
     const [rows] = await conn.query(sql, [id]);
     return rows;
   } catch (e) {

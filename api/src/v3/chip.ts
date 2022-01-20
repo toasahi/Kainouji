@@ -18,8 +18,9 @@ chipRouter.get('/:chip_id', (req: express.Request, res: express.Response) => {
 chipRouter.post('/update', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   try {
-    const chip: { id: number; moisture: number } = req.body;
-    editThreshold(chip.id, chip.moisture).then(() => {
+    const chip: { chip_id: number; moisture: number } = req.body;
+    console.log(chip);
+    editThreshold(chip.chip_id, chip.moisture).then(() => {
       res.status(200).json({ message: 'OK', status: 200 });
     });
   } catch (error) {

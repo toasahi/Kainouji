@@ -15,41 +15,39 @@ export const Graph: VFC = memo(() => {
   const { getGraphData, graphData } = useGetGraphData();
   const { getDetailField, field } = useGetDetailField();
   const { getThreshold, thresholds } = useGetThreshold();
-  const { registerThreshold } = useRegisterThresholds();
   const [percent, setPercent] = useState('0');
   const [graph, setGraph] = useState('水分量');
   const [period, setPeriod] = useState('all');
   const [show, setShow] = useState(false);
-
+  const param = useParams<{ id: string }>();
+  const today = new Date();
   const onClickModal = () => setShow(!show);
   const onChangeGraphData = (event: ChangeEvent<HTMLSelectElement>) => setGraph(event.target.value);
   const onChangeRange = (event: ChangeEvent<HTMLInputElement>) => setPercent(event.target.value);
-
   const onChangePeriod = (event: ChangeEvent<HTMLSelectElement>) => setPeriod(event.target.value);
   useEffect(() => {
-    getThreshold(param.id);
-  }, [show]);
-
-  const onClickSetting = useCallback(() => {
-    if (thresholds === undefined) {
-      registerThreshold(param.id);
-      getThreshold(param.id);
-      setPercent('30');
-    } else {
-      getThreshold(param.id);
-      setPercent(thresholds?.moisture ?? '0');
+    if (field != undefined) {
+      getThreshold(field.chip_id);
     }
-    setShow(!show);
-  }, [thresholds, show, getThreshold, setPercent, setShow]);
-
-  const param = useParams<{ id: string }>();
-  const today = new Date();
-  useEffect(() => getGraphData(period, param.id), [period]);
-
+  }, [show]);
   useEffect(() => {
     getDetailField(param.id);
   }, []);
+  useEffect(() => getGraphData(period, param.id), [period]);
 
+  const onClickSetting = useCallback(() => {
+    if (thresholds == undefined) {
+      if (field !== undefined) {
+        getThreshold(field.chip_id);
+        setPercent(field?.moisture ?? '0');
+      }
+    } else {
+      getThreshold(field!!.chip_id);
+      setPercent(thresholds.moisture ?? '0');
+      console.log(1);
+    }
+    setShow(!show);
+  }, [field, thresholds, getThreshold, setPercent, setShow, show]);
   return (
     <>
       {/* {loading ? (
@@ -127,7 +125,13 @@ export const Graph: VFC = memo(() => {
           </section>
         </main>
       </SGraph>
-      <Modal show={show} fieldId={param.id} percent={percent} onClick={onClickModal} onChange={onChangeRange} />
+      <Modal
+        show={show}
+        chipId={field?.chip_id ?? '0'}
+        percent={percent}
+        onClick={onClickModal}
+        onChange={onChangeRange}
+      />
       {/* </>
       )} */}
     </>
