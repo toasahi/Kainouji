@@ -37,6 +37,18 @@ class Data extends Database
         return $stmt->execute($input_parameters);
     }
 
+    /**
+     * 測定データを追加
+     * @param $chip_id
+     * @param $moisture
+     * @param $temperature
+     * @param $humidity
+     * @param $air_pressure
+     * @param $field_id
+     * @param $input_parameters
+     * @return bool
+     */
+
     public function createFieldData($chip_id,$moisture,$temperature,$humidity,$air_pressure,$field_id,$input_parameters=NULL){
         $sql = "select @detail_num := max(detail_no) +1 as detail_no from datas where field_id = {$field_id}";
         $stmt = $this->pdo->prepare($sql);
@@ -51,6 +63,13 @@ class Data extends Database
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute($input_parameters);
     }
+
+    /**
+     * フィールドのidを取得
+     * @param $chip_id
+     * @param $input_parameters
+     * @return array|false
+     */
 
     public function getFieldId($chip_id,$input_parameters=NULL){
         $sql = "SELECT
