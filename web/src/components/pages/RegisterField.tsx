@@ -1,7 +1,7 @@
 import { ChangeEvent, memo, useEffect, useState, VFC } from 'react';
 
 import { SRegisterField, SRegisterFieldCard } from '../../constant/BaseCss';
-import { useGetVegitables } from '../../hooks/useGetVegitables';
+import { useGetVegetables } from '../../hooks/useGetVegetables';
 import { Header } from '../layouts/Header';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { useHistory } from 'react-router-dom';
@@ -21,7 +21,7 @@ export const RegisterField: VFC = memo(() => {
   const historyState = state === undefined;
   const [imageUrl, setImageUrl] = useState(historyState ? '' : state.data?.fieldImage);
   const [vegetable, setVegetable] = useState(historyState ? '' : state.data?.vegetable);
-  const { getVegetables, loading, vegetableLists } = useGetVegitables();
+  const { getVegetables, loading, vegetableLists } = useGetVegetables();
   const onChangeVegetable = (event: ChangeEvent<HTMLSelectElement>) => {
     setVegetable(event.target.value);
   };

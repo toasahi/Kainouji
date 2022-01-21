@@ -17,10 +17,8 @@ export const LookField: VFC = memo(() => {
   const [cookies, setCookie] = useCookies(['id']);
   useEffect(() => {
     loginState();
-    console.log(`11:${loginUser}`);
     if (loginUser != null) {
       setCookie('id', loginUser.uid, { path: '/' });
-      console.log(cookies.id);
     }
     if (loginUser !== null && loginUser.uid !== undefined) {
       setCookie('id', loginUser.uid, { path: '/' });
@@ -33,7 +31,6 @@ export const LookField: VFC = memo(() => {
       }
     }
   }, [loginUser]);
-  console.log(3);
   return (
     <>
       {loading ? (

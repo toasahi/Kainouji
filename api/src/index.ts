@@ -2,9 +2,7 @@ import express from 'express';
 import logger from 'morgan';
 import path from 'path';
 import cors from 'cors';
-// import { router } from './v1/index';
-// import { router } from './v2/index';
-import { router } from './v3/index';
+import { router } from './v3';
 
 const app: express.Express = express();
 app.use(logger('dev'));

@@ -6,10 +6,8 @@ import { SGraph } from '../../constant/BaseCss';
 import { useGetDetailField } from '../../hooks/useGetDetailField';
 import { useGetGraphData } from '../../hooks/useGetGraphData';
 import { useGetThreshold } from '../../hooks/useGetThreshold';
-import { useRegisterThresholds } from '../../hooks/useRegisterThreshold';
 import { Header } from '../layouts/Header';
 import { Modal } from '../modals/Modal';
-import { PrimarySpinner } from '../spinners/PrimarySpinner';
 
 export const Graph: VFC = memo(() => {
   const { getGraphData, graphData } = useGetGraphData();
@@ -44,7 +42,6 @@ export const Graph: VFC = memo(() => {
     } else {
       getThreshold(field!!.chip_id);
       setPercent(thresholds.moisture ?? '0');
-      console.log(1);
     }
     setShow(!show);
   }, [field, thresholds, getThreshold, setPercent, setShow, show]);
