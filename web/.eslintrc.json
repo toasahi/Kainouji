@@ -7,6 +7,14 @@
     "plugins": [
       "prettier"
     ],
+    "parserOptions": {
+      "ecmaVersion": 2017
+    },
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
     "rules": {
       "prettier/prettier": "error"
     }

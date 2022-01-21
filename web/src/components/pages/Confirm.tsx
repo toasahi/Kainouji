@@ -9,7 +9,7 @@ import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { IFormValues } from '../../types/form/form';
 import { useLoginUser } from '../../hooks/useLoginUser';
 import { useCookies } from 'react-cookie';
-import { useGetVegitables } from '../../hooks/useGetVegitables';
+import { useGetVegetables } from '../../hooks/useGetVegetables';
 import defaultImage from '../../images/defaultImage.jpeg';
 
 type State = {
@@ -28,7 +28,7 @@ export const Confirm: VFC = memo(() => {
       },
     });
   const [cookies] = useCookies(['id']);
-  const { getDetailVegetable, detailVegetable } = useGetVegitables();
+  const { getDetailVegetable, detailVegetable } = useGetVegetables();
   const { loginUser } = useLoginUser();
   const onClickRegister = () => {
     if (Object.keys(cookies).length !== 0 || (loginUser !== null && loginUser.uid !== undefined)) {
