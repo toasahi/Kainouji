@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useHistory } from 'react-router';
-import { auth } from '../constant/Firebase';
+import auth from '../constant/Firebase';
 import { User } from '../types/api/user';
 import { axios } from '../constant/BaseAxios';
 import { useFirebaseAuthResult } from './useFirebaseAuthResult';

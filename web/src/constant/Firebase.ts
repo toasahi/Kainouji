@@ -13,5 +13,6 @@ const firebaseConfig = {
 
 //firebaseの初期化
 firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
-export const auth = firebase.auth();
+export default auth
