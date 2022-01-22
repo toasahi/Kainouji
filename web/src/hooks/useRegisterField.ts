@@ -22,17 +22,19 @@ export const useRegisterField = () => {
     setLoading(true);
     axios
       .post<FieldState>('field/create', params)
-      .then((res) => {
+      .then(() => {
         setSuccess(true);
         if (data.image !== undefined && data.image.length !== 0) {
           uploadImage(data.image[0]);
-          if (!finishUpload) {
+          if (!finishUpload || data.image[0].name === '') {
             alert('登録できました');
           }
+        }else{
+          alert('登録できました');
         }
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(() => {
         alert('登録失敗');
         setLoading(false);
       })
