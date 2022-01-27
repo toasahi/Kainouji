@@ -1,12 +1,19 @@
 <?php
 require_once 'DB/Data.php';
-$moisture = $_GET['moisture'];
-$temerature = $_GET['temerature'];
-$humidity = $_GET['humidity'];
-$air_pressure = $_GET['air_pressure'];
+$moisture = $_POST['moisture'];
+$temperature = $_POST['temperature'];
+$humidity = $_POST['humidity'];
+$airPressure = $_POST['air_pressure'];
+$chipId = $_POST['chip_id'];
 $dataHandle = new Data();
-if(isset($moisture)){
-    $dataHandle->insertFieldData($moisture,$temerature,$humidity,$air_pressure,6);
-}else{
-    print("error");
+
+try{
+    if(isset($chipId,$moisture,$temperature,$humidity,$airPressure)){
+        $fieldId = $dataHandle->getFieldId($chipId);
+        $dataHandle->createFieldData($chipId,$moisture,$temperature,$humidity,$airPressure,$fieldId[0]['id']);
+    }else{
+        print("error");
+    }
+}catch(Exception $e){
+    die($e);
 }
