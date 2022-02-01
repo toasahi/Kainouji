@@ -6,10 +6,10 @@ export const useGetThreshold = () => {
   const [loading, setLoading] = useState(false);
   const [thresholds, setThresholds] = useState<Threshold>();
 
-  const getThreshold = useCallback((field_id: string) => {
+  const getThreshold = useCallback((chip_id: string) => {
     setLoading(true);
     axios
-      .get<Array<Threshold>>(`threshold/${field_id}`)
+      .get<Array<Threshold>>(`chip/${chip_id}`)
       .then((res) => setThresholds(res.data[0]))
       .catch(() => setLoading(false))
       .finally(() => setLoading(false));

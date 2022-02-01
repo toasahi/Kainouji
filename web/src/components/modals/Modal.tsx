@@ -6,16 +6,16 @@ import { RangeSlider } from '../Inputs/RangeSlider';
 
 type Props = {
   show: boolean;
-  fieldId: string;
+  chipId: string;
   percent: string;
   onClick: () => void;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const Modal: VFC<Props> = memo((props) => {
-  const { show, fieldId, percent, onClick, onChange } = props;
+  const { show, chipId, percent, onClick, onChange } = props;
   const { updateThreshold } = useUpdateThreshold();
-  const onClickUpdateThreshold = () => updateThreshold(fieldId, percent);
+  const onClickUpdateThreshold = () => updateThreshold(chipId, percent);
 
   return (
     <>

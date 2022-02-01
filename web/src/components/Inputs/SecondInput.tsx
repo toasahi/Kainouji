@@ -24,7 +24,7 @@ export const SecondInput: VFC<Props> = memo((props) => {
               <SInput
                 type={inputType}
                 id={label}
-                {...register(label, { required })}
+                {...register(label, { required, min: 6 })}
                 onChange={onChange}
                 defaultValue={value || ''}
               />

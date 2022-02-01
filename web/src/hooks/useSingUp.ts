@@ -1,8 +1,9 @@
 import { useCallback, useState } from 'react';
 import { useHistory } from 'react-router';
-import { axios } from '../constant/BaseAxios';
-import { Result } from '../types/api/result';
+import auth from '../constant/Firebase';
 import { User } from '../types/api/user';
+import { axios } from '../constant/BaseAxios';
+import { useFirebaseAuthResult } from './useFirebaseAuthResult';
 
 export const useSingUp = () => {
   const history = useHistory();
@@ -11,28 +12,27 @@ export const useSingUp = () => {
 
   const singUp = useCallback(
     (data: User) => {
-      params.append('email', data.email);
-      params.append('password', data.password!!);
-      params.append('username', data.username!!);
       setLoading(true);
-      axios
-        .post<Result>(`user`, params)
-        .then((res) => {
-          if (res.data.status === 200) {
-            setLoading(false);
-            history.push('/');
-          } else {
-            setLoading(false);
-          }
+      auth
+        .createUserWithEmailAndPassword(data.email, data.password!)
+        .then(() => {
+          params.append('id', auth.currentUser?.uid!!);
+          params.append('username', data.username!!);
+          //データベースに登録
+          axios
+            .post('user/create', params)
+            .then((res) => {
+              alert('ユーザを作成できました');
+              setLoading(false);
+            })
+            .catch((error) => {
+              setLoading(false);
+              alert('ユーザを作成できませんでした');
+            });
         })
-        .catch(() => {
-          alert('登録に失敗しました');
+        .catch((error) => {
+          useFirebaseAuthResult(error.code);
           setLoading(false);
-        })
-        .finally(() => {
-          params.delete('email');
-          params.delete('password');
-          params.delete('username');
         });
     },
     [history],

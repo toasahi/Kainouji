@@ -1,11 +1,11 @@
 import express from 'express';
-import { getGraphDatas } from './db';
+import { getGraphData } from './db';
 const graphRouter = express.Router();
 
-graphRouter.get('/:id/period/:period', (req: express.Request, res: express.Response) => {
+graphRouter.get('/:field_id/period/:period', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   try {
-    getGraphDatas(req.params.id, req.params.period).then((result) => {
+    getGraphData(req.params.field_id, req.params.period).then((result) => {
       res.status(200).json(result);
     });
   } catch (error) {

@@ -8,9 +8,6 @@ class Database {
     public function __construct(){
         try{
             $this->pdo = new PDO(DB_DNS,DB_USER,DB_PASS,$this->option);
-            if($this->pdo === null){
-                die("Connection Error:");
-            }
             return $this->pdo;
         }catch(Exception $e){
             die($e);

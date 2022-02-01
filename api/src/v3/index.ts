@@ -1,16 +1,16 @@
 import express from 'express';
-import { filedRouter } from './field';
+import { fieldRouter } from './field';
 import { graphRouter } from './graph';
-import { thresholdRouter } from './threshold';
-import { userRouter } from './user';
 import { vegetableRouter } from './vegetable';
+import { chipRouter } from './chip';
+import { userRouter } from './user';
 
 const router = express.Router();
 
 //v1以下のルーティング
-router.use('/threshold', thresholdRouter);
+router.use('/chip', chipRouter);
 router.use('/vegetable', vegetableRouter);
-router.use('/field', filedRouter);
+router.use('/field', fieldRouter);
 router.use('/user', userRouter);
 router.use('/graph', graphRouter);
 

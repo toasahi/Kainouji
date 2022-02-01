@@ -11,6 +11,7 @@ export const useRegisterField = () => {
   const registerField = useCallback((id: string, data: RegisterData) => {
     params.append('user_id', id);
     params.append('field_name', data.fieldName);
+    params.append('chip_id', data.chipId);
     params.append('vegetable_id', data.vegetable);
     params.append('setting_date', data.settingDay);
     if (data.image !== undefined && data.image.length !== 0) {
@@ -20,24 +21,27 @@ export const useRegisterField = () => {
     }
     setLoading(true);
     axios
-      .post<FieldState>('field', params)
-      .then((res) => {
+      .post<FieldState>('field/create', params)
+      .then(() => {
         setSuccess(true);
         if (data.image !== undefined && data.image.length !== 0) {
           uploadImage(data.image[0]);
-          if (!finishUpload) {
+          if (!finishUpload || data.image[0].name === '') {
             alert('登録できました');
           }
+        }else{
+          alert('登録できました');
         }
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(() => {
         alert('登録失敗');
         setLoading(false);
       })
       .finally(() => {
         params.delete('user_id');
         params.delete('field_name');
+        params.delete('chip_id');
         params.delete('vegetable_id');
         params.delete('setting_date');
         params.delete('image_name');

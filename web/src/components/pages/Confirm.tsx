@@ -9,7 +9,8 @@ import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { IFormValues } from '../../types/form/form';
 import { useLoginUser } from '../../hooks/useLoginUser';
 import { useCookies } from 'react-cookie';
-import { useGetVegitables } from '../../hooks/useGetVegitables';
+import { useGetVegetables } from '../../hooks/useGetVegetables';
+import defaultImage from '../../images/defaultImage.jpeg';
 
 type State = {
   data: IFormValues;
@@ -23,18 +24,18 @@ export const Confirm: VFC = memo(() => {
       pathname: '/registerfield',
       state: {
         data: state.data,
-        imageUrl: state.imageUrl ?? '',
+        imageUrl: state.imageUrl ?? defaultImage,
       },
     });
-  const [cookies, setCookie] = useCookies(['id']);
-  const { getDetailVegetable, detailVegetable } = useGetVegitables();
+  const [cookies] = useCookies(['id']);
+  const { getDetailVegetable, detailVegetable } = useGetVegetables();
   const { loginUser } = useLoginUser();
   const onClickRegister = () => {
-    if (Object.keys(cookies).length !== 0 || (loginUser !== null && loginUser.id !== undefined)) {
+    if (Object.keys(cookies).length !== 0 || (loginUser !== null && loginUser.uid !== undefined)) {
       registerField(cookies.id, state.data);
     }
   };
-  const { registerField, loading, success } = useRegisterField();
+  const { registerField } = useRegisterField();
   const onChangeTest = () => console.log(1);
   const state = history.location.state;
 
@@ -47,16 +48,29 @@ export const Confirm: VFC = memo(() => {
         <SConfirmCard>
           <div className="container ">
             <h1>確認画面</h1>
-            <div className="item">
-              <label htmlFor="fieldName">名前</label>
-              <PrimaryInput
-                type="text"
-                inputId="fieldName"
-                onChange={onChangeTest}
-                value={state.data.fieldName}
-                readonly={true}
-              />
-            </div>
+            <section>
+              <div className="item">
+                <label htmlFor="fieldName">名前</label>
+                <PrimaryInput
+                  type="text"
+                  inputId="fieldName"
+                  onChange={onChangeTest}
+                  value={state.data.fieldName}
+                  readonly={true}
+                />
+              </div>
+              <div className="item">
+                <label htmlFor="chipId">チップID</label>
+                <PrimaryInput
+                  type="text"
+                  inputId="chipId"
+                  onChange={onChangeTest}
+                  value={state.data.chipId}
+                  readonly={true}
+                />
+              </div>
+            </section>
+
             <section>
               <div className="item">
                 <label htmlFor="vegetable">育てる野菜</label>

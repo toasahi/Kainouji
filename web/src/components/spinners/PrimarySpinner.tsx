@@ -1,10 +1,11 @@
 import { memo, VFC } from 'react';
 import Loader from 'react-loader-spinner';
+import styled from 'styled-components';
 
 export const PrimarySpinner: VFC = memo(() => {
   return (
     <>
-      <div className="spinner">
+      <SSpiner className="spinner">
         <Loader
           type="TailSpin"
           color="#9FC730"
@@ -12,7 +13,14 @@ export const PrimarySpinner: VFC = memo(() => {
           width={80}
           timeout={3000} //3 secs
         />
-      </div>
+      </SSpiner>
     </>
   );
 });
+
+const SSpiner = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-45, -50);
+`;
