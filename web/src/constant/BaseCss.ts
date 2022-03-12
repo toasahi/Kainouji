@@ -299,6 +299,7 @@ const SHeader = styled.header`
     .iconContainer {
       display: block;
       margin-top: 10px;
+      cursor: pointer;
     }
 
     a {

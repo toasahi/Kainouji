@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react';
-import { updatePassword } from 'firebase/auth';
-import auth  from '../constant/Firebase';
+import auth from '../constant/Firebase';
 import { useHistory } from 'react-router';
 
 export const useChangePassword = () => {

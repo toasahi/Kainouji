@@ -29,7 +29,7 @@ export const useRegisterField = () => {
           if (!finishUpload || data.image[0].name === '') {
             alert('登録できました');
           }
-        }else{
+        } else {
           alert('登録できました');
         }
         setLoading(false);
