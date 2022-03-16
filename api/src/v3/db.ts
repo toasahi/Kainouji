@@ -29,7 +29,7 @@ export const insertUser = async (id: string, username: string) => {
 export const getUser = async (id: string) => {
   const conn = await mysql.createConnection(dbSetting);
   try {
-    const sql = `SELECT * FROM users WHERE id = ?`;
+    const sql = `SELECT username FROM users WHERE id = ?`;
     const [rows] = await conn.query(sql, [id]);
     return rows;
   } finally {

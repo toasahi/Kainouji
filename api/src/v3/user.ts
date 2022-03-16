@@ -5,7 +5,9 @@ const userRouter = express.Router();
 
 userRouter.get('/:id', (req: express.Request, res: express.Response) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
-  getUser(req.params.id).then(() => {});
+  getUser(req.params.id).then((result) => {
+    res.status(200).json(result);
+  });
 });
 
 userRouter.post('/create', (req: express.Request, res: express.Response) => {

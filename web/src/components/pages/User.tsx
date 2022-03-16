@@ -1,8 +1,10 @@
-import { ChangeEvent, memo, useState, VFC } from 'react';
+import { ChangeEvent, memo, useEffect, useState, VFC } from 'react';
 
 import { SUser, SUserCard } from '../../constant/BaseCss';
 import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { Header } from '../layouts/Header';
+import { useCookies } from 'react-cookie';
+import { useLoginUser, userInfoData } from '../../hooks/useLoginUser';
 
 export const User: VFC = memo(() => {
   const [imageUrl, setImageUrl] = useState('');
@@ -10,6 +12,10 @@ export const User: VFC = memo(() => {
     event.currentTarget.files !== null
       ? setImageUrl(URL.createObjectURL(event.currentTarget.files[0]))
       : setImageUrl('');
+  const [cookies] = useCookies(['id']);
+  const { userInfo, userData } = userInfoData();
+  useEffect(() => userData(cookies.id), []);
+  const { loginUser } = useLoginUser();
   return (
     <>
       <SUser>
@@ -67,8 +73,8 @@ export const User: VFC = memo(() => {
                   )}
                 </div>
                 <div className="userInfo">
-                  <h2>ユーザー名</h2>
-                  <p>メールアドレス</p>
+                  <h2>ユーザー名:{userInfo != undefined ? userInfo : ''}</h2>
+                  <p>メールアドレス:{loginUser?.email != null ? loginUser?.email : ''}</p>
                 </div>
               </section>
             </div>
