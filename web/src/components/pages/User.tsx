@@ -5,6 +5,9 @@ import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { Header } from '../layouts/Header';
 import { useCookies } from 'react-cookie';
 import { useLoginUser, userInfoData } from '../../hooks/useLoginUser';
+import { SecondInput } from "../Inputs/SecondInput";
+import { useForm } from "react-hook-form";
+import { IFormValues } from "../../types/form/form";
 
 export const User: VFC = memo(() => {
   const [imageUrl, setImageUrl] = useState('');
@@ -16,6 +19,11 @@ export const User: VFC = memo(() => {
   const { userInfo, userData } = userInfoData();
   useEffect(() => userData(cookies.id), []);
   const { loginUser } = useLoginUser();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormValues>();
   return (
     <>
       <SUser>
@@ -73,8 +81,12 @@ export const User: VFC = memo(() => {
                   )}
                 </div>
                 <div className="userInfo">
-                  <h2>ユーザー名:{userInfo != undefined ? userInfo : ''}</h2>
-                  <p>メールアドレス:{loginUser?.email != null ? loginUser?.email : ''}</p>
+                  <div className="usernameContents">
+                    <h2>ユーザー名:</h2><SecondInput inputType="text" label="username" register={register} required value={userInfo != undefined ? userInfo : ''}/>
+                  </div>
+                  <div className="userEmail">
+                    <p>メールアドレス:</p><SecondInput inputType="text" label="email" register={register} required value={loginUser?.email != null ? loginUser?.email : ''}/>
+                  </div>
                 </div>
               </section>
             </div>
