@@ -257,7 +257,6 @@ const SHeader = styled.header`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 35px;
 
     li {
       cursor: pointer;
@@ -267,9 +266,11 @@ const SHeader = styled.header`
   .iconContainer {
     display: none;
   }
-
+  
   svg {
-    display: none;
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
   }
 
   a {
@@ -328,6 +329,7 @@ const SHeader = styled.header`
       width: 20px;
       height: 20px;
       margin-right: 25px;
+      padding: 0;
     }
 
     footer {
@@ -1173,7 +1175,9 @@ const SConfirmCard = styled(Card)`
   }
 `;
 
-const SUser = styled(BaseContainer)``;
+const SUser = styled(BaseContainer)`
+  
+`;
 
 const SUserCard = styled(Card)`
   h1 {

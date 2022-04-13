@@ -81,11 +81,25 @@ export const User: VFC = memo(() => {
                   )}
                 </div>
                 <div className="userInfo">
-                  <div className="usernameContents">
-                    <h2>ユーザー名:</h2><SecondInput inputType="text" label="username" register={register} required value={userInfo != undefined ? userInfo : ''}/>
+                  <label htmlFor="username">ユーザー名</label>
+                  <div>
+                    <SecondInput
+                      inputType="text"
+                      label="username"
+                      register={register}
+                      required={false}
+                      value={userInfo != undefined ? userInfo : 'なし'}
+                    />
                   </div>
-                  <div className="userEmail">
-                    <p>メールアドレス:</p><SecondInput inputType="text" label="email" register={register} required value={loginUser?.email != null ? loginUser?.email : ''}/>
+                  <label htmlFor="email">メール</label>
+                  <div>
+                    <SecondInput
+                      inputType="text"
+                      label="email"
+                      register={register}
+                      required={false}
+                      value={loginUser?.email != null ? loginUser?.email : 'なし'}
+                    />
                   </div>
                 </div>
               </section>
