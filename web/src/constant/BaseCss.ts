@@ -447,9 +447,17 @@ const BaseContainer = styled.div`
     width: 100%;
   }
 
+  h1{
+    display: none;
+  }
+
   @media (min-width: ${Responsive.md}) {
     main {
       width: 80%;
+    }
+    
+    h1{
+      display: block;
     }
 
     flex-direction: row;
@@ -1176,7 +1184,7 @@ const SConfirmCard = styled(Card)`
 `;
 
 const SUser = styled(BaseContainer)`
-  
+ 
 `;
 
 const SUserCard = styled(Card)`
