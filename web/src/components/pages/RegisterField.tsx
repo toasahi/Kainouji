@@ -9,6 +9,7 @@ import { SecondInput } from '../Inputs/SecondInput';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IFormValues } from '../../types/form/form';
 import { PrimarySpinner } from '../spinners/PrimarySpinner';
+import { Question } from '../icon/Question';
 
 type State = {
   data?: IFormValues;
@@ -81,6 +82,7 @@ export const RegisterField: VFC = memo(() => {
                         value={historyState ? '' : state.data?.chipId}
                       />
                       {errors.fieldName && <span>チップIDを入力してください</span>}
+                      <Question />
                     </div>
                   </section>
 
