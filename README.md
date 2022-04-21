@@ -10,7 +10,8 @@
 自宅から水やりを行ったり、現在の畑の状態を可視化することで畑に行く回数が減り体の負担を軽減できると考え、制作しました。また、快農児を通して同世代が農業に興味を持つきっかけになってほしいと思っています。
 
 **ハード**<br>
-ESP32
+ESP32<br>
+[ハードのコード](https://github.com/toasahi/kainouji_esp32)
 
 **プログラミング言語**<br>
 Arduino PHP TypeScript React Node.js(express)
