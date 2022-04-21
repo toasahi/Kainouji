@@ -33,17 +33,17 @@ Hard: ハードウェアからの情報を受け取る(PHP)
 Web: Webページ
 
 使用方法
- /api 
+ /api
   npm install
   ローカル実行するため
-    .envに必要事項を書き込む 
+    .envに必要事項を書き込む
     mysql5.7
     create database kainouji
     kainouji_table.sql 実行
-    
+
     APIサーバー起動
     npm start
-    
+
  /web
    npm install
    npm start
@@ -83,6 +83,3 @@ Web: Webページ
 - 農家さんはパソコンに不慣れな方が多いため英語を使わないデザイン。
 - カラーは畑をイメージした緑と茶色を基調とした。
 - 全体的に明るいイメージを持たすことで農業の今後もより良くなってほしいと思いを込めています
-
-自己評価
-90点
