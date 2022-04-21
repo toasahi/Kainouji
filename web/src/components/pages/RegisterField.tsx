@@ -74,6 +74,7 @@ export const RegisterField: VFC = memo(() => {
                     </div>
                     <div className="item">
                       <label htmlFor="chipId">チップID</label>
+                      <Question />
                       <SecondInput
                         label="chipId"
                         inputType="text"
@@ -82,7 +83,6 @@ export const RegisterField: VFC = memo(() => {
                         value={historyState ? '' : state.data?.chipId}
                       />
                       {errors.fieldName && <span>チップIDを入力してください</span>}
-                      <Question />
                     </div>
                   </section>
 
