@@ -5,9 +5,9 @@ import { PrimaryInput } from '../Inputs/PrimaryInput';
 import { Header } from '../layouts/Header';
 import { useCookies } from 'react-cookie';
 import { useLoginUser, userInfoData } from '../../hooks/useLoginUser';
-import { SecondInput } from "../Inputs/SecondInput";
-import { useForm } from "react-hook-form";
-import { IFormValues } from "../../types/form/form";
+import { SecondInput } from '../Inputs/SecondInput';
+import { useForm } from 'react-hook-form';
+import { IFormValues } from '../../types/form/form';
 
 export const User: VFC = memo(() => {
   const [imageUrl, setImageUrl] = useState('');

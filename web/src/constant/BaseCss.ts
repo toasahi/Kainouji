@@ -266,7 +266,7 @@ const SHeader = styled.header`
   .iconContainer {
     display: none;
   }
-  
+
   svg {
     display: block;
     margin: 0 auto;
@@ -447,7 +447,7 @@ const BaseContainer = styled.div`
     width: 100%;
   }
 
-  h1{
+  h1 {
     display: none;
   }
 
@@ -455,8 +455,8 @@ const BaseContainer = styled.div`
     main {
       width: 80%;
     }
-    
-    h1{
+
+    h1 {
       display: block;
     }
 
@@ -1183,9 +1183,7 @@ const SConfirmCard = styled(Card)`
   }
 `;
 
-const SUser = styled(BaseContainer)`
- 
-`;
+const SUser = styled(BaseContainer)``;
 
 const SUserCard = styled(Card)`
   h1 {
