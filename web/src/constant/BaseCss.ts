@@ -728,6 +728,7 @@ const SSignUp = styled.div`
         }
 
         a {
+          display: block;
           margin-left: 10px;
           opacity: 50%;
 
@@ -745,6 +746,13 @@ const SSignUp = styled.div`
 
       label {
         font-size: ${Font.textBase};
+      }
+      .account-nav {
+        .account-nav-item {
+          a {
+            display: inline;
+          }
+        }
       }
     }
   }
